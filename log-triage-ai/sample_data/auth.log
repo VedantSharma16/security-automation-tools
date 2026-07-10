@@ -1,0 +1,14 @@
+Jan 10 03:10:01 web01 sshd[1001]: Accepted publickey for deploy from 10.0.0.5 port 52344 ssh2
+Jan 10 03:12:44 web01 CRON[1042]: pam_unix(cron:session): session opened for user root
+Jan 10 03:14:01 web01 sshd[2001]: Failed password for invalid user admin from 203.0.113.5 port 51501 ssh2
+Jan 10 03:14:05 web01 sshd[2002]: Failed password for invalid user admin from 203.0.113.5 port 51502 ssh2
+Jan 10 03:14:09 web01 sshd[2003]: Failed password for invalid user root from 203.0.113.5 port 51503 ssh2
+Jan 10 03:14:13 web01 sshd[2004]: Failed password for invalid user root from 203.0.113.5 port 51504 ssh2
+Jan 10 03:14:17 web01 sshd[2005]: Failed password for invalid user oracle from 203.0.113.5 port 51505 ssh2
+Jan 10 03:14:21 web01 sshd[2006]: Failed password for invalid user oracle from 203.0.113.5 port 51506 ssh2
+Jan 10 03:14:40 web01 sshd[2007]: Accepted password for root from 203.0.113.5 port 51507 ssh2
+Jan 10 03:15:02 web01 sudo:   root : TTY=pts/1 ; PWD=/root ; USER=root ; COMMAND=/bin/chmod 4755 /bin/bash
+Jan 10 03:16:10 web01 sshd[2100]: Failed password for invalid user test from 198.51.100.9 port 60001 ssh2
+Jan 10 03:16:14 web01 sshd[2101]: Failed password for invalid user test from 198.51.100.9 port 60002 ssh2
+Jan 10 09:00:02 web01 sshd[3001]: Accepted publickey for deploy from 10.0.0.5 port 52890 ssh2
+Jan 10 09:03:15 web01 sudo:   deploy : TTY=pts/2 ; PWD=/srv/app ; USER=root ; COMMAND=/usr/bin/systemctl restart app
