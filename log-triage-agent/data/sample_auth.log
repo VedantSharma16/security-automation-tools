@@ -1,0 +1,9 @@
+Jul 10 02:10:01 web01 sshd[10234]: Failed password for invalid user admin from 203.0.113.5 port 51501 ssh2
+Jul 10 02:10:12 web01 sshd[10235]: Failed password for invalid user test from 203.0.113.5 port 51503 ssh2
+Jul 10 02:10:24 web01 sshd[10236]: Failed password for invalid user oracle from 203.0.113.5 port 51505 ssh2
+Jul 10 02:10:37 web01 sshd[10237]: Failed password for invalid user ubuntu from 203.0.113.5 port 51507 ssh2
+Jul 10 02:10:49 web01 sshd[10238]: Failed password for root from 203.0.113.5 port 51509 ssh2
+Jul 10 02:14:50 web01 sshd[10245]: Accepted password for root from 203.0.113.5 port 51600 ssh2
+Jul 10 08:45:02 web01 sshd[10290]: Failed password for invalid user guest from 198.51.100.23 port 33221 ssh2
+Jul 10 08:45:10 web01 sshd[10291]: Failed password for invalid user guest from 198.51.100.23 port 33222 ssh2
+Jul 10 09:03:15 web01 sshd[10300]: Accepted password for deploy from 10.0.0.15 port 42522 ssh2

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "T1110",
+    "name": "Brute Force",
+    "tactic": "Credential Access",
+    "finding_types": ["brute_force"],
+    "description": "Adversaries may use brute force techniques to gain access to accounts when passwords are unknown or when password hashes are obtained. Repeated, automated login attempts against a single account are a common signature.",
+    "url": "https://attack.mitre.org/techniques/T1110/"
+  },
+  {
+    "id": "T1110.001",
+    "name": "Password Guessing",
+    "tactic": "Credential Access",
+    "finding_types": ["brute_force"],
+    "description": "Adversaries with no prior knowledge of legitimate credentials may guess passwords to attempt access to accounts, often using a small list of common or default passwords against one account.",
+    "url": "https://attack.mitre.org/techniques/T1110/001/"
+  },
+  {
+    "id": "T1110.003",
+    "name": "Password Spraying",
+    "tactic": "Credential Access",
+    "finding_types": ["password_spray"],
+    "description": "Adversaries may use a single or small list of commonly used passwords against many different accounts to attempt to acquire valid account credentials while avoiding account lockouts from a per-account brute force attempt.",
+    "url": "https://attack.mitre.org/techniques/T1110/003/"
+  },
+  {
+    "id": "T1078",
+    "name": "Valid Accounts",
+    "tactic": "Defense Evasion, Persistence, Privilege Escalation, Initial Access",
+    "finding_types": ["credential_success_after_failures"],
+    "description": "Adversaries may obtain and abuse credentials of existing accounts as a means of gaining access. Compromised credentials may be used to bypass access controls and blend in with normal user activity, making detection difficult.",
+    "url": "https://attack.mitre.org/techniques/T1078/"
+  },
+  {
+    "id": "T1021.004",
+    "name": "Remote Services: SSH",
+    "tactic": "Lateral Movement",
+    "finding_types": ["credential_success_after_failures", "off_hours_login"],
+    "description": "Adversaries may use valid accounts to log into a machine using Secure Shell (SSH). SSH is a protocol that allows authorized users to open remote shells on other systems.",
+    "url": "https://attack.mitre.org/techniques/T1021/004/"
+  },
+  {
+    "id": "TA0009-BEHAVIORAL",
+    "name": "Off-Hours Access Anomaly",
+    "tactic": "Analytic Indicator",
+    "finding_types": ["off_hours_login"],
+    "description": "Successful authentication outside of an account's normal working hours is not itself an ATT&CK technique, but is a widely used behavioral analytic for prioritizing which Valid Accounts activity to review first.",
+    "url": "https://attack.mitre.org/tactics/enterprise/"
+  }
+]

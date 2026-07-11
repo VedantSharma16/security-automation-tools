@@ -1,0 +1,7 @@
+# Core pipeline (parsing, detection, retrieval, reporting) is pure
+# standard library -- no install required to run or test it.
+#
+# Optional: install this to enable LLM-generated narrative enrichment via
+# reporter.AnthropicNarrator. Without it, the tool automatically falls back
+# to the deterministic TemplateNarrator.
+anthropic>=0.40.0
