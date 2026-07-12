@@ -1,0 +1,159 @@
+# Default detection rules for Process Threat Hunter.
+#
+# Each rule matches a regular expression (case-insensitive) against one or
+# more fields of a running process. Patterns are intentionally broad LOLBins
+# and common offensive-security tooling seen in real intrusions; tune them
+# for your environment before relying on this in production.
+#
+# Fields:
+#   id             unique rule identifier
+#   pattern        Python regex, matched case-insensitively
+#   match_fields   process fields to test the pattern against: name, exe, cmdline
+#   severity       one of: low, medium, high, critical
+#   mitre_tactic   MITRE ATT&CK tactic name
+#   mitre_technique  MITRE ATT&CK technique ID
+#   description    human-readable rationale
+
+- id: credential-dumping-mimikatz
+  pattern: 'mimikatz'
+  match_fields: [name, exe, cmdline]
+  severity: critical
+  mitre_tactic: Credential Access
+  mitre_technique: T1003
+  description: Mimikatz is a widely used credential dumping tool.
+
+- id: credential-dumping-secretsdump
+  pattern: 'secretsdump|hashdump|dumpsec'
+  match_fields: [name, exe, cmdline]
+  severity: critical
+  mitre_tactic: Credential Access
+  mitre_technique: T1003
+  description: Impacket secretsdump / hashdump-style credential extraction.
+
+- id: c2-framework-cobaltstrike
+  pattern: 'cobaltstrike|beacon\.exe'
+  match_fields: [name, exe, cmdline]
+  severity: critical
+  mitre_tactic: Command and Control
+  mitre_technique: T1071
+  description: Cobalt Strike beacon or teamserver artifact.
+
+- id: exploitation-framework-metasploit
+  pattern: 'metasploit|meterpreter'
+  match_fields: [name, exe, cmdline]
+  severity: critical
+  mitre_tactic: Execution
+  mitre_technique: T1203
+  description: Metasploit / Meterpreter exploitation framework.
+
+- id: lateral-movement-psexec
+  pattern: 'psexec'
+  match_fields: [name, exe, cmdline]
+  severity: high
+  mitre_tactic: Lateral Movement
+  mitre_technique: T1021.002
+  description: PsExec-style remote service execution.
+
+- id: lateral-movement-evilwinrm
+  pattern: 'evil-?winrm'
+  match_fields: [name, exe, cmdline]
+  severity: high
+  mitre_tactic: Lateral Movement
+  mitre_technique: T1021.006
+  description: Evil-WinRM remote shell over WinRM.
+
+- id: ad-recon-bloodhound
+  pattern: 'bloodhound|sharphound'
+  match_fields: [name, exe, cmdline]
+  severity: high
+  mitre_tactic: Discovery
+  mitre_technique: T1087.002
+  description: Active Directory attack-path enumeration tooling.
+
+- id: ad-attack-impacket
+  pattern: 'impacket'
+  match_fields: [name, exe, cmdline]
+  severity: high
+  mitre_tactic: Lateral Movement
+  mitre_technique: T1021
+  description: Impacket tooling used for AD attacks and lateral movement.
+
+- id: kerberos-attack
+  pattern: 'kerberoast|rubeus|asreproast'
+  match_fields: [name, exe, cmdline]
+  severity: high
+  mitre_tactic: Credential Access
+  mitre_technique: T1558
+  description: Kerberoasting / AS-REP roasting tooling.
+
+- id: c2-proxy-tooling
+  pattern: 'proxychains|proxycap|fakenet'
+  match_fields: [name, exe, cmdline]
+  severity: medium
+  mitre_tactic: Command and Control
+  mitre_technique: T1090
+  description: Traffic proxying/tunneling tools sometimes abused for C2 relay.
+
+- id: network-recon
+  pattern: '^nmap$|^masscan$|responder'
+  match_fields: [name, exe, cmdline]
+  severity: medium
+  mitre_tactic: Discovery
+  mitre_technique: T1046
+  description: Active network/service scanning or LLMNR/NBT-NS poisoning tool.
+
+- id: web-attack-tooling
+  pattern: 'sqlmap|gobuster|dirbuster|burpsuite'
+  match_fields: [name, exe, cmdline]
+  severity: medium
+  mitre_tactic: Reconnaissance
+  mitre_technique: T1595
+  description: Web application attack/enumeration tooling.
+
+- id: packet-capture
+  pattern: 'wireshark|tcpdump|ettercap'
+  match_fields: [name, exe, cmdline]
+  severity: low
+  mitre_tactic: Collection
+  mitre_technique: T1040
+  description: Network sniffing / packet capture tooling.
+
+- id: password-cracking
+  pattern: 'johntheripper|john-the-ripper|\bhydra\b|aircrack-ng'
+  match_fields: [name, exe, cmdline]
+  severity: high
+  mitre_tactic: Credential Access
+  mitre_technique: T1110
+  description: Offline/online password cracking tooling.
+
+- id: lolbin-living-off-the-land
+  pattern: 'wmic\.exe|regsvr32\.exe|certutil\.exe|bitsadmin\.exe'
+  match_fields: [name, exe]
+  severity: medium
+  mitre_tactic: Defense Evasion
+  mitre_technique: T1218
+  description: Living-off-the-land binary frequently abused for execution/evasion.
+
+- id: suspicious-powershell-encoded
+  pattern: 'powershell(\.exe)?.*(-enc|-encodedcommand|-nop|-w\s+hidden)'
+  match_fields: [cmdline]
+  severity: high
+  mitre_tactic: Execution
+  mitre_technique: T1059.001
+  description: PowerShell invoked with obfuscation/encoded-command or hidden-window flags.
+
+- id: scheduled-task-persistence
+  pattern: 'schtasks(\.exe)?.*\/create'
+  match_fields: [cmdline]
+  severity: medium
+  mitre_tactic: Persistence
+  mitre_technique: T1053.005
+  description: Scheduled task creation, a common persistence mechanism.
+
+- id: reverse-shell-netcat
+  pattern: '\bnc(\.exe)?\b.*-e\s|\bncat\b.*-e\s|\bnetcat\b'
+  match_fields: [name, exe, cmdline]
+  severity: high
+  mitre_tactic: Command and Control
+  mitre_technique: T1059
+  description: Netcat/ncat invoked in a pattern consistent with a reverse/bind shell.
