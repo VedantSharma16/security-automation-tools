@@ -1,0 +1,21 @@
+Incident Summary — Suspected Credential Theft (2026-07-10)
+
+During routine EDR review, analysts identified execution of Mimikatz on
+host WKSTN-042 (user: jdoe), invoked via a PowerShell downloader. The
+process subsequently accessed LSASS memory consistent with credential
+dumping (T1003).
+
+Observed indicators:
+- Dropper hash (SHA256): e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+- C2 domain: update-service[.]badactor[.]io
+- C2 IP: 203[.]0[.]113[.]42
+- Phishing sender: attacker@evil-corp.com
+- Payload URL: hxxp://malicious-domain[.]net/payload.exe
+
+The host subsequently attempted lateral movement using PsExec against two
+adjacent workstations. This activity may be related to the vulnerability
+tracked as CVE-2024-3094, which was disclosed for a similarly-versioned
+component present on the affected subnet.
+
+Recommend isolating WKSTN-042, rotating credentials for jdoe, and hunting
+for the above indicators across the environment.
