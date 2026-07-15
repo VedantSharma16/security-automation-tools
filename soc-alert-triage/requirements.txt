@@ -1,0 +1,6 @@
+# Core library has zero runtime dependencies (stdlib only).
+# Installed for running the test suite:
+pytest>=7.0
+
+# Optional, only needed if you pass --use-claude to the CLI:
+# anthropic>=0.40.0

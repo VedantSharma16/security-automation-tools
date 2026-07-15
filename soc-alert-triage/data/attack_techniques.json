@@ -1,0 +1,86 @@
+[
+  {
+    "id": "T1059",
+    "name": "Command and Scripting Interpreter",
+    "tactic": "Execution",
+    "description": "Adversaries abuse command and script interpreters such as PowerShell, cmd.exe, or bash to execute commands, scripts, or binaries.",
+    "keywords": ["powershell", "cmd.exe", "bash", "script", "iex", "invoke-expression"]
+  },
+  {
+    "id": "T1003",
+    "name": "OS Credential Dumping",
+    "tactic": "Credential Access",
+    "description": "Adversaries dump credentials from operating system memory or storage, for example by reading LSASS memory to obtain account hashes and passwords.",
+    "keywords": ["mimikatz", "lsass", "secretsdump", "hashdump", "sekurlsa", "sam dump"]
+  },
+  {
+    "id": "T1110",
+    "name": "Brute Force",
+    "tactic": "Credential Access",
+    "description": "Adversaries use brute force or password spraying techniques to guess valid account credentials against a service.",
+    "keywords": ["hydra", "brute force", "password spraying", "failed login", "rockyou"]
+  },
+  {
+    "id": "T1021",
+    "name": "Remote Services",
+    "tactic": "Lateral Movement",
+    "description": "Adversaries use valid accounts to log into remote services such as SMB/PsExec, WinRM, or RDP to move laterally through a network.",
+    "keywords": ["psexec", "evil-winrm", "winrm", "rdp", "smb", "wmic"]
+  },
+  {
+    "id": "T1071",
+    "name": "Application Layer Protocol",
+    "tactic": "Command and Control",
+    "description": "Adversaries communicate with compromised hosts over application layer protocols to blend in with normal traffic, including HTTP/S beaconing frameworks.",
+    "keywords": ["beacon", "cobaltstrike", "c2", "dns tunneling", "proxychains", "callback"]
+  },
+  {
+    "id": "T1027",
+    "name": "Obfuscated Files or Information",
+    "tactic": "Defense Evasion",
+    "description": "Adversaries encode, encrypt, or otherwise obfuscate scripts and payloads to hinder detection and analysis.",
+    "keywords": ["base64", "frombase64string", "encoded", "hidden window", "packed"]
+  },
+  {
+    "id": "T1055",
+    "name": "Process Injection",
+    "tactic": "Defense Evasion",
+    "description": "Adversaries inject code into the address space of another process to evade process-based defenses and elevate privileges.",
+    "keywords": ["process hollowing", "dll injection", "reflective loading", "process injection"]
+  },
+  {
+    "id": "T1046",
+    "name": "Network Service Discovery",
+    "tactic": "Discovery",
+    "description": "Adversaries enumerate services running on remote hosts to identify targets for further exploitation.",
+    "keywords": ["port scan", "service enumeration", "network discovery"]
+  },
+  {
+    "id": "T1595",
+    "name": "Active Scanning",
+    "tactic": "Reconnaissance",
+    "description": "Adversaries scan networks for open ports, live hosts, and running services prior to exploitation.",
+    "keywords": ["nmap", "masscan", "scanning", "gobuster", "dirbuster", "port scan"]
+  },
+  {
+    "id": "T1053",
+    "name": "Scheduled Task/Job",
+    "tactic": "Persistence",
+    "description": "Adversaries create scheduled tasks or cron jobs to establish persistence and re-execute malicious code.",
+    "keywords": ["schtasks", "cron", "at.exe", "scheduled task", "onlogon"]
+  },
+  {
+    "id": "T1078",
+    "name": "Valid Accounts",
+    "tactic": "Persistence",
+    "description": "Adversaries use compromised or default valid accounts to maintain access and blend in with legitimate activity.",
+    "keywords": ["valid credentials", "service account", "unusual login", "impersonation"]
+  },
+  {
+    "id": "T1567",
+    "name": "Exfiltration Over Web Service",
+    "tactic": "Exfiltration",
+    "description": "Adversaries exfiltrate data to a legitimate external web service such as a paste site or cloud storage to blend in with normal traffic.",
+    "keywords": ["pastebin", "dropbox", "exfiltrate", "data transfer", "upload"]
+  }
+]
