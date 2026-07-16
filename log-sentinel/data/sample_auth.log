@@ -1,0 +1,14 @@
+Jul 14 03:12:01 web01 sshd[1001]: Failed password for invalid user admin from 203.0.113.7 port 51501 ssh2
+Jul 14 03:12:05 web01 sshd[1002]: Failed password for invalid user admin from 203.0.113.7 port 51502 ssh2
+Jul 14 03:12:09 web01 sshd[1003]: Failed password for invalid user test from 203.0.113.7 port 51503 ssh2
+Jul 14 03:12:13 web01 sshd[1004]: Failed password for invalid user test from 203.0.113.7 port 51504 ssh2
+Jul 14 03:12:17 web01 sshd[1005]: Failed password for invalid user root from 203.0.113.7 port 51505 ssh2
+Jul 14 03:12:21 web01 sshd[1006]: Failed password for invalid user root from 203.0.113.7 port 51506 ssh2
+Jul 14 03:12:25 web01 sshd[1007]: Accepted password for root from 203.0.113.7 port 51507 ssh2
+Jul 14 03:12:26 web01 sshd[1007]: session opened for user root by (uid=0)
+Jul 14 09:45:10 web01 sshd[1100]: Accepted publickey for deploy from 10.0.0.5 port 55210 ssh2
+Jul 14 09:45:11 web01 sshd[1100]: session opened for user deploy by (uid=1001)
+Jul 14 23:58:02 web01 sshd[1200]: Accepted password for backupsvc from 198.51.100.22 port 52344 ssh2
+Jul 14 23:58:03 web01 sshd[1200]: session opened for user backupsvc by (uid=1002)
+Jul 15 10:02:15 web01 sshd[1300]: Failed password for jsmith from 10.0.0.44 port 60011 ssh2
+Jul 15 10:02:40 web01 sshd[1301]: Accepted password for jsmith from 10.0.0.44 port 60012 ssh2

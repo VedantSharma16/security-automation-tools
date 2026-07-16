@@ -1,0 +1,38 @@
+[
+  {
+    "technique_id": "T1110",
+    "name": "Brute Force",
+    "description": "Adversaries may use brute force techniques to gain access to accounts by systematically guessing passwords, often generating many failed authentication attempts in a short window.",
+    "keywords": ["brute", "force", "password", "guessing", "failed", "authentication", "credential", "attempts"]
+  },
+  {
+    "technique_id": "T1110.001",
+    "name": "Password Guessing",
+    "description": "Adversaries may guess passwords for a known list of usernames without prior knowledge of policy or specific passwords, often against a single or small set of accounts.",
+    "keywords": ["password", "guessing", "invalid", "user", "attempt", "login"]
+  },
+  {
+    "technique_id": "T1078",
+    "name": "Valid Accounts",
+    "description": "Adversaries may obtain and abuse credentials of existing accounts to gain initial access, persistence, or privilege escalation, which can be difficult to detect because the activity uses legitimate accounts.",
+    "keywords": ["valid", "account", "credential", "login", "accepted", "compromise", "legitimate"]
+  },
+  {
+    "technique_id": "T1078.003",
+    "name": "Valid Accounts: Local Accounts",
+    "description": "Adversaries may obtain and abuse credentials of a local account, such as a built-in root or administrator account, to gain elevated access to a system.",
+    "keywords": ["root", "administrator", "privileged", "local", "account", "elevated", "admin"]
+  },
+  {
+    "technique_id": "T1021.004",
+    "name": "Remote Services: SSH",
+    "description": "Adversaries may use SSH to move laterally or establish remote access within a network, often reusing legitimate credentials over the SSH protocol.",
+    "keywords": ["ssh", "remote", "session", "lateral", "movement", "login", "server"]
+  },
+  {
+    "technique_id": "T1078.004",
+    "name": "Valid Accounts: Cloud Accounts",
+    "description": "Logins occurring at unusual times or from unexpected locations relative to an account's normal behavior baseline can indicate use of compromised or shared credentials.",
+    "keywords": ["off-hours", "anomalous", "unusual", "time", "baseline", "unexpected", "location"]
+  }
+]
