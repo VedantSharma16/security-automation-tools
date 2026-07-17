@@ -1,0 +1,18 @@
+Mar  4 02:11:03 web01 sshd[1001]: Failed password for invalid user oracle from 203.0.113.7 port 51422 ssh2
+Mar  4 02:11:07 web01 sshd[1002]: Failed password for invalid user postgres from 203.0.113.7 port 51430 ssh2
+Mar  4 02:11:10 web01 sshd[1003]: Failed password for invalid user admin from 203.0.113.7 port 51439 ssh2
+Mar  4 02:11:14 web01 sshd[1004]: Failed password for root from 203.0.113.7 port 51448 ssh2
+Mar  4 02:11:19 web01 sshd[1005]: Failed password for root from 203.0.113.7 port 51455 ssh2
+Mar  4 02:11:24 web01 sshd[1006]: Failed password for root from 203.0.113.7 port 51461 ssh2
+Mar  4 02:11:30 web01 sshd[1007]: Failed password for deploy from 203.0.113.7 port 51470 ssh2
+Mar  4 02:12:02 web01 sshd[1008]: Accepted password for deploy from 203.0.113.7 port 51488 ssh2
+Mar  4 02:12:05 web01 sudo:   deploy : TTY=pts/1 ; PWD=/home/deploy ; USER=root ; COMMAND=/bin/bash
+Mar  4 02:12:40 web01 sudo:   deploy : TTY=pts/1 ; PWD=/root ; USER=root ; COMMAND=/usr/sbin/useradd -m svc-backup
+Mar  4 08:03:11 web01 sshd[1102]: Invalid user test from 198.51.100.44 port 40011
+Mar  4 08:03:14 web01 sshd[1103]: Invalid user support from 198.51.100.44 port 40019
+Mar  4 08:03:18 web01 sshd[1104]: Invalid user backup from 198.51.100.44 port 40027
+Mar  4 08:03:22 web01 sshd[1105]: Invalid user git from 198.51.100.44 port 40035
+Mar  4 09:15:00 web01 sshd[1201]: Accepted publickey for alice from 10.0.0.15 port 55210 ssh2
+Mar  4 09:22:41 web01 sudo:   alice : TTY=pts/2 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+Mar  4 14:47:12 web01 sshd[1301]: Failed password for bob from 10.0.0.22 port 60112 ssh2
+Mar  4 14:47:20 web01 sshd[1302]: Accepted password for bob from 10.0.0.22 port 60130 ssh2

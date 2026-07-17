@@ -1,0 +1,2 @@
+anthropic>=0.40.0  # optional: only needed if ANTHROPIC_API_KEY is set for LLM-generated summaries
+pytest>=8.0.0
