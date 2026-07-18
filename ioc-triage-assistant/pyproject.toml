@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ioc-triage-assistant"
+version = "0.1.0"
+description = "Extract, enrich, and triage security alerts using regex IOC extraction, offline threat intel, and RAG retrieval over MITRE ATT&CK."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+ioc-triage = "ioc_triage.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["ioc_triage*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

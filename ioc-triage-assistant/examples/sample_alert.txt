@@ -1,0 +1,28 @@
+SIEM Alert #48213 - EDR/Sysmon correlation
+Host: WKSTN-FIN-042 (10.20.4.17)
+User: j.morales
+
+Sysmon Event ID 1 (Process Create) logged the following on WKSTN-FIN-042:
+  ParentImage: C:\Windows\explorer.exe
+  Image: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+  CommandLine: powershell.exe -nop -w hidden -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoA...
+
+Two minutes later, a scheduled task named "OneDriveSyncHelper" was created via
+schtasks.exe to re-launch the same encoded PowerShell command line every 30
+minutes, establishing persistence on the host.
+
+Firewall logs show an outbound HTTPS connection from 10.20.4.17 to
+185[.]220[.]101[.]1 on port 443 shortly after execution, followed by
+periodic beacon-like traffic to hxxps://evil-c2-panel[.]com/checkin every
+~5 minutes. A second, lower-volume connection was also observed to
+update-service-cdn[.]net.
+
+A dropped file was quarantined by EDR with hash
+44d88612fea8a8f36de82e1278abb02f (MD5), matching a known malware family in
+our threat intel feed.
+
+No user report of a phishing email has been confirmed yet, but the initial
+process tree suggests the payload arrived as a macro-enabled attachment
+opened by the user around 09:14 local time, consistent with a phishing
+lure. Analyst should also check whether credential dumping tools such as
+mimikatz were staged, given the persistence and C2 behavior observed.

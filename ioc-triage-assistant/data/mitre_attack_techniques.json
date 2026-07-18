@@ -1,0 +1,95 @@
+{
+  "_comment": "Curated subset of MITRE ATT&CK (Enterprise) techniques for demo/offline RAG retrieval. Not the full ATT&CK dataset — for production use, sync against the official STIX bundle at https://github.com/mitre-attack/attack-stix-data.",
+  "techniques": [
+    {
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "tactic": "Execution",
+      "text": "Adversaries may abuse command and script interpreters such as PowerShell, cmd.exe, bash, or Python to execute commands, scripts, or binaries during post-exploitation. PowerShell is frequently used for living-off-the-land execution because it is trusted, pre-installed, and highly capable."
+    },
+    {
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "tactic": "Execution, Persistence, Privilege Escalation",
+      "text": "Adversaries may abuse task scheduling functionality (schtasks, cron, at) to execute malicious code at a specific time or on a recurring interval, often used to establish persistence after initial access."
+    },
+    {
+      "id": "T1055",
+      "name": "Process Injection",
+      "tactic": "Defense Evasion, Privilege Escalation",
+      "text": "Adversaries may inject code into the address space of another process to evade process-based defenses and elevate privileges. Common techniques include DLL injection, process hollowing, and reflective loading."
+    },
+    {
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "tactic": "Defense Evasion",
+      "text": "Adversaries may encode, encrypt, pack, or otherwise obfuscate malicious payloads, scripts, or command-line arguments (e.g. base64-encoded PowerShell) to make static detection and analysis harder."
+    },
+    {
+      "id": "T1003",
+      "name": "OS Credential Dumping",
+      "tactic": "Credential Access",
+      "text": "Adversaries may dump credentials from the operating system and software, such as LSASS memory or the SAM database, using tools like Mimikatz, secretsdump, or built-in utilities, to obtain account hashes and passwords."
+    },
+    {
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "tactic": "Defense Evasion, Persistence, Privilege Escalation, Initial Access",
+      "text": "Adversaries may use compromised or stolen credentials for legitimate accounts to bypass access controls and blend in with normal user activity, evading detection that targets malware or exploit-based intrusions."
+    },
+    {
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "tactic": "Command and Control",
+      "text": "Adversaries may communicate using application-layer protocols such as HTTP, HTTPS, or DNS to blend command-and-control traffic with legitimate network traffic and evade network-based detection."
+    },
+    {
+      "id": "T1090",
+      "name": "Proxy",
+      "tactic": "Command and Control",
+      "text": "Adversaries may use a connection proxy, such as Tor exit nodes, VPS relays, or compromised infrastructure, to direct command-and-control traffic and obscure the true source or destination of the communication."
+    },
+    {
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "tactic": "Command and Control",
+      "text": "Adversaries may transfer tools or other files from an external system into a compromised environment, often via HTTP downloads, to stage additional malware or post-exploitation tooling."
+    },
+    {
+      "id": "T1041",
+      "name": "Exfiltration Over C2 Channel",
+      "tactic": "Exfiltration",
+      "text": "Adversaries may steal data by exfiltrating it over an existing command-and-control channel rather than a separate exfiltration channel, blending stolen data transfer with normal beaconing traffic."
+    },
+    {
+      "id": "T1486",
+      "name": "Data Encrypted for Impact",
+      "tactic": "Impact",
+      "text": "Adversaries, most commonly associated with ransomware, may encrypt data on target systems to interrupt availability and extort payment for restoring access, often after credential theft and lateral movement."
+    },
+    {
+      "id": "T1566",
+      "name": "Phishing",
+      "tactic": "Initial Access",
+      "text": "Adversaries may send phishing messages with malicious attachments or links to gain access to victim systems, frequently used as the initial access vector before deploying malware or harvesting credentials."
+    },
+    {
+      "id": "T1204",
+      "name": "User Execution",
+      "tactic": "Execution",
+      "text": "Adversaries may rely on a user opening a malicious file, clicking a link, or enabling macros to execute their payload, often as the follow-through step after a phishing email is delivered."
+    },
+    {
+      "id": "T1046",
+      "name": "Network Service Discovery",
+      "tactic": "Discovery",
+      "text": "Adversaries may attempt to get a listing of services running on remote hosts, including those that may be vulnerable to remote exploitation, using tools such as nmap or masscan during reconnaissance."
+    },
+    {
+      "id": "T1021",
+      "name": "Remote Services",
+      "tactic": "Lateral Movement",
+      "text": "Adversaries may use valid accounts to log into remote services such as RDP, SSH, or SMB/WinRM to move laterally within a network once initial access has been established."
+    }
+  ]
+}
