@@ -1,0 +1,5 @@
+Jan 10 08:00:05 webserver sshd[901]: Accepted publickey for ubuntu from 198.51.100.10 port 44001 ssh2
+Jan 10 08:15:20 webserver sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=ubuntu ; COMMAND=/usr/bin/apt list --upgradable
+Jan 10 12:30:00 webserver sshd[902]: Failed password for ubuntu from 198.51.100.10 port 44050 ssh2
+Jan 10 12:30:45 webserver sshd[903]: Accepted publickey for ubuntu from 198.51.100.10 port 44051 ssh2
+Jan 10 18:00:00 webserver sshd[904]: Accepted publickey for deploy from 198.51.100.20 port 44100 ssh2
