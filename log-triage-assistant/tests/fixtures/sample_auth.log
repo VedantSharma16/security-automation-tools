@@ -1,0 +1,12 @@
+Jan 10 03:22:10 webserver sshd[1201]: Failed password for invalid user admin from 203.0.113.5 port 51501 ssh2
+Jan 10 03:22:18 webserver sshd[1202]: Failed password for invalid user admin from 203.0.113.5 port 51502 ssh2
+Jan 10 03:22:26 webserver sshd[1203]: Failed password for invalid user root from 203.0.113.5 port 51503 ssh2
+Jan 10 03:22:34 webserver sshd[1204]: Failed password for invalid user root from 203.0.113.5 port 51504 ssh2
+Jan 10 03:22:42 webserver sshd[1205]: Failed password for invalid user root from 203.0.113.5 port 51505 ssh2
+Jan 10 03:22:50 webserver sshd[1206]: Failed password for root from 203.0.113.5 port 51506 ssh2
+Jan 10 03:23:15 webserver sshd[1207]: Accepted password for root from 203.0.113.5 port 51530 ssh2
+Jan 10 03:25:40 webserver sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/bin/bash
+Jan 10 03:27:02 webserver useradd[2201]: new user: name=backdoor, UID=0, GID=0, home=/root, shell=/bin/bash
+Jan 10 03:28:11 webserver crontab[3301]: (root) REPLACE (root)
+Jan 10 09:00:00 webserver sshd[1401]: Accepted publickey for deploy from 198.51.100.20 port 44012 ssh2
+Jan 10 09:05:00 webserver sudo: deploy : TTY=pts/1 ; PWD=/srv/app ; USER=root ; COMMAND=/usr/bin/systemctl restart app
