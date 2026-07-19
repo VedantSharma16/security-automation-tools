@@ -1,0 +1,47 @@
+{
+  "_comment": "Synthetic demo threat-intel feed. Values are illustrative, not live intelligence. Swap load_threat_intel() for a real feed (e.g. MISP, OTX, internal blocklist) in production.",
+  "indicators": [
+    {
+      "value": "185.220.101.1",
+      "category": "ipv4",
+      "confidence": "high",
+      "source": "demo-feed",
+      "notes": "Known Tor exit node observed proxying C2 traffic in prior incidents."
+    },
+    {
+      "value": "45.155.205.7",
+      "category": "ipv4",
+      "confidence": "high",
+      "source": "demo-feed",
+      "notes": "Associated with commodity malware C2 infrastructure."
+    },
+    {
+      "value": "evil-c2-panel.com",
+      "category": "domain",
+      "confidence": "high",
+      "source": "demo-feed",
+      "notes": "Registered domain matching a known C2 panel naming pattern."
+    },
+    {
+      "value": "update-service-cdn.net",
+      "category": "domain",
+      "confidence": "medium",
+      "source": "demo-feed",
+      "notes": "Lookalike domain impersonating legitimate update infrastructure."
+    },
+    {
+      "value": "44d88612fea8a8f36de82e1278abb02f",
+      "category": "md5",
+      "confidence": "high",
+      "source": "demo-feed",
+      "notes": "MD5 of the EICAR test file family used in this demo dataset."
+    },
+    {
+      "value": "5f4dcc3b5aa765d61d8327deb882cf99",
+      "category": "md5",
+      "confidence": "medium",
+      "source": "demo-feed",
+      "notes": "Sample hash flagged in a prior credential-dumping investigation."
+    }
+  ]
+}
