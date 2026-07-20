@@ -1,0 +1,112 @@
+# Default secret-detection signatures.
+#
+# Each rule is a regex matched against every line of every scanned text
+# file. Plain signature rules (entropy_check omitted/false) flag on any
+# match — the pattern itself is specific enough (a vendor key prefix, a
+# PEM header) that a match is already high-confidence.
+#
+# `entropy_check: true` rules are different: they match a generic
+# `name = value`-shaped assignment where the *name* looks secret-ish
+# (api_key, token, password, ...) but the *value* has no fixed format.
+# Group 1 must capture the candidate value; it's only flagged if it also
+# passes a Shannon-entropy check (see secretscanner/entropy.py), which is
+# what keeps `api_key = "changeme"` from lighting up on every scan.
+
+- id: aws-access-key-id
+  pattern: '(?:A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}'
+  severity: critical
+  category: AWS
+  description: AWS access key ID.
+
+- id: aws-secret-access-key
+  pattern: '(?i)aws_secret_access_key\s*[:=]\s*["'']?([A-Za-z0-9/+=]{40})["'']?'
+  severity: critical
+  category: AWS
+  entropy_check: true
+  description: AWS secret access key, matched by variable name plus a high-entropy 40-char value.
+
+- id: github-token
+  pattern: 'gh[pousr]_[A-Za-z0-9]{36}'
+  severity: critical
+  category: GitHub
+  description: GitHub personal access token / OAuth / app / refresh token.
+
+- id: github-fine-grained-pat
+  pattern: 'github_pat_[A-Za-z0-9_]{22,}'
+  severity: critical
+  category: GitHub
+  description: GitHub fine-grained personal access token.
+
+- id: slack-token
+  pattern: 'xox[baprs]-[0-9A-Za-z-]{10,48}'
+  severity: high
+  category: Slack
+  description: Slack API token (bot, app, user, or workspace).
+
+- id: slack-webhook-url
+  pattern: 'https://hooks\.slack\.com/services/T[0-9A-Za-z]+/B[0-9A-Za-z]+/[0-9A-Za-z]+'
+  severity: high
+  category: Slack
+  description: Slack incoming webhook URL.
+
+- id: google-api-key
+  pattern: 'AIza[0-9A-Za-z\-_]{35}'
+  severity: high
+  category: Google
+  description: Google / GCP / Firebase API key.
+
+- id: stripe-live-secret-key
+  pattern: 'sk_live_[0-9A-Za-z]{24,}'
+  severity: critical
+  category: Stripe
+  description: Stripe live-mode secret key.
+
+- id: stripe-restricted-key
+  pattern: 'rk_live_[0-9A-Za-z]{24,}'
+  severity: critical
+  category: Stripe
+  description: Stripe live-mode restricted key.
+
+- id: twilio-api-key
+  pattern: 'SK[0-9a-fA-F]{32}'
+  severity: high
+  category: Twilio
+  description: Twilio API key SID.
+
+- id: npm-access-token
+  pattern: 'npm_[A-Za-z0-9]{36}'
+  severity: high
+  category: NPM
+  description: npm registry access token.
+
+- id: private-key-block
+  pattern: '-----BEGIN\s?(?:RSA|EC|DSA|OPENSSH|PGP)?\s?PRIVATE KEY-----'
+  severity: critical
+  category: Cryptographic Key
+  description: PEM-encoded private key block (RSA/EC/DSA/OpenSSH/PGP).
+
+- id: jwt-token
+  pattern: 'eyJ[A-Za-z0-9_-]{10,}\.eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}'
+  severity: medium
+  category: JWT
+  description: JSON Web Token (may be a session/access token rather than a long-lived secret; verify before treating as critical).
+
+- id: hardcoded-db-connection-string
+  pattern: '(?i)(?:postgres(?:ql)?|mysql|mongodb(?:\+srv)?|redis|amqp):\/\/[^:\/\s"'']+:[^@\/\s"'']+@[^\/\s"'']+'
+  severity: critical
+  category: Database
+  description: Database/message-queue connection string with an embedded username and password.
+
+- id: generic-secret-assignment
+  pattern: '(?i)(?:api[_-]?key|apikey|access[_-]?token|auth[_-]?token|client[_-]?secret|secret[_-]?key|secret)\s*[:=]\s*["'']?([A-Za-z0-9+/_\-\.=]{16,})["'']?'
+  severity: medium
+  category: Generic
+  entropy_check: true
+  description: Generic api_key/token/secret-style assignment with a high-entropy value and no recognized vendor format.
+
+- id: generic-password-assignment
+  pattern: '(?i)(?:password|passwd|pwd)\s*[:=]\s*["'']?([A-Za-z0-9+/_\-\.=]{16,})["'']?'
+  severity: medium
+  category: Generic
+  entropy_check: true
+  description: Generic password assignment with a high-entropy value.
