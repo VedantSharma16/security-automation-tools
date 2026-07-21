@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "websec-posture-scanner"
+version = "0.1.0"
+description = "Passive web application security posture scanner: HTTP security headers, cookie flags, CORS misconfiguration, and TLS certificate checks, with graded reporting."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+webscan = "webscan.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["webscan*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
