@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ir-agent"
+version = "0.1.0"
+description = "An agentic incident-response investigation loop: an LLM tool-use agent that decides which security tools to call, with a deterministic offline fallback."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+ir-agent = "ir_agent.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["ir_agent*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

@@ -1,0 +1,65 @@
+[
+  {
+    "value": "185.220.101.45",
+    "category": "ip",
+    "confidence": "high",
+    "source": "internal-blocklist",
+    "notes": "Known Tor exit node observed in prior credential-stuffing campaigns."
+  },
+  {
+    "value": "45.148.10.94",
+    "category": "ip",
+    "confidence": "high",
+    "source": "internal-blocklist",
+    "notes": "C2 checkpoint IP associated with Cobalt Strike beacons."
+  },
+  {
+    "value": "91.219.236.18",
+    "category": "ip",
+    "confidence": "medium",
+    "source": "osint-feed",
+    "notes": "Repeated SSH brute-force source reported by multiple honeypots."
+  },
+  {
+    "value": "totally-legit-updates.com",
+    "category": "domain",
+    "confidence": "high",
+    "source": "internal-blocklist",
+    "notes": "Typosquat domain used to distribute fake software update payloads."
+  },
+  {
+    "value": "secure-login-verify.net",
+    "category": "domain",
+    "confidence": "high",
+    "source": "osint-feed",
+    "notes": "Credential phishing kit landing page."
+  },
+  {
+    "value": "pastebin-raw-cdn.net",
+    "category": "domain",
+    "confidence": "medium",
+    "source": "osint-feed",
+    "notes": "Domain fronting for staged second-stage payload delivery."
+  },
+  {
+    "value": "e99a18c428cb38d5f260853678922e03",
+    "category": "hash",
+    "confidence": "high",
+    "source": "internal-blocklist",
+    "notes": "MD5 of a known Cobalt Strike stager DLL."
+  },
+  {
+    "value": "44d88612fea8a8f36de82e1278abb02f",
+    "category": "hash",
+    "confidence": "high",
+    "source": "malware-bazaar",
+    "notes": "MD5 of the eicar test file family used in loader validation."
+  },
+  {
+    "value": "http://45.148.10.94/update.php",
+    "category": "url",
+    "confidence": "high",
+    "source": "internal-blocklist",
+    "notes": "Beacon check-in URL for a known C2 panel."
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "T1110",
+    "name": "Brute Force",
+    "tactic": "Credential Access",
+    "keywords": ["failed password", "brute force", "invalid user", "authentication failure", "repeated login attempts"]
+  },
+  {
+    "id": "T1078",
+    "name": "Valid Accounts",
+    "tactic": "Defense Evasion, Persistence, Privilege Escalation, Initial Access",
+    "keywords": ["accepted password", "successful login", "valid credentials", "legitimate account"]
+  },
+  {
+    "id": "T1548.003",
+    "name": "Abuse Elevation Control Mechanism: Sudo and Sudo Caching",
+    "tactic": "Privilege Escalation, Defense Evasion",
+    "keywords": ["sudo", "root shell", "privilege escalation", "elevated to root"]
+  },
+  {
+    "id": "T1136.001",
+    "name": "Create Account: Local Account",
+    "tactic": "Persistence",
+    "keywords": ["useradd", "new user created", "uid 0", "account creation"]
+  },
+  {
+    "id": "T1053.003",
+    "name": "Scheduled Task/Job: Cron",
+    "tactic": "Execution, Persistence, Privilege Escalation",
+    "keywords": ["crontab", "cron job", "scheduled task", "cron edit"]
+  },
+  {
+    "id": "T1071.001",
+    "name": "Application Layer Protocol: Web Protocols",
+    "tactic": "Command and Control",
+    "keywords": ["beacon", "c2", "command and control", "checkin", "http callback"]
+  },
+  {
+    "id": "T1105",
+    "name": "Ingress Tool Transfer",
+    "tactic": "Command and Control",
+    "keywords": ["download payload", "stager", "second-stage", "dropper", "fetch and execute"]
+  },
+  {
+    "id": "T1566.002",
+    "name": "Phishing: Spearphishing Link",
+    "tactic": "Initial Access",
+    "keywords": ["phishing", "credential harvesting", "login verify", "fake update", "malicious link"]
+  },
+  {
+    "id": "T1595",
+    "name": "Active Scanning",
+    "tactic": "Reconnaissance",
+    "keywords": ["port scan", "reconnaissance", "network scan", "service enumeration"]
+  },
+  {
+    "id": "T1490",
+    "name": "Inhibit System Recovery",
+    "tactic": "Impact",
+    "keywords": ["ransomware", "shadow copy deleted", "backup deleted", "vssadmin"]
+  }
+]

