@@ -1,0 +1,40 @@
+From: Acme Weekly Digest <digest@acme-newsletter.com>
+To: subscriber@example.com
+Subject: Your weekly Acme product digest
+Date: Wed, 22 Jul 2026 09:00:00 -0000
+Authentication-Results: mx.example.com; spf=pass
+ smtp.mailfrom=acme-newsletter.com; dkim=pass header.d=acme-newsletter.com;
+ dmarc=pass action=none header.from=acme-newsletter.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============5208055799567528137=="
+
+--===============5208055799567528137==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi there,
+
+Here's what's new this week at Acme. Check out our latest blog post and upcom=
+ing webinar schedule.
+
+Read more: https://acme-newsletter.com/blog/weekly-update
+
+Thanks,
+The Acme Team
+
+--===============5208055799567528137==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body>
+<p>Hi there,</p>
+<p>Here's what's new this week at Acme. Check out our latest blog post and
+upcoming webinar schedule.</p>
+<p><a href=3D"https://acme-newsletter.com/blog/weekly-update">Read the full u=
+pdate</a></p>
+<p>Thanks,<br>The Acme Team</p>
+</body></html>
+
+--===============5208055799567528137==--
