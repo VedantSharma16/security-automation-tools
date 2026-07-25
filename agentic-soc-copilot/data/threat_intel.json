@@ -1,0 +1,47 @@
+{
+  "_comment": "Synthetic demo threat-intel feed for the agentic SOC copilot. Values are illustrative, not live intelligence. Swap ToolRegistry.from_files() for a real feed (MISP, OTX, internal blocklist) in production.",
+  "indicators": [
+    {
+      "value": "91.203.145.12",
+      "category": "ipv4",
+      "confidence": "high",
+      "source": "demo-feed",
+      "notes": "Bulletproof-hosting IP previously observed serving second-stage payloads."
+    },
+    {
+      "value": "45.142.212.90",
+      "category": "ipv4",
+      "confidence": "medium",
+      "source": "demo-feed",
+      "notes": "Shared hosting range with intermittent malware C2 activity."
+    },
+    {
+      "value": "secure-billing-portal.net",
+      "category": "domain",
+      "confidence": "high",
+      "source": "demo-feed",
+      "notes": "Lookalike domain impersonating a finance SaaS vendor, used in prior invoice-fraud phishing."
+    },
+    {
+      "value": "cdn-assets-update.com",
+      "category": "domain",
+      "confidence": "medium",
+      "source": "demo-feed",
+      "notes": "Domain observed hosting a PowerShell stager in an unrelated incident."
+    },
+    {
+      "value": "c99a1f470a8f4e9d2b6a1e5f9d8c3b2a",
+      "category": "md5",
+      "confidence": "high",
+      "source": "demo-feed",
+      "notes": "MD5 of a known credential-stealer loader (synthetic value for this demo)."
+    },
+    {
+      "value": "6e8f2a1c9d4b7e3f0a5c8d1e2f4b6a9c8e1d3f5b",
+      "category": "sha1",
+      "confidence": "medium",
+      "source": "demo-feed",
+      "notes": "Hash flagged by a partner org's sandbox as a generic dropper."
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "_comment": "Synthetic asset inventory mapping hostnames to business criticality, so the agent can weigh 'same alert, different blast radius' -- a routine real-world IR consideration.",
+  "assets": [
+    {
+      "hostname": "DC-PRIMARY-01",
+      "criticality": "critical",
+      "role": "domain-controller",
+      "notes": "Primary Active Directory domain controller. Any compromise indicator here warrants immediate escalation."
+    },
+    {
+      "hostname": "FIN-SRV-02",
+      "criticality": "high",
+      "role": "finance-server",
+      "notes": "Hosts the finance team's ERP database. Processes wire-transfer approvals."
+    },
+    {
+      "hostname": "WKSTN-FIN-017",
+      "criticality": "high",
+      "role": "workstation",
+      "notes": "Finance analyst workstation with access to banking portals; frequent phishing target."
+    },
+    {
+      "hostname": "WKSTN-ENG-104",
+      "criticality": "medium",
+      "role": "workstation",
+      "notes": "Engineering workstation. Local admin rights granted for development tooling."
+    },
+    {
+      "hostname": "WEB-EDGE-03",
+      "criticality": "medium",
+      "role": "web-server",
+      "notes": "Public-facing marketing site, isolated from internal network segments."
+    },
+    {
+      "hostname": "KIOSK-LOBBY-01",
+      "criticality": "low",
+      "role": "kiosk",
+      "notes": "Visitor lobby kiosk. No access to internal resources or sensitive data."
+    }
+  ]
+}

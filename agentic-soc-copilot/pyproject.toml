@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentic-soc-copilot"
+version = "0.1.0"
+description = "An autonomous tool-calling SOC triage agent, with a deterministic offline planner fallback."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+soc-agent = "agentic_soc.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["agentic_soc*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

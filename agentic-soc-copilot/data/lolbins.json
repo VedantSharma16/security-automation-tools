@@ -1,0 +1,59 @@
+{
+  "_comment": "Reference list of Living-Off-the-Land Binaries (LOLBins) commonly abused for execution, defense evasion, and persistence. Risk levels reflect typical abuse frequency, not intrinsic maliciousness -- all of these are legitimate OS binaries.",
+  "binaries": [
+    {
+      "name": "powershell.exe",
+      "risk_level": "high",
+      "technique_id": "T1059.001",
+      "notes": "Command and Scripting Interpreter: PowerShell. Encoded (-enc) or hidden-window (-w hidden) invocations are a strong abuse signal."
+    },
+    {
+      "name": "mshta.exe",
+      "risk_level": "high",
+      "technique_id": "T1218.005",
+      "notes": "Signed Binary Proxy Execution via HTA. Frequently used to execute remote scripts while evading application allowlisting."
+    },
+    {
+      "name": "rundll32.exe",
+      "risk_level": "high",
+      "technique_id": "T1218.011",
+      "notes": "Signed Binary Proxy Execution. Commonly abused to load malicious DLLs under a trusted process name."
+    },
+    {
+      "name": "regsvr32.exe",
+      "risk_level": "high",
+      "technique_id": "T1218.010",
+      "notes": "Signed Binary Proxy Execution ('Squiblydoo'). Can register/execute scriptlets fetched from a remote URL."
+    },
+    {
+      "name": "certutil.exe",
+      "risk_level": "medium",
+      "technique_id": "T1105",
+      "notes": "Legitimate certificate utility frequently repurposed to download or base64-decode payloads."
+    },
+    {
+      "name": "wmic.exe",
+      "risk_level": "medium",
+      "technique_id": "T1047",
+      "notes": "Windows Management Instrumentation. Used for remote execution, discovery, and occasionally persistence."
+    },
+    {
+      "name": "schtasks.exe",
+      "risk_level": "medium",
+      "technique_id": "T1053.005",
+      "notes": "Scheduled Task/Job. A very common persistence mechanism for re-launching a payload on a timer."
+    },
+    {
+      "name": "psexec.exe",
+      "risk_level": "high",
+      "technique_id": "T1021.002",
+      "notes": "Legitimate Sysinternals tool for remote execution, widely abused for lateral movement post-compromise."
+    },
+    {
+      "name": "bitsadmin.exe",
+      "risk_level": "medium",
+      "technique_id": "T1197",
+      "notes": "BITS Jobs. Used to stage downloads that persist across reboots and evade some network monitoring."
+    }
+  ]
+}

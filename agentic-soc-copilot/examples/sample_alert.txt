@@ -1,0 +1,20 @@
+EDR Alert #77021 - Suspicious process chain and outbound beaconing
+Host: WKSTN-FIN-017
+User: r.alvarez
+
+Sysmon logged the following process creation on WKSTN-FIN-017:
+  ParentImage: C:\Windows\explorer.exe
+  Image: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+  CommandLine: powershell.exe -nop -w hidden -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoA...
+
+Shortly after, schtasks.exe was used to create a scheduled task named
+"AdobeUpdateCheck" to re-run the same encoded command every 15 minutes,
+establishing persistence on the host.
+
+Outbound HTTPS traffic was then observed from the host to 91.203.145.12
+on port 443, followed by periodic beacon-like check-ins to
+secure-billing-portal.net roughly every 4 minutes.
+
+The user reports opening an invoice attachment from an email that appeared
+to come from a known vendor shortly before the activity began, consistent
+with a phishing lure targeting the finance team.

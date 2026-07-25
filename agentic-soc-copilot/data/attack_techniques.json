@@ -1,0 +1,53 @@
+{
+  "_comment": "Small bundled subset of MITRE ATT&CK (Enterprise) technique descriptions used for lightweight keyword-overlap retrieval. Not exhaustive -- see mitre.org/attack for the full framework.",
+  "techniques": [
+    {
+      "id": "T1566",
+      "name": "Phishing",
+      "tactic": "Initial Access",
+      "text": "Adversaries send phishing messages with malicious attachments or links to gain initial access. Macro-enabled office documents and encoded scripts are common delivery mechanisms."
+    },
+    {
+      "id": "T1059.001",
+      "name": "PowerShell",
+      "tactic": "Execution",
+      "text": "Adversaries abuse PowerShell for execution, often using encoded commands, hidden windows, or download cradles to retrieve and run a second-stage payload in memory."
+    },
+    {
+      "id": "T1053.005",
+      "name": "Scheduled Task",
+      "tactic": "Persistence",
+      "text": "Adversaries use the Windows Task Scheduler (schtasks.exe) to establish persistence by scheduling a malicious payload to execute repeatedly or at startup."
+    },
+    {
+      "id": "T1071.001",
+      "name": "Application Layer Protocol: Web Protocols",
+      "tactic": "Command and Control",
+      "text": "Adversaries communicate with compromised hosts using HTTP or HTTPS to blend malicious traffic with legitimate web traffic, often via periodic beaconing to a command-and-control server."
+    },
+    {
+      "id": "T1003",
+      "name": "OS Credential Dumping",
+      "tactic": "Credential Access",
+      "text": "Adversaries dump credentials from memory (e.g. LSASS) or disk using tools such as Mimikatz to obtain account passwords or hashes for lateral movement."
+    },
+    {
+      "id": "T1218",
+      "name": "System Binary Proxy Execution",
+      "tactic": "Defense Evasion",
+      "text": "Adversaries proxy execution of malicious payloads through signed, trusted system binaries such as rundll32.exe, regsvr32.exe, or mshta.exe to bypass application allowlisting."
+    },
+    {
+      "id": "T1021.002",
+      "name": "SMB/Windows Admin Shares",
+      "tactic": "Lateral Movement",
+      "text": "Adversaries use valid credentials with tools like PsExec over SMB admin shares to execute code and move laterally between hosts on a network."
+    },
+    {
+      "id": "T1041",
+      "name": "Exfiltration Over C2 Channel",
+      "tactic": "Exfiltration",
+      "text": "Adversaries exfiltrate data over the same channel used for command and control, often disguised as ordinary web traffic to avoid separate detection."
+    }
+  ]
+}
