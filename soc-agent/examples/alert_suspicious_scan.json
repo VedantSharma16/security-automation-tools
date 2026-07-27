@@ -1,0 +1,8 @@
+{
+  "alert_id": "ALT-1003",
+  "timestamp": "2026-07-27T14:47:00Z",
+  "description": "Repeated failed authentication attempts from a service account against a production web host, followed by a successful login.",
+  "hostname": "web01.prod.internal",
+  "source_ip": "198.51.100.23",
+  "username": "svc_backup"
+}

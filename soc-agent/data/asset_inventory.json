@@ -1,0 +1,22 @@
+{
+  "web01.prod.internal": {
+    "criticality": "crown_jewel",
+    "owner": "platform-team",
+    "os": "Linux"
+  },
+  "db-primary.prod.internal": {
+    "criticality": "crown_jewel",
+    "owner": "data-team",
+    "os": "Linux"
+  },
+  "ws-jsmith": {
+    "criticality": "standard",
+    "owner": "jsmith",
+    "os": "Windows"
+  },
+  "kiosk-07": {
+    "criticality": "low",
+    "owner": "facilities",
+    "os": "Windows"
+  }
+}

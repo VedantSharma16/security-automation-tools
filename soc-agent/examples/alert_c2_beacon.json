@@ -1,0 +1,10 @@
+{
+  "alert_id": "ALT-1001",
+  "timestamp": "2026-07-27T02:14:00Z",
+  "description": "EDR flagged an unrecognized outbound connection from a database host to an external IP shortly after an unfamiliar process spawned.",
+  "hostname": "db-primary.prod.internal",
+  "source_ip": "10.0.4.12",
+  "dest_ip": "203.0.113.55",
+  "username": "svc_backup",
+  "process_name": "powershell.exe"
+}

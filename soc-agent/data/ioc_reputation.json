@@ -1,0 +1,22 @@
+{
+  "203.0.113.55": {
+    "verdict": "malicious",
+    "source": "internal-threat-feed",
+    "notes": "Known C2 infrastructure, observed in 3 prior incidents."
+  },
+  "198.51.100.23": {
+    "verdict": "suspicious",
+    "source": "internal-threat-feed",
+    "notes": "Flagged for internet-wide scanning behavior in the last 30 days."
+  },
+  "8.8.8.8": {
+    "verdict": "clean",
+    "source": "internal-threat-feed",
+    "notes": "Public DNS resolver."
+  },
+  "104.16.0.1": {
+    "verdict": "clean",
+    "source": "internal-threat-feed",
+    "notes": "Known CDN edge node."
+  }
+}

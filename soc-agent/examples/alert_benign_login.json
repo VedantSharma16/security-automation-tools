@@ -1,0 +1,10 @@
+{
+  "alert_id": "ALT-1002",
+  "timestamp": "2026-07-27T09:03:00Z",
+  "description": "Routine login and browser activity flagged by a low-confidence anomaly rule for review.",
+  "hostname": "ws-jsmith",
+  "source_ip": "10.0.1.44",
+  "dest_ip": "8.8.8.8",
+  "username": "jsmith",
+  "process_name": "chrome.exe"
+}

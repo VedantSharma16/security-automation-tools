@@ -1,0 +1,17 @@
+{
+  "jsmith": {
+    "anomalous": false,
+    "failed_logins_24h": 1,
+    "privilege": "standard"
+  },
+  "svc_backup": {
+    "anomalous": true,
+    "failed_logins_24h": 12,
+    "privilege": "service_account"
+  },
+  "admin": {
+    "anomalous": true,
+    "failed_logins_24h": 0,
+    "privilege": "domain_admin"
+  }
+}

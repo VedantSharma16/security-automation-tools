@@ -1,0 +1,6 @@
+{
+  "web01.prod.internal": ["nginx", "python3", "sshd", "systemd"],
+  "db-primary.prod.internal": ["postgres", "sshd", "systemd"],
+  "ws-jsmith": ["chrome.exe", "outlook.exe", "explorer.exe", "teams.exe"],
+  "kiosk-07": ["chrome.exe", "explorer.exe"]
+}

@@ -1,0 +1,2 @@
+# No runtime dependencies for offline mode.
+# For live LLM tool-use, install the optional extra: pip install -e ".[llm]"
