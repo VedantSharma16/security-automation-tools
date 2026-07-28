@@ -1,0 +1,83 @@
+[
+  {
+    "host": "example.com",
+    "ip": "93.184.216.34",
+    "open_ports": [
+      {
+        "port": 443,
+        "service": "https",
+        "sensitive": false
+      }
+    ],
+    "findings": [],
+    "risk_score": 2,
+    "risk_level": "low",
+    "errors": []
+  },
+  {
+    "host": "www.example.com",
+    "ip": "93.184.216.34",
+    "open_ports": [
+      {
+        "port": 443,
+        "service": "https",
+        "sensitive": false
+      }
+    ],
+    "findings": [
+      {
+        "category": "header",
+        "severity": "high",
+        "title": "Missing Strict-Transport-Security",
+        "detail": "HTTPS is available but HSTS is not enforced \u2014 allows protocol downgrade to plaintext HTTP on subsequent visits."
+      },
+      {
+        "category": "tls",
+        "severity": "medium",
+        "title": "TLS certificate expiring soon",
+        "detail": "Certificate expires in 12 day(s) (2026-08-09)."
+      }
+    ],
+    "risk_score": 32,
+    "risk_level": "high",
+    "errors": []
+  },
+  {
+    "host": "legacy.example.com",
+    "ip": "93.184.216.50",
+    "open_ports": [
+      {
+        "port": 21,
+        "service": "ftp",
+        "sensitive": true
+      },
+      {
+        "port": 3389,
+        "service": "rdp",
+        "sensitive": true
+      }
+    ],
+    "findings": [
+      {
+        "category": "banner",
+        "severity": "low",
+        "title": "Version disclosure via server",
+        "detail": "server: Apache/2.4.41 (Ubuntu) \u2014 narrows down exploit targeting for an attacker."
+      }
+    ],
+    "risk_score": 85,
+    "risk_level": "critical",
+    "errors": []
+  },
+  {
+    "host": "staging.example.com",
+    "ip": null,
+    "open_ports": [],
+    "findings": [],
+    "risk_score": 0,
+    "risk_level": "info",
+    "errors": [
+      "DNS resolution failed \u2014 host unreachable, active checks skipped."
+    ]
+  }
+]

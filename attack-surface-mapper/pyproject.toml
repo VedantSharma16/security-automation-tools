@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "attack-surface-mapper"
+version = "0.1.0"
+description = "Authorized external recon: passive subdomain discovery, active port/header/TLS exposure auditing, and risk scoring."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+attack-surface-mapper = "attack_surface_mapper.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["attack_surface_mapper*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
