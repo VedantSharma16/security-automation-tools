@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "secret-sentinel"
+version = "0.1.0"
+description = "Regex + entropy secret scanner with git-history scanning, an allowlist baseline, and optional LLM-assisted triage of ambiguous findings."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.4"]
+
+[project.scripts]
+secret-sentinel = "secret_sentinel.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["secret_sentinel*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

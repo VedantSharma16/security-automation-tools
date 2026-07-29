@@ -1,0 +1,118 @@
+# Default secret-detection signatures for Secret Sentinel.
+#
+# Each entry is a regex signature for a specific, well-known secret format.
+# These are high-confidence, low-noise patterns (vendor key formats are
+# distinctive enough that false positives are rare). Anything that doesn't
+# match a named format here but still *looks* like a secret (an assignment
+# to a suspiciously random-looking string) is caught separately by the
+# entropy-based generic detector in `secret_sentinel/entropy.py`.
+#
+# Fields:
+#   id            unique signature identifier
+#   pattern       Python regex (case-sensitive unless the pattern embeds
+#                 an inline (?i) flag)
+#   severity      one of: low, medium, high, critical
+#   category      short grouping label used in reports
+#   confidence    high | medium — how likely a match is a true positive
+#   description   human-readable rationale
+
+- id: aws-access-key-id
+  pattern: '(?<![A-Za-z0-9])AKIA[0-9A-Z]{16}(?![A-Za-z0-9])'
+  severity: critical
+  category: cloud-credential
+  confidence: high
+  description: AWS Access Key ID.
+
+- id: aws-secret-access-key
+  pattern: '(?i)aws_secret_access_key\s*[:=]\s*[''"]?([A-Za-z0-9/+=]{40})[''"]?'
+  severity: critical
+  category: cloud-credential
+  confidence: high
+  description: AWS Secret Access Key assignment.
+
+- id: gcp-api-key
+  pattern: '(?<![A-Za-z0-9_-])AIza[0-9A-Za-z_-]{35}(?![A-Za-z0-9_-])'
+  severity: high
+  category: cloud-credential
+  confidence: high
+  description: Google Cloud / Google Maps API key.
+
+- id: github-token
+  pattern: '(?<![A-Za-z0-9_])gh[pousr]_[A-Za-z0-9]{36,251}(?![A-Za-z0-9])'
+  severity: high
+  category: vcs-token
+  confidence: high
+  description: GitHub personal access, OAuth, user-to-server, or refresh token.
+
+- id: slack-token
+  pattern: '(?<![A-Za-z0-9-])xox[baprs]-[0-9A-Za-z-]{10,72}(?![A-Za-z0-9-])'
+  severity: high
+  category: chat-token
+  confidence: high
+  description: Slack bot/app/user/workspace token.
+
+- id: slack-webhook
+  pattern: 'https://hooks\.slack\.com/services/T[0-9A-Za-z]{8,}/B[0-9A-Za-z]{8,}/[0-9A-Za-z]{20,}'
+  severity: medium
+  category: chat-token
+  confidence: high
+  description: Slack incoming webhook URL.
+
+- id: stripe-live-key
+  pattern: '(?<![A-Za-z0-9])[sr]k_live_[0-9A-Za-z]{24,}(?![A-Za-z0-9])'
+  severity: critical
+  category: payment-credential
+  confidence: high
+  description: Stripe live secret or restricted API key.
+
+- id: sendgrid-api-key
+  pattern: '(?<![A-Za-z0-9_-])SG\.[0-9A-Za-z_-]{22}\.[0-9A-Za-z_-]{43}(?![A-Za-z0-9_-])'
+  severity: high
+  category: cloud-credential
+  confidence: high
+  description: SendGrid API key.
+
+- id: twilio-api-key
+  pattern: '(?<![A-Za-z0-9])SK[0-9a-fA-F]{32}(?![A-Za-z0-9])'
+  severity: high
+  category: cloud-credential
+  confidence: high
+  description: Twilio API key SID.
+
+- id: private-key-block
+  pattern: '-----BEGIN\s?(?:RSA|DSA|EC|OPENSSH|PGP)?\s?PRIVATE KEY-----'
+  severity: critical
+  category: cryptographic-key
+  confidence: high
+  description: PEM-encoded private key block.
+
+- id: jwt
+  pattern: '(?<![A-Za-z0-9_-])eyJ[A-Za-z0-9_-]{10,}\.eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}(?![A-Za-z0-9_-])'
+  severity: medium
+  category: token
+  confidence: high
+  description: JSON Web Token (header + payload + signature).
+
+- id: database-connection-string-creds
+  pattern: '(?i)(?:postgres(?:ql)?|mysql|mongodb(?:\+srv)?|redis|amqp)://[^:@/\s]+:[^@/\s]+@[^\s''"]+'
+  severity: high
+  category: database-credential
+  confidence: high
+  description: Database/message-broker connection string with embedded credentials.
+
+- id: generic-api-key-assignment
+  # No leading \b before the keyword: identifiers like `db_api_key` join words
+  # with underscores, and `\b` doesn't fire between two word characters, so an
+  # anchored version would silently miss the most common naming convention.
+  pattern: '(?i)(api[_-]?key|apikey|access[_-]?token|auth[_-]?token|client[_-]?secret|secret[_-]?key)\w*\s*[:=]\s*[''"]([A-Za-z0-9_\-/+.]{16,})[''"]'
+  severity: medium
+  category: generic-secret
+  confidence: medium
+  description: Assignment to a variable named like a secret, with a plausible-looking value.
+
+- id: generic-password-assignment
+  pattern: '(?i)(password|passwd|pwd)\w*\s*[:=]\s*[''"]([^''"\s]{8,})[''"]'
+  severity: medium
+  category: generic-secret
+  confidence: medium
+  description: Assignment to a variable named like a password, with a non-empty value.
