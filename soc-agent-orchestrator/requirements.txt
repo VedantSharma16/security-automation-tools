@@ -1,0 +1,12 @@
+# No hard runtime dependencies -- the deterministic offline planner needs
+# nothing beyond the standard library.
+#
+# Optional, for the LLM-driven planner:
+#   pip install anthropic
+#
+# Optional, for tests:
+#   pip install pytest
+#
+# Also required at runtime: the sibling projects this orchestrates each have
+# their own dependencies (see log-triage-assistant/, ioc-triage-assistant/,
+# process_threat_hunter/ for their individual requirements files).

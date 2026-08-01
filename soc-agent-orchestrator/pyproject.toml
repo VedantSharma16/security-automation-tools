@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "soc-orchestrator"
+version = "0.1.0"
+description = "Agentic SOC investigation pipeline orchestrating this repo's specialist security tools."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+soc-orchestrator = "soc_orchestrator.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["soc_orchestrator*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

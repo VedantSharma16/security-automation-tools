@@ -1,0 +1,4 @@
+On-call was paged at ~03:30 UTC for anomalous SSH activity on prod-web-03.
+Shortly after, EDR raised a separate alert on the same host for a suspicious
+PowerShell/C2 pattern. Investigate both pieces of evidence and determine
+whether this is a single incident and what containment steps are needed.
