@@ -1,0 +1,134 @@
+# Default secret-detection signatures for Secrets Scanner.
+#
+# Each rule matches a Python regex against each line of scanned text (either
+# a working-tree file or an added line in a git diff). Patterns target
+# well-known secret formats with low false-positive rates; the entropy
+# detector (secretscan/entropy.py) separately catches generic high-entropy
+# assignments that don't match a vendor-specific format.
+#
+# Fields:
+#   id            unique rule identifier
+#   pattern       Python regex (case-sensitive unless noted)
+#   severity      one of: low, medium, high, critical
+#   category      short grouping label (cloud, vcs, payments, messaging, ...)
+#   description   human-readable rationale
+
+- id: aws-access-key-id
+  pattern: '(?<![A-Z0-9])A(?:KIA|SIA|ROA|IDA)[0-9A-Z]{16}(?![A-Z0-9])'
+  severity: critical
+  category: cloud
+  description: AWS Access Key ID (static or STS-issued).
+
+- id: aws-secret-access-key
+  pattern: "(?i)aws[_-]?(secret|access)[_-]?key\\s*[:=]\\s*['\"][A-Za-z0-9/+=]{40}['\"]"
+  severity: critical
+  category: cloud
+  description: AWS Secret Access Key assigned in code or configuration.
+
+- id: gcp-api-key
+  pattern: 'AIza[0-9A-Za-z\-_]{35}'
+  severity: high
+  category: cloud
+  description: Google API key.
+
+- id: github-pat
+  pattern: 'ghp_[0-9A-Za-z]{36}'
+  severity: critical
+  category: vcs
+  description: GitHub personal access token (classic).
+
+- id: github-fine-grained-pat
+  pattern: 'github_pat_[0-9A-Za-z_]{80,}'
+  severity: critical
+  category: vcs
+  description: GitHub fine-grained personal access token.
+
+- id: github-oauth-token
+  pattern: 'gho_[0-9A-Za-z]{36}'
+  severity: critical
+  category: vcs
+  description: GitHub OAuth access token.
+
+- id: gitlab-pat
+  pattern: 'glpat-[0-9A-Za-z\-_]{20}'
+  severity: critical
+  category: vcs
+  description: GitLab personal access token.
+
+- id: slack-token
+  pattern: 'xox[baprs]-[0-9A-Za-z-]{10,72}'
+  severity: high
+  category: messaging
+  description: Slack API token (bot/app/user/refresh).
+
+- id: slack-webhook-url
+  pattern: 'hooks\.slack\.com/services/T[0-9A-Za-z]{8,10}/B[0-9A-Za-z]{8,10}/[0-9A-Za-z]{24}'
+  severity: medium
+  category: messaging
+  description: Slack incoming webhook URL.
+
+- id: stripe-live-secret-key
+  pattern: 'sk_live_[0-9a-zA-Z]{24,}'
+  severity: critical
+  category: payments
+  description: Stripe live-mode secret API key.
+
+- id: stripe-restricted-key
+  pattern: 'rk_live_[0-9a-zA-Z]{24,}'
+  severity: critical
+  category: payments
+  description: Stripe live-mode restricted API key.
+
+- id: sendgrid-api-key
+  pattern: 'SG\.[0-9A-Za-z\-_]{22}\.[0-9A-Za-z\-_]{43}'
+  severity: high
+  category: messaging
+  description: SendGrid API key.
+
+- id: twilio-api-key
+  pattern: 'SK[0-9a-fA-F]{32}'
+  severity: high
+  category: messaging
+  description: Twilio API key SID.
+
+- id: npm-token
+  pattern: 'npm_[0-9A-Za-z]{36}'
+  severity: high
+  category: package-registry
+  description: npm automation/publish token.
+
+- id: private-key-block
+  pattern: '-----BEGIN\s?(RSA|DSA|EC|OPENSSH|PGP)?\s?PRIVATE KEY-----'
+  severity: critical
+  category: crypto
+  description: PEM-encoded private key block committed in plaintext.
+
+- id: jwt-token
+  pattern: 'eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}'
+  severity: medium
+  category: auth
+  description: JSON Web Token (may embed session/auth claims).
+
+- id: generic-api-key-assignment
+  pattern: "(?i)(api[_-]?key|apikey)\\s*[:=]\\s*['\"][A-Za-z0-9\\-_]{16,64}['\"]"
+  severity: medium
+  category: generic
+  description: Generic API key assigned to a variable or config field.
+
+- id: generic-password-assignment
+  pattern: "(?i)(password|passwd|pwd)\\s*[:=]\\s*['\"][^'\"\\s]{8,}['\"]"
+  severity: medium
+  category: generic
+  description: Hardcoded password assigned to a variable or config field.
+
+- id: database-connection-string-with-creds
+  pattern: '(?i)(postgres(?:ql)?|mysql|mongodb(?:\+srv)?|redis|amqp)://[^:/\s]+:[^@/\s]+@[^\s"'']+'
+  severity: high
+  category: database
+  description: Database/connection URI with embedded username and password.
+
+- id: heroku-api-key
+  pattern: "(?i)heroku[a-z_\\- ]{0,20}['\"]?\\s*[:=]\\s*['\"][0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}['\"]"
+  severity: high
+  category: cloud
+  description: Heroku API key (UUID) assigned in code or configuration.

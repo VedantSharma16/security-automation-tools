@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "secrets-scanner"
+version = "0.1.0"
+description = "Regex + entropy secret detection for source trees and git history, with baselining and optional LLM triage."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.4"]
+
+[project.scripts]
+secretscan = "secretscan.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["secretscan*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
