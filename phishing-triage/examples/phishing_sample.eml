@@ -1,0 +1,61 @@
+Return-Path: <bounce@paypa1-support.tk>
+Received: from mail.paypa1-support.tk (mail.paypa1-support.tk [203.0.113.55])
+	by mx.recipient-corp.example (Postfix) with ESMTPS id 4X1abc2Ddefg
+	for <alice@recipient-corp.example>; Mon, 03 Aug 2026 14:22:01 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+	by mail.paypa1-support.tk (Postfix) with ESMTP id 9F1bcAB123
+	for <alice@recipient-corp.example>; Mon, 03 Aug 2026 14:21:58 +0000 (UTC)
+Authentication-Results: mx.recipient-corp.example; spf=fail smtp.mailfrom=paypa1-support.tk; dkim=fail header.i=@paypa1-support.tk; dmarc=fail (p=REJECT) header.from=paypa1-support.tk
+From: "PayPal Security Team" <security@paypa1-support.tk>
+Reply-To: recover-support@mail-secure-help.tk
+To: alice@recipient-corp.example
+Subject: Urgent Action Required: Your Account Has Been Suspended
+Date: Mon, 03 Aug 2026 14:21:55 +0000
+Message-ID: <20260803142155.9F1bcAB123@mail.paypa1-support.tk>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="mixedBOUNDARY123"
+
+--mixedBOUNDARY123
+Content-Type: multipart/alternative; boundary="altBOUNDARY456"
+
+--altBOUNDARY456
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Dear Customer,
+
+We have detected unusual activity on your account. Your account will be
+suspended within 24 hours unless you verify your identity immediately.
+
+Please confirm your password and account details here:
+http://paypal.com@secure-login.paypa1-verify.tk/login/verify
+
+Failure to comply will result in permanent suspension.
+
+PayPal Security Team
+
+--altBOUNDARY456
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<html><body>
+<p>Dear Customer,</p>
+<p>We have detected <b>unusual activity</b> on your account. Your account
+will be suspended within 24 hours unless you verify your identity
+immediately.</p>
+<p><a href="http://paypal.com@secure-login.paypa1-verify.tk/login/verify">https://www.paypal.com/verify-account</a></p>
+<p>Failure to comply will result in permanent suspension.</p>
+<p>PayPal Security Team</p>
+</body></html>
+
+--altBOUNDARY456--
+
+--mixedBOUNDARY123
+Content-Type: application/octet-stream; name="invoice.pdf.exe"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="invoice.pdf.exe"
+
+TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAOAAAAAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+--mixedBOUNDARY123--

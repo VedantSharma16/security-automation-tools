@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phishing-triage"
+version = "0.1.0"
+description = "Parse a raw .eml email, run SPF/DKIM/DMARC, link, content, sender, and attachment heuristics, and produce a scored phishing triage report."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+phishing-triage = "phishing_triage.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["phishing_triage*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
