@@ -1,0 +1,7 @@
+# Example asset inventory for batch scanning with --input-file.
+# One URL per line; bare hostnames are assumed to be https://.
+# Blank lines and lines starting with # are ignored.
+
+example.com
+https://example.org
+# internal.corp.example   # uncomment and adjust for internal/self-signed hosts
