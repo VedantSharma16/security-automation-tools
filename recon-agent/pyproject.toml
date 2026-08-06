@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "recon-agent"
+version = "0.1.0"
+description = "Passive attack-surface recon (DNS, HTTP headers, TLS, robots.txt) with an optional agentic tool-selection loop."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "requests>=2.31",
+    "dnspython>=2.4",
+]
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+recon-agent = "recon_agent.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["recon_agent*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
