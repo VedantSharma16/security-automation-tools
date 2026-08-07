@@ -1,0 +1,26 @@
+{
+  "185.220.101.1": {
+    "verdict": "malicious",
+    "confidence": "high",
+    "notes": "Known Tor exit node previously observed proxying C2 traffic.",
+    "source": "internal-blocklist"
+  },
+  "45.155.205.38": {
+    "verdict": "malicious",
+    "confidence": "high",
+    "notes": "Associated with Cobalt Strike default-config beacon infrastructure.",
+    "source": "internal-blocklist"
+  },
+  "91.219.236.18": {
+    "verdict": "suspicious",
+    "confidence": "medium",
+    "notes": "Bulletproof-hosting ASN with prior abuse reports; no confirmed campaign link.",
+    "source": "internal-blocklist"
+  },
+  "8.8.8.8": {
+    "verdict": "benign",
+    "confidence": "high",
+    "notes": "Public DNS resolver (Google).",
+    "source": "internal-blocklist"
+  }
+}

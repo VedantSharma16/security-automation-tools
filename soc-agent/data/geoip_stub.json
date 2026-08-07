@@ -1,0 +1,9 @@
+{
+  "_comment": "Synthetic offline GeoIP dataset for demo purposes. IPs not listed here return a generic 'unknown' location.",
+  "records": {
+    "185.220.101.1": {"country": "Germany", "asn": "AS208294", "asn_org": "Tor Exit Relay Operator"},
+    "45.155.205.38": {"country": "Netherlands", "asn": "AS211252", "asn_org": "Bulletproof Hosting LLC"},
+    "91.219.236.18": {"country": "Romania", "asn": "AS44066", "asn_org": "Offshore Hosting SRL"},
+    "8.8.8.8": {"country": "United States", "asn": "AS15169", "asn_org": "Google LLC"}
+  }
+}

@@ -1,0 +1,9 @@
+EDR Alert #48213 — Host: WKS-FIN-0042
+
+powershell.exe (PID 6820) was spawned by winword.exe with a base64-encoded
+command line and established an outbound HTTPS connection to
+update-service-cdn.net (resolves to 45.155.205.38) approximately three
+minutes after a scheduled task named "WindowsUpdateCheck" was created to
+re-launch it on login. A secondary short-lived connection to 185.220.101.1
+was also observed on port 443. No connections to known-good update
+infrastructure were seen from this host in the preceding 30 days.

@@ -1,0 +1,18 @@
+{
+  "_comment": "Synthetic offline baseline of expected processes for demo purposes, keyed by lowercase process name.",
+  "known_good": [
+    "explorer.exe",
+    "svchost.exe",
+    "chrome.exe",
+    "code.exe",
+    "sshd",
+    "systemd",
+    "nginx"
+  ],
+  "known_bad": {
+    "powershell.exe": "Frequently abused for encoded/obfuscated execution; treat command line as high-signal.",
+    "mimikatz.exe": "Well-known credential-dumping tool; presence alone is a critical indicator.",
+    "psexec.exe": "Common lateral-movement tool; expected only from authorized admin workstations.",
+    "certutil.exe": "Living-off-the-land binary frequently abused to download or decode payloads."
+  }
+}

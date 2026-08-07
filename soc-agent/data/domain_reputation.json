@@ -1,0 +1,26 @@
+{
+  "evil-c2-panel.com": {
+    "verdict": "malicious",
+    "confidence": "high",
+    "notes": "Registered domain matching a known C2 panel naming pattern; seen in prior incidents.",
+    "source": "internal-blocklist"
+  },
+  "update-service-cdn.net": {
+    "verdict": "malicious",
+    "confidence": "medium",
+    "notes": "Lookalike domain impersonating legitimate update infrastructure.",
+    "source": "internal-blocklist"
+  },
+  "secure-login-verify.info": {
+    "verdict": "suspicious",
+    "confidence": "medium",
+    "notes": "Recently registered credential-phishing-style domain naming pattern.",
+    "source": "internal-blocklist"
+  },
+  "microsoft.com": {
+    "verdict": "benign",
+    "confidence": "high",
+    "notes": "Legitimate, well-established corporate domain.",
+    "source": "internal-blocklist"
+  }
+}

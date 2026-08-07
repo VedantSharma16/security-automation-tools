@@ -1,0 +1,65 @@
+{
+  "_comment": "Small curated subset of MITRE ATT&CK (Enterprise) techniques used for offline keyword lookup by the search_attack_techniques tool. Not the full dataset.",
+  "techniques": [
+    {
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "tactic": "Command and Control",
+      "text": "Adversaries may use standard application layer protocols such as HTTP or HTTPS for command-and-control beaconing to blend in with normal web traffic."
+    },
+    {
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "tactic": "Execution",
+      "text": "Adversaries abuse interpreters such as PowerShell, cmd.exe, or bash to execute commands and scripts during post-exploitation, often via living-off-the-land binaries."
+    },
+    {
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "tactic": "Execution, Persistence, Privilege Escalation",
+      "text": "Adversaries abuse task scheduling (schtasks, cron, at) to execute malicious code on a schedule, commonly used to establish persistence after initial access."
+    },
+    {
+      "id": "T1003",
+      "name": "OS Credential Dumping",
+      "tactic": "Credential Access",
+      "text": "Adversaries dump credentials from LSASS memory, the SAM database, or similar sources using tools like Mimikatz to obtain account hashes and passwords."
+    },
+    {
+      "id": "T1566",
+      "name": "Phishing",
+      "tactic": "Initial Access",
+      "text": "Adversaries send phishing messages containing malicious attachments or links, or direct victims to credential-harvesting lookalike login pages, to gain initial access."
+    },
+    {
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "tactic": "Command and Control",
+      "text": "Adversaries transfer tools or other files from an external system into a compromised environment, often via a C2 channel or a lookalike CDN domain."
+    },
+    {
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "tactic": "Defense Evasion, Persistence, Privilege Escalation, Initial Access",
+      "text": "Adversaries use compromised or stolen credentials for legitimate accounts to bypass access controls and blend in with normal authenticated activity."
+    },
+    {
+      "id": "T1090",
+      "name": "Proxy",
+      "tactic": "Command and Control",
+      "text": "Adversaries use a connection proxy such as a Tor exit node or compromised intermediary host to direct C2 traffic and disguise the true source and destination."
+    },
+    {
+      "id": "T1036",
+      "name": "Masquerading",
+      "tactic": "Defense Evasion",
+      "text": "Adversaries name malicious files, processes, or domains to resemble legitimate ones (e.g. an update-service lookalike domain) to evade detection and analyst suspicion."
+    },
+    {
+      "id": "T1110",
+      "name": "Brute Force",
+      "tactic": "Credential Access",
+      "text": "Adversaries repeatedly attempt authentication with guessed or leaked credentials against a service such as SSH or a web login form."
+    }
+  ]
+}

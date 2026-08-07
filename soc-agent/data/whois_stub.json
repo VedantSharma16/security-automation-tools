@@ -1,0 +1,25 @@
+{
+  "_comment": "Synthetic offline WHOIS-style dataset for demo purposes. Not live registry data. 'created' is looked up here and age is computed at query time. Domains not listed here return a generic 'no record' response.",
+  "records": {
+    "evil-c2-panel.com": {
+      "registrar": "NameShield Privacy Registrar",
+      "created": "2026-07-29",
+      "privacy_protected": true
+    },
+    "update-service-cdn.net": {
+      "registrar": "PrivacyGuard Domains",
+      "created": "2026-06-10",
+      "privacy_protected": true
+    },
+    "secure-login-verify.info": {
+      "registrar": "QuickReg Inc.",
+      "created": "2026-08-06",
+      "privacy_protected": true
+    },
+    "microsoft.com": {
+      "registrar": "MarkMonitor Inc.",
+      "created": "1991-05-02",
+      "privacy_protected": false
+    }
+  }
+}
