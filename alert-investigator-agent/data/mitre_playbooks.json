@@ -1,0 +1,88 @@
+{
+  "techniques": [
+    {
+      "id": "T1110",
+      "name": "Brute Force",
+      "tactic": "Credential Access",
+      "keywords": [
+        "brute force", "failed login", "failed password", "password spray",
+        "authentication failure", "multiple login attempts", "invalid credentials"
+      ],
+      "recommended_actions": [
+        "Lock or reset credentials for the targeted account(s)",
+        "Enforce MFA on the affected authentication endpoint",
+        "Block or rate-limit the source IP at the perimeter"
+      ]
+    },
+    {
+      "id": "T1071",
+      "name": "Application Layer Protocol (C2)",
+      "tactic": "Command and Control",
+      "keywords": [
+        "c2", "command and control", "beacon", "beaconing", "callback",
+        "unusual outbound", "periodic connection"
+      ],
+      "recommended_actions": [
+        "Isolate the affected host from the network",
+        "Capture full packet data for the suspicious session before isolation",
+        "Hunt for the C2 indicator across EDR telemetry fleet-wide"
+      ]
+    },
+    {
+      "id": "T1566",
+      "name": "Phishing",
+      "tactic": "Initial Access",
+      "keywords": [
+        "phishing", "malicious attachment", "suspicious email", "credential harvest",
+        "spoofed sender", "link clicked"
+      ],
+      "recommended_actions": [
+        "Quarantine the message fleet-wide and block the sender domain",
+        "Reset credentials if the user reports entering them on a linked page",
+        "Notify affected recipients and check for further forwarding"
+      ]
+    },
+    {
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "tactic": "Defense Evasion / Persistence",
+      "keywords": [
+        "impossible travel", "anomalous login", "new device", "unfamiliar location",
+        "off-hours login", "geo-velocity"
+      ],
+      "recommended_actions": [
+        "Force a credential reset and revoke active sessions",
+        "Review recent account activity for privilege changes or data access",
+        "Confirm with the account owner via an out-of-band channel"
+      ]
+    },
+    {
+      "id": "T1486",
+      "name": "Data Encrypted for Impact (Ransomware)",
+      "tactic": "Impact",
+      "keywords": [
+        "ransomware", "file encryption", "ransom note", "mass file rename",
+        "shadow copy deleted", "encrypted files"
+      ],
+      "recommended_actions": [
+        "Isolate affected hosts immediately and disable shared network paths",
+        "Activate the incident response / ransomware playbook",
+        "Identify patient zero and preserve forensic images before remediation"
+      ]
+    },
+    {
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "tactic": "Execution",
+      "keywords": [
+        "powershell", "encoded command", "suspicious script", "living off the land",
+        "wscript", "command line obfuscation"
+      ],
+      "recommended_actions": [
+        "Collect the full process command line and parent process chain",
+        "Determine whether the script executed from a trusted software deployment tool",
+        "Sandbox-detonate any dropped payload for further analysis"
+      ]
+    }
+  ]
+}

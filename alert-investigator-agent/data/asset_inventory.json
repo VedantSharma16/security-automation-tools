@@ -1,0 +1,49 @@
+{
+  "assets": [
+    {
+      "host": "fin-db-03",
+      "ip": "10.20.4.15",
+      "criticality": "critical",
+      "owner": "finance-infra",
+      "environment": "production",
+      "os": "Linux",
+      "notes": "Primary finance database. PCI-scoped."
+    },
+    {
+      "host": "vpn-gw-01",
+      "ip": "10.10.0.5",
+      "criticality": "high",
+      "owner": "network-eng",
+      "environment": "production",
+      "os": "Linux",
+      "notes": "Corporate VPN concentrator, internet-facing."
+    },
+    {
+      "host": "web-app-12",
+      "ip": "10.30.2.44",
+      "criticality": "medium",
+      "owner": "platform-eng",
+      "environment": "production",
+      "os": "Linux",
+      "notes": "Public marketing site, no customer data."
+    },
+    {
+      "host": "dev-sandbox-07",
+      "ip": "10.90.1.20",
+      "criticality": "low",
+      "owner": "eng-shared",
+      "environment": "development",
+      "os": "Linux",
+      "notes": "Ephemeral developer sandbox, reimaged weekly."
+    },
+    {
+      "host": "hr-workstation-19",
+      "ip": "10.40.6.101",
+      "criticality": "medium",
+      "owner": "corp-it",
+      "environment": "production",
+      "os": "Windows",
+      "notes": "HR analyst laptop, handles PII."
+    }
+  ]
+}

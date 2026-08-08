@@ -1,0 +1,7 @@
+{
+  "alert_id": "EDR-20260808-0417",
+  "description": "Multiple failed VPN login attempts followed by a successful authentication from an unfamiliar external IP, then unusual outbound beaconing traffic observed from the finance database host.",
+  "indicators": ["185.220.101.45"],
+  "host": "fin-db-03",
+  "raw": "2026-08-08T04:17:02Z vpn-gw-01 sshd: Failed password for finadmin from 185.220.101.45 port 51422\n2026-08-08T04:17:41Z vpn-gw-01 sshd: Accepted password for finadmin from 185.220.101.45 port 51430\n2026-08-08T04:19:10Z fin-db-03 edr: outbound connection to 185.220.101.45:443 every 60s"
+}

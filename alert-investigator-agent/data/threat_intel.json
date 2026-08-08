@@ -1,0 +1,34 @@
+{
+  "indicators": [
+    {
+      "value": "185.220.101.45",
+      "confidence": "high",
+      "source": "internal-blocklist",
+      "notes": "Known Tor exit node observed in prior credential-stuffing campaigns against corporate VPN."
+    },
+    {
+      "value": "45.155.204.12",
+      "confidence": "high",
+      "source": "commercial-feed",
+      "notes": "C2 infrastructure associated with a commodity info-stealer (feed ref: TI-2026-0447)."
+    },
+    {
+      "value": "203.0.113.77",
+      "confidence": "medium",
+      "source": "internal-blocklist",
+      "notes": "Repeated SSH brute-force source against edge hosts over the last 90 days."
+    },
+    {
+      "value": "update-service-cdn.com",
+      "confidence": "high",
+      "source": "commercial-feed",
+      "notes": "Typosquat domain impersonating a legitimate software update CDN; used for payload staging."
+    },
+    {
+      "value": "8.8.8.8",
+      "confidence": "none",
+      "source": "internal-allowlist",
+      "notes": "Public DNS resolver. Explicitly allowlisted, not an indicator of compromise on its own."
+    }
+  ]
+}

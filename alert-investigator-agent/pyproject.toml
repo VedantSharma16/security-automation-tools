@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alert-investigator-agent"
+version = "0.1.0"
+description = "An agentic, tool-calling SOC alert investigation loop with a deterministic offline planner and a live Claude tool-use fallback chain."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+alert-investigator = "investigator.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["investigator*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

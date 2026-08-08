@@ -1,0 +1,39 @@
+{
+  "history": [
+    {
+      "indicator": "185.220.101.45",
+      "host": "vpn-gw-01",
+      "timestamp": "2026-07-02T03:14:00Z",
+      "verdict": "true_positive",
+      "notes": "Escalated to IR; source IP blocked at perimeter firewall."
+    },
+    {
+      "indicator": "185.220.101.45",
+      "host": "vpn-gw-01",
+      "timestamp": "2026-07-15T09:41:00Z",
+      "verdict": "true_positive",
+      "notes": "Same Tor exit node returned after block expired; block made permanent."
+    },
+    {
+      "indicator": "203.0.113.77",
+      "host": "vpn-gw-01",
+      "timestamp": "2026-06-20T14:02:00Z",
+      "verdict": "true_positive",
+      "notes": "SSH brute-force burst, ~4000 attempts over 20 minutes."
+    },
+    {
+      "indicator": "8.8.8.8",
+      "host": "web-app-12",
+      "timestamp": "2026-07-10T11:00:00Z",
+      "verdict": "false_positive",
+      "notes": "Outbound DNS lookup, expected behavior, closed with no action."
+    },
+    {
+      "indicator": "203.0.113.200",
+      "host": "dev-sandbox-07",
+      "timestamp": "2026-07-22T02:10:00Z",
+      "verdict": "false_positive",
+      "notes": "Internal vulnerability scanner IP, added to allowlist."
+    }
+  ]
+}
