@@ -1,0 +1,39 @@
+======================================================================
+Web Security Audit Report - https://demo.example.com
+Generated: 2026-08-10T09:00:00+00:00
+======================================================================
+
+Risk score:   68/100  (CRITICAL)
+Total findings: 5
+  CRITICAL=1  HIGH=0  MEDIUM=2  LOW=1  INFO=1
+
+----------------------------------------------------------------------
+[CRITICAL] Exposed .git directory  (EXP-GIT-EXPOSED)
+    Category:       exposure
+    Description:    The .git directory is web-accessible, which can allow an attacker to reconstruct source code, commit history, and any secrets ever committed.
+    Recommendation: Block web access to .git/ (e.g. deny in the web server config) or remove it from the deployed document root entirely.
+    Evidence:       GET https://demo.example.com/.git/HEAD -> HTTP 200
+----------------------------------------------------------------------
+[MEDIUM] TLS certificate expires soon  (TLS-CERT-EXPIRING-SOON)
+    Category:       tls
+    Description:    The certificate expires in 12 day(s).
+    Recommendation: Renew the certificate before it expires to avoid an outage.
+    Evidence:       notAfter=2026-08-22T00:00:00+00:00
+----------------------------------------------------------------------
+[MEDIUM] Missing Content-Security-Policy (CSP)  (HDR-CSP-MISSING)
+    Category:       security-headers
+    Description:    No CSP header was found. CSP is a key mitigation against cross-site scripting and data-injection attacks.
+    Recommendation: Define a restrictive Content-Security-Policy, starting from default-src 'self' and widening only as needed.
+----------------------------------------------------------------------
+[LOW] Cookie 'session' missing SameSite attribute  (COOKIE-NO-SAMESITE)
+    Category:       cookies
+    Description:    Without SameSite, this cookie may be sent on cross-site requests, weakening CSRF defenses.
+    Recommendation: Set SameSite=Lax (or Strict) unless cross-site delivery is explicitly required.
+    Evidence:       session=***; Path=/
+----------------------------------------------------------------------
+[INFO] Server software disclosed via Server  (HDR-INFO-DISCLOSURE-SERVER)
+    Category:       information-disclosure
+    Description:    The 'Server' header reveals server/framework details ('nginx/1.18.0'), which helps attackers target known vulnerabilities.
+    Recommendation: Suppress or genericize the 'Server' header at the reverse proxy / server configuration level.
+    Evidence:       nginx/1.18.0
+----------------------------------------------------------------------

@@ -1,0 +1,69 @@
+{
+  "target": "https://demo.example.com",
+  "generated_at": "2026-08-10T09:00:00+00:00",
+  "summary": {
+    "total_findings": 5,
+    "by_severity": {
+      "INFO": 1,
+      "LOW": 1,
+      "MEDIUM": 2,
+      "HIGH": 0,
+      "CRITICAL": 1
+    },
+    "risk_score": 68,
+    "risk_rating": "CRITICAL",
+    "highest_severity": "CRITICAL"
+  },
+  "findings": [
+    {
+      "id": "EXP-GIT-EXPOSED",
+      "title": "Exposed .git directory",
+      "severity": "CRITICAL",
+      "category": "exposure",
+      "description": "The .git directory is web-accessible, which can allow an attacker to reconstruct source code, commit history, and any secrets ever committed.",
+      "recommendation": "Block web access to .git/ (e.g. deny in the web server config) or remove it from the deployed document root entirely.",
+      "evidence": "GET https://demo.example.com/.git/HEAD -> HTTP 200",
+      "references": []
+    },
+    {
+      "id": "TLS-CERT-EXPIRING-SOON",
+      "title": "TLS certificate expires soon",
+      "severity": "MEDIUM",
+      "category": "tls",
+      "description": "The certificate expires in 12 day(s).",
+      "recommendation": "Renew the certificate before it expires to avoid an outage.",
+      "evidence": "notAfter=2026-08-22T00:00:00+00:00",
+      "references": []
+    },
+    {
+      "id": "HDR-CSP-MISSING",
+      "title": "Missing Content-Security-Policy (CSP)",
+      "severity": "MEDIUM",
+      "category": "security-headers",
+      "description": "No CSP header was found. CSP is a key mitigation against cross-site scripting and data-injection attacks.",
+      "recommendation": "Define a restrictive Content-Security-Policy, starting from default-src 'self' and widening only as needed.",
+      "evidence": "",
+      "references": []
+    },
+    {
+      "id": "COOKIE-NO-SAMESITE",
+      "title": "Cookie 'session' missing SameSite attribute",
+      "severity": "LOW",
+      "category": "cookies",
+      "description": "Without SameSite, this cookie may be sent on cross-site requests, weakening CSRF defenses.",
+      "recommendation": "Set SameSite=Lax (or Strict) unless cross-site delivery is explicitly required.",
+      "evidence": "session=***; Path=/",
+      "references": []
+    },
+    {
+      "id": "HDR-INFO-DISCLOSURE-SERVER",
+      "title": "Server software disclosed via Server",
+      "severity": "INFO",
+      "category": "information-disclosure",
+      "description": "The 'Server' header reveals server/framework details ('nginx/1.18.0'), which helps attackers target known vulnerabilities.",
+      "recommendation": "Suppress or genericize the 'Server' header at the reverse proxy / server configuration level.",
+      "evidence": "nginx/1.18.0",
+      "references": []
+    }
+  ]
+}
