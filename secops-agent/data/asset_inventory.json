@@ -1,0 +1,33 @@
+{
+  "_comment": "Synthetic asset inventory for offline lookup: hostname -> ownership and criticality metadata. In production this would be sourced from a CMDB (e.g. ServiceNow, NetBox).",
+  "assets": [
+    {
+      "hostname": "db-prod-01",
+      "criticality": "critical",
+      "owner": "data-platform-team",
+      "environment": "production",
+      "notes": "Primary customer database. Any suspected compromise pages the on-call IC immediately."
+    },
+    {
+      "hostname": "web-prod-03",
+      "criticality": "high",
+      "owner": "web-team",
+      "environment": "production",
+      "notes": "Public-facing web tier, internet-exposed."
+    },
+    {
+      "hostname": "jump-host-01",
+      "criticality": "high",
+      "owner": "infra-team",
+      "environment": "production",
+      "notes": "SSH bastion host with access to production VLANs."
+    },
+    {
+      "hostname": "dev-sandbox-12",
+      "criticality": "low",
+      "owner": "eng-general",
+      "environment": "development",
+      "notes": "Non-production sandbox, no sensitive data."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+Jan 15 03:21:58 db-prod-01 sshd[1234]: Failed password for invalid user admin from 203.0.113.77 port 51512 ssh2
+Jan 15 03:22:01 db-prod-01 sshd[1234]: Failed password for invalid user admin from 203.0.113.77 port 51515 ssh2
+Jan 15 03:22:03 db-prod-01 sshd[1234]: Failed password for invalid user root from 203.0.113.77 port 51516 ssh2
+Jan 15 03:22:07 db-prod-01 sshd[1234]: Failed password for invalid user root from 203.0.113.77 port 51519 ssh2
+Jan 15 03:22:45 db-prod-01 sshd[1234]: Accepted password for root from 203.0.113.77 port 51530 ssh2
+Jan 15 03:23:01 db-prod-01 sshd[1234]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Jan 15 09:10:12 db-prod-01 sshd[2201]: Accepted publickey for deploy from 198.51.100.20 port 60122 ssh2
+Jan 15 09:10:12 db-prod-01 sshd[2201]: pam_unix(sshd:session): session opened for user deploy by (uid=1000)

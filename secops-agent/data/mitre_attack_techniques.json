@@ -1,0 +1,41 @@
+{
+  "_comment": "Small curated subset of MITRE ATT&CK (Enterprise) techniques for offline lookup. Not the full ATT&CK dataset — for production use, sync against the official STIX bundle at https://github.com/mitre-attack/attack-stix-data.",
+  "techniques": [
+    {
+      "id": "T1110",
+      "name": "Brute Force",
+      "tactic": "Credential Access",
+      "text": "Adversaries may use brute force techniques to gain access to accounts when passwords are unknown or when password hashes are obtained, including password guessing, spraying, and credential stuffing against exposed login services."
+    },
+    {
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "tactic": "Defense Evasion, Persistence, Privilege Escalation, Initial Access",
+      "text": "Adversaries may obtain and abuse credentials of existing accounts to gain initial access, maintain persistence, or evade detection, since legitimate credentials blend in with normal activity."
+    },
+    {
+      "id": "T1021",
+      "name": "Remote Services",
+      "tactic": "Lateral Movement",
+      "text": "Adversaries may use valid accounts to log into services (SSH, RDP, VNC, SMB) that accept remote connections in order to move laterally within a network."
+    },
+    {
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "tactic": "Execution, Persistence, Privilege Escalation",
+      "text": "Adversaries may abuse task scheduling functionality (schtasks, cron, at) to execute malicious code at a specific time or on a recurring interval, often used to establish persistence after initial access."
+    },
+    {
+      "id": "T1098",
+      "name": "Account Manipulation",
+      "tactic": "Persistence, Privilege Escalation",
+      "text": "Adversaries may add, modify permissions on, or otherwise manipulate accounts to maintain access to victim systems, such as adding a newly created user to a privileged group after initial compromise."
+    },
+    {
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "tactic": "Command and Control",
+      "text": "Adversaries may communicate using application layer protocols (HTTP, HTTPS, DNS) to blend command-and-control traffic in with existing, expected network traffic."
+    }
+  ]
+}
