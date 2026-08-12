@@ -1,0 +1,53 @@
+{
+  "techniques": [
+    {
+      "id": "T1071.001",
+      "name": "Application Layer Protocol: Web Protocols",
+      "tactic": "Command and Control",
+      "keywords": ["beacon", "beaconing", "https", "c2", "checkin", "check-in", "outbound", "callback"],
+      "description": "Adversaries communicate using HTTP/HTTPS to blend C2 traffic in with normal web traffic, often as periodic beacons."
+    },
+    {
+      "id": "T1583.001",
+      "name": "Acquire Infrastructure: Domains",
+      "tactic": "Resource Development",
+      "keywords": ["newly registered", "lookalike", "typosquat", "privacy proxy", "young domain", "registrar"],
+      "description": "Adversaries register domains, often lookalikes of legitimate brands or infrastructure, shortly before use in a campaign."
+    },
+    {
+      "id": "T1566.002",
+      "name": "Phishing: Spearphishing Link",
+      "tactic": "Initial Access",
+      "keywords": ["phishing", "credential", "login page", "verify your account", "clicked link", "email"],
+      "description": "Adversaries send links to credential-harvesting pages, often impersonating a trusted brand or internal portal."
+    },
+    {
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "tactic": "Defense Evasion, Persistence, Privilege Escalation, Initial Access",
+      "keywords": ["successful login", "credential", "reused password", "valid account", "no mfa"],
+      "description": "Adversaries use compromised legitimate credentials to blend in with normal authentication activity."
+    },
+    {
+      "id": "T1053.005",
+      "name": "Scheduled Task/Job: Scheduled Task",
+      "tactic": "Execution, Persistence, Privilege Escalation",
+      "keywords": ["scheduled task", "cron", "persistence", "schtasks", "at.exe"],
+      "description": "Adversaries create scheduled tasks to establish persistence or execute code at a set time."
+    },
+    {
+      "id": "T1041",
+      "name": "Exfiltration Over C2 Channel",
+      "tactic": "Exfiltration",
+      "keywords": ["exfiltration", "data transfer", "large upload", "outbound transfer", "staged data"],
+      "description": "Adversaries exfiltrate data over the same channel used for command and control rather than a separate channel."
+    },
+    {
+      "id": "T1110",
+      "name": "Brute Force",
+      "tactic": "Credential Access",
+      "keywords": ["brute force", "failed login", "password spray", "repeated authentication failures"],
+      "description": "Adversaries attempt many credential combinations to gain access to accounts."
+    }
+  ]
+}

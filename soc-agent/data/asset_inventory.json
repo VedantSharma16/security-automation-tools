@@ -1,0 +1,20 @@
+{
+  "WKS-DEV-14": {
+    "criticality": "medium",
+    "owner": "j.morales",
+    "department": "Engineering",
+    "os": "Windows 11"
+  },
+  "FIN-LAPTOP-07": {
+    "criticality": "high",
+    "owner": "a.reyes",
+    "department": "Finance",
+    "os": "Windows 11"
+  },
+  "SRV-DB-PROD-02": {
+    "criticality": "critical",
+    "owner": "platform-team",
+    "department": "Infrastructure",
+    "os": "Ubuntu 22.04"
+  }
+}

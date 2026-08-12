@@ -1,0 +1,12 @@
+2026-08-10T09:12:01Z WKS-DEV-14 sshd: Accepted password for j.morales from 10.20.4.17 port 51422
+2026-08-10T09:14:33Z WKS-DEV-14 process: powershell.exe spawned by explorer.exe (pid 4402)
+2026-08-10T09:14:40Z WKS-DEV-14 network: outbound TLS connection 10.20.4.17 -> 185.220.101.1:443 (SNI update-service-cdn.net)
+2026-08-10T09:22:10Z WKS-DEV-14 network: outbound TLS connection 10.20.4.17 -> 185.220.101.1:443 (SNI update-service-cdn.net)
+2026-08-10T09:30:55Z WKS-DEV-14 network: outbound TLS connection 10.20.4.17 -> 185.220.101.1:443 (SNI update-service-cdn.net)
+2026-08-11T14:02:11Z FIN-LAPTOP-07 mail: message-id <9284@mail> clicked link https://secure-billing-portal-verify.com/login for a.reyes
+2026-08-11T14:03:47Z FIN-LAPTOP-07 auth: successful login for a.reyes from 198.51.100.23 (no MFA challenge recorded)
+2026-08-11T14:05:02Z FIN-LAPTOP-07 auth: password change requested for a.reyes
+2026-08-09T03:11:00Z SRV-DB-PROD-02 sshd: Failed password for root from 203.0.113.44 port 22101
+2026-08-09T03:11:03Z SRV-DB-PROD-02 sshd: Failed password for root from 203.0.113.44 port 22104
+2026-08-09T03:11:07Z SRV-DB-PROD-02 sshd: Failed password for root from 203.0.113.44 port 22110
+2026-08-09T03:12:40Z SRV-DB-PROD-02 sshd: Accepted password for root from 203.0.113.44 port 22188

@@ -1,0 +1,30 @@
+{
+  "update-service-cdn.net": {
+    "a_records": ["185.220.101.1"],
+    "registrar": "NameCheap (privacy-proxied)",
+    "created_date": "2026-06-30",
+    "age_days": 13,
+    "name_servers": ["ns1.privacyguard.example", "ns2.privacyguard.example"]
+  },
+  "secure-billing-portal-verify.com": {
+    "a_records": ["198.51.100.23"],
+    "registrar": "Dynadot (privacy-proxied)",
+    "created_date": "2026-08-05",
+    "age_days": 7,
+    "name_servers": ["ns1.privacyguard.example", "ns2.privacyguard.example"]
+  },
+  "corp-fileshare.internal": {
+    "a_records": ["10.20.0.15"],
+    "registrar": "internal-dns",
+    "created_date": "2019-01-14",
+    "age_days": 2767,
+    "name_servers": ["ns1.corp.internal", "ns2.corp.internal"]
+  },
+  "microsoft.com": {
+    "a_records": ["20.70.246.20"],
+    "registrar": "MarkMonitor Inc.",
+    "created_date": "1991-05-02",
+    "age_days": 12888,
+    "name_servers": ["ns1.msft.net", "ns2.msft.net"]
+  }
+}

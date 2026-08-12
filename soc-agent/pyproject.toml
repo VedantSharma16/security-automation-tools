@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "soc-agent"
+version = "0.1.0"
+description = "Agentic SOC alert triage assistant with a real tool-calling loop and a deterministic offline fallback."
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.30"]
+dev = ["pytest>=7.4"]
+
+[project.scripts]
+soc-agent = "soc_agent.cli:main"
+
+[tool.setuptools]
+packages = ["soc_agent"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

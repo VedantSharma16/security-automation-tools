@@ -1,0 +1,46 @@
+{
+  "indicators": [
+    {
+      "value": "update-service-cdn.net",
+      "type": "domain",
+      "verdict": "malicious",
+      "confidence": "high",
+      "notes": "Lookalike domain impersonating legitimate CDN/update infrastructure; observed as a C2 rendezvous point in prior incidents."
+    },
+    {
+      "value": "185.220.101.1",
+      "type": "ip",
+      "verdict": "malicious",
+      "confidence": "high",
+      "notes": "Known Tor exit node previously observed proxying C2 checkins."
+    },
+    {
+      "value": "44d88612fea8a8f36de82e1278abb02f",
+      "type": "hash",
+      "verdict": "malicious",
+      "confidence": "medium",
+      "notes": "Matches a known commodity loader sample (demo hash, EICAR family)."
+    },
+    {
+      "value": "secure-billing-portal-verify.com",
+      "type": "domain",
+      "verdict": "malicious",
+      "confidence": "high",
+      "notes": "Credential-phishing kit domain, brand-impersonation pattern (typosquat of a billing portal)."
+    },
+    {
+      "value": "198.51.100.23",
+      "type": "ip",
+      "verdict": "suspicious",
+      "confidence": "medium",
+      "notes": "Shared hosting IP with a history of hosting short-lived phishing pages; not conclusively malicious on its own."
+    },
+    {
+      "value": "corp-fileshare.internal",
+      "type": "domain",
+      "verdict": "benign",
+      "confidence": "high",
+      "notes": "Known internal file-share hostname, allowlisted."
+    }
+  ]
+}

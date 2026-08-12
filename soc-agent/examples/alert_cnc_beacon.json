@@ -1,0 +1,10 @@
+{
+  "alert_id": "ALERT-2026-0142",
+  "title": "Repeated outbound beacon-like TLS connections to unregistered domain",
+  "description": "WKS-DEV-14 (10.20.4.17) established three periodic HTTPS connections over 20 minutes to update-service-cdn.net (185.220.101.1). No prior baseline traffic to this destination. PowerShell was observed spawning from explorer.exe shortly before the first connection.",
+  "source_ip": "10.20.4.17",
+  "destination": "update-service-cdn.net",
+  "user": "j.morales",
+  "hostname": "WKS-DEV-14",
+  "raw_indicators": ["update-service-cdn.net", "185.220.101.1"]
+}

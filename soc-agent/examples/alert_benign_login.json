@@ -1,0 +1,10 @@
+{
+  "alert_id": "ALERT-2026-0163",
+  "title": "Routine login from a known internal file-share host",
+  "description": "A routine authenticated session was recorded against corp-fileshare.internal from an internal workstation during business hours. Flagged only because it is the user's first access to this specific share.",
+  "source_ip": "10.20.0.44",
+  "destination": "corp-fileshare.internal",
+  "user": "j.morales",
+  "hostname": "WKS-DEV-14",
+  "raw_indicators": ["corp-fileshare.internal"]
+}
