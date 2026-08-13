@@ -1,0 +1,5 @@
+# Core package has zero required third-party dependencies (stdlib socket/ssl only).
+#
+# Optional, enable extra functionality:
+#   pip install anthropic      # live LLM planner + narrative summaries (or: pip install .[llm])
+#   pip install cryptography   # parsed TLS certificate subject/issuer/expiry (or: pip install .[tls])
