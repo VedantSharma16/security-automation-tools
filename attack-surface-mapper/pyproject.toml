@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "attack-surface-mapper"
+version = "0.1.0"
+description = "Passive web attack-surface recon with an agentic (Claude tool-use) planner and a deterministic offline fallback."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+asmapper = "asmapper.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["asmapper*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

@@ -1,0 +1,86 @@
+[
+  {
+    "name": "WordPress",
+    "category": "CMS",
+    "header_signatures": [{ "header": "link", "contains": "wp-json" }],
+    "body_signatures": ["wp-content/", "wp-includes/", "content=\"wordpress"],
+    "note": "Enumerate the version (readme.html, meta generator) and installed plugins/themes; check both against known CVEs."
+  },
+  {
+    "name": "Drupal",
+    "category": "CMS",
+    "header_signatures": [{ "header": "x-generator", "contains": "drupal" }],
+    "body_signatures": ["content=\"drupal", "sites/default/files", "drupal.settings"],
+    "note": "Check /CHANGELOG.txt and /core/CHANGELOG.txt for the version; Drupal has had several critical unauthenticated RCEs (Drupalgeddon)."
+  },
+  {
+    "name": "Joomla",
+    "category": "CMS",
+    "header_signatures": [],
+    "body_signatures": ["content=\"joomla", "/media/jui/", "joomla!"],
+    "note": "Check /administrator/manifests/files/joomla.xml for the version and cross-reference known CVEs."
+  },
+  {
+    "name": "Apache HTTP Server",
+    "category": "web-server",
+    "header_signatures": [{ "header": "server", "contains": "apache" }],
+    "body_signatures": [],
+    "note": "Confirm the version from the Server header and check for known CVEs; consider whether mod_status/server-status is exposed."
+  },
+  {
+    "name": "Nginx",
+    "category": "web-server",
+    "header_signatures": [{ "header": "server", "contains": "nginx" }],
+    "body_signatures": [],
+    "note": "Confirm the version and review the reverse-proxy config for exposed internal upstreams or default server blocks."
+  },
+  {
+    "name": "Microsoft IIS",
+    "category": "web-server",
+    "header_signatures": [{ "header": "server", "contains": "iis" }],
+    "body_signatures": [],
+    "note": "Check for legacy IIS shortname enumeration (~) and known ASP.NET deserialization CVEs matching the disclosed version."
+  },
+  {
+    "name": "PHP",
+    "category": "language/runtime",
+    "header_signatures": [{ "header": "x-powered-by", "contains": "php" }],
+    "body_signatures": [],
+    "note": "Note the disclosed PHP version; cross-reference against the PHP end-of-life/CVE list."
+  },
+  {
+    "name": "Express (Node.js)",
+    "category": "framework",
+    "header_signatures": [{ "header": "x-powered-by", "contains": "express" }],
+    "body_signatures": [],
+    "note": "Confirm default Express security middleware (helmet, rate limiting) is in use; Express sets few security headers by default."
+  },
+  {
+    "name": "Django",
+    "category": "framework",
+    "header_signatures": [],
+    "body_signatures": ["csrfmiddlewaretoken", "__debug__/"],
+    "note": "If a debug/traceback page is reachable, DEBUG=True may be enabled in production, which leaks source and settings."
+  },
+  {
+    "name": "ASP.NET",
+    "category": "framework",
+    "header_signatures": [{ "header": "x-aspnet-version", "contains": "" }],
+    "body_signatures": ["__viewstate", "__viewstateencrypted"],
+    "note": "Check whether ViewState MAC validation is enabled; unauthenticated ViewState deserialization has led to critical RCEs."
+  },
+  {
+    "name": "React",
+    "category": "frontend-framework",
+    "header_signatures": [],
+    "body_signatures": ["id=\"root\"", "data-reactroot", "__next_data__"],
+    "note": "Client-rendered SPA — enumerate the compiled JS bundle for embedded API routes, feature flags, and secrets."
+  },
+  {
+    "name": "Cloudflare",
+    "category": "cdn/waf",
+    "header_signatures": [{ "header": "server", "contains": "cloudflare" }],
+    "body_signatures": [],
+    "note": "Traffic is proxied through a CDN/WAF; direct-origin discovery becomes a relevant recon step for bypassing edge protections."
+  }
+]

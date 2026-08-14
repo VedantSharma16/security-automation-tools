@@ -1,0 +1,100 @@
+[
+  {
+    "path": "/.env",
+    "title": "Exposed .env file",
+    "severity": "critical",
+    "detail": "Environment files commonly contain database credentials, API keys, and secret tokens.",
+    "recommendation": "Ensure .env is excluded from the web root/build output and blocked at the web-server config."
+  },
+  {
+    "path": "/.git/config",
+    "title": "Exposed .git/config",
+    "severity": "critical",
+    "detail": "A reachable .git directory usually allows reconstructing the full source tree and commit history, including any secrets ever committed.",
+    "recommendation": "Remove the .git directory from the deployed web root, or block /.git/ at the reverse proxy."
+  },
+  {
+    "path": "/.git/HEAD",
+    "title": "Exposed .git/HEAD",
+    "severity": "high",
+    "detail": "Confirms a reachable .git directory even if config is blocked separately; tools like git-dumper can reconstruct the repo from this alone.",
+    "recommendation": "Block /.git/ entirely at the reverse proxy, not just individual files."
+  },
+  {
+    "path": "/.aws/credentials",
+    "title": "Exposed AWS credentials file",
+    "severity": "critical",
+    "detail": "Would expose AWS access keys if present, allowing full account compromise depending on the key's permissions.",
+    "recommendation": "Never deploy credential files into the web root; use an instance role or a secrets manager instead."
+  },
+  {
+    "path": "/wp-config.php.bak",
+    "title": "Exposed WordPress config backup",
+    "severity": "critical",
+    "detail": "Editor/deploy-tool backup files (.bak, .old, ~) of wp-config.php contain the database password and secret keys in plaintext.",
+    "recommendation": "Remove backup files from the web root; configure the editor/deploy pipeline to avoid leaving them behind."
+  },
+  {
+    "path": "/config.php.bak",
+    "title": "Exposed config backup file",
+    "severity": "high",
+    "detail": "Backup copies of config files often bypass PHP execution and are served as plaintext, leaking any embedded secrets.",
+    "recommendation": "Remove backup/editor artifact files from the web root before deploying."
+  },
+  {
+    "path": "/backup.zip",
+    "title": "Exposed backup archive",
+    "severity": "high",
+    "detail": "A world-readable full-site or database backup archive can expose source code, credentials, and user data.",
+    "recommendation": "Store backups outside the web root, or require authentication to reach them."
+  },
+  {
+    "path": "/.htpasswd",
+    "title": "Exposed .htpasswd file",
+    "severity": "high",
+    "detail": "Contains hashed HTTP Basic Auth credentials that can be cracked offline if the hashing scheme is weak.",
+    "recommendation": "Block access to dotfiles (.ht*) at the web-server config; this is enabled by default on most servers but worth confirming."
+  },
+  {
+    "path": "/id_rsa",
+    "title": "Exposed SSH private key",
+    "severity": "critical",
+    "detail": "A private key served from the web root would allow SSH access to any host that trusts the matching public key.",
+    "recommendation": "Audit how the key ended up in the web root and rotate it immediately if this is a real finding."
+  },
+  {
+    "path": "/docker-compose.yml",
+    "title": "Exposed docker-compose.yml",
+    "severity": "medium",
+    "detail": "Compose files frequently contain internal service names, ports, and sometimes plaintext environment secrets.",
+    "recommendation": "Keep deployment manifests out of the web root."
+  },
+  {
+    "path": "/server-status",
+    "title": "Exposed Apache server-status page",
+    "severity": "medium",
+    "detail": "mod_status left open can leak internal IPs, in-flight request URLs (sometimes including session tokens in query strings), and server load.",
+    "recommendation": "Restrict /server-status to localhost/trusted IPs in the Apache config."
+  },
+  {
+    "path": "/actuator/health",
+    "title": "Exposed Spring Boot Actuator endpoint",
+    "severity": "medium",
+    "detail": "Actuator endpoints (health, env, beans, heapdump) can leak configuration and, in the worst case, application secrets or memory dumps.",
+    "recommendation": "Restrict actuator endpoints to an internal management port/network, and disable sensitive ones in production."
+  },
+  {
+    "path": "/phpinfo.php",
+    "title": "Exposed phpinfo() page",
+    "severity": "medium",
+    "detail": "phpinfo() discloses the full PHP configuration, loaded extensions, and server environment variables.",
+    "recommendation": "Remove phpinfo.php (or equivalent debug scripts) from production deployments."
+  },
+  {
+    "path": "/.well-known/security.txt",
+    "title": "security.txt present",
+    "severity": "info",
+    "detail": "Not a vulnerability — indicates the organization publishes a vulnerability-disclosure/security contact policy.",
+    "recommendation": "Use the published contact for any findings from this assessment that fall outside the agreed scope."
+  }
+]
