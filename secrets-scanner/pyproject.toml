@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "secretscanner"
+version = "0.1.0"
+description = "Scan a codebase and its git history for leaked credentials, with rule-based false-positive triage and an optional LLM narrative."
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.30.0"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+secretscanner = "secretscanner.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["secretscanner*"]
