@@ -10,7 +10,9 @@ SAMPLE_LINES = {
     # webhook-URL substring (avoids tripping naive secret scanners on this repo).
     "Slack Incoming Webhook URL": "webhook = " + "https://hooks.slack" + ".com/services/FAKE00000FAKE/FAKE00000FAKE/notarealwebhooktoken0000",
     "Stripe Secret Key": "STRIPE_KEY=sk_test_FAKEFAKEFAKEFAKE0000notreal",
-    "Google API Key": "apiKey: 'AIzaSyD-1234567890abcdefghijklmnopqrstu'",
+    # Split across literals so the raw source never contains the contiguous
+    # key-shaped substring (avoids tripping naive secret scanners on this repo).
+    "Google API Key": "apiKey: '" + "AIza" + "SyD-1234567890abcdefghijklmnopqrstu" + "'",
     "Twilio API Key": "TWILIO_KEY=SK00000000000000000000000000000000",
     "NPM Access Token": "//registry.npmjs.org/:_authToken=npm_1234567890abcdefghijklmnopqrstuvwxyz",
     "Private Key Block": "-----BEGIN RSA PRIVATE KEY-----",
