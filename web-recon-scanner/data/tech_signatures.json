@@ -1,0 +1,86 @@
+[
+  {
+    "name": "nginx",
+    "category": "web-server",
+    "header_patterns": { "Server": "nginx" },
+    "html_patterns": []
+  },
+  {
+    "name": "Apache HTTP Server",
+    "category": "web-server",
+    "header_patterns": { "Server": "apache" },
+    "html_patterns": []
+  },
+  {
+    "name": "Microsoft IIS",
+    "category": "web-server",
+    "header_patterns": { "Server": "microsoft-iis" },
+    "html_patterns": []
+  },
+  {
+    "name": "Cloudflare",
+    "category": "cdn-waf",
+    "header_patterns": { "Server": "cloudflare", "CF-Ray": ".*" },
+    "html_patterns": []
+  },
+  {
+    "name": "Amazon CloudFront",
+    "category": "cdn-waf",
+    "header_patterns": { "X-Amz-Cf-Id": ".*", "Via": "cloudfront" },
+    "html_patterns": []
+  },
+  {
+    "name": "PHP",
+    "category": "language-runtime",
+    "header_patterns": { "X-Powered-By": "php" },
+    "html_patterns": ["\\.php(\\?|\"|')"]
+  },
+  {
+    "name": "ASP.NET",
+    "category": "language-runtime",
+    "header_patterns": { "X-Powered-By": "asp\\.net", "X-AspNet-Version": ".*" },
+    "html_patterns": ["__VIEWSTATE"]
+  },
+  {
+    "name": "Express",
+    "category": "web-framework",
+    "header_patterns": { "X-Powered-By": "express" },
+    "html_patterns": []
+  },
+  {
+    "name": "Django",
+    "category": "web-framework",
+    "header_patterns": {},
+    "html_patterns": ["csrfmiddlewaretoken"]
+  },
+  {
+    "name": "WordPress",
+    "category": "cms",
+    "header_patterns": {},
+    "html_patterns": ["wp-content", "wp-includes", "generator\"\\s+content=\"WordPress"]
+  },
+  {
+    "name": "Drupal",
+    "category": "cms",
+    "header_patterns": { "X-Generator": "drupal" },
+    "html_patterns": ["Drupal\\.settings", "sites/default/files"]
+  },
+  {
+    "name": "React",
+    "category": "js-framework",
+    "header_patterns": {},
+    "html_patterns": ["data-reactroot", "__NEXT_DATA__", "react-dom"]
+  },
+  {
+    "name": "jQuery",
+    "category": "js-library",
+    "header_patterns": {},
+    "html_patterns": ["jquery(?:\\.min)?\\.js"]
+  },
+  {
+    "name": "Bootstrap",
+    "category": "css-framework",
+    "header_patterns": {},
+    "html_patterns": ["bootstrap(?:\\.min)?\\.css"]
+  }
+]
