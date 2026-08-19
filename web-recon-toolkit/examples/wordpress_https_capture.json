@@ -1,0 +1,19 @@
+{
+  "url": "https://blog.example-authorized-target.test",
+  "status_code": 200,
+  "elapsed_ms": 184.2,
+  "headers": {
+    "Server": "nginx/1.18.0",
+    "X-Powered-By": "PHP/7.4.3",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Set-Cookie": "wordpress_logged_in_abc123=1; path=/",
+    "Link": "<https://blog.example-authorized-target.test/wp-json/>; rel=\"https://api.w.org/\""
+  },
+  "body": "<html><head><meta name=\"generator\" content=\"WordPress 5.8\" /></head><body><div id=\"content\" class=\"wp-content\">Welcome</div><script src=\"/wp-includes/js/jquery/jquery-3.6.0.min.js\"></script></body></html>",
+  "tls": {
+    "protocol_version": "TLSv1.2",
+    "subject": "CN=blog.example-authorized-target.test",
+    "issuer": "CN=R3, O=Let's Encrypt, C=US",
+    "not_after": "Dec 02 12:00:00 2026 GMT"
+  }
+}

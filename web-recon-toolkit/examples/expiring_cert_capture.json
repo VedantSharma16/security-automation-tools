@@ -1,0 +1,16 @@
+{
+  "url": "https://api.example-authorized-target.test",
+  "status_code": 200,
+  "elapsed_ms": 92.5,
+  "headers": {
+    "Server": "Apache",
+    "Content-Type": "application/json"
+  },
+  "body": "{\"status\": \"ok\"}",
+  "tls": {
+    "protocol_version": "TLSv1.2",
+    "subject": "CN=api.example-authorized-target.test",
+    "issuer": "CN=R3, O=Let's Encrypt, C=US",
+    "not_after": "Aug 25 12:00:00 2026 GMT"
+  }
+}

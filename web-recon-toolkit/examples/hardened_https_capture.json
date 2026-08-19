@@ -1,0 +1,22 @@
+{
+  "url": "https://app.example-authorized-target.test",
+  "status_code": 200,
+  "elapsed_ms": 61.0,
+  "headers": {
+    "Content-Type": "text/html; charset=UTF-8",
+    "Content-Security-Policy": "default-src 'self'",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "no-referrer",
+    "Permissions-Policy": "geolocation=(), microphone=()",
+    "Set-Cookie": "session=abc123; Secure; HttpOnly; SameSite=Strict; Path=/"
+  },
+  "body": "<html><body>Hardened app shell</body></html>",
+  "tls": {
+    "protocol_version": "TLSv1.3",
+    "subject": "CN=app.example-authorized-target.test",
+    "issuer": "CN=R3, O=Let's Encrypt, C=US",
+    "not_after": "Feb 10 12:00:00 2027 GMT"
+  }
+}
