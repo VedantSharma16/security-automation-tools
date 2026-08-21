@@ -1,0 +1,60 @@
+{
+  "cves": [
+    {
+      "id": "CVE-2021-44228",
+      "name": "Log4Shell",
+      "cvss": 10.0,
+      "severity": "critical",
+      "known_exploited": true,
+      "description": "Remote code execution in Apache Log4j via unsafe JNDI lookups in logged input."
+    },
+    {
+      "id": "CVE-2023-34362",
+      "name": "MOVEit Transfer SQL Injection",
+      "cvss": 9.8,
+      "severity": "critical",
+      "known_exploited": true,
+      "description": "SQL injection in MOVEit Transfer leading to unauthenticated remote code execution, mass-exploited by the Cl0p group."
+    },
+    {
+      "id": "CVE-2020-1472",
+      "name": "Zerologon",
+      "cvss": 10.0,
+      "severity": "critical",
+      "known_exploited": true,
+      "description": "Elevation of privilege in the Netlogon Remote Protocol allowing domain controller takeover."
+    },
+    {
+      "id": "CVE-2017-0144",
+      "name": "EternalBlue",
+      "cvss": 8.1,
+      "severity": "high",
+      "known_exploited": true,
+      "description": "Remote code execution in SMBv1 exploited by WannaCry and NotPetya."
+    },
+    {
+      "id": "CVE-2022-30190",
+      "name": "Follina",
+      "cvss": 7.8,
+      "severity": "high",
+      "known_exploited": true,
+      "description": "Remote code execution via the Microsoft Support Diagnostic Tool (MSDT) URL protocol handler."
+    },
+    {
+      "id": "CVE-2019-0708",
+      "name": "BlueKeep",
+      "cvss": 9.8,
+      "severity": "critical",
+      "known_exploited": false,
+      "description": "Wormable remote code execution in Remote Desktop Services (RDP)."
+    },
+    {
+      "id": "CVE-2014-0160",
+      "name": "Heartbleed",
+      "cvss": 7.5,
+      "severity": "high",
+      "known_exploited": false,
+      "description": "Out-of-bounds read in OpenSSL's TLS heartbeat extension exposing process memory."
+    }
+  ]
+}

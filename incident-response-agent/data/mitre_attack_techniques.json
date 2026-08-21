@@ -1,0 +1,64 @@
+{
+  "techniques": [
+    {
+      "id": "T1566",
+      "name": "Phishing",
+      "tactic": "Initial Access",
+      "keywords": ["phishing", "email", "attachment", "malicious link", "spearphishing", "lure", "credential harvesting"]
+    },
+    {
+      "id": "T1110",
+      "name": "Brute Force",
+      "tactic": "Credential Access",
+      "keywords": ["brute force", "failed login", "password spray", "credential stuffing", "many failed attempts", "rdp"]
+    },
+    {
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "tactic": "Defense Evasion",
+      "keywords": ["valid account", "compromised credentials", "unusual login", "impossible travel", "shared account"]
+    },
+    {
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "tactic": "Command and Control",
+      "keywords": ["beacon", "c2", "command and control", "callback", "https callback", "malleable c2"]
+    },
+    {
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "tactic": "Persistence",
+      "keywords": ["scheduled task", "cron", "at job", "persistence mechanism", "schtasks"]
+    },
+    {
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "tactic": "Execution",
+      "keywords": ["powershell", "cmd.exe", "bash", "script execution", "encoded command", "obfuscated script"]
+    },
+    {
+      "id": "T1486",
+      "name": "Data Encrypted for Impact",
+      "tactic": "Impact",
+      "keywords": ["ransomware", "encrypted files", "ransom note", "extension renamed", "shadow copies deleted"]
+    },
+    {
+      "id": "T1210",
+      "name": "Exploitation of Remote Services",
+      "tactic": "Lateral Movement",
+      "keywords": ["exploit", "vulnerability", "cve", "unpatched", "remote code execution", "rce"]
+    },
+    {
+      "id": "T1021",
+      "name": "Remote Services",
+      "tactic": "Lateral Movement",
+      "keywords": ["rdp", "ssh", "smb", "psexec", "winrm", "lateral movement"]
+    },
+    {
+      "id": "T1041",
+      "name": "Exfiltration Over C2 Channel",
+      "tactic": "Exfiltration",
+      "keywords": ["exfiltration", "data staged", "large outbound transfer", "archive uploaded", "data exfil"]
+    }
+  ]
+}

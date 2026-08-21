@@ -1,0 +1,15 @@
+Incident #4471 — EDR + SIEM correlation alert
+
+A workstation in the finance VLAN (HOST-FIN-014) executed an obfuscated
+PowerShell command shortly after a user reported receiving a suspicious
+email attachment. Outbound HTTPS beacon traffic was observed to
+45.155.205.28 at regular 60-second intervals, consistent with a C2
+check-in pattern. Shortly after, EDR flagged a scheduled task created for
+persistence, and a large archive was staged in a temp directory before an
+outbound transfer to cdn-analytics-sync.net.
+
+Separately, the vulnerability management team confirmed the host was still
+unpatched for CVE-2021-44228 in a bundled logging library, and the
+timeline suggests initial access may have exploited it via a
+Log4Shell-vulnerable internal service reachable from the workstation's
+subnet.

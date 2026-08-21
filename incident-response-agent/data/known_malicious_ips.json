@@ -1,0 +1,34 @@
+{
+  "indicators": [
+    {
+      "ip": "185.220.101.1",
+      "confidence": "high",
+      "source": "demo-feed",
+      "notes": "Known Tor exit node repeatedly linked to credential-stuffing campaigns."
+    },
+    {
+      "ip": "45.155.205.28",
+      "confidence": "high",
+      "source": "demo-feed",
+      "notes": "Cobalt Strike C2 rendezvous point observed in prior incidents."
+    },
+    {
+      "ip": "194.61.24.102",
+      "confidence": "medium",
+      "source": "demo-feed",
+      "notes": "Bulk scanning host associated with opportunistic RDP brute forcing."
+    },
+    {
+      "ip": "91.219.236.18",
+      "confidence": "high",
+      "source": "demo-feed",
+      "notes": "Emotet distribution infrastructure, still occasionally reactivated."
+    },
+    {
+      "ip": "23.129.64.216",
+      "confidence": "low",
+      "source": "demo-feed",
+      "notes": "Shared Tor relay; low-confidence, high false-positive rate on its own."
+    }
+  ]
+}

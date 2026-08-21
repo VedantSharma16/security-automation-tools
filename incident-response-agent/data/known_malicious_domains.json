@@ -1,0 +1,28 @@
+{
+  "indicators": [
+    {
+      "domain": "secure-login-update.com",
+      "confidence": "high",
+      "source": "demo-feed",
+      "notes": "Credential-phishing kit impersonating a Microsoft 365 login page."
+    },
+    {
+      "domain": "cdn-analytics-sync.net",
+      "confidence": "high",
+      "source": "demo-feed",
+      "notes": "Observed as a Cobalt Strike malleable C2 domain front."
+    },
+    {
+      "domain": "docs-share-file.online",
+      "confidence": "medium",
+      "source": "demo-feed",
+      "notes": "Recurs in payload-hosting for malspam campaigns delivering IcedID."
+    },
+    {
+      "domain": "windows-update-service.top",
+      "confidence": "high",
+      "source": "demo-feed",
+      "notes": "Fake update lure used to drop a loader in a prior engagement."
+    }
+  ]
+}
