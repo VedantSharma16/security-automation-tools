@@ -1,0 +1,68 @@
+{
+  "_comment": "Small curated MITRE ATT&CK (Enterprise) subset, each with short match keywords rather than full-text retrieval — this project's RAG counterpart lives in ioc-triage-assistant. For production use, sync against https://github.com/mitre-attack/attack-stix-data.",
+  "techniques": [
+    {
+      "id": "T1059.001",
+      "name": "PowerShell",
+      "tactic": "Execution",
+      "keywords": ["powershell", "encoded", "-enc"],
+      "text": "Adversaries may abuse PowerShell for execution, often with base64-encoded commands to evade static detection."
+    },
+    {
+      "id": "T1003",
+      "name": "OS Credential Dumping",
+      "tactic": "Credential Access",
+      "keywords": ["mimikatz", "lsass", "credential dump", "secretsdump"],
+      "text": "Adversaries may dump credentials from LSASS memory or the SAM database using tools like Mimikatz to obtain account hashes and passwords."
+    },
+    {
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "tactic": "Command and Control",
+      "keywords": ["certutil", "curl", "wget", "invoke-webrequest", "download"],
+      "text": "Adversaries may transfer additional tools into a compromised environment, often via HTTP downloads disguised as legitimate traffic."
+    },
+    {
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "tactic": "Persistence",
+      "keywords": ["schtasks", "scheduled task", "new-scheduledtask", "cron"],
+      "text": "Adversaries may abuse task scheduling to establish persistence after initial access."
+    },
+    {
+      "id": "T1490",
+      "name": "Inhibit System Recovery",
+      "tactic": "Impact",
+      "keywords": ["vssadmin", "shadow copies", "wbadmin", "backup deletion"],
+      "text": "Adversaries, commonly ransomware operators, delete shadow copies and backups to prevent recovery before encrypting data."
+    },
+    {
+      "id": "T1136",
+      "name": "Create Account",
+      "tactic": "Persistence",
+      "keywords": ["net user", "net localgroup", "/add", "account manipulation"],
+      "text": "Adversaries may create or modify local accounts and group membership to maintain access."
+    },
+    {
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "tactic": "Defense Evasion",
+      "keywords": ["baseline deviation", "unusual login", "valid account", "off-baseline"],
+      "text": "Adversaries may use compromised credentials for legitimate accounts to blend in with normal activity, often visible as a login from an unexpected host."
+    },
+    {
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "tactic": "Command and Control",
+      "keywords": ["c2", "beacon", "command and control", "check-in"],
+      "text": "Adversaries may use application-layer protocols to blend command-and-control traffic with legitimate network traffic."
+    },
+    {
+      "id": "T1090",
+      "name": "Proxy",
+      "tactic": "Command and Control",
+      "keywords": ["tor", "exit node", "proxy", "relay"],
+      "text": "Adversaries may route C2 traffic through Tor exit nodes or other proxies to obscure its true source or destination."
+    }
+  ]
+}

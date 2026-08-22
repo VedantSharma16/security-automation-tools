@@ -1,0 +1,9 @@
+{
+  "_comment": "Synthetic per-user 'normal login host' baselines for demo/offline use.",
+  "users": {
+    "jsmith": ["WKS-0231", "WKS-0198"],
+    "asingh": ["FIN-SQL01"],
+    "svc_backup": ["DC01"],
+    "mchen": ["WEB-PROD03"]
+  }
+}

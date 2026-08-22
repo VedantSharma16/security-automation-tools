@@ -1,0 +1,10 @@
+{
+  "_comment": "Synthetic asset inventory for demo/offline use.",
+  "hosts": {
+    "DC01": { "criticality": "critical", "owner": "IT Infrastructure", "environment": "production" },
+    "FIN-SQL01": { "criticality": "critical", "owner": "Finance", "environment": "production" },
+    "WEB-PROD03": { "criticality": "high", "owner": "Platform Engineering", "environment": "production" },
+    "WKS-0231": { "criticality": "low", "owner": "IT Helpdesk", "environment": "corporate" },
+    "WKS-0198": { "criticality": "low", "owner": "IT Helpdesk", "environment": "corporate" }
+  }
+}

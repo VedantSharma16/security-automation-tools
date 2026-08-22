@@ -1,0 +1,9 @@
+{
+  "incident_id": "INC-2042",
+  "hostname": "WKS-0231",
+  "user": "jsmith",
+  "process_name": "outlook.exe",
+  "command_line": "outlook.exe",
+  "indicators": [],
+  "description": "Low-priority SIEM rule fired on a routine interactive login; no other suspicious activity reported."
+}
