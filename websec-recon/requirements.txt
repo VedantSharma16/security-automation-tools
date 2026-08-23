@@ -1,0 +1,2 @@
+# websec-recon uses only the Python standard library (socket, ssl, urllib,
+# concurrent.futures) — no third-party runtime dependencies.
