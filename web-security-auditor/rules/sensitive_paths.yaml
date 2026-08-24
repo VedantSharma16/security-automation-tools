@@ -1,0 +1,68 @@
+# Common sensitive paths to probe for during a web recon pass.
+#
+# Each entry is fetched relative to the target's origin. A 200 response with
+# a non-empty body is reported at the configured severity. This is a small,
+# conservative starter list — extend it per-engagement, but keep requests to
+# targets you are authorized to test.
+#
+# Fields:
+#   id            unique finding identifier
+#   path          path to request, relative to the origin
+#   severity      one of: info, low, medium, high, critical
+#   description   human-readable rationale
+#   positive      (optional) true if a 200 here is actually good news
+
+- id: exposed-git-head
+  path: /.git/HEAD
+  severity: critical
+  description: An exposed .git directory typically allows reconstructing the
+    full source history, including past secrets committed and later removed.
+
+- id: exposed-git-config
+  path: /.git/config
+  severity: critical
+  description: Exposed .git/config can leak remote repository URLs and, in
+    some setups, embedded credentials.
+
+- id: exposed-dotenv
+  path: /.env
+  severity: critical
+  description: .env files conventionally hold database credentials, API keys,
+    and signing secrets.
+
+- id: exposed-aws-credentials
+  path: /.aws/credentials
+  severity: critical
+  description: Exposed AWS credentials file would grant direct cloud account
+    access to anyone who requests this path.
+
+- id: exposed-wp-config-backup
+  path: /wp-config.php.bak
+  severity: high
+  description: A backup of WordPress's config file commonly leaks database
+    credentials and secret keys.
+
+- id: exposed-config-backup
+  path: /config.php.bak
+  severity: high
+  description: A stray backup of an application config file can leak secrets
+    that were never meant to be served.
+
+- id: exposed-server-status
+  path: /server-status
+  severity: medium
+  description: Apache's mod_status page, if left open, discloses internal
+    request details, client IPs, and requested URLs.
+
+- id: exposed-ds-store
+  path: /.DS_Store
+  severity: low
+  description: A leaked .DS_Store file discloses the directory's file listing,
+    aiding further recon.
+
+- id: security-txt-present
+  path: /.well-known/security.txt
+  severity: info
+  positive: true
+  description: A security.txt file is present, giving researchers a defined
+    disclosure contact. This is a positive signal, not a vulnerability.

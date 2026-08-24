@@ -1,0 +1,47 @@
+{
+  "target": "https://pypi.org",
+  "generated_at": "2026-08-24T09:09:52.270598+00:00",
+  "findings": [
+    {
+      "id": "tls-cert-expiring-soon",
+      "title": "TLS certificate expires in 26 day(s)",
+      "severity": "MEDIUM",
+      "owasp_category": "A02:2021 Cryptographic Failures",
+      "description": "The certificate is within the renewal warning window.",
+      "evidence": "notAfter=Sep 19 23:34:02 2026 GMT",
+      "remediation": "Renew the certificate before expiry; consider automated renewal (e.g. ACME/Let's Encrypt)."
+    },
+    {
+      "id": "security-txt-present",
+      "title": "Informational: /.well-known/security.txt",
+      "severity": "INFO",
+      "owasp_category": "A05:2021 Security Misconfiguration",
+      "description": "A security.txt file is present, giving researchers a defined disclosure contact. This is a positive signal, not a vulnerability.",
+      "evidence": "GET /.well-known/security.txt -> 200; Contact: mailto:security@pypi.org Expires: 2027-08-23T03:02:25.000Z Preferred-Languages: en Canonical: https://pypi.org/.well-known/security.txt Policy: https:/",
+      "remediation": ""
+    },
+    {
+      "id": "robots-txt-interesting-disallow",
+      "title": "robots.txt discloses potentially sensitive paths",
+      "severity": "INFO",
+      "owasp_category": "A05:2021 Security Misconfiguration",
+      "description": "robots.txt lists Disallow entries that look like internal/admin paths. This is not a vulnerability by itself \u2014 robots.txt is advisory, not access control \u2014 but it's useful reconnaissance for narrowing where else to look.",
+      "evidence": "/admin/",
+      "remediation": "Enforce access control server-side; don't rely on robots.txt to hide paths."
+    }
+  ],
+  "summary": {
+    "total_findings": 3,
+    "by_severity": {
+      "INFO": 2,
+      "LOW": 0,
+      "MEDIUM": 1,
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "risk_score": 15,
+    "highest_severity": "MEDIUM",
+    "risk_rating": "medium"
+  },
+  "narrative": "[offline heuristic summary \u2014 set ANTHROPIC_API_KEY for LLM-generated analysis] https://pypi.org: risk rating MEDIUM (15/100, 3 findings). No critical/high findings; remaining issues are lower severity. Recommended next steps: remediate critical/high findings first (credential and TLS exposure before header hardening), then re-run this audit to confirm fixes before considering the target reassessed."
+}
