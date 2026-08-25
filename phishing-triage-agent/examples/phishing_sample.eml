@@ -1,0 +1,44 @@
+From: "PayPal Security" <alerts@paypa1-secure.com>
+To: victim@example-corp.com
+Subject: Urgent Action Required: Unusual Activity Detected On Your Account
+Date: Mon, 24 Aug 2026 09:14:02 -0400
+Return-Path: <bounce@mail-relay-9931.ru>
+Reply-To: paypal-support@paypa1-secure.com
+Message-ID: <7f2a9e10-0001@paypa1-secure.com>
+Authentication-Results: mx.example-corp.com;
+    spf=fail smtp.mailfrom=paypa1-secure.com;
+    dkim=fail header.d=paypa1-secure.com;
+    dmarc=fail (p=REJECT sp=REJECT dis=REJECT) header.from=paypa1-secure.com
+Content-Type: multipart/mixed; boundary="BOUNDARY123"
+MIME-Version: 1.0
+
+--BOUNDARY123
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Dear Customer,
+
+We have detected unusual activity on your account. Your account has been
+suspended pending verification. You must confirm your identity within 24
+hours to avoid suspension, or your account will be closed permanently.
+
+Please verify your account immediately by visiting the secure link below
+and confirming your password:
+
+https://paypa1-secure.com/login/verify?session=88213
+
+Failure to comply will result in permanent account closure. This is an
+urgent action required on your part.
+
+We have also attached your account statement for your records.
+
+Regards,
+PayPal Account Security Team
+
+--BOUNDARY123
+Content-Type: application/octet-stream; name="account_statement.pdf.exe"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="account_statement.pdf.exe"
+
+VGhpcyBpcyBhIHN5bnRoZXRpYyBkZW1vIGF0dGFjaG1lbnQgcGF5bG9hZCBmb3IgdGVzdGluZy4=
+--BOUNDARY123--

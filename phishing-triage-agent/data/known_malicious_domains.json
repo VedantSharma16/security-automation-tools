@@ -1,0 +1,5 @@
+{
+  "paypa1-secure.com": "Synthetic demo IOC: credential-phishing domain impersonating PayPal.",
+  "secure-appleid-verify.com": "Synthetic demo IOC: Apple ID phishing kit landing page.",
+  "docusign-view-file.net": "Synthetic demo IOC: DocuSign-themed malicious document delivery."
+}

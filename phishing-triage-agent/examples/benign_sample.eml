@@ -1,0 +1,24 @@
+From: "Priya Natarajan" <priya.natarajan@example-corp.com>
+To: victim@example-corp.com
+Subject: Notes from this morning's standup
+Date: Mon, 24 Aug 2026 10:02:17 -0400
+Return-Path: <priya.natarajan@example-corp.com>
+Message-ID: <c19f7d20-0002@example-corp.com>
+Authentication-Results: mx.example-corp.com;
+    spf=pass smtp.mailfrom=example-corp.com;
+    dkim=pass header.d=example-corp.com;
+    dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=example-corp.com
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+
+Hi team,
+
+Quick recap from standup: the log-triage detector work is on track for
+review Thursday, and the RAG index refresh is scheduled for next sprint.
+No blockers reported. I'll share the updated roadmap doc in Confluence
+this afternoon.
+
+Let me know if you have questions.
+
+Thanks,
+Priya
