@@ -1,0 +1,149 @@
+{
+  "target": "https://example-shop.test/",
+  "score": 0,
+  "grade": "F",
+  "counts": {
+    "critical": 1,
+    "high": 3,
+    "medium": 7,
+    "low": 2,
+    "info": 2
+  },
+  "findings": [
+    {
+      "id": "cors-reflects-arbitrary-origin",
+      "category": "cors",
+      "severity": "critical",
+      "title": "CORS policy reflects an arbitrary Origin",
+      "description": "The server echoed back an unrecognized probe origin ('https://untrusted-probe.httpsec-auditor.example') verbatim in Access-Control-Allow-Origin with credentials allowed. This effectively allows any website to make cross-origin requests to this endpoint and read the response using the victim's session cookies.",
+      "remediation": "Validate the Origin header against an explicit allowlist server-side before reflecting it; never reflect unknown origins, especially alongside Allow-Credentials.",
+      "evidence": "probe Origin: https://untrusted-probe.httpsec-auditor.example -> Access-Control-Allow-Origin: https://untrusted-probe.httpsec-auditor.example"
+    },
+    {
+      "id": "header-missing-hsts",
+      "category": "headers",
+      "severity": "high",
+      "title": "Missing Strict-Transport-Security header",
+      "description": "Without HSTS, browsers will happily follow a plain-HTTP link or attacker-injected redirect to this host, enabling SSL-stripping attacks on the first request.",
+      "remediation": "Send `Strict-Transport-Security: max-age=31536000; includeSubDomains` (and consider preloading).",
+      "evidence": ""
+    },
+    {
+      "id": "cookie-missing-secure",
+      "category": "cookies",
+      "severity": "high",
+      "title": "Cookie 'sessionid' is missing the Secure flag",
+      "description": "Without Secure, the cookie can be sent over a plaintext HTTP connection, exposing it to network eavesdroppers.",
+      "remediation": "Add `Secure` to the Set-Cookie attributes for 'sessionid'.",
+      "evidence": "sessionid=9f8e7d6c5b4a; Path=/"
+    },
+    {
+      "id": "cookie-missing-httponly",
+      "category": "cookies",
+      "severity": "high",
+      "title": "Cookie 'sessionid' is missing the HttpOnly flag",
+      "description": "Without HttpOnly, client-side JavaScript (including injected via XSS) can read this cookie's value.",
+      "remediation": "Add `HttpOnly` to the Set-Cookie attributes for 'sessionid' unless a script genuinely needs to read it.",
+      "evidence": "sessionid=9f8e7d6c5b4a; Path=/"
+    },
+    {
+      "id": "header-missing-csp",
+      "category": "headers",
+      "severity": "medium",
+      "title": "Missing Content-Security-Policy header",
+      "description": "Without a CSP, the browser has no defense-in-depth against injected scripts if an XSS bug exists elsewhere on the page.",
+      "remediation": "Define a restrictive CSP (start with `default-src 'self'`) and tighten per-resource.",
+      "evidence": ""
+    },
+    {
+      "id": "header-missing-clickjacking-protection",
+      "category": "headers",
+      "severity": "medium",
+      "title": "No clickjacking protection (X-Frame-Options / CSP frame-ancestors)",
+      "description": "The page can be embedded in a hidden/opaque iframe on an attacker's site, enabling clickjacking.",
+      "remediation": "Send `Content-Security-Policy: frame-ancestors 'self'` (preferred) or `X-Frame-Options: DENY`/`SAMEORIGIN`.",
+      "evidence": ""
+    },
+    {
+      "id": "cookie-missing-samesite",
+      "category": "cookies",
+      "severity": "medium",
+      "title": "Cookie 'sessionid' has no SameSite attribute",
+      "description": "Without SameSite, the cookie is sent on cross-site requests, widening exposure to CSRF.",
+      "remediation": "Add `SameSite=Lax` (or `Strict` for auth cookies) to 'sessionid'.",
+      "evidence": "sessionid=9f8e7d6c5b4a; Path=/"
+    },
+    {
+      "id": "cookie-missing-secure",
+      "category": "cookies",
+      "severity": "medium",
+      "title": "Cookie 'cart_id' is missing the Secure flag",
+      "description": "Without Secure, the cookie can be sent over a plaintext HTTP connection, exposing it to network eavesdroppers.",
+      "remediation": "Add `Secure` to the Set-Cookie attributes for 'cart_id'.",
+      "evidence": "cart_id=42; Path=/"
+    },
+    {
+      "id": "cookie-missing-httponly",
+      "category": "cookies",
+      "severity": "medium",
+      "title": "Cookie 'cart_id' is missing the HttpOnly flag",
+      "description": "Without HttpOnly, client-side JavaScript (including injected via XSS) can read this cookie's value.",
+      "remediation": "Add `HttpOnly` to the Set-Cookie attributes for 'cart_id' unless a script genuinely needs to read it.",
+      "evidence": "cart_id=42; Path=/"
+    },
+    {
+      "id": "cookie-missing-samesite",
+      "category": "cookies",
+      "severity": "medium",
+      "title": "Cookie 'cart_id' has no SameSite attribute",
+      "description": "Without SameSite, the cookie is sent on cross-site requests, widening exposure to CSRF.",
+      "remediation": "Add `SameSite=Lax` (or `Strict` for auth cookies) to 'cart_id'.",
+      "evidence": "cart_id=42; Path=/"
+    },
+    {
+      "id": "tls-cert-expiring-soon",
+      "category": "tls",
+      "severity": "medium",
+      "title": "TLS certificate expires in 8 day(s)",
+      "description": "The certificate is approaching its expiry date.",
+      "remediation": "Renew the certificate before it expires to avoid a browser trust failure.",
+      "evidence": "notAfter=Sep  3 00:00:00 2026 GMT"
+    },
+    {
+      "id": "header-missing-xcto",
+      "category": "headers",
+      "severity": "low",
+      "title": "Missing or invalid X-Content-Type-Options header",
+      "description": "Without `nosniff`, browsers may MIME-sniff a response into an executable content type.",
+      "remediation": "Send `X-Content-Type-Options: nosniff` on all responses.",
+      "evidence": ""
+    },
+    {
+      "id": "header-missing-referrer-policy",
+      "category": "headers",
+      "severity": "low",
+      "title": "Missing Referrer-Policy header",
+      "description": "Without an explicit policy, full URLs (potentially containing tokens/paths) may leak to third parties via the Referer header.",
+      "remediation": "Send `Referrer-Policy: strict-origin-when-cross-origin` or stricter.",
+      "evidence": ""
+    },
+    {
+      "id": "header-missing-permissions-policy",
+      "category": "headers",
+      "severity": "info",
+      "title": "Missing Permissions-Policy header",
+      "description": "Powerful browser features (camera, microphone, geolocation, etc.) are not explicitly restricted.",
+      "remediation": "Send a `Permissions-Policy` header disabling features the site doesn't use.",
+      "evidence": ""
+    },
+    {
+      "id": "header-info-disclosure-server",
+      "category": "headers",
+      "severity": "info",
+      "title": "Server header discloses server/framework details",
+      "description": "`Server: nginx/1.18.0` helps an attacker fingerprint the stack and target version-specific exploits.",
+      "remediation": "Suppress or genericize the `Server` header at the web server/proxy layer.",
+      "evidence": "nginx/1.18.0"
+    }
+  ]
+}
