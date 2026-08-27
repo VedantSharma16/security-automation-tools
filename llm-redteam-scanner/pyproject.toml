@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-redteam-scanner"
+version = "0.1.0"
+description = "Automated adversarial prompt-injection / jailbreak test battery for LLM-backed applications, mapped to the OWASP Top 10 for LLM Applications."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+llm-redteam = "llm_redteam.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["llm_redteam*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
