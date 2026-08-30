@@ -1,0 +1,31 @@
+{
+  "https": {
+    "ok": true,
+    "status_code": 200,
+    "elapsed_ms": 142.3,
+    "headers": {
+      "Server": "nginx/1.18.0 (Ubuntu)",
+      "X-Powered-By": "Express",
+      "Content-Type": "text/html; charset=utf-8",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": "true",
+      "Set-Cookie": "session=abc123; Path=/"
+    }
+  },
+  "http": {
+    "ok": true,
+    "status_code": 301,
+    "elapsed_ms": 40.1,
+    "headers": {
+      "Location": "https://example.com/",
+      "Server": "nginx/1.18.0 (Ubuntu)"
+    }
+  },
+  "tls": {
+    "ok": true,
+    "version": "TLSv1.2",
+    "not_after": "Sep 30 12:00:00 2026 GMT",
+    "days_until_expiry": 30,
+    "issuer": "commonName=R3, organizationName=Let's Encrypt"
+  }
+}
