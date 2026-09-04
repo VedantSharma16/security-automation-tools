@@ -1,0 +1,43 @@
+{
+  "ips": {
+    "185.220.101.45": {
+      "confidence": "high",
+      "source": "internal-blocklist",
+      "notes": "Known Tor exit node associated with credential-stuffing campaigns."
+    },
+    "45.155.205.233": {
+      "confidence": "high",
+      "source": "internal-blocklist",
+      "notes": "C2 infrastructure previously observed serving Cobalt Strike beacons."
+    },
+    "194.61.24.102": {
+      "confidence": "medium",
+      "source": "osint-feed",
+      "notes": "Repeated SSH brute-force source reported by multiple honeypots."
+    }
+  },
+  "domains": {
+    "update-service-cdn.net": {
+      "confidence": "high",
+      "source": "internal-blocklist",
+      "notes": "Typosquat domain used to stage second-stage payloads."
+    },
+    "secure-login-verify.com": {
+      "confidence": "high",
+      "source": "osint-feed",
+      "notes": "Phishing kit domain impersonating enterprise SSO portals."
+    }
+  },
+  "hashes": {
+    "44d88612fea8a8f36de82e1278abb02f": {
+      "confidence": "high",
+      "source": "internal-blocklist",
+      "notes": "EICAR test file hash — used here as a stand-in for a known-malicious sample."
+    },
+    "5d41402abc4b2a76b9719d911017c592": {
+      "confidence": "medium",
+      "source": "osint-feed",
+      "notes": "Associated with a commodity credential-stealer dropper."
+    }
+  }
+}

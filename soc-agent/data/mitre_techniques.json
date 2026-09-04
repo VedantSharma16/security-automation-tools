@@ -1,0 +1,50 @@
+[
+  {
+    "id": "T1110",
+    "name": "Brute Force",
+    "tactic": "Credential Access",
+    "description": "Adversaries attempt repeated authentication attempts against a service to guess or crack valid credentials."
+  },
+  {
+    "id": "T1078",
+    "name": "Valid Accounts",
+    "tactic": "Defense Evasion, Persistence, Privilege Escalation, Initial Access",
+    "description": "Adversaries obtain and abuse credentials of existing accounts to gain initial access, persistence, or elevated privilege."
+  },
+  {
+    "id": "T1068",
+    "name": "Exploitation for Privilege Escalation",
+    "tactic": "Privilege Escalation",
+    "description": "Adversaries exploit software vulnerabilities or misconfigurations to elevate privileges, e.g. unexpected root/sudo activity."
+  },
+  {
+    "id": "T1059",
+    "name": "Command and Scripting Interpreter",
+    "tactic": "Execution",
+    "description": "Adversaries abuse shells and scripting interpreters (bash, PowerShell, Python) to execute commands or scripts."
+  },
+  {
+    "id": "T1053",
+    "name": "Scheduled Task/Job",
+    "tactic": "Execution, Persistence, Privilege Escalation",
+    "description": "Adversaries use task scheduling utilities (cron, at, Task Scheduler) to execute code on a schedule or as a persistence mechanism."
+  },
+  {
+    "id": "T1071",
+    "name": "Application Layer Protocol",
+    "tactic": "Command and Control",
+    "description": "Adversaries use common application layer protocols to blend C2 traffic with legitimate network activity."
+  },
+  {
+    "id": "T1105",
+    "name": "Ingress Tool Transfer",
+    "tactic": "Command and Control",
+    "description": "Adversaries transfer tools or files from an external system into the compromised environment, e.g. via curl/wget."
+  },
+  {
+    "id": "T1071.001",
+    "name": "Web Protocols",
+    "tactic": "Command and Control",
+    "description": "Adversaries use HTTP/HTTPS to communicate with C2 infrastructure to blend with normal web traffic."
+  }
+]

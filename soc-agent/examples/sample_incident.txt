@@ -1,0 +1,15 @@
+Alert: Multiple SSH authentication failures followed by a successful login
+and suspicious post-login activity on host web-prod-03 (10.20.4.17).
+
+Correlated auth.log excerpt:
+Sep  3 02:11:04 web-prod-03 sshd[1023]: Failed password for invalid user admin from 194.61.24.102 port 51422 ssh2
+Sep  3 02:11:07 web-prod-03 sshd[1023]: Failed password for invalid user admin from 194.61.24.102 port 51430 ssh2
+Sep  3 02:11:11 web-prod-03 sshd[1023]: Failed password for root from 194.61.24.102 port 51440 ssh2
+Sep  3 02:11:15 web-prod-03 sshd[1023]: Failed password for root from 194.61.24.102 port 51448 ssh2
+Sep  3 02:11:20 web-prod-03 sshd[1023]: Failed password for root from 194.61.24.102 port 51460 ssh2
+Sep  3 02:11:44 web-prod-03 sshd[1099]: Accepted password for root from 194.61.24.102 port 51502 ssh2
+Sep  3 02:13:02 web-prod-03 sudo:      root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/usr/bin/systemctl stop firewalld
+
+Outbound connection was subsequently observed to 45.155.205.233, and the
+following file hash was recovered from a dropped binary in /tmp:
+44d88612fea8a8f36de82e1278abb02f

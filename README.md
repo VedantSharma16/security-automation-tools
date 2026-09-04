@@ -8,6 +8,7 @@ engineering (RAG, LLM tooling, agentic pipelines).
 
 | Project | Description |
 |---|---|
+| [`soc-agent/`](soc-agent/) | Autonomous, tool-calling SOC analyst agent: given a raw incident, an LLM drives a multi-step investigation loop (extract IOCs, check threat intel, correlate auth logs, inspect processes, resolve ATT&CK techniques) and concludes by calling a `submit_final_report` tool. Includes a fully deterministic offline planner that exercises the same tools without any API key, so the agent is testable and runnable with zero network access. |
 | [`log-triage-assistant/`](log-triage-assistant/) | Parses auth-log style syslogs, runs correlated rule-based intrusion detectors (brute force, credential compromise, privilege escalation, persistence), scores overall risk, and produces an incident-response report with an optional LLM-generated analyst narrative grounded strictly in the structured findings. Fully tested with pytest; works offline by default. |
 | [`ioc-triage-assistant/`](ioc-triage-assistant/) | Extracts IOCs from raw alerts (with defang handling and false-positive filtering), enriches them against a local threat-intel feed, retrieves relevant MITRE ATT&CK context via a from-scratch TF-IDF/cosine RAG index, and generates a triage summary via an LLM or a deterministic offline fallback. |
 | [`process_threat_hunter/`](process_threat_hunter/) | Rule-based process scanner with MITRE ATT&CK mapping, baseline drift detection, JSON reporting, and a pytest suite. A professional rewrite of the earlier `system_logger.py` experiment below. |
