@@ -1,0 +1,40 @@
+{
+  "_comment": "Synthetic demo asset/CMDB inventory for the agent's get_asset_criticality tool.",
+  "assets": [
+    {
+      "host": "web-prod-03",
+      "criticality": "crown_jewel",
+      "environment": "production",
+      "owner": "platform-team",
+      "notes": "Public-facing checkout service; handles payment data."
+    },
+    {
+      "host": "db-prod-01",
+      "criticality": "crown_jewel",
+      "environment": "production",
+      "owner": "data-team",
+      "notes": "Primary customer database, PCI scope."
+    },
+    {
+      "host": "app-staging-02",
+      "criticality": "standard",
+      "environment": "staging",
+      "owner": "platform-team",
+      "notes": "Pre-production staging environment, synthetic data only."
+    },
+    {
+      "host": "corp-laptop-114",
+      "criticality": "high",
+      "environment": "corporate",
+      "owner": "it-ops",
+      "notes": "Engineering laptop with VPN and source code access."
+    },
+    {
+      "host": "printer-svc-09",
+      "criticality": "low",
+      "environment": "corporate",
+      "owner": "it-ops",
+      "notes": "Networked print server, no sensitive data."
+    }
+  ]
+}

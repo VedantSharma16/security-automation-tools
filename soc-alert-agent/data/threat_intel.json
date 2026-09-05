@@ -1,0 +1,45 @@
+{
+  "_comment": "Synthetic demo threat-intel feed for the agent's lookup_ioc_reputation tool. Not live intelligence.",
+  "indicators": [
+    {
+      "value": "203.0.113.77",
+      "category": "ipv4",
+      "known_malicious": true,
+      "confidence": "high",
+      "source": "demo-feed",
+      "notes": "C2 infrastructure observed in prior ransomware precursor activity."
+    },
+    {
+      "value": "198.51.100.23",
+      "category": "ipv4",
+      "known_malicious": true,
+      "confidence": "medium",
+      "source": "demo-feed",
+      "notes": "Shared hosting IP with a history of scanning and credential-stuffing activity."
+    },
+    {
+      "value": "185.220.101.1",
+      "category": "ipv4",
+      "known_malicious": true,
+      "confidence": "high",
+      "source": "demo-feed",
+      "notes": "Known Tor exit node used to proxy C2 traffic."
+    },
+    {
+      "value": "evil-c2-panel.com",
+      "category": "domain",
+      "known_malicious": true,
+      "confidence": "high",
+      "source": "demo-feed",
+      "notes": "Domain matching a known C2 panel naming pattern."
+    },
+    {
+      "value": "203.0.113.201",
+      "category": "ipv4",
+      "known_malicious": false,
+      "confidence": "high",
+      "source": "demo-feed",
+      "notes": "Corporate VPN egress IP, allowlisted."
+    }
+  ]
+}

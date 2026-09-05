@@ -1,0 +1,65 @@
+{
+  "_comment": "Small curated MITRE ATT&CK (Enterprise) technique subset for the agent's search_attack_technique tool. Not the full ATT&CK dataset.",
+  "techniques": [
+    {
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "tactic": "Command and Control",
+      "keywords": ["beacon", "beaconing", "c2", "callback", "http", "https", "outbound", "periodic", "check-in", "checkin"]
+    },
+    {
+      "id": "T1090",
+      "name": "Proxy",
+      "tactic": "Command and Control",
+      "keywords": ["tor", "proxy", "relay", "vps", "exit node"]
+    },
+    {
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "tactic": "Execution",
+      "keywords": ["powershell", "cmd.exe", "bash", "script", "interpreter", "encoded command"]
+    },
+    {
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "tactic": "Execution, Persistence, Privilege Escalation",
+      "keywords": ["scheduled task", "cron", "schtasks", "at job", "persistence"]
+    },
+    {
+      "id": "T1003",
+      "name": "OS Credential Dumping",
+      "tactic": "Credential Access",
+      "keywords": ["lsass", "mimikatz", "credential dump", "sam database", "secretsdump"]
+    },
+    {
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "tactic": "Defense Evasion, Persistence, Privilege Escalation, Initial Access",
+      "keywords": ["valid account", "stolen credential", "compromised account", "legitimate login"]
+    },
+    {
+      "id": "T1110",
+      "name": "Brute Force",
+      "tactic": "Credential Access",
+      "keywords": ["brute force", "password spray", "credential stuffing", "failed login", "repeated login attempts"]
+    },
+    {
+      "id": "T1046",
+      "name": "Network Service Discovery",
+      "tactic": "Discovery",
+      "keywords": ["port scan", "nmap", "masscan", "service discovery", "network scan"]
+    },
+    {
+      "id": "T1486",
+      "name": "Data Encrypted for Impact",
+      "tactic": "Impact",
+      "keywords": ["ransomware", "encrypt", "extortion", "file encryption"]
+    },
+    {
+      "id": "T1041",
+      "name": "Exfiltration Over C2 Channel",
+      "tactic": "Exfiltration",
+      "keywords": ["exfiltration", "data transfer", "upload", "outbound data"]
+    }
+  ]
+}

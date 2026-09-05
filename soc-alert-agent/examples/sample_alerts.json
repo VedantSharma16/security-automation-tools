@@ -1,0 +1,58 @@
+[
+  {
+    "alert_id": "ALT-1001",
+    "timestamp": "2026-09-04T02:14:11Z",
+    "source": "EDR",
+    "host": "web-prod-03",
+    "user": "svc_web",
+    "src_ip": "203.0.113.77",
+    "description": "Outbound beacon-like connection to 203.0.113.77 on port 4444 every 60 seconds, initiated by powershell.exe running an encoded command on web-prod-03.",
+    "raw_indicators": {
+      "ip": ["203.0.113.77"],
+      "domain": [],
+      "process": ["powershell.exe"]
+    }
+  },
+  {
+    "alert_id": "ALT-1002",
+    "timestamp": "2026-09-04T02:16:45Z",
+    "source": "Firewall",
+    "host": "web-prod-03",
+    "user": "svc_web",
+    "src_ip": "203.0.113.77",
+    "description": "Firewall logged a large outbound data transfer from web-prod-03 to 203.0.113.77 shortly after an earlier beacon connection was observed.",
+    "raw_indicators": {
+      "ip": ["203.0.113.77"],
+      "domain": [],
+      "process": []
+    }
+  },
+  {
+    "alert_id": "ALT-1003",
+    "timestamp": "2026-09-04T09:02:03Z",
+    "source": "IDS",
+    "host": "printer-svc-09",
+    "user": null,
+    "src_ip": "10.10.5.4",
+    "description": "A single port scan probe from 10.10.5.4 touched three closed ports on printer-svc-09; no follow-up traffic observed.",
+    "raw_indicators": {
+      "ip": ["10.10.5.4"],
+      "domain": [],
+      "process": []
+    }
+  },
+  {
+    "alert_id": "ALT-1004",
+    "timestamp": "2026-09-04T13:47:29Z",
+    "source": "IAM",
+    "host": "corp-laptop-114",
+    "user": "j.morales",
+    "src_ip": "203.0.113.201",
+    "description": "Repeated failed login attempts for user j.morales from 203.0.113.201 followed by a successful login from the same source.",
+    "raw_indicators": {
+      "ip": ["203.0.113.201"],
+      "domain": [],
+      "process": []
+    }
+  }
+]
