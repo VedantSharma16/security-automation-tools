@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "codesec-agent"
+version = "0.1.0"
+description = "Agentic static-analysis code review: an LLM tool-use loop grounded in a deterministic AST-based vulnerability rule engine."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+codesec-agent = "codesec_agent.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["codesec_agent*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
