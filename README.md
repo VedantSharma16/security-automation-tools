@@ -8,6 +8,7 @@ engineering (RAG, LLM tooling, agentic pipelines).
 
 | Project | Description |
 |---|---|
+| [`pentest-report-agent/`](pentest-report-agent/) | Merges Nmap scan output with manually-recorded findings, dedupes/scores/prioritizes them via an agentic tool-use pipeline (a deterministic offline agent, or a real Claude tool-use loop over the same tools), and renders a client-ready pentest report with an executive summary. Fully tested with pytest; works offline by default. |
 | [`log-triage-assistant/`](log-triage-assistant/) | Parses auth-log style syslogs, runs correlated rule-based intrusion detectors (brute force, credential compromise, privilege escalation, persistence), scores overall risk, and produces an incident-response report with an optional LLM-generated analyst narrative grounded strictly in the structured findings. Fully tested with pytest; works offline by default. |
 | [`ioc-triage-assistant/`](ioc-triage-assistant/) | Extracts IOCs from raw alerts (with defang handling and false-positive filtering), enriches them against a local threat-intel feed, retrieves relevant MITRE ATT&CK context via a from-scratch TF-IDF/cosine RAG index, and generates a triage summary via an LLM or a deterministic offline fallback. |
 | [`process_threat_hunter/`](process_threat_hunter/) | Rule-based process scanner with MITRE ATT&CK mapping, baseline drift detection, JSON reporting, and a pytest suite. A professional rewrite of the earlier `system_logger.py` experiment below. |
