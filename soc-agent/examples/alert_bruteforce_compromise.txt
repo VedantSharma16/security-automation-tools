@@ -1,0 +1,9 @@
+Security alert: SSH authentication anomaly on host db-prod-02.
+
+Multiple failed password attempts for user 'admin' from 203.0.113.77 were
+recorded over a 90 second window, immediately followed by a successful
+login for the same user and source IP. No prior successful logins from
+this source have been seen on this host in the last 30 days.
+
+Please investigate for a possible brute-force attack that resulted in
+account compromise.

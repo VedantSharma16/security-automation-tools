@@ -1,0 +1,20 @@
+{
+  "known_good_processes": [
+    "sshd",
+    "systemd",
+    "bash",
+    "nginx",
+    "cron",
+    "dockerd",
+    "python3",
+    "init",
+    "networkd",
+    "kswapd0",
+    "chronyd",
+    "rsyslogd",
+    "sudo",
+    "explorer.exe",
+    "svchost.exe",
+    "services.exe"
+  ]
+}

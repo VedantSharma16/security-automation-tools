@@ -1,0 +1,60 @@
+{
+  "techniques": [
+    {
+      "id": "T1110",
+      "name": "Brute Force",
+      "tactic": "Credential Access",
+      "keywords": ["brute", "bruteforce", "password", "guessing", "repeated", "failed", "spray", "stuffing"],
+      "text": "Adversaries may use brute force techniques to gain access to accounts by repeatedly attempting login with guessed or leaked credentials."
+    },
+    {
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "tactic": "Defense Evasion",
+      "keywords": ["valid", "accepted", "successful", "login", "authenticated", "credential", "account"],
+      "text": "Adversaries may obtain and abuse credentials of existing accounts to gain access, maintain persistence, and blend in with normal traffic."
+    },
+    {
+      "id": "T1021",
+      "name": "Remote Services",
+      "tactic": "Lateral Movement",
+      "keywords": ["ssh", "rdp", "remote", "vpn", "winrm", "lateral"],
+      "text": "Adversaries may use valid accounts to log into remote services such as SSH or RDP to move laterally within an environment."
+    },
+    {
+      "id": "T1098",
+      "name": "Account Manipulation",
+      "tactic": "Persistence",
+      "keywords": ["newuser", "addgroup", "sudoers", "privilege", "escalation", "admin", "role", "permission"],
+      "text": "Adversaries may add, modify, or use existing accounts and their permissions to maintain access to a victim environment."
+    },
+    {
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "tactic": "Persistence",
+      "keywords": ["cron", "schtasks", "scheduled", "task", "job", "atjob", "persistence"],
+      "text": "Adversaries may abuse task scheduling functionality to execute code at system startup or on a scheduled basis for persistence."
+    },
+    {
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "tactic": "Execution",
+      "keywords": ["powershell", "bash", "cmd", "script", "shell", "execute", "encoded"],
+      "text": "Adversaries may abuse command and script interpreters to execute commands, scripts, or binaries on a compromised host."
+    },
+    {
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "tactic": "Command and Control",
+      "keywords": ["beacon", "c2", "callback", "http", "dns", "outbound", "exfil", "relay"],
+      "text": "Adversaries may communicate with a compromised host using application layer protocols to blend C2 traffic with existing network traffic."
+    },
+    {
+      "id": "T1486",
+      "name": "Data Encrypted for Impact",
+      "tactic": "Impact",
+      "keywords": ["ransomware", "encrypted", "ransom", "extension", "shadow", "recovery"],
+      "text": "Adversaries may encrypt data on target systems to interrupt availability and extort the victim organization for a ransom payment."
+    }
+  ]
+}

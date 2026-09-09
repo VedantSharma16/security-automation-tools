@@ -1,0 +1,32 @@
+{
+  "indicators": [
+    {
+      "value": "203.0.113.77",
+      "category": "ipv4",
+      "source": "demo-feed",
+      "confidence": "high",
+      "notes": "Repeated credential-stuffing source flagged by an upstream sharing feed on 2026-08-14."
+    },
+    {
+      "value": "198.51.100.9",
+      "category": "ipv4",
+      "source": "demo-feed",
+      "confidence": "high",
+      "notes": "Tor exit node associated with prior C2 beaconing in this environment."
+    },
+    {
+      "value": "evil-c2-relay.net",
+      "category": "domain",
+      "source": "demo-feed",
+      "confidence": "medium",
+      "notes": "Domain observed in phishing kit infrastructure; registered 11 days before first sighting."
+    },
+    {
+      "value": "44d88612fea8a8f36de82e1278abb02f",
+      "category": "md5",
+      "source": "demo-feed",
+      "confidence": "high",
+      "notes": "MD5 of a known commodity ransomware dropper (public sample corpus)."
+    }
+  ]
+}

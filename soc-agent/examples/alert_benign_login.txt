@@ -1,0 +1,3 @@
+Routine alert: successful VPN login for user 'jsmith' from 198.51.100.20,
+a recognized corporate egress IP used by the remote-office network. No
+failed attempts were recorded for this user in the preceding 24 hours.

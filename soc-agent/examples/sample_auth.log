@@ -1,0 +1,8 @@
+Sep  9 03:11:02 db-prod-02 sshd[1421]: Failed password for admin from 203.0.113.77 port 51501 ssh2
+Sep  9 03:11:14 db-prod-02 sshd[1421]: Failed password for admin from 203.0.113.77 port 51502 ssh2
+Sep  9 03:11:29 db-prod-02 sshd[1421]: Failed password for admin from 203.0.113.77 port 51503 ssh2
+Sep  9 03:11:41 db-prod-02 sshd[1421]: Failed password for admin from 203.0.113.77 port 51504 ssh2
+Sep  9 03:11:55 db-prod-02 sshd[1421]: Failed password for admin from 203.0.113.77 port 51505 ssh2
+Sep  9 03:12:20 db-prod-02 sshd[1421]: Accepted password for admin from 203.0.113.77 port 51506 ssh2
+Sep  9 03:12:20 db-prod-02 sshd[1421]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Sep  9 03:14:02 db-prod-02 sudo: admin : TTY=pts/0 ; PWD=/home/admin ; USER=root ; COMMAND=/bin/bash
