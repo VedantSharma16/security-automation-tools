@@ -1,0 +1,9 @@
+SIEM Alert #48213 - EDR/Sysmon correlation
+Host: WKSTN-FIN-042 (10.20.4.17)
+
+A dropped file was quarantined by EDR with hash
+44d88612fea8a8f36de82e1278abb02f (MD5), matching a known malware family in
+our threat intel feed.
+
+An outbound HTTPS beacon was observed to 185[.]220[.]101[.]1 on port 443,
+followed by periodic check-ins to hxxps://evil-c2-panel[.]com/checkin.
