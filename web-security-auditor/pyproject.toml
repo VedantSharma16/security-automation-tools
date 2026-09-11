@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "webaudit"
+version = "0.1.0"
+description = "Read-only HTTP security audit: headers, cookies, CORS, TLS, and information disclosure."
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+
+[project.scripts]
+web-security-auditor = "webaudit.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["webaudit*"]
