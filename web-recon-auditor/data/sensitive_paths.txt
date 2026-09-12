@@ -1,0 +1,18 @@
+# One path per line. Lines starting with # are ignored.
+# severity|path|title
+critical|.git/config|Exposed .git/config (full repo history may be clonable)
+critical|.git/HEAD|Exposed .git/HEAD (source control metadata leaked)
+critical|.env|Exposed .env file (often contains live secrets/credentials)
+critical|.aws/credentials|Exposed AWS credentials file
+high|id_rsa|Exposed private SSH key
+high|config.php.bak|Backup of application config (may contain DB credentials)
+high|wp-config.php.bak|Backup of WordPress config (may contain DB credentials)
+high|.svn/entries|Exposed Subversion metadata (source leak)
+medium|backup.zip|Unprotected backup archive
+medium|backup.tar.gz|Unprotected backup archive
+medium|phpinfo.php|phpinfo() output exposed (detailed server fingerprinting)
+medium|server-status|Apache mod_status exposed (live connection/request info)
+medium|.DS_Store|Exposed macOS .DS_Store (can leak file/directory listing)
+low|admin|Admin panel reachable without prior knowledge of its path
+low|administrator|Admin panel reachable without prior knowledge of its path
+low|wp-login.php|WordPress login reachable (confirms CMS + enables brute force)
