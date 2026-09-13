@@ -1,0 +1,23 @@
+{
+  "web01": {
+    "ip": "10.0.0.15",
+    "os": "Ubuntu 22.04",
+    "role": "public-facing web server",
+    "criticality": "high",
+    "owner": "platform-team"
+  },
+  "db02": {
+    "ip": "10.0.0.22",
+    "os": "Ubuntu 22.04",
+    "role": "primary database",
+    "criticality": "critical",
+    "owner": "data-team"
+  },
+  "ws-jdoe": {
+    "ip": "10.0.0.101",
+    "os": "Windows 11",
+    "role": "employee workstation",
+    "criticality": "low",
+    "owner": "jdoe"
+  }
+}

@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "incident-response-agent"
+version = "0.1.0"
+description = "An agentic, tool-calling loop that investigates security alerts against a simulated SOC environment."
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.30.0"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+ir-agent = "agent.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["agent*"]

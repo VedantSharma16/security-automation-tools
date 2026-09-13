@@ -1,0 +1,8 @@
+{
+  "id": "ALRT-2026-0913-002",
+  "title": "Login from new device fingerprint on ws-jdoe",
+  "host": "ws-jdoe",
+  "detected_at": "2026-09-12T09:02:15Z",
+  "source": "EDR: new-device-login",
+  "description": "User jdoe logged in with a device fingerprint not seen in the last 30 days."
+}

@@ -8,6 +8,7 @@ engineering (RAG, LLM tooling, agentic pipelines).
 
 | Project | Description |
 |---|---|
+| [`incident-response-agent/`](incident-response-agent/) | Agentic (ReAct-style) tool-calling loop that investigates a security alert step by step — searching logs, checking threat intel, and inspecting processes — deciding its own next action each turn rather than following a fixed pipeline, until it reaches a verdict. Ships a deterministic offline planner (fully testable, no API key needed) alongside a live Claude tool-use planner. |
 | [`log-triage-assistant/`](log-triage-assistant/) | Parses auth-log style syslogs, runs correlated rule-based intrusion detectors (brute force, credential compromise, privilege escalation, persistence), scores overall risk, and produces an incident-response report with an optional LLM-generated analyst narrative grounded strictly in the structured findings. Fully tested with pytest; works offline by default. |
 | [`ioc-triage-assistant/`](ioc-triage-assistant/) | Extracts IOCs from raw alerts (with defang handling and false-positive filtering), enriches them against a local threat-intel feed, retrieves relevant MITRE ATT&CK context via a from-scratch TF-IDF/cosine RAG index, and generates a triage summary via an LLM or a deterministic offline fallback. |
 | [`process_threat_hunter/`](process_threat_hunter/) | Rule-based process scanner with MITRE ATT&CK mapping, baseline drift detection, JSON reporting, and a pytest suite. A professional rewrite of the earlier `system_logger.py` experiment below. |
