@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "http-security-auditor"
+version = "0.1.0"
+description = "Passive HTTP security posture auditor: security headers, cookie flags, CORS misconfiguration, and TLS certificate health, with a weighted score/grade and an LLM-backed remediation narrative."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+http-audit = "http_audit.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["http_audit*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
