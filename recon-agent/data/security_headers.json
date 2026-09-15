@@ -1,0 +1,32 @@
+[
+  {
+    "header": "strict-transport-security",
+    "description": "HSTS forces browsers to use HTTPS for this host, mitigating SSL-stripping attacks.",
+    "severity": "high"
+  },
+  {
+    "header": "content-security-policy",
+    "description": "CSP restricts which sources scripts/styles/frames may load from, mitigating XSS impact.",
+    "severity": "high"
+  },
+  {
+    "header": "x-frame-options",
+    "description": "Prevents the page from being embedded in a hostile iframe (clickjacking).",
+    "severity": "medium"
+  },
+  {
+    "header": "x-content-type-options",
+    "description": "Prevents browsers from MIME-sniffing a response away from its declared content type.",
+    "severity": "low"
+  },
+  {
+    "header": "referrer-policy",
+    "description": "Controls how much referrer information is leaked to other origins on navigation.",
+    "severity": "low"
+  },
+  {
+    "header": "permissions-policy",
+    "description": "Restricts which browser features/APIs (camera, geolocation, etc.) the page may use.",
+    "severity": "low"
+  }
+]
