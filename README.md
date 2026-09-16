@@ -1,5 +1,7 @@
 # security-automation-tools
 
+[![CI](https://github.com/VedantSharma16/security-automation-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/VedantSharma16/security-automation-tools/actions/workflows/ci.yml)
+
 A collection of security automation tools, built incrementally while working
 toward incident response / red-blue team roles, alongside applied AI
 engineering (RAG, LLM tooling, agentic pipelines).
@@ -16,3 +18,11 @@ engineering (RAG, LLM tooling, agentic pipelines).
 | [`system_logger.py`](system_logger.py) | Early experiment: dumps running processes to a log file and greps them against a static keyword list. Superseded by `process_threat_hunter/`, kept here for history. |
 
 More tools will be added incrementally, each with its own README and tests.
+
+## Continuous Integration
+
+Every push and pull request runs the full pytest suite for all four Python
+projects (`ioc-triage-assistant`, `log-triage-assistant`,
+`process_threat_hunter`, `recon-agent`) on Python 3.10 and 3.12 via
+[GitHub Actions](.github/workflows/ci.yml) — 135 tests total, no network
+calls, nothing real to configure. See the badge above for current status.
