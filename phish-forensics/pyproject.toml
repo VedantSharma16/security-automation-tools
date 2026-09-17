@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phish-forensics"
+version = "0.1.0"
+description = "Offline-first phishing email triage: header/auth-chain analysis, IOC extraction, and brand-impersonation detection for IR analysts."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+phish-forensics = "phish_forensics.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["phish_forensics*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

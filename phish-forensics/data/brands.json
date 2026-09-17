@@ -1,0 +1,21 @@
+{
+  "paypal": ["paypal.com"],
+  "microsoft": ["microsoft.com", "office.com", "live.com", "outlook.com"],
+  "apple": ["apple.com", "icloud.com"],
+  "google": ["google.com", "gmail.com"],
+  "amazon": ["amazon.com"],
+  "netflix": ["netflix.com"],
+  "bankofamerica": ["bankofamerica.com"],
+  "wellsfargo": ["wellsfargo.com"],
+  "chase": ["chase.com"],
+  "docusign": ["docusign.com", "docusign.net"],
+  "dhl": ["dhl.com"],
+  "fedex": ["fedex.com"],
+  "ups": ["ups.com"],
+  "linkedin": ["linkedin.com"],
+  "facebook": ["facebook.com", "fb.com"],
+  "irs": ["irs.gov"],
+  "adobe": ["adobe.com"],
+  "coinbase": ["coinbase.com"],
+  "americanexpress": ["americanexpress.com", "aexp.com"]
+}
