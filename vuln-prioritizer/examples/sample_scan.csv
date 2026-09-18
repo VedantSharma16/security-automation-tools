@@ -1,0 +1,9 @@
+host,ip,port,cve_id,plugin_name,severity,cvss_score,description
+web01.example.com,10.0.1.10,443,CVE-2021-44228,Apache Log4j2 RCE (Log4Shell),critical,10.0,Remote code execution via JNDI lookup in Log4j2 message logging.
+db01.example.com,10.0.1.20,3389,CVE-2019-0708,Remote Desktop Services RCE (BlueKeep),critical,9.8,Pre-authentication RCE in RDP via Remote Desktop Services.
+legacy-app.example.com,10.0.2.15,445,CVE-2017-0144,SMBv1 Remote Code Execution (EternalBlue),critical,9.3,RCE in SMBv1 exploited by WannaCry and NotPetya.
+fileserver02.example.com,10.0.1.30,445,CVE-2020-1472,Netlogon Elevation of Privilege (Zerologon),critical,10.0,Elevation of privilege in the Netlogon Remote Protocol.
+workstation-17.example.com,10.0.3.40,3389,CVE-2021-34527,Windows Print Spooler RCE (PrintNightmare),high,8.8,RCE in the Windows Print Spooler service.
+web01.example.com,10.0.1.10,443,CVE-2023-99999,Example Low-Risk Info Disclosure,low,3.1,Minor information disclosure with no known public exploit.
+db01.example.com,10.0.1.20,1433,CVE-2022-12345,Example Medium Severity Misconfiguration,medium,5.5,Vulnerable TLS configuration allows weak cipher negotiation.
+legacy-app.example.com,10.0.2.15,80,,Outdated jQuery Library Detected,info,,Deprecated jQuery version with known but low-impact issues.

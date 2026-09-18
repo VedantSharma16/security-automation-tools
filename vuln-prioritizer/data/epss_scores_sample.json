@@ -1,0 +1,15 @@
+{
+  "_note": "Hand-curated sample subset of EPSS scores, used for offline demo/testing. Field shapes mirror the real FIRST.org EPSS feed (https://www.first.org/epss/) but this file is a static snapshot, not a live sync. Point vuln_prioritizer at a downloaded copy of the real feed via --epss for production use.",
+  "scores": {
+    "CVE-2021-44228": { "epss": 0.97, "percentile": 0.999 },
+    "CVE-2019-0708": { "epss": 0.94, "percentile": 0.996 },
+    "CVE-2017-0144": { "epss": 0.94, "percentile": 0.995 },
+    "CVE-2020-1472": { "epss": 0.93, "percentile": 0.994 },
+    "CVE-2021-34527": { "epss": 0.89, "percentile": 0.99 },
+    "CVE-2021-26855": { "epss": 0.95, "percentile": 0.997 },
+    "CVE-2023-23397": { "epss": 0.91, "percentile": 0.992 },
+    "CVE-2022-30190": { "epss": 0.86, "percentile": 0.985 },
+    "CVE-2021-21972": { "epss": 0.78, "percentile": 0.97 },
+    "CVE-2018-13379": { "epss": 0.72, "percentile": 0.96 }
+  }
+}

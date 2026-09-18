@@ -1,0 +1,68 @@
+{
+  "_note": "Hand-curated sample subset of CISA's Known Exploited Vulnerabilities catalog, used for offline demo/testing. Field shapes mirror the real feed (https://www.cisa.gov/known-exploited-vulnerabilities-catalog) but this file is NOT a live sync and should not be used for real remediation decisions. Point vuln_prioritizer at a downloaded copy of the real catalog via --kev for production use.",
+  "vulnerabilities": [
+    {
+      "cveID": "CVE-2021-44228",
+      "vendorProject": "Apache",
+      "product": "Log4j2",
+      "vulnerabilityName": "Apache Log4j2 Remote Code Execution Vulnerability (Log4Shell)",
+      "dateAdded": "2021-12-10",
+      "dueDate": "2021-12-24",
+      "requiredAction": "Apply updates per vendor instructions."
+    },
+    {
+      "cveID": "CVE-2019-0708",
+      "vendorProject": "Microsoft",
+      "product": "Windows",
+      "vulnerabilityName": "Microsoft Windows Remote Desktop Services Remote Code Execution Vulnerability (BlueKeep)",
+      "dateAdded": "2021-11-03",
+      "dueDate": "2021-11-17",
+      "requiredAction": "Apply updates per vendor instructions."
+    },
+    {
+      "cveID": "CVE-2017-0144",
+      "vendorProject": "Microsoft",
+      "product": "Windows SMB",
+      "vulnerabilityName": "Microsoft Windows SMBv1 Remote Code Execution Vulnerability (EternalBlue)",
+      "dateAdded": "2021-11-03",
+      "dueDate": "2021-11-17",
+      "requiredAction": "Apply updates per vendor instructions or disable SMBv1."
+    },
+    {
+      "cveID": "CVE-2020-1472",
+      "vendorProject": "Microsoft",
+      "product": "Windows Netlogon",
+      "vulnerabilityName": "Microsoft Windows Netlogon Elevation of Privilege Vulnerability (Zerologon)",
+      "dateAdded": "2021-11-03",
+      "dueDate": "2021-11-17",
+      "requiredAction": "Apply updates per vendor instructions."
+    },
+    {
+      "cveID": "CVE-2021-34527",
+      "vendorProject": "Microsoft",
+      "product": "Windows Print Spooler",
+      "vulnerabilityName": "Microsoft Windows Print Spooler Remote Code Execution Vulnerability (PrintNightmare)",
+      "dateAdded": "2021-07-08",
+      "dueDate": "2021-07-22",
+      "requiredAction": "Apply updates per vendor instructions."
+    },
+    {
+      "cveID": "CVE-2021-26855",
+      "vendorProject": "Microsoft",
+      "product": "Exchange Server",
+      "vulnerabilityName": "Microsoft Exchange Server Server-Side Request Forgery Vulnerability (ProxyLogon)",
+      "dateAdded": "2021-11-03",
+      "dueDate": "2021-11-17",
+      "requiredAction": "Apply updates per vendor instructions."
+    },
+    {
+      "cveID": "CVE-2023-23397",
+      "vendorProject": "Microsoft",
+      "product": "Outlook",
+      "vulnerabilityName": "Microsoft Outlook Elevation of Privilege Vulnerability",
+      "dateAdded": "2023-03-15",
+      "dueDate": "2023-04-04",
+      "requiredAction": "Apply updates per vendor instructions."
+    }
+  ]
+}

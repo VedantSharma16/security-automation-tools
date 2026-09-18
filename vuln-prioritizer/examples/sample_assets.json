@@ -1,0 +1,32 @@
+[
+  {
+    "hostname": "web01.example.com",
+    "criticality": "critical",
+    "internet_facing": true,
+    "tags": ["public-web", "customer-facing"]
+  },
+  {
+    "hostname": "db01.example.com",
+    "criticality": "critical",
+    "internet_facing": false,
+    "tags": ["database", "pii"]
+  },
+  {
+    "hostname": "fileserver02.example.com",
+    "criticality": "medium",
+    "internet_facing": false,
+    "tags": ["internal-file-share"]
+  },
+  {
+    "hostname": "legacy-app.example.com",
+    "criticality": "high",
+    "internet_facing": true,
+    "tags": ["legacy", "public-web"]
+  },
+  {
+    "hostname": "workstation-17.example.com",
+    "criticality": "low",
+    "internet_facing": false,
+    "tags": ["end-user-device"]
+  }
+]

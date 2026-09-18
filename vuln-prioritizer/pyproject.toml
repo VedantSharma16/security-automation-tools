@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vuln-prioritizer"
+version = "0.1.0"
+description = "Score vulnerability scan findings against EPSS, CISA KEV, and asset criticality to produce a defensible, ranked patch-priority report."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+vulnprioritize = "vuln_prioritizer.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["vuln_prioritizer*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
