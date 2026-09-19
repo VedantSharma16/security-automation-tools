@@ -27,12 +27,14 @@ from dataclasses import dataclass, field
 from recon_agent.dns_recon import enumerate_subdomains, resolve_host
 from recon_agent.http_recon import fetch_headers, fetch_tls_certificate
 from recon_agent.port_scan import COMMON_PORTS, scan_ports
+from recon_agent.subdomain_takeover import scan_for_takeover
 
 DEFAULT_MODEL = "claude-sonnet-5"
 
 TOOL_REGISTRY: dict[str, str] = {
     "dns_lookup": "Resolve the target hostname to an IPv4 address.",
     "subdomain_enum": "Brute-force a small wordlist of common subdomain labels against the target's DNS.",
+    "subdomain_takeover_scan": "Check discovered subdomains' CNAME records against known dangling-CNAME takeover fingerprints (GitHub Pages, S3, Heroku, ...).",
     "port_scan": "TCP connect-scan common ports on the resolved host and grab banners.",
     "http_headers": "Fetch HTTP(S) response headers from the target and audit security headers.",
     "tls_cert": "Fetch and inspect the target's TLS certificate (expiry, issuer).",
@@ -43,8 +45,8 @@ FINISH = "finish"
 PLANNER_SYSTEM_PROMPT = (
     "You are a reconnaissance planning agent supporting an AUTHORIZED security "
     "assessment. You may only choose from the provided tool registry; every tool "
-    "is read-only (DNS lookups, a TCP connect-scan, and standard HTTP/TLS "
-    "requests) - none of them modify or exploit the target. Given the target and "
+    "is read-only (DNS lookups, CNAME fingerprint checks, a TCP connect-scan, and "
+    "standard HTTP/TLS requests) - none of them modify or exploit the target. Given the target and "
     "the results gathered so far, respond with ONLY strict JSON of the form "
     '{"action": "<tool_name or \\"finish\\">", "reason": "<one sentence>"}. '
     "Never choose a tool already present in the results. Choose \"finish\" once "
@@ -90,6 +92,10 @@ def _default_policy(session: ReconSession, allow_subdomain_enum: bool) -> str | 
 
     if allow_subdomain_enum and "subdomain_enum" not in ran:
         return "subdomain_enum"
+    if allow_subdomain_enum and "subdomain_enum" in ran and "subdomain_takeover_scan" not in ran:
+        subdomains = session.get("subdomain_enum")
+        if subdomains and subdomains.get("count", 0) > 0:
+            return "subdomain_takeover_scan"
     if "port_scan" not in ran:
         return "port_scan"
     if "http_headers" not in ran:
@@ -171,6 +177,12 @@ def _execute(
     if tool == "subdomain_enum":
         results = enumerate_subdomains(session.target, wordlist, limit=subdomain_limit)
         return {"found": [r.to_dict() for r in results], "count": len(results)}
+
+    if tool == "subdomain_takeover_scan":
+        subdomains = session.get("subdomain_enum")
+        names = [entry["subdomain"] for entry in subdomains["found"]] if subdomains else []
+        results = scan_for_takeover(names, timeout=timeout)
+        return {"checked": len(names), "flagged": [r.to_dict() for r in results]}
 
     if tool == "port_scan":
         ip = session.get("dns_lookup")["ip"]

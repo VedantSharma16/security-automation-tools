@@ -13,7 +13,7 @@ import json
 import os
 import sys
 
-from recon_agent.agent import COMMON_PORTS, Planner, run_recon
+from recon_agent.agent import COMMON_PORTS, TOOL_REGISTRY, Planner, run_recon
 from recon_agent.dns_recon import load_wordlist
 from recon_agent.narrative import NarrativeWriter
 from recon_agent.report import build_report
@@ -66,7 +66,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--subdomain-limit", type=int, default=None, help="Only try the first N wordlist entries.")
     parser.add_argument("--ports", default=None, help="Comma-separated port list to scan (default: a common-services list).")
     parser.add_argument("--timeout", type=float, default=3.0, help="Per-probe network timeout in seconds.")
-    parser.add_argument("--max-steps", type=int, default=5, help="Maximum number of tool calls the agent may make.")
+    parser.add_argument("--max-steps", type=int, default=len(TOOL_REGISTRY), help="Maximum number of tool calls the agent may make.")
     parser.add_argument("--json-out", help="Write the full JSON report to this path in addition to printing it.")
     parser.add_argument("--json", action="store_true", help="Print the full report as JSON instead of the human-readable view.")
     return parser

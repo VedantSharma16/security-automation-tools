@@ -1,0 +1,86 @@
+[
+  {
+    "provider": "GitHub Pages",
+    "cname_pattern": "github.io",
+    "fingerprint_text": "There isn't a GitHub Pages site here.",
+    "severity": "high"
+  },
+  {
+    "provider": "Heroku",
+    "cname_pattern": "herokuapp.com",
+    "fingerprint_text": "There's nothing here, yet.",
+    "severity": "high"
+  },
+  {
+    "provider": "AWS S3",
+    "cname_pattern": "s3.amazonaws.com",
+    "fingerprint_text": "The specified bucket does not exist",
+    "severity": "critical"
+  },
+  {
+    "provider": "Shopify",
+    "cname_pattern": "myshopify.com",
+    "fingerprint_text": "Sorry, this shop is currently unavailable.",
+    "severity": "high"
+  },
+  {
+    "provider": "Fastly",
+    "cname_pattern": "fastly.net",
+    "fingerprint_text": "Fastly error: unknown domain",
+    "severity": "medium"
+  },
+  {
+    "provider": "Unbounce",
+    "cname_pattern": "unbouncepages.com",
+    "fingerprint_text": "The requested URL was not found on this server",
+    "severity": "high"
+  },
+  {
+    "provider": "Netlify",
+    "cname_pattern": "netlify.app",
+    "fingerprint_text": "Not Found - Request ID",
+    "severity": "high"
+  },
+  {
+    "provider": "Surge.sh",
+    "cname_pattern": "surge.sh",
+    "fingerprint_text": "project not found",
+    "severity": "medium"
+  },
+  {
+    "provider": "Tumblr",
+    "cname_pattern": "domains.tumblr.com",
+    "fingerprint_text": "Whatever you were looking for doesn't currently exist at this address",
+    "severity": "medium"
+  },
+  {
+    "provider": "WordPress.com",
+    "cname_pattern": "wordpress.com",
+    "fingerprint_text": "Do you want to register",
+    "severity": "medium"
+  },
+  {
+    "provider": "Zendesk",
+    "cname_pattern": "zendesk.com",
+    "fingerprint_text": "Help Center Closed",
+    "severity": "medium"
+  },
+  {
+    "provider": "Pantheon",
+    "cname_pattern": "pantheonsite.io",
+    "fingerprint_text": "The gods are wise",
+    "severity": "high"
+  },
+  {
+    "provider": "StatusPage",
+    "cname_pattern": "statuspage.io",
+    "fingerprint_text": "You are being",
+    "severity": "medium"
+  },
+  {
+    "provider": "Cargo Collective",
+    "cname_pattern": "cargocollective.com",
+    "fingerprint_text": "404 Not Found",
+    "severity": "medium"
+  }
+]

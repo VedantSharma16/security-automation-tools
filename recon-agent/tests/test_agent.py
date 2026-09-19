@@ -6,6 +6,7 @@ from recon_agent.agent import Planner, ReconSession, TOOL_REGISTRY, run_recon
 from recon_agent.dns_recon import DnsResult, SubdomainResult
 from recon_agent.http_recon import HttpResult, TlsResult
 from recon_agent.port_scan import PortResult
+from recon_agent.subdomain_takeover import TakeoverResult
 
 
 def _patch_all(monkeypatch, *, dns_resolved=True):
@@ -14,6 +15,19 @@ def _patch_all(monkeypatch, *, dns_resolved=True):
     monkeypatch.setattr(
         "recon_agent.agent.enumerate_subdomains",
         lambda domain, words, limit=None: [SubdomainResult(subdomain="www.example.com", ip="1.2.3.5")],
+    )
+    monkeypatch.setattr(
+        "recon_agent.agent.scan_for_takeover",
+        lambda subdomains, timeout=5.0: [
+            TakeoverResult(
+                subdomain="www.example.com",
+                status="possible",
+                provider="GitHub Pages",
+                cname="www.example.com.github.io",
+                confirmed=False,
+                detail="test fixture",
+            )
+        ],
     )
     monkeypatch.setattr(
         "recon_agent.agent.scan_ports",
@@ -46,7 +60,16 @@ def test_offline_run_skips_subdomain_enum_when_disabled(monkeypatch):
     _patch_all(monkeypatch, dns_resolved=True)
     run = run_recon("example.com", allow_subdomain_enum=False, wordlist=[], max_steps=10)
     assert "subdomain_enum" not in run.session.ran()
-    assert run.session.ran() == set(TOOL_REGISTRY) - {"subdomain_enum"}
+    assert "subdomain_takeover_scan" not in run.session.ran()
+    assert run.session.ran() == set(TOOL_REGISTRY) - {"subdomain_enum", "subdomain_takeover_scan"}
+
+
+def test_offline_run_skips_takeover_scan_when_no_subdomains_found(monkeypatch):
+    _patch_all(monkeypatch, dns_resolved=True)
+    monkeypatch.setattr("recon_agent.agent.enumerate_subdomains", lambda domain, words, limit=None: [])
+    run = run_recon("example.com", allow_subdomain_enum=True, wordlist=["www"], max_steps=10)
+    assert "subdomain_enum" in run.session.ran()
+    assert "subdomain_takeover_scan" not in run.session.ran()
 
 
 def test_max_steps_caps_tool_calls(monkeypatch):

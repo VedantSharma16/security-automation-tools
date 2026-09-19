@@ -43,13 +43,14 @@ Tool registry (all read-only, standard-library only):
 |---|---|
 | `dns_lookup` | Resolve the target hostname to an IPv4 address. |
 | `subdomain_enum` | Brute-force a small wordlist of common subdomain labels against the target's DNS. |
+| `subdomain_takeover_scan` | Check each discovered subdomain's CNAME chain against a database of known-vulnerable third-party providers (GitHub Pages, S3, Heroku, Shopify, ...) and confirm by fetching the page and matching the provider's "unclaimed resource" error text. Only runs when `subdomain_enum` found at least one live subdomain. |
 | `port_scan` | Concurrent TCP connect-scan of common service ports, with best-effort banner grabbing. |
 | `http_headers` | Fetch HTTP(S) response headers and audit them against a recommended security-header list. |
 | `tls_cert` | Fetch the TLS certificate and check issuer/expiry. |
 
 Results are aggregated into severity-scored findings (`report.py`) mapped
 against a small local risk-rating dataset (`data/port_risk.json`,
-`data/security_headers.json`), and a closing executive-summary narrative is
+`data/security_headers.json`, `data/takeover_fingerprints.json`), and a closing executive-summary narrative is
 generated — by an LLM if `ANTHROPIC_API_KEY` is set, otherwise by a
 deterministic offline fallback that highlights the worst finding. The tool
 is fully functional and testable with zero API key and zero third-party
@@ -96,6 +97,7 @@ needed.
 recon-agent/
 ├── recon_agent/
 │   ├── dns_recon.py     # DNS resolution + subdomain brute force
+│   ├── subdomain_takeover.py  # dangling-CNAME takeover detection
 │   ├── port_scan.py      # concurrent TCP connect-scan + banner grab
 │   ├── http_recon.py      # HTTP header audit + TLS certificate inspection
 │   ├── agent.py             # plan-act-observe loop, offline policy + LLM planner
@@ -104,10 +106,11 @@ recon-agent/
 │   └── cli.py                     # argparse entry point
 ├── data/
 │   ├── port_risk.json      # per-port severity ratings + rationale
-│   └── security_headers.json  # recommended HTTP security headers
+│   ├── security_headers.json  # recommended HTTP security headers
+│   └── takeover_fingerprints.json  # vulnerable-provider CNAME + error-page fingerprints
 ├── wordlists/
 │   └── subdomains_small.txt
-├── tests/                    # 39 tests, all mocked — no real network calls
+├── tests/                    # 49 tests, all mocked — no real network calls
 └── pyproject.toml
 ```
 
@@ -135,8 +138,6 @@ pytest -q
 
 ## Possible extensions
 
-- Add a `subdomain_takeover` tool that flags dangling CNAMEs pointing at
-  deprovisioned cloud resources.
 - Add a `robots_txt` / `.well-known` crawler for a lightweight content
   discovery pass.
 - Persist scan history and diff two runs against the same target to

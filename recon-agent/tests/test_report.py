@@ -40,6 +40,56 @@ def test_unknown_open_port_defaults_to_medium():
     assert report.findings[0].severity == "medium"
 
 
+def test_confirmed_subdomain_takeover_is_critical():
+    run = _run_with_steps(
+        {
+            "dns_lookup": {"resolved": True, "ip": "1.2.3.4"},
+            "subdomain_takeover_scan": {
+                "checked": 1,
+                "flagged": [
+                    {
+                        "subdomain": "old.example.com",
+                        "status": "vulnerable",
+                        "provider": "GitHub Pages",
+                        "cname": "old.example.com.github.io",
+                        "confirmed": True,
+                        "detail": "CNAME points at GitHub Pages and the fingerprint matched.",
+                    }
+                ],
+            },
+        }
+    )
+    report = build_report(run)
+    takeover_findings = [f for f in report.findings if f.category == "subdomain-takeover"]
+    assert len(takeover_findings) == 1
+    assert takeover_findings[0].severity == "critical"
+    assert "old.example.com" in takeover_findings[0].title
+
+
+def test_unconfirmed_subdomain_takeover_is_high():
+    run = _run_with_steps(
+        {
+            "dns_lookup": {"resolved": True, "ip": "1.2.3.4"},
+            "subdomain_takeover_scan": {
+                "checked": 1,
+                "flagged": [
+                    {
+                        "subdomain": "shop.example.com",
+                        "status": "possible",
+                        "provider": "Shopify",
+                        "cname": "shop.example.com.myshopify.com",
+                        "confirmed": False,
+                        "detail": "CNAME points at Shopify but no confirming error page was seen.",
+                    }
+                ],
+            },
+        }
+    )
+    report = build_report(run)
+    takeover_findings = [f for f in report.findings if f.category == "subdomain-takeover"]
+    assert takeover_findings[0].severity == "high"
+
+
 def test_missing_headers_generate_findings():
     run = _run_with_steps(
         {
