@@ -1,0 +1,132 @@
+# Default detection rules for secretscan.
+#
+# Each rule is a regex matched against every line (working tree) or every
+# added line (git history). Fields:
+#
+#   id             unique rule identifier
+#   pattern        Python regex (no implicit flags; write [A-Za-z] explicitly)
+#   severity       one of: low, medium, high, critical
+#   category       grouping used by reporting and (for "generic-secret") by
+#                  the optional LLM/heuristic triage pass
+#   description    human-readable rationale, shown in reports
+#   entropy_group  (optional) regex capture group index that must also look
+#                  random per secretscan.entropy.is_high_entropy() for the
+#                  match to count -- used by the broad/generic rules to avoid
+#                  flagging every "key = value" line in a codebase
+#   min_entropy    (optional) entropy threshold for entropy_group, default 4.0
+#   min_length     (optional) minimum captured-value length, default 16
+#
+# Signature rules (specific token prefixes: AWS, GitHub, Stripe, ...) don't
+# need entropy_group -- the prefix itself is already a strong signal. Only
+# the generic catch-all rule at the bottom relies on entropy to cut noise.
+
+- id: aws-access-key-id
+  pattern: '\b(AKIA|ASIA)[0-9A-Z]{16}\b'
+  severity: critical
+  category: cloud-credential
+  description: AWS access key ID (IAM user or STS temporary credential).
+
+- id: aws-secret-access-key
+  pattern: '(?i)aws_secret_access_key\s*[:=]\s*["'']([A-Za-z0-9/+=]{40})["'']'
+  severity: critical
+  category: cloud-credential
+  description: AWS secret access key assigned to the conventional variable name.
+  entropy_group: 1
+  min_entropy: 3.0
+  min_length: 40
+
+- id: github-pat-classic
+  pattern: '\bgh[posu]_[A-Za-z0-9]{36}\b'
+  severity: critical
+  category: vcs-token
+  description: GitHub classic personal access / OAuth / App token.
+
+- id: github-pat-fine-grained
+  pattern: '\bgithub_pat_[A-Za-z0-9_]{22,}\b'
+  severity: critical
+  category: vcs-token
+  description: GitHub fine-grained personal access token.
+
+- id: gitlab-pat
+  pattern: '\bglpat-[A-Za-z0-9\-_]{20}\b'
+  severity: high
+  category: vcs-token
+  description: GitLab personal access token.
+
+- id: slack-token
+  pattern: '\bxox[baprs]-[A-Za-z0-9\-]{10,}\b'
+  severity: high
+  category: chat-credential
+  description: Slack API token (bot/user/app/refresh).
+
+- id: slack-webhook-url
+  pattern: 'https://hooks\.slack\.com/services/T[0-9A-Za-z]{8,}/B[0-9A-Za-z]{8,}/[0-9A-Za-z]{20,}'
+  severity: medium
+  category: chat-credential
+  description: Slack incoming webhook URL (lets anyone post to the channel).
+
+- id: stripe-live-secret-key
+  pattern: '\bsk_live_[0-9A-Za-z]{24,}\b'
+  severity: critical
+  category: payment-credential
+  description: Stripe LIVE secret key -- direct access to real payment data.
+
+- id: stripe-test-secret-key
+  pattern: '\bsk_test_[0-9A-Za-z]{24,}\b'
+  severity: low
+  category: payment-credential
+  description: Stripe TEST secret key (no real financial risk, but should still not be committed).
+
+- id: google-api-key
+  pattern: '\bAIza[0-9A-Za-z\-_]{35}\b'
+  severity: high
+  category: cloud-credential
+  description: Google API key.
+
+- id: sendgrid-api-key
+  pattern: '\bSG\.[A-Za-z0-9_\-]{22}\.[A-Za-z0-9_\-]{43}\b'
+  severity: high
+  category: email-credential
+  description: SendGrid API key.
+
+- id: twilio-api-key
+  pattern: '\bSK[0-9a-fA-F]{32}\b'
+  severity: high
+  category: telephony-credential
+  description: Twilio API key SID.
+
+- id: npm-access-token
+  pattern: '\bnpm_[A-Za-z0-9]{36}\b'
+  severity: high
+  category: vcs-token
+  description: npm automation/publish access token.
+
+- id: private-key-block
+  pattern: '-----BEGIN (RSA |EC |DSA |OPENSSH |PGP )?PRIVATE KEY-----'
+  severity: critical
+  category: private-key
+  description: PEM-encoded private key block committed to the repo.
+
+- id: jwt-token
+  pattern: '\beyJ[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{10,}\b'
+  severity: medium
+  category: bearer-token
+  description: JSON Web Token -- may grant API access until it expires.
+
+- id: url-with-embedded-credentials
+  pattern: '[a-zA-Z][a-zA-Z0-9+.\-]*://[^\s:@/"'']+:([^\s:@/"'']{3,})@'
+  severity: high
+  category: embedded-credential
+  description: Connection string / URL with a password embedded directly in it.
+  entropy_group: 1
+  min_entropy: 2.5
+  min_length: 4
+
+- id: generic-secret-assignment
+  pattern: '(?i)\b[a-z0-9_]*(?:api[_-]?key|secret|token|password|passwd|pwd|access[_-]?key|auth[_-]?token|client[_-]?secret)[a-z0-9_]*\s*[:=]\s*["'']([A-Za-z0-9_\-/+=]{16,})["'']'
+  severity: medium
+  category: generic-secret
+  description: Value assigned to a secret-sounding variable name that also looks random.
+  entropy_group: 1
+  min_entropy: 3.5
+  min_length: 16

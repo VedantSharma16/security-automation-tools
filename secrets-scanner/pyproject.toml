@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "secretscan"
+version = "0.1.0"
+description = "Git-aware secrets/credential leak scanner: working tree + full history, entropy-filtered, SARIF-ready."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+secretscan = "secretscan.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["secretscan*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
