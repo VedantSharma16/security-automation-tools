@@ -67,6 +67,14 @@ def _findings_from_subdomains(data: dict) -> list[Finding]:
     return [Finding("attack-surface", f"{count} additional subdomain(s) discovered", "low", f"Expands attack surface: {names}")]
 
 
+def _findings_from_takeover(data: dict) -> list[Finding]:
+    findings = []
+    for entry in data.get("checked", []):
+        if entry.get("vulnerable"):
+            findings.append(Finding("subdomain-takeover", f"Possible subdomain takeover: {entry['subdomain']}", "critical", entry["evidence"]))
+    return findings
+
+
 def _findings_from_ports(data: dict) -> list[Finding]:
     findings = []
     for entry in data.get("open_ports", []):
@@ -107,6 +115,7 @@ def _findings_from_tls(data: dict) -> list[Finding]:
 _STEP_HANDLERS = {
     "dns_lookup": _findings_from_dns,
     "subdomain_enum": _findings_from_subdomains,
+    "subdomain_takeover": _findings_from_takeover,
     "port_scan": _findings_from_ports,
     "http_headers": _findings_from_http,
     "tls_cert": _findings_from_tls,

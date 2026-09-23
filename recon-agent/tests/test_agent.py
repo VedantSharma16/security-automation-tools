@@ -6,6 +6,7 @@ from recon_agent.agent import Planner, ReconSession, TOOL_REGISTRY, run_recon
 from recon_agent.dns_recon import DnsResult, SubdomainResult
 from recon_agent.http_recon import HttpResult, TlsResult
 from recon_agent.port_scan import PortResult
+from recon_agent.subdomain_takeover import TakeoverCandidate
 
 
 def _patch_all(monkeypatch, *, dns_resolved=True):
@@ -27,6 +28,10 @@ def _patch_all(monkeypatch, *, dns_resolved=True):
         "recon_agent.agent.fetch_tls_certificate",
         lambda hostname, timeout=5.0: TlsResult(hostname=hostname, port=443, fetched=True, not_after="Jan 1 00:00:00 2030 GMT", days_remaining=1500, issuer="Test CA", error=None),
     )
+    monkeypatch.setattr(
+        "recon_agent.agent.check_takeover",
+        lambda subdomain, timeout=3.0: TakeoverCandidate(subdomain=subdomain, cname=None, provider=None, vulnerable=False, evidence="no CNAME"),
+    )
 
 
 def test_offline_run_visits_all_tools_when_dns_resolves(monkeypatch):
@@ -46,13 +51,51 @@ def test_offline_run_skips_subdomain_enum_when_disabled(monkeypatch):
     _patch_all(monkeypatch, dns_resolved=True)
     run = run_recon("example.com", allow_subdomain_enum=False, wordlist=[], max_steps=10)
     assert "subdomain_enum" not in run.session.ran()
-    assert run.session.ran() == set(TOOL_REGISTRY) - {"subdomain_enum"}
+    assert "subdomain_takeover" not in run.session.ran()
+    assert run.session.ran() == set(TOOL_REGISTRY) - {"subdomain_enum", "subdomain_takeover"}
+
+
+def test_offline_run_skips_takeover_when_no_subdomains_found(monkeypatch):
+    _patch_all(monkeypatch, dns_resolved=True)
+    monkeypatch.setattr("recon_agent.agent.enumerate_subdomains", lambda domain, words, limit=None: [])
+    run = run_recon("example.com", allow_subdomain_enum=True, wordlist=["www"], max_steps=10)
+    assert "subdomain_enum" in run.session.ran()
+    assert "subdomain_takeover" not in run.session.ran()
 
 
 def test_max_steps_caps_tool_calls(monkeypatch):
     _patch_all(monkeypatch, dns_resolved=True)
     run = run_recon("example.com", allow_subdomain_enum=True, wordlist=["www"], max_steps=2)
     assert len(run.session.steps) == 2
+
+
+def test_takeover_step_checks_every_discovered_subdomain_and_aggregates(monkeypatch):
+    _patch_all(monkeypatch, dns_resolved=True)
+    monkeypatch.setattr(
+        "recon_agent.agent.enumerate_subdomains",
+        lambda domain, words, limit=None: [
+            SubdomainResult(subdomain="www.example.com", ip="1.2.3.5"),
+            SubdomainResult(subdomain="blog.example.com", ip="1.2.3.6"),
+        ],
+    )
+
+    def fake_check_takeover(subdomain, timeout=3.0):
+        vulnerable = subdomain == "blog.example.com"
+        return TakeoverCandidate(
+            subdomain=subdomain,
+            cname="blog.example.com.github.io" if vulnerable else None,
+            provider="GitHub Pages" if vulnerable else None,
+            vulnerable=vulnerable,
+            evidence="dangling CNAME" if vulnerable else "no CNAME",
+        )
+
+    monkeypatch.setattr("recon_agent.agent.check_takeover", fake_check_takeover)
+
+    run = run_recon("example.com", allow_subdomain_enum=True, wordlist=["www", "blog"], max_steps=10)
+    data = run.session.get("subdomain_takeover")
+    assert data["vulnerable_count"] == 1
+    assert len(data["checked"]) == 2
+    assert {c["subdomain"] for c in data["checked"]} == {"www.example.com", "blog.example.com"}
 
 
 class FakeTextBlock:

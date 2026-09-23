@@ -1,0 +1,77 @@
+[
+  {
+    "provider": "GitHub Pages",
+    "cname_suffixes": ["github.io"],
+    "fingerprints": ["There isn't a GitHub Pages site here", "For root URLs (like http://example.com/) you must provide an index.html"]
+  },
+  {
+    "provider": "Heroku",
+    "cname_suffixes": ["herokuapp.com", "herokudns.com", "herokussl.com"],
+    "fingerprints": ["No such app", "There's nothing here, yet"]
+  },
+  {
+    "provider": "Amazon S3",
+    "cname_suffixes": ["s3.amazonaws.com", "s3-website"],
+    "fingerprints": ["NoSuchBucket", "The specified bucket does not exist"]
+  },
+  {
+    "provider": "Microsoft Azure",
+    "cname_suffixes": ["azurewebsites.net", "cloudapp.net", "cloudapp.azure.com", "trafficmanager.net"],
+    "fingerprints": ["Error 404 - Web app not found", "This Site is Under Construction"]
+  },
+  {
+    "provider": "Shopify",
+    "cname_suffixes": ["myshopify.com"],
+    "fingerprints": ["Sorry, this shop is currently unavailable", "Only one step left"]
+  },
+  {
+    "provider": "Fastly",
+    "cname_suffixes": ["fastly.net"],
+    "fingerprints": ["Fastly error: unknown domain"]
+  },
+  {
+    "provider": "Netlify",
+    "cname_suffixes": ["netlify.app", "netlify.com"],
+    "fingerprints": ["Not Found - Request ID"]
+  },
+  {
+    "provider": "Surge.sh",
+    "cname_suffixes": ["surge.sh"],
+    "fingerprints": ["project not found"]
+  },
+  {
+    "provider": "Zendesk",
+    "cname_suffixes": ["zendesk.com"],
+    "fingerprints": ["Help Center Closed", "this help center no longer exists"]
+  },
+  {
+    "provider": "WordPress.com",
+    "cname_suffixes": ["wordpress.com"],
+    "fingerprints": ["Do you want to register"]
+  },
+  {
+    "provider": "Tumblr",
+    "cname_suffixes": ["tumblr.com"],
+    "fingerprints": ["There's nothing here.", "Whatever you were looking for doesn't currently exist at this address"]
+  },
+  {
+    "provider": "Pantheon",
+    "cname_suffixes": ["pantheonsite.io"],
+    "fingerprints": ["The gods are wise", "404 error unknown site"]
+  },
+  {
+    "provider": "Unbounce",
+    "cname_suffixes": ["unbouncepages.com"],
+    "fingerprints": ["The requested URL was not found on this server"]
+  },
+  {
+    "provider": "Cargo Collective",
+    "cname_suffixes": ["cargocollective.com"],
+    "fingerprints": ["404 Not Found"]
+  },
+  {
+    "provider": "Readme.io",
+    "cname_suffixes": ["readme.io"],
+    "fingerprints": ["Project doesnt exist... yet!"]
+  }
+]

@@ -90,6 +90,26 @@ def test_healthy_target_scores_zero_and_info_severity():
     assert report.overall_severity == "info"
 
 
+def test_vulnerable_takeover_candidate_produces_critical_finding():
+    run = _run_with_steps(
+        {
+            "dns_lookup": {"resolved": True, "ip": "1.2.3.4"},
+            "subdomain_takeover": {
+                "checked": [
+                    {"subdomain": "blog.example.com", "cname": "blog.example.com.github.io", "provider": "GitHub Pages", "vulnerable": True, "evidence": "dangling CNAME"},
+                    {"subdomain": "www.example.com", "cname": None, "provider": None, "vulnerable": False, "evidence": "no CNAME"},
+                ],
+                "vulnerable_count": 1,
+            },
+        }
+    )
+    report = build_report(run)
+    takeover_findings = [f for f in report.findings if f.category == "subdomain-takeover"]
+    assert len(takeover_findings) == 1
+    assert takeover_findings[0].severity == "critical"
+    assert "blog.example.com" in takeover_findings[0].title
+
+
 def test_risk_score_capped_at_100():
     many_high_ports = {"ip": "1.2.3.4", "open_ports": [{"port": 3389, "open": True, "banner": None} for _ in range(20)]}
     run = _run_with_steps({"dns_lookup": {"resolved": True, "ip": "1.2.3.4"}, "port_scan": many_high_ports})

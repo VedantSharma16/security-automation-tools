@@ -43,17 +43,40 @@ Tool registry (all read-only, standard-library only):
 |---|---|
 | `dns_lookup` | Resolve the target hostname to an IPv4 address. |
 | `subdomain_enum` | Brute-force a small wordlist of common subdomain labels against the target's DNS. |
+| `subdomain_takeover` | For each discovered subdomain, resolve its CNAME and check it against known cloud-provider "unclaimed resource" fingerprints. |
 | `port_scan` | Concurrent TCP connect-scan of common service ports, with best-effort banner grabbing. |
 | `http_headers` | Fetch HTTP(S) response headers and audit them against a recommended security-header list. |
 | `tls_cert` | Fetch the TLS certificate and check issuer/expiry. |
 
 Results are aggregated into severity-scored findings (`report.py`) mapped
 against a small local risk-rating dataset (`data/port_risk.json`,
-`data/security_headers.json`), and a closing executive-summary narrative is
-generated — by an LLM if `ANTHROPIC_API_KEY` is set, otherwise by a
-deterministic offline fallback that highlights the worst finding. The tool
-is fully functional and testable with zero API key and zero third-party
-dependencies.
+`data/security_headers.json`, `data/takeover_fingerprints.json`), and a
+closing executive-summary narrative is generated — by an LLM if
+`ANTHROPIC_API_KEY` is set, otherwise by a deterministic offline fallback
+that highlights the worst finding. The tool is fully functional and
+testable with zero API key and zero third-party dependencies.
+
+### Subdomain takeover detection
+
+A subdomain takeover happens when a DNS CNAME is left pointing at a
+third-party service (GitHub Pages, Heroku, an S3 bucket, ...) after that
+resource has been deleted or was never claimed — the subdomain still
+resolves, but the provider serves a generic "not found" page there, and
+anyone can often claim the same resource name and start serving content on
+the victim's own subdomain. This is a routinely-exploited, real-world bug
+class (it's a staple of bug bounty programs).
+
+`subdomain_takeover.py` checks every subdomain found by `subdomain_enum`:
+it resolves the CNAME with a small hand-rolled DNS-over-UDP client (stdlib
+`socket` only — no `dnspython` dependency, and it validates the response's
+query ID against spoofed/stale replies), matches the CNAME against a
+curated set of provider fingerprints (`data/takeover_fingerprints.json`,
+~15 providers), and — only for CNAMEs pointing at a recognized provider —
+fetches the page and looks for that provider's "unclaimed resource"
+signature (or treats an outright connection failure to a recognized
+provider CNAME the same way). A CNAME to an unrecognized host, or one that
+serves live/claimed content, is never flagged, keeping the check
+low-false-positive. A hit is reported as a `critical` finding.
 
 ## Installation
 
@@ -66,7 +89,7 @@ pip install -e ".[llm]"   # optional: adds LLM-driven planning + narrative
 ## Usage
 
 ```bash
-# Basic scan (subdomain enum + port scan + header/TLS audit)
+# Basic scan (subdomain enum + takeover check + port scan + header/TLS audit)
 recon-agent --target example.com --i-have-authorization
 
 # Skip subdomain brute-forcing, use a tighter timeout
@@ -95,19 +118,21 @@ needed.
 ```
 recon-agent/
 ├── recon_agent/
-│   ├── dns_recon.py     # DNS resolution + subdomain brute force
-│   ├── port_scan.py      # concurrent TCP connect-scan + banner grab
-│   ├── http_recon.py      # HTTP header audit + TLS certificate inspection
-│   ├── agent.py             # plan-act-observe loop, offline policy + LLM planner
-│   ├── report.py              # findings aggregation + risk scoring
-│   ├── narrative.py             # LLM / offline executive summary
-│   └── cli.py                     # argparse entry point
+│   ├── dns_recon.py             # DNS resolution + subdomain brute force
+│   ├── subdomain_takeover.py     # CNAME resolution + dangling-CNAME takeover check
+│   ├── port_scan.py               # concurrent TCP connect-scan + banner grab
+│   ├── http_recon.py               # HTTP header audit + TLS certificate inspection
+│   ├── agent.py                     # plan-act-observe loop, offline policy + LLM planner
+│   ├── report.py                     # findings aggregation + risk scoring
+│   ├── narrative.py                   # LLM / offline executive summary
+│   └── cli.py                          # argparse entry point
 ├── data/
-│   ├── port_risk.json      # per-port severity ratings + rationale
-│   └── security_headers.json  # recommended HTTP security headers
+│   ├── port_risk.json              # per-port severity ratings + rationale
+│   ├── security_headers.json       # recommended HTTP security headers
+│   └── takeover_fingerprints.json  # per-provider CNAME suffixes + "unclaimed" signatures
 ├── wordlists/
 │   └── subdomains_small.txt
-├── tests/                    # 39 tests, all mocked — no real network calls
+├── tests/                            # 62 tests, all mocked — no real network calls
 └── pyproject.toml
 ```
 
@@ -135,9 +160,10 @@ pytest -q
 
 ## Possible extensions
 
-- Add a `subdomain_takeover` tool that flags dangling CNAMEs pointing at
-  deprovisioned cloud resources.
 - Add a `robots_txt` / `.well-known` crawler for a lightweight content
   discovery pass.
 - Persist scan history and diff two runs against the same target to
-  surface newly opened ports or newly expired certs over time.
+  surface newly opened ports, newly expired certs, or newly dangling
+  CNAMEs over time.
+- Expand `data/takeover_fingerprints.json` with more providers (the current
+  set covers ~15 of the most commonly abused ones).

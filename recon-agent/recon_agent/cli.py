@@ -66,7 +66,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--subdomain-limit", type=int, default=None, help="Only try the first N wordlist entries.")
     parser.add_argument("--ports", default=None, help="Comma-separated port list to scan (default: a common-services list).")
     parser.add_argument("--timeout", type=float, default=3.0, help="Per-probe network timeout in seconds.")
-    parser.add_argument("--max-steps", type=int, default=5, help="Maximum number of tool calls the agent may make.")
+    parser.add_argument("--max-steps", type=int, default=6, help="Maximum number of tool calls the agent may make.")
     parser.add_argument("--json-out", help="Write the full JSON report to this path in addition to printing it.")
     parser.add_argument("--json", action="store_true", help="Print the full report as JSON instead of the human-readable view.")
     return parser
