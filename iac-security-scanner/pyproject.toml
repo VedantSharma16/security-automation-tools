@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "iac-security-scanner"
+version = "0.1.0"
+description = "Static security scanner for Terraform plan JSON: catches public S3 buckets, wide-open security groups, over-permissive IAM policies, unencrypted storage, and hardcoded secrets before they're applied."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+iac-scanner = "iac_scanner.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["iac_scanner*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
