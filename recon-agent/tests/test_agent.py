@@ -1,7 +1,5 @@
 import json
 
-import pytest
-
 from recon_agent.agent import Planner, ReconSession, TOOL_REGISTRY, run_recon
 from recon_agent.dns_recon import DnsResult, SubdomainResult
 from recon_agent.http_recon import HttpResult, TlsResult

@@ -1,7 +1,5 @@
 import json
 
-import pytest
-
 from recon_agent import cli
 from recon_agent.agent import ReconRun, ReconSession
 
