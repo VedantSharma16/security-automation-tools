@@ -1,0 +1,95 @@
+{
+  "T1110": {
+    "name": "Brute Force",
+    "tactics": ["credential_access"],
+    "logsource": { "product": "linux", "service": "sshd" },
+    "level_default": "medium",
+    "references": ["https://attack.mitre.org/techniques/T1110/"],
+    "falsepositives": [
+      "Users who repeatedly mistype their password",
+      "Misconfigured internal health-check or monitoring scripts that authenticate on a schedule"
+    ],
+    "variants": [
+      {
+        "id": "v1_any_failure",
+        "rationale": "Broadest possible signal: any authentication failure. Expected to have strong recall but weak precision, since it also catches one-off typos.",
+        "level": "low",
+        "detection": {
+          "selection": { "event_type": "auth_failure" },
+          "condition": "selection"
+        }
+      },
+      {
+        "id": "v2_burst_threshold",
+        "rationale": "Require a burst of >=5 failures from the same source within a 5-minute window, to filter out isolated typos.",
+        "level": "medium",
+        "detection": {
+          "selection": { "event_type": "auth_failure", "failed_attempts_5m|gte": 5 },
+          "condition": "selection"
+        }
+      },
+      {
+        "id": "v3_exclude_internal",
+        "rationale": "Exclude RFC1918 internal source ranges: a misconfigured internal health-check also bursts above the threshold, so the threshold alone isn't enough.",
+        "level": "medium",
+        "detection": {
+          "selection": { "event_type": "auth_failure", "failed_attempts_5m|gte": 5 },
+          "filter": { "src_ip|startswith": ["10.", "192.168."] },
+          "condition": "selection and not filter"
+        }
+      },
+      {
+        "id": "v4_lower_threshold_3",
+        "rationale": "Lower the burst threshold to >=3 to catch the attack earlier in its lifecycle, while keeping the internal exclusion.",
+        "level": "medium",
+        "detection": {
+          "selection": { "event_type": "auth_failure", "failed_attempts_5m|gte": 3 },
+          "filter": { "src_ip|startswith": ["10.", "192.168."] },
+          "condition": "selection and not filter"
+        }
+      },
+      {
+        "id": "v5_lower_threshold_2",
+        "rationale": "Lower the burst threshold further to >=2 to close the remaining recall gap against slow, low-volume brute-force attempts.",
+        "level": "high",
+        "detection": {
+          "selection": { "event_type": "auth_failure", "failed_attempts_5m|gte": 2 },
+          "filter": { "src_ip|startswith": ["10.", "192.168."] },
+          "condition": "selection and not filter"
+        }
+      }
+    ]
+  },
+  "T1003.001": {
+    "name": "OS Credential Dumping: LSASS Memory",
+    "tactics": ["credential_access"],
+    "logsource": { "product": "windows", "category": "process_creation" },
+    "level_default": "high",
+    "references": ["https://attack.mitre.org/techniques/T1003/001/"],
+    "falsepositives": [
+      "EDR/AV engines that scan or reference lsass.exe by name in their own command lines",
+      "Legitimate Sysinternals troubleshooting (e.g. Procmon) captured with a filename containing 'lsass'"
+    ],
+    "variants": [
+      {
+        "id": "v1_naive_keyword",
+        "rationale": "Naive single-field keyword match on 'lsass' in the command line. Expected to both miss LOLBin-based dumping techniques that avoid the literal string (e.g. comsvcs.dll MiniDump by PID) and false-positive on benign tools that mention lsass.exe by name.",
+        "level": "medium",
+        "detection": {
+          "selection": { "command_line|contains": "lsass" },
+          "condition": "selection"
+        }
+      },
+      {
+        "id": "v2_known_techniques",
+        "rationale": "Replace the keyword guess with named, technique-specific indicators: known dumping tool binaries (procdump, mimikatz) and the comsvcs.dll MiniDump LOLBin technique via rundll32.",
+        "level": "high",
+        "detection": {
+          "selection": { "process_name": ["procdump.exe", "mimikatz.exe"] },
+          "selection_comsvcs": { "process_name": "rundll32.exe", "command_line|contains": "comsvcs.dll" },
+          "condition": "selection or selection_comsvcs"
+        }
+      }
+    ]
+  }
+}

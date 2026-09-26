@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sigma-rule-tuner"
+version = "0.1.0"
+description = "Automatically tune MITRE ATT&CK-mapped Sigma detection rules against labeled sample telemetry."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+sigma-tuner = "sigma_tuner.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["sigma_tuner*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
