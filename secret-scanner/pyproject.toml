@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "secret-scanner"
+version = "0.1.0"
+description = "Git-aware secrets/credential leak scanner: known-provider signatures, entropy detection, and full git-history scanning."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+secret-scanner = "secret_scanner.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["secret_scanner*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

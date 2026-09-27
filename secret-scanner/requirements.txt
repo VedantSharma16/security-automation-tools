@@ -1,0 +1,5 @@
+# secret-scanner's core is stdlib-only. This file exists for parity with the
+# other tools in this repo; there is nothing to install for normal use.
+#
+# For the optional --llm triage narrative:
+#   pip install anthropic>=0.40

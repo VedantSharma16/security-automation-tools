@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Example git pre-commit hook wiring up secret-scanner as a local commit gate.
+#
+# Install:
+#   cp examples/pre-commit .git/hooks/pre-commit
+#   chmod +x .git/hooks/pre-commit
+#
+# Only scans the working tree (fast); run with --git-history separately/in
+# CI to catch anything that slipped into history before this hook existed.
+set -uo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+python3 -m secret_scanner.cli "$REPO_ROOT" --min-severity medium --no-narrative --no-color
+status=$?
+
+if [ "$status" -ne 0 ]; then
+    echo ""
+    echo "Commit blocked: secret-scanner found potential credentials above the" >&2
+    echo "'medium' severity threshold. Fix them, or add a documented exception" >&2
+    echo "to .secretscanignore, then try again." >&2
+    exit 1
+fi
