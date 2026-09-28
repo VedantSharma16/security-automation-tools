@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phishtriage"
+version = "0.1.0"
+description = "Parse .eml files, detect phishing indicators, and generate LLM-assisted triage reports."
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.30.0"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+phishtriage = "phishtriage.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["phishtriage*"]

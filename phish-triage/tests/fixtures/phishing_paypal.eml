@@ -1,0 +1,55 @@
+Subject: Urgent: Verify your account immediately
+From: "PayPal Support" <security@paypa1-verify.com>
+Reply-To: support@paypal-billing-secure.net
+Return-Path: <bounce@paypa1-verify.com>
+To: victim@example.com
+Date: Tue, 22 Sep 2026 09:15:00 +0000
+Message-ID: <phish1@paypa1-verify.com>
+Authentication-Results: mx.example.com; spf=fail
+ smtp.mailfrom=paypa1-verify.com; dkim=none; dmarc=fail (p=reject)
+ header.from=paypa1-verify.com
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============0475578530091254132=="
+
+--===============0475578530091254132==
+Content-Type: multipart/alternative;
+ boundary="===============2283364815598746424=="
+
+--===============2283364815598746424==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Dear Customer,
+
+We detected unusual login activity on your account. You must verify your acco=
+unt immediately or it will be suspended within 24 hours.
+
+Please confirm your password at the link below.
+
+https://bit.ly/pp-verify-now
+
+--===============2283364815598746424==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body>
+<p>Dear Customer,</p>
+<p>We detected <b>unusual login activity</b> on your account. You must verify
+your account immediately or it will be suspended within 24 hours.</p>
+<p><a href=3D"http://paypa1-verify.com/login?user=3Dvictim">https://paypal.co=
+m/login</a></p>
+<p>Please confirm your password using the secure link above.</p>
+</body></html>
+
+--===============2283364815598746424==--
+
+--===============0475578530091254132==
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="invoice.pdf.exe"
+MIME-Version: 1.0
+
+TVqQAAMAAABmYWtlLWV4ZS1ieXRlcy1mb3ItdGVzdGluZw==
+
+--===============0475578530091254132==--

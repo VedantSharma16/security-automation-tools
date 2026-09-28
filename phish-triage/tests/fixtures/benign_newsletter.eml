@@ -1,0 +1,36 @@
+Subject: Your weekly Example News digest
+From: "Example News" <news@example.com>
+To: reader@example.com
+Date: Tue, 22 Sep 2026 08:00:00 +0000
+Message-ID: <digest-42@example.com>
+Authentication-Results: mx.example.com; spf=pass smtp.mailfrom=example.com;
+ dkim=pass header.d=example.com; dmarc=pass
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============7456026103407377558=="
+
+--===============7456026103407377558==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Hi there,
+
+Here is this week's roundup of stories from Example News.
+
+Read the full digest: https://news.example.com/digest/42
+
+Thanks for reading!
+
+--===============7456026103407377558==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+<html><body>
+<p>Hi there,</p>
+<p>Here is this week's roundup of stories from Example News.</p>
+<p><a href="https://news.example.com/digest/42">Read the full digest</a></p>
+<p>Thanks for reading!</p>
+</body></html>
+
+--===============7456026103407377558==--
