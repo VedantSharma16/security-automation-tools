@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-redteam-harness"
+version = "0.1.0"
+description = "Automated red-team harness for LLM apps: prompt injection, system-prompt leakage, jailbreaks and exfiltration probes with canary-based detection and a CI gate."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+llm-redteam = "llm_redteam.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["llm_redteam*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
