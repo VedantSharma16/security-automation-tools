@@ -1,0 +1,21 @@
+From: "Microsoft Support" <helpdesk@micros0ft-secure.xyz>
+Reply-To: collect@freemail-drop.com
+Return-Path: <bounce@other-host.ru>
+To: victim@example.com
+Subject: URGENT: Action required - account suspended
+Authentication-Results: mx.example.com; spf=fail smtp.mailfrom=other-host.ru; dkim=none; dmarc=fail
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="B"
+
+--B
+Content-Type: text/html; charset=utf-8
+
+<p>Verify your account immediately: <a href="http://192.0.2.10/login">https://login.microsoft.com/verify</a>
+and <a href="https://bit.ly/3abc">reset</a></p>
+--B
+Content-Type: application/octet-stream; name="invoice.pdf.exe"
+Content-Disposition: attachment; filename="invoice.pdf.exe"
+Content-Transfer-Encoding: base64
+
+TVqQAAMAAAA=
+--B--
