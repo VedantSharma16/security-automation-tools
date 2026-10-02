@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-guard"
+version = "0.1.0"
+description = "Prompt-injection and output-leak guardrails for LLM applications, with a red-team evaluation harness."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+llm-guard = "llm_guard.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["llm_guard*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
