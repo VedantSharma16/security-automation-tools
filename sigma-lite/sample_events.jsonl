@@ -1,0 +1,8 @@
+{"Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "CommandLine": "powershell.exe -NoP -enc SQBFAFgAKABOAGUAdwA=", "ParentImage": "C:\\Windows\\explorer.exe"}
+{"Image": "C:\\Windows\\System32\\cmd.exe", "CommandLine": "cmd.exe /c whoami", "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE"}
+{"Image": "C:\\Windows\\System32\\rundll32.exe", "CommandLine": "rundll32.exe C:\\windows\\System32\\comsvcs.dll, MiniDump 624 C:\\temp\\l.dmp full", "ParentImage": "C:\\Windows\\System32\\cmd.exe"}
+{"Image": "C:\\Windows\\System32\\notepad.exe", "CommandLine": "notepad.exe notes.txt", "ParentImage": "C:\\Windows\\explorer.exe"}
+{"program": "sshd", "message": "Accepted publickey for root from 203.0.113.50", "user": "root", "src_ip": "203.0.113.50"}
+{"program": "sshd", "message": "Accepted publickey for root from 10.1.2.3", "user": "root", "src_ip": "10.1.2.3"}
+{"Image": "C:\\Windows\\System32\\schtasks.exe", "CommandLine": "schtasks /create /tn Updater /tr C:\\Users\\bob\\AppData\\Roaming\\u.exe /sc daily"}
+{"network": {"dest_port": 4444, "dest_ip": "198.51.100.7"}}

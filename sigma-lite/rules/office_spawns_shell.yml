@@ -1,0 +1,12 @@
+title: Office Application Spawns Command Interpreter
+id: 5a1f0c7e-0002-4b2a-9d11-sigmalite002
+description: Word/Excel/Outlook spawning cmd or PowerShell, typical of malicious macro execution.
+tags: [attack.initial_access, attack.t1566.001, attack.execution, attack.t1204.002]
+logsource: {category: process_creation, product: windows}
+detection:
+  parent:
+    ParentImage|endswith: ['\winword.exe', '\excel.exe', '\outlook.exe']
+  child:
+    Image|endswith: ['\cmd.exe', '\powershell.exe', '\wscript.exe', '\mshta.exe']
+  condition: parent and child
+level: high

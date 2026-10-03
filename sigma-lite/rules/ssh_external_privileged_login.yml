@@ -1,0 +1,15 @@
+title: Successful Privileged SSH Login From External Address
+id: 5a1f0c7e-0004-4b2a-9d11-sigmalite004
+description: Accepted SSH logins from outside RFC1918 space for privileged accounts.
+tags: [attack.initial_access, attack.t1078, attack.t1021.004]
+logsource: {product: linux, service: auth}
+detection:
+  accepted:
+    program: sshd
+    message|startswith: 'Accepted'
+  privileged:
+    user: [root, admin]
+  internal:
+    src_ip|cidr: ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']
+  condition: accepted and privileged and not internal
+level: medium

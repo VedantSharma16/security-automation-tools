@@ -1,0 +1,13 @@
+title: Credential Dumping via comsvcs or procdump on LSASS
+id: 5a1f0c7e-0003-4b2a-9d11-sigmalite003
+description: Memory dump of lsass.exe using rundll32 comsvcs MiniDump or procdump.
+tags: [attack.credential_access, attack.t1003.001]
+logsource: {category: process_creation, product: windows}
+detection:
+  comsvcs:
+    CommandLine|contains|all: ['comsvcs', 'MiniDump']
+  procdump:
+    Image|endswith: '\procdump.exe'
+    CommandLine|contains: 'lsass'
+  condition: 1 of them
+level: critical

@@ -1,0 +1,17 @@
+title: Suspicious Encoded PowerShell Command
+id: 5a1f0c7e-0001-4b2a-9d11-sigmalite001
+description: PowerShell launched with an encoded command or download cradle, common in malware staging.
+tags: [attack.execution, attack.t1059.001, attack.defense_evasion, attack.t1027]
+logsource: {category: process_creation, product: windows}
+detection:
+  img:
+    Image|endswith: ['\powershell.exe', '\pwsh.exe']
+  flags:
+    CommandLine|contains:
+      - ' -enc '
+      - ' -encodedcommand '
+      - 'FromBase64String'
+      - 'DownloadString'
+      - 'IEX('
+  condition: img and flags
+level: high
