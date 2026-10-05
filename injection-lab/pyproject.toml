@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "injection-lab"
+version = "0.1.0"
+description = "Prompt-injection red-team harness and input guard for LLM applications."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+injection-lab = "injectionlab.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["injectionlab*"]
+
+[tool.setuptools.package-data]
+injectionlab = ["*.json"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
