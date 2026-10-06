@@ -1,0 +1,8 @@
+{"timestamp":"2026-10-05T09:01:10Z","host":"WS-014","Image":"C:\\Windows\\System32\\notepad.exe","CommandLine":"notepad.exe notes.txt"}
+{"timestamp":"2026-10-05T09:04:02Z","host":"WS-014","ParentImage":"C:\\Program Files\\Microsoft Office\\winword.exe","Image":"C:\\Windows\\System32\\cmd.exe","CommandLine":"cmd.exe /c whoami"}
+{"timestamp":"2026-10-05T09:04:05Z","host":"WS-014","ParentImage":"C:\\Windows\\System32\\cmd.exe","Image":"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe","CommandLine":"powershell.exe -w hidden -enc SQBFAFgA"}
+{"timestamp":"2026-10-05T09:10:44Z","host":"WS-014","Image":"C:\\Windows\\System32\\schtasks.exe","CommandLine":"schtasks /create /tn Updater /tr C:\\Users\\bob\\AppData\\Roaming\\u.exe /sc onlogon"}
+{"timestamp":"2026-10-05T09:15:30Z","host":"WS-014","Image":"C:\\Windows\\System32\\rundll32.exe","CommandLine":"rundll32 C:\\windows\\system32\\comsvcs.dll, MiniDump 612 C:\\temp\\l.dmp full"}
+{"timestamp":"2026-10-05T09:20:00Z","host":"SRV-02","DestinationPort":3389,"SourceIp":"10.1.2.3"}
+{"timestamp":"2026-10-05T09:21:00Z","host":"SRV-02","DestinationPort":3389,"SourceIp":"203.0.113.50"}
+{"timestamp":"2026-10-05T09:40:12Z","host":"SRV-02","Image":"C:\\Windows\\System32\\vssadmin.exe","CommandLine":"vssadmin delete shadows /all /quiet"}

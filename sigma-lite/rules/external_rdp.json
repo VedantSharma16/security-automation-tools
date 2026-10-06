@@ -1,0 +1,5 @@
+{"id":"SL-005","title":"RDP connection from public IP","level":"medium",
+ "tags":["attack.lateral_movement","attack.t1021.001","attack.initial_access","attack.t1133"],
+ "detection":{"rdp":{"DestinationPort":3389},
+  "private":{"SourceIp|cidr":["10.0.0.0/8","172.16.0.0/12","192.168.0.0/16"]},
+  "condition":"rdp and not private"}}

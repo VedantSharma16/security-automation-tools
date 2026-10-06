@@ -1,0 +1,6 @@
+{"id":"SL-004","title":"Volume shadow copy deletion","level":"high",
+ "description":"Ransomware precursor: backups destroyed before encryption.",
+ "tags":["attack.impact","attack.t1490"],
+ "detection":{"vss":{"CommandLine|contains":["vssadmin delete shadows","wmic shadowcopy delete"]},
+  "bcd":{"CommandLine|contains|all":["bcdedit","recoveryenabled","no"]},
+  "condition":"vss or bcd"}}

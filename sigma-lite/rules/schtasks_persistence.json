@@ -1,0 +1,5 @@
+{"id":"SL-006","title":"Scheduled task created from user-writable path","level":"medium",
+ "tags":["attack.persistence","attack.t1053.005"],
+ "detection":{"create":{"Image|endswith":"\\schtasks.exe","CommandLine|contains":"/create"},
+  "path":{"CommandLine|re":"(\\\\users\\\\|\\\\temp\\\\|\\\\appdata\\\\)"},
+  "condition":"create and path"}}

@@ -1,0 +1,6 @@
+{"id":"SL-003","title":"LSASS memory dump attempt","level":"critical",
+ "tags":["attack.credential_access","attack.t1003.001"],
+ "detection":{"procdump":{"CommandLine|contains|all":["lsass","-ma"]},
+  "comsvcs":{"CommandLine|contains":["comsvcs.dll","minidump"]},
+  "filter_av":{"Image|startswith":"C:\\Program Files\\Windows Defender\\"},
+  "condition":"1 of proc* or comsvcs and not filter_av"}}
