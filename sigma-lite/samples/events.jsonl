@@ -1,0 +1,13 @@
+{"@timestamp":"2026-01-01T10:00:00Z","Image":"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe","CommandLine":"powershell.exe -NoP -W Hidden -Enc SQBFAFgA","host":"ws-01"}
+{"@timestamp":"2026-01-01T10:00:05Z","Image":"C:\\Windows\\System32\\rundll32.exe","CommandLine":"rundll32.exe C:\\windows\\system32\\comsvcs.dll, MiniDump 624 C:\\t\\l.dmp full","host":"ws-01"}
+{"@timestamp":"2026-01-01T10:01:00Z","ParentImage":"C:\\Program Files\\Office\\WINWORD.EXE","Image":"C:\\Windows\\System32\\cmd.exe","User":"alice","host":"ws-02"}
+{"@timestamp":"2026-01-01T10:01:30Z","ParentImage":"C:\\Program Files\\Office\\WINWORD.EXE","Image":"C:\\Windows\\System32\\cmd.exe","User":"SVC_backup","host":"ws-03"}
+{"@timestamp":"2026-01-01T10:02:00Z","DestinationPort":3389,"SourceIp":"203.0.113.50"}
+{"@timestamp":"2026-01-01T10:02:10Z","DestinationPort":3389,"SourceIp":"10.1.2.3"}
+{"@timestamp":"2026-01-01T10:03:00Z","event":{"action":"ssh_login_failed"},"src_ip":"198.51.100.7"}
+{"@timestamp":"2026-01-01T10:03:10Z","event":{"action":"ssh_login_failed"},"src_ip":"198.51.100.7"}
+{"@timestamp":"2026-01-01T10:03:20Z","event":{"action":"ssh_login_failed"},"src_ip":"198.51.100.7"}
+{"@timestamp":"2026-01-01T10:03:30Z","event":{"action":"ssh_login_failed"},"src_ip":"198.51.100.7"}
+{"@timestamp":"2026-01-01T10:03:40Z","event":{"action":"ssh_login_failed"},"src_ip":"198.51.100.7"}
+{"@timestamp":"2026-01-01T10:03:50Z","event":{"action":"ssh_login_failed"},"src_ip":"198.51.100.7"}
+{"@timestamp":"2026-01-01T10:04:00Z","event":{"action":"ssh_login_failed"},"src_ip":"192.0.2.9"}

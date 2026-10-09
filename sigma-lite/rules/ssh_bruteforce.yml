@@ -1,0 +1,10 @@
+title: SSH Brute Force (threshold)
+id: sl-0004
+level: medium
+description: Five or more failed SSH logins from one source within two minutes.
+tags: [attack.credential_access, attack.t1110.001]
+detection:
+  fail:
+    event.action: ssh_login_failed
+  timeframe: 2m
+  condition: fail | count() by src_ip >= 5

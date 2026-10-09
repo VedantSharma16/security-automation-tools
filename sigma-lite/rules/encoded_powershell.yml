@@ -1,0 +1,12 @@
+title: Encoded PowerShell Command
+id: sl-0001
+description: PowerShell launched with an encoded or hidden-window payload, common in malware loaders.
+level: high
+tags: [attack.execution, attack.t1059.001]
+falsepositives: [Some software deployment tools]
+detection:
+  img:
+    Image|endswith: '\powershell.exe'
+  flags:
+    CommandLine|contains: [' -enc ', ' -encodedcommand ', ' -w hidden', '-windowstyle hidden']
+  condition: img and flags

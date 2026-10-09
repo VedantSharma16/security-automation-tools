@@ -1,0 +1,10 @@
+title: Inbound RDP From Public Address
+id: sl-0005
+level: medium
+tags: [attack.lateral_movement, attack.t1021.001]
+detection:
+  rdp:
+    DestinationPort: 3389
+  internal:
+    SourceIp|cidr: ['10.0.0.0/8', '192.168.0.0/16', '172.16.0.0/12']
+  condition: rdp and not internal
