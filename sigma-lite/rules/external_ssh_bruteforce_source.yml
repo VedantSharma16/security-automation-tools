@@ -1,0 +1,18 @@
+title: Failed Login From Public Range
+id: 5b3c1a10-0004-4f6e-9a11-aa0000000004
+description: Failed authentication from an address outside RFC1918 space.
+tags:
+  - attack.credential_access
+  - attack.t1110
+level: medium
+logsource:
+  category: authentication
+detection:
+  failed:
+    event.outcome: failure
+  internal:
+    src_ip|cidr:
+      - 10.0.0.0/8
+      - 172.16.0.0/12
+      - 192.168.0.0/16
+  condition: failed and not internal

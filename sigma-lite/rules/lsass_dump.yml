@@ -1,0 +1,22 @@
+title: LSASS Credential Dumping Tool
+id: 5b3c1a10-0003-4f6e-9a11-aa0000000003
+description: Known credential-dumping command lines targeting LSASS.
+tags:
+  - attack.credential_access
+  - attack.t1003.001
+level: critical
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  procdump:
+    CommandLine|contains|all:
+      - procdump
+      - lsass
+  mimikatz:
+    CommandLine|contains:
+      - 'sekurlsa::logonpasswords'
+      - 'lsadump::'
+  comsvcs:
+    CommandLine|re: 'comsvcs\.dll.*MiniDump'
+  condition: 1 of them

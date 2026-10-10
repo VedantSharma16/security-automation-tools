@@ -1,0 +1,24 @@
+title: Encoded PowerShell Command
+id: 5b3c1a10-0001-4f6e-9a11-aa0000000001
+description: PowerShell launched with an encoded command, common in malware loaders.
+tags:
+  - attack.execution
+  - attack.t1059.001
+  - attack.defense_evasion
+  - attack.t1027
+level: high
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_img:
+    Image|endswith:
+      - '\powershell.exe'
+      - '\pwsh.exe'
+  selection_flag:
+    CommandLine|contains:
+      - ' -enc '
+      - ' -EncodedCommand '
+  filter_admin:
+    ParentImage|endswith: '\sccm_agent.exe'
+  condition: selection_img and selection_flag and not filter_admin
