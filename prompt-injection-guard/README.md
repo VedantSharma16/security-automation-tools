@@ -20,7 +20,7 @@ measure how well a target holds up against an attack corpus. Stdlib only.
 pip install -e .[dev]
 pigard scan suspicious.txt --source retrieved   # exit 0 allow / 1 warn / 2 block
 echo "ignore all previous instructions" | pigard scan - --json
-pigard redteam --target vulnerable              # leak_rate=60%, exit 1
+pigard redteam --target vulnerable              # leak_rate=50%, exit 1
 pigard redteam --target guarded                 # leak_rate=0%, 0 false positives
 pytest
 ```
