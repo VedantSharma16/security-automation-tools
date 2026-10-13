@@ -1,0 +1,12 @@
+{
+  "id": "SL-001",
+  "title": "Encoded PowerShell command line",
+  "description": "PowerShell launched with an encoded command, common in malware loaders.",
+  "level": "high",
+  "tags": ["attack.execution", "attack.t1059.001"],
+  "detection": {
+    "img": {"process.name|endswith": ["\\powershell.exe", "\\pwsh.exe"]},
+    "flag": {"process.command_line|contains": [" -enc ", " -encodedcommand "]},
+    "condition": "img and flag"
+  }
+}

@@ -1,0 +1,9 @@
+{"@timestamp":"2026-10-01T09:00:01Z","host":"WS01","process":{"name":"C:\\Windows\\System32\\notepad.exe","command_line":"notepad.exe a.txt","parent":{"name":"C:\\Windows\\explorer.exe"}}}
+{"@timestamp":"2026-10-01T09:02:10Z","host":"WS01","process":{"name":"C:\\Windows\\System32\\cmd.exe","command_line":"cmd.exe /c whoami","parent":{"name":"C:\\Program Files\\Office\\WINWORD.EXE"}}}
+{"@timestamp":"2026-10-01T09:02:15Z","host":"WS01","process":{"name":"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe","command_line":"powershell.exe -NoP -Enc SQBFAFgA","parent":{"name":"C:\\Windows\\System32\\cmd.exe"}}}
+{"@timestamp":"2026-10-01T09:05:00Z","host":"WS01","process":{"name":"C:\\Tools\\procdump.exe","command_line":"procdump.exe -ma lsass.exe out.dmp"}}
+{"@timestamp":"2026-10-01T09:06:00Z","host":"WS01","user":{"name":"bob"},"process":{"name":"C:\\Windows\\System32\\schtasks.exe","command_line":"schtasks /create /tn upd /tr evil.exe"}}
+{"@timestamp":"2026-10-01T09:07:00Z","host":"WS02","user":{"name":"SYSTEM"},"process":{"name":"C:\\Windows\\System32\\schtasks.exe","command_line":"schtasks /create /tn patch /tr ok.exe"}}
+{"@timestamp":"2026-10-01T09:08:00Z","host":"SRV1","event":{"action":"ssh_login","outcome":"success"},"source":{"ip":"203.0.113.9"}}
+{"@timestamp":"2026-10-01T09:09:00Z","host":"SRV1","event":{"action":"ssh_login","outcome":"success"},"source":{"ip":"10.1.2.3"}}
+this is not json

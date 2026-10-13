@@ -1,0 +1,11 @@
+{
+  "id": "SL-002",
+  "title": "Office application spawning a shell",
+  "level": "critical",
+  "tags": ["attack.initial_access", "attack.t1566.001"],
+  "detection": {
+    "parent": {"process.parent.name|endswith": ["\\winword.exe", "\\excel.exe", "\\outlook.exe"]},
+    "child": {"process.name|endswith": ["\\cmd.exe", "\\powershell.exe", "\\wscript.exe"]},
+    "condition": "parent and child"
+  }
+}

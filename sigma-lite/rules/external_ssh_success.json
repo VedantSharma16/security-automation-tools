@@ -1,0 +1,11 @@
+{
+  "id": "SL-004",
+  "title": "SSH login from non-internal address",
+  "level": "medium",
+  "tags": ["attack.initial_access", "attack.t1078"],
+  "detection": {
+    "login": {"event.action": "ssh_login", "event.outcome": "success"},
+    "internal": {"source.ip|cidr": ["10.0.0.0/8", "192.168.0.0/16", "172.16.0.0/12"]},
+    "condition": "login and not internal"
+  }
+}

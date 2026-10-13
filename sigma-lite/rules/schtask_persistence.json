@@ -1,0 +1,11 @@
+{
+  "id": "SL-005",
+  "title": "Scheduled task created via schtasks",
+  "level": "medium",
+  "tags": ["attack.persistence", "attack.t1053.005"],
+  "detection": {
+    "create": {"process.name|endswith": "\\schtasks.exe", "process.command_line|re": "/create\\b"},
+    "benign": {"user.name": "SYSTEM"},
+    "condition": "create and not benign"
+  }
+}

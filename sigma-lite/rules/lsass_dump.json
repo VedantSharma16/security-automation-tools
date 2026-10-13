@@ -1,0 +1,11 @@
+{
+  "id": "SL-003",
+  "title": "Possible LSASS credential dumping",
+  "level": "critical",
+  "tags": ["attack.credential_access", "attack.t1003.001"],
+  "detection": {
+    "procdump": {"process.command_line|contains|all": ["lsass", "-ma"]},
+    "comsvcs": {"process.command_line|contains|all": ["comsvcs.dll", "minidump"]},
+    "condition": "1 of them"
+  }
+}
