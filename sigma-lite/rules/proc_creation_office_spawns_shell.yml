@@ -1,0 +1,11 @@
+title: Office Application Spawning Shell
+id: 5b2a1c7e-0002-4a4e-9a11-0c0ffee00002
+description: Word/Excel spawning a command interpreter suggests a malicious macro.
+level: critical
+tags: [attack.initial_access, attack.t1566.001, attack.execution, attack.t1204.002]
+detection:
+  parent:
+    ParentImage|endswith: ['\winword.exe', '\excel.exe', '\powerpnt.exe']
+  child:
+    Image|endswith: ['\cmd.exe', '\powershell.exe', '\wscript.exe', '\mshta.exe']
+  condition: parent and child

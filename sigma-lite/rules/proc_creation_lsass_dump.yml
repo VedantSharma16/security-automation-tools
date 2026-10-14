@@ -1,0 +1,9 @@
+title: Credential Dumping via comsvcs MiniDump
+id: 5b2a1c7e-0003-4a4e-9a11-0c0ffee00003
+description: rundll32 invoking comsvcs.dll MiniDump, typically against lsass.
+level: critical
+tags: [attack.credential_access, attack.t1003.001]
+detection:
+  selection:
+    CommandLine|contains|all: ['comsvcs', 'MiniDump']
+  condition: selection

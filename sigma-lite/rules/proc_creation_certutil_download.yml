@@ -1,0 +1,13 @@
+title: Certutil Used As Downloader
+id: 5b2a1c7e-0005-4a4e-9a11-0c0ffee00005
+description: certutil -urlcache download, a living-off-the-land transfer technique.
+level: high
+tags: [attack.command_and_control, attack.t1105]
+detection:
+  img:
+    Image|endswith: '\certutil.exe'
+  args:
+    CommandLine|contains: ['urlcache', 'verifyctl']
+  http:
+    CommandLine|contains: 'http'
+  condition: img and 1 of args and http
