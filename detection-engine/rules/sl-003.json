@@ -1,0 +1,49 @@
+{
+  "id": "SL-003",
+  "title": "LSASS memory access tool or dump",
+  "level": "critical",
+  "description": "Credential dumping via procdump/comsvcs MiniDump or mimikatz-style arguments.",
+  "tags": [
+    "attack.credential_access",
+    "attack.t1003.001"
+  ],
+  "detection": {
+    "procdump": {
+      "CommandLine|contains|all": [
+        "lsass",
+        "-ma"
+      ]
+    },
+    "comsvcs": {
+      "CommandLine|contains|all": [
+        "comsvcs",
+        "minidump"
+      ]
+    },
+    "mimikatz": {
+      "CommandLine|contains": [
+        "sekurlsa::",
+        "privilege::debug"
+      ]
+    },
+    "condition": "1 of them"
+  },
+  "tests": {
+    "match": [
+      {
+        "CommandLine": "procdump.exe -accepteula -ma lsass.exe out.dmp"
+      },
+      {
+        "CommandLine": "rundll32 C:\\windows\\system32\\comsvcs.dll, MiniDump 624 x.dmp full"
+      },
+      {
+        "CommandLine": "mimikatz sekurlsa::logonpasswords"
+      }
+    ],
+    "no_match": [
+      {
+        "CommandLine": "procdump.exe -ma notepad.exe n.dmp"
+      }
+    ]
+  }
+}

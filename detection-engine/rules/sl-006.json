@@ -1,0 +1,39 @@
+{
+  "id": "SL-006",
+  "title": "SSH brute force from a single source",
+  "level": "high",
+  "description": "Five or more failed SSH logins from one IP within five minutes.",
+  "tags": [
+    "attack.credential_access",
+    "attack.t1110.001"
+  ],
+  "detection": {
+    "fail": {
+      "event": "ssh_login",
+      "outcome": "failure"
+    },
+    "condition": "fail"
+  },
+  "threshold": {
+    "count": 5,
+    "timeframe": "5m",
+    "group_by": [
+      "src_ip"
+    ]
+  },
+  "tests": {
+    "match": [
+      {
+        "event": "ssh_login",
+        "outcome": "failure",
+        "src_ip": "1.2.3.4"
+      }
+    ],
+    "no_match": [
+      {
+        "event": "ssh_login",
+        "outcome": "success"
+      }
+    ]
+  }
+}

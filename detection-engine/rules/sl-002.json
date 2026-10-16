@@ -1,0 +1,50 @@
+{
+  "id": "SL-002",
+  "title": "Office application spawning a shell",
+  "level": "high",
+  "description": "Word/Excel/Outlook launching cmd, PowerShell or script hosts suggests a malicious macro.",
+  "tags": [
+    "attack.initial_access",
+    "attack.t1566.001",
+    "attack.execution",
+    "attack.t1204.002"
+  ],
+  "detection": {
+    "office": {
+      "ParentImage|endswith": [
+        "\\winword.exe",
+        "\\excel.exe",
+        "\\outlook.exe",
+        "\\powerpnt.exe"
+      ]
+    },
+    "shell": {
+      "Image|endswith": [
+        "\\cmd.exe",
+        "\\powershell.exe",
+        "\\wscript.exe",
+        "\\cscript.exe",
+        "\\mshta.exe"
+      ]
+    },
+    "condition": "office and shell"
+  },
+  "tests": {
+    "match": [
+      {
+        "ParentImage": "C:\\Office\\WINWORD.EXE",
+        "Image": "C:\\Windows\\System32\\cmd.exe"
+      }
+    ],
+    "no_match": [
+      {
+        "ParentImage": "C:\\Office\\WINWORD.EXE",
+        "Image": "C:\\Office\\splwow64.exe"
+      },
+      {
+        "ParentImage": "C:\\Windows\\explorer.exe",
+        "Image": "C:\\Windows\\System32\\cmd.exe"
+      }
+    ]
+  }
+}

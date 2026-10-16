@@ -1,0 +1,39 @@
+{
+  "id": "SL-004",
+  "title": "Scheduled task created for persistence",
+  "level": "medium",
+  "description": "schtasks /create running from user-writable paths or with SYSTEM privileges.",
+  "tags": [
+    "attack.persistence",
+    "attack.t1053.005"
+  ],
+  "detection": {
+    "create": {
+      "Image|endswith": "\\schtasks.exe",
+      "CommandLine|contains": "/create"
+    },
+    "risky": {
+      "CommandLine|contains": [
+        "\\appdata\\",
+        "\\temp\\",
+        "\\users\\public\\",
+        "/ru system"
+      ]
+    },
+    "condition": "create and risky"
+  },
+  "tests": {
+    "match": [
+      {
+        "Image": "C:\\Windows\\System32\\schtasks.exe",
+        "CommandLine": "schtasks /create /tn upd /tr C:\\Users\\Public\\a.exe /sc daily"
+      }
+    ],
+    "no_match": [
+      {
+        "Image": "C:\\Windows\\System32\\schtasks.exe",
+        "CommandLine": "schtasks /query"
+      }
+    ]
+  }
+}

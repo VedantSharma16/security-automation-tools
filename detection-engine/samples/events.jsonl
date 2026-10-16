@@ -1,0 +1,14 @@
+{"timestamp": "2026-01-10T09:00:00Z", "host": "WS01", "ParentImage": "C:\\Program Files\\Microsoft Office\\WINWORD.EXE", "Image": "C:\\Windows\\System32\\cmd.exe", "CommandLine": "cmd /c powershell"}
+{"timestamp": "2026-01-10T09:00:02Z", "host": "WS01", "ParentImage": "C:\\Windows\\System32\\cmd.exe", "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "CommandLine": "powershell -nop -w hidden -enc JABzAD0A"}
+{"timestamp": "2026-01-10T09:01:10Z", "host": "WS01", "Image": "C:\\Windows\\System32\\schtasks.exe", "CommandLine": "schtasks /create /tn Updater /tr C:\\Users\\Public\\svc.exe /sc onlogon"}
+{"timestamp": "2026-01-10T09:02:00Z", "host": "WS01", "Image": "C:\\tools\\procdump.exe", "CommandLine": "procdump.exe -ma lsass.exe l.dmp"}
+{"timestamp": "2026-01-10T09:03:00Z", "host": "WS01", "src_ip": "10.0.0.5", "dst_ip": "198.51.100.7", "dst_port": 4444}
+{"timestamp": "2026-01-10T09:10:00Z", "host": "SRV01", "event": "ssh_login", "outcome": "failure", "src_ip": "203.0.113.50"}
+{"timestamp": "2026-01-10T09:11:05Z", "host": "SRV01", "event": "ssh_login", "outcome": "failure", "src_ip": "203.0.113.50"}
+{"timestamp": "2026-01-10T09:12:10Z", "host": "SRV01", "event": "ssh_login", "outcome": "failure", "src_ip": "203.0.113.50"}
+{"timestamp": "2026-01-10T09:13:15Z", "host": "SRV01", "event": "ssh_login", "outcome": "failure", "src_ip": "203.0.113.50"}
+{"timestamp": "2026-01-10T09:14:20Z", "host": "SRV01", "event": "ssh_login", "outcome": "failure", "src_ip": "203.0.113.50"}
+{"timestamp": "2026-01-10T09:15:25Z", "host": "SRV01", "event": "ssh_login", "outcome": "failure", "src_ip": "203.0.113.50"}
+{"timestamp": "2026-01-10T09:20:00Z", "host": "SRV01", "event": "ssh_login", "outcome": "failure", "src_ip": "203.0.113.99"}
+{"timestamp": "2026-01-10T09:30:00Z", "host": "WS01", "Image": "C:\\Windows\\System32\\cmd.exe", "CommandLine": "vssadmin delete shadows /all /quiet"}
+{"timestamp": "2026-01-10T09:31:00Z", "host": "WS02", "Image": "C:\\Windows\\explorer.exe", "CommandLine": "explorer.exe"}

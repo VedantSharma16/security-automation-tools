@@ -1,0 +1,48 @@
+{
+  "id": "SL-005",
+  "title": "Shadow copy deletion",
+  "level": "critical",
+  "description": "vssadmin/wmic/bcdedit used to destroy recovery options, a ransomware precursor.",
+  "tags": [
+    "attack.impact",
+    "attack.t1490"
+  ],
+  "detection": {
+    "vss": {
+      "CommandLine|contains|all": [
+        "vssadmin",
+        "delete",
+        "shadows"
+      ]
+    },
+    "wmic": {
+      "CommandLine|contains|all": [
+        "shadowcopy",
+        "delete"
+      ]
+    },
+    "bcd": {
+      "CommandLine|contains|all": [
+        "bcdedit",
+        "recoveryenabled",
+        "no"
+      ]
+    },
+    "condition": "vss or wmic or bcd"
+  },
+  "tests": {
+    "match": [
+      {
+        "CommandLine": "vssadmin.exe Delete Shadows /All /Quiet"
+      },
+      {
+        "CommandLine": "wmic shadowcopy delete"
+      }
+    ],
+    "no_match": [
+      {
+        "CommandLine": "vssadmin list shadows"
+      }
+    ]
+  }
+}

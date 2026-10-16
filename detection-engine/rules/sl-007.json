@@ -1,0 +1,41 @@
+{
+  "id": "SL-007",
+  "title": "Outbound connection to non-corporate high port",
+  "level": "low",
+  "description": "Internal host connecting to a public IP on an unusual port (excludes RFC1918).",
+  "tags": [
+    "attack.command_and_control",
+    "attack.t1571"
+  ],
+  "detection": {
+    "port": {
+      "dst_port|gte": 4000
+    },
+    "internal": {
+      "dst_ip|cidr": [
+        "10.0.0.0/8",
+        "172.16.0.0/12",
+        "192.168.0.0/16"
+      ]
+    },
+    "condition": "port and not internal"
+  },
+  "tests": {
+    "match": [
+      {
+        "dst_port": 4444,
+        "dst_ip": "203.0.113.9"
+      }
+    ],
+    "no_match": [
+      {
+        "dst_port": 4444,
+        "dst_ip": "10.1.2.3"
+      },
+      {
+        "dst_port": 443,
+        "dst_ip": "203.0.113.9"
+      }
+    ]
+  }
+}

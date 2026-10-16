@@ -1,0 +1,44 @@
+{
+  "id": "SL-001",
+  "title": "Encoded PowerShell command",
+  "level": "high",
+  "description": "PowerShell launched with an encoded command, common for obfuscated payloads.",
+  "tags": [
+    "attack.execution",
+    "attack.t1059.001",
+    "attack.defense_evasion",
+    "attack.t1027"
+  ],
+  "detection": {
+    "selection": {
+      "Image|endswith": [
+        "\\powershell.exe",
+        "\\pwsh.exe"
+      ],
+      "CommandLine|contains": [
+        " -enc ",
+        " -encodedcommand ",
+        " -e "
+      ]
+    },
+    "condition": "selection"
+  },
+  "tests": {
+    "match": [
+      {
+        "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "CommandLine": "powershell -NoP -enc SQBFAFgA"
+      }
+    ],
+    "no_match": [
+      {
+        "Image": "C:\\Windows\\System32\\cmd.exe",
+        "CommandLine": "cmd /c echo -enc"
+      },
+      {
+        "Image": "C:\\x\\powershell.exe",
+        "CommandLine": "powershell Get-Process"
+      }
+    ]
+  }
+}
