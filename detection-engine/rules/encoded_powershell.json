@@ -1,0 +1,6 @@
+{"id":"win-ps-encoded","title":"PowerShell with encoded command","level":"high",
+ "description":"Encoded PowerShell is a common obfuscation for payload delivery.",
+ "tags":["attack.execution","attack.t1059.001","attack.defense_evasion","attack.t1027"],
+ "detection":{"img":{"Image|endswith":["\\powershell.exe","\\pwsh.exe"]},
+  "flag":{"CommandLine|contains":[" -enc "," -encodedcommand "," -e "]},
+  "condition":"img and flag"}}

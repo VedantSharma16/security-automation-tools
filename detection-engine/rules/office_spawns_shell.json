@@ -1,0 +1,5 @@
+{"id":"win-office-shell","title":"Office application spawning a shell","level":"high",
+ "tags":["attack.execution","attack.t1204.002","attack.t1059.003"],
+ "detection":{"parent":{"ParentImage|endswith":["\\winword.exe","\\excel.exe","\\outlook.exe"]},
+  "child":{"Image|endswith":["\\cmd.exe","\\powershell.exe","\\wscript.exe","\\mshta.exe"]},
+  "condition":"parent and child"}}

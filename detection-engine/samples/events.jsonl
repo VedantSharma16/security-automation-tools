@@ -1,0 +1,8 @@
+{"Image":"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe","CommandLine":"powershell.exe -nop -w hidden -enc SQBFAFgA","ParentImage":"C:\\Program Files\\Microsoft Office\\winword.exe","User":"CORP\\alice"}
+{"Image":"C:\\Windows\\System32\\notepad.exe","CommandLine":"notepad.exe notes.txt","ParentImage":"C:\\Windows\\explorer.exe","User":"CORP\\bob"}
+{"Image":"C:\\Windows\\System32\\rundll32.exe","CommandLine":"rundll32.exe C:\\windows\\system32\\comsvcs.dll, MiniDump 624 C:\\temp\\l.dmp full","User":"CORP\\alice"}
+{"Image":"C:\\Windows\\System32\\schtasks.exe","CommandLine":"schtasks /create /tn Updater /tr C:\\Users\\alice\\AppData\\Roaming\\u.exe /sc onlogon","User":"CORP\\alice"}
+{"Image":"C:\\Windows\\System32\\schtasks.exe","CommandLine":"schtasks /create /tn Patch /tr C:\\Temp\\p.exe /sc daily","User":"NT AUTHORITY\\SYSTEM"}
+{"Image":"C:\\Windows\\System32\\vssadmin.exe","CommandLine":"vssadmin delete shadows /all /quiet","User":"CORP\\alice"}
+{"process":"sshd","message":"Accepted publickey for root from 203.0.113.9 port 51122","user":"root","src_ip":"203.0.113.9"}
+{"process":"sshd","message":"Accepted publickey for root from 10.0.0.5 port 4000","user":"root","src_ip":"10.0.0.5"}

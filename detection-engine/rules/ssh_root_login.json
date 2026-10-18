@@ -1,0 +1,5 @@
+{"id":"lin-ssh-root","title":"Successful SSH login as root from external address","level":"medium",
+ "tags":["attack.initial_access","attack.t1078","attack.t1021.004"],
+ "detection":{"ok":{"process":"sshd","message|startswith":"Accepted","user":"root"},
+  "internal":{"src_ip|re":"^(10\\.|192\\.168\\.|172\\.(1[6-9]|2\\d|3[01])\\.)"},
+  "condition":"ok and not internal"}}

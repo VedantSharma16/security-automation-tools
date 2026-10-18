@@ -1,0 +1,6 @@
+{"id":"win-schtask-persist","title":"Scheduled task created from user-writable path","level":"medium",
+ "tags":["attack.persistence","attack.t1053.005"],
+ "detection":{"create":{"Image|endswith":"\\schtasks.exe","CommandLine|contains":"/create"},
+  "path":{"CommandLine|contains":["\\appdata\\","\\temp\\","\\users\\public\\"]},
+  "trusted":{"User":"NT AUTHORITY\\SYSTEM"},
+  "condition":"create and path and not trusted"}}

@@ -1,0 +1,6 @@
+{"id":"win-vss-delete","title":"Volume shadow copy deletion (ransomware precursor)","level":"critical",
+ "tags":["attack.impact","attack.t1490"],
+ "detection":{"vssadmin":{"CommandLine|contains|all":["vssadmin","delete","shadows"]},
+  "wmic":{"CommandLine|contains|all":["shadowcopy","delete"]},
+  "bcdedit":{"CommandLine|contains|all":["bcdedit","recoveryenabled","no"]},
+  "condition":"vssadmin or wmic or bcdedit"}}
