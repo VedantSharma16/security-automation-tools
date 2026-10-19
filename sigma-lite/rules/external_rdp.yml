@@ -1,0 +1,13 @@
+title: Inbound RDP Connection from Public IP
+id: sl-0005
+description: Connection to TCP/3389 from a source outside RFC1918 space.
+level: medium
+tags: [attack.initial_access, attack.t1133, attack.lateral_movement, attack.t1021.001]
+logsource:
+  category: network_connection
+detection:
+  rdp:
+    DestinationPort: 3389
+  private:
+    SourceIp|cidr: ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']
+  condition: rdp and not private

@@ -1,0 +1,15 @@
+title: Certutil Used as Downloader
+id: sl-0006
+description: certutil -urlcache abused to fetch remote payloads (living off the land).
+level: high
+tags: [attack.command_and_control, attack.t1105]
+logsource:
+  category: process_creation
+detection:
+  tool:
+    Image|endswith: '\certutil.exe'
+  fetch:
+    CommandLine|contains: ['urlcache', 'verifyctl']
+  url:
+    CommandLine|re: 'https?://'
+  condition: tool and 1 of fetch* and url

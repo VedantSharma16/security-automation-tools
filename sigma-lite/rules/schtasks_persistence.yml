@@ -1,0 +1,14 @@
+title: Scheduled Task Created from User-Writable Path
+id: sl-0004
+description: schtasks /create pointing at temp, appdata or public directories.
+level: medium
+tags: [attack.persistence, attack.t1053.005]
+logsource:
+  category: process_creation
+detection:
+  create:
+    Image|endswith: '\schtasks.exe'
+    CommandLine|contains: '/create'
+  path:
+    CommandLine|contains: ['\temp\', '\appdata\', '\users\public\']
+  condition: create and path

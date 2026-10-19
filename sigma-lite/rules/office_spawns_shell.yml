@@ -1,0 +1,13 @@
+title: Office Application Spawning Command Interpreter
+id: sl-0003
+description: Word/Excel spawning cmd, PowerShell or script hosts suggests a malicious macro.
+level: high
+tags: [attack.execution, attack.t1204.002, attack.t1059]
+logsource:
+  category: process_creation
+detection:
+  parent:
+    ParentImage|endswith: ['\winword.exe', '\excel.exe', '\powerpnt.exe']
+  child:
+    Image|endswith: ['\cmd.exe', '\powershell.exe', '\wscript.exe', '\cscript.exe', '\mshta.exe']
+  condition: parent and child

