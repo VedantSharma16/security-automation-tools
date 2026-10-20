@@ -1,0 +1,8 @@
+[
+  {"Image": "C:\\Windows\\System32\\notepad.exe", "CommandLine": "notepad.exe notes.txt", "ParentImage": "C:\\Windows\\explorer.exe"},
+  {"Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "CommandLine": "powershell.exe -nop -w hidden -enc SQBFAFgA", "ParentImage": "C:\\Windows\\explorer.exe"},
+  {"Image": "C:\\Windows\\System32\\cmd.exe", "CommandLine": "cmd.exe /c whoami", "ParentImage": "C:\\Program Files\\Microsoft Office\\WINWORD.EXE"},
+  {"Image": "C:\\Windows\\System32\\cmd.exe", "CommandLine": "cmd.exe /c C:\\Program Files\\Approved\\tool.bat", "ParentImage": "C:\\Program Files\\Microsoft Office\\WINWORD.EXE"},
+  {"Image": "C:\\Windows\\System32\\rundll32.exe", "CommandLine": "rundll32.exe C:\\windows\\system32\\comsvcs.dll, MiniDump 624 C:\\t\\l.dmp full", "ParentImage": "C:\\Windows\\System32\\cmd.exe"},
+  {"Image": "C:\\Windows\\System32\\net.exe", "CommandLine": "net localgroup administrators backdoor /add", "ParentImage": "C:\\Windows\\System32\\cmd.exe"}
+]

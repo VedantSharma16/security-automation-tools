@@ -1,0 +1,12 @@
+title: Local Account Added To Administrators
+id: admin-group-add
+description: A net.exe command adding a user to the local Administrators group.
+tags:
+  - attack.persistence
+  - attack.privilege_escalation
+  - attack.t1098
+level: medium
+detection:
+  selection:
+    CommandLine|re: 'net1?\s+localgroup\s+administrators\s+\S+\s+/add'
+  condition: selection
