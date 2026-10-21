@@ -1,0 +1,11 @@
+title: Volume Shadow Copy Deletion
+id: sl-0004
+description: Typical ransomware precursor.
+tags: [attack.impact, attack.t1490]
+level: critical
+detection:
+  vssadmin:
+    CommandLine|contains|all: ['vssadmin', 'delete', 'shadows']
+  wmic:
+    CommandLine|contains|all: ['wmic', 'shadowcopy', 'delete']
+  condition: 1 of them

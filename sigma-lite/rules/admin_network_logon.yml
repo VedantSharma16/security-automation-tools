@@ -1,0 +1,10 @@
+title: Network Logon With Admin Account
+id: sl-0005
+tags: [attack.lateral-movement, attack.t1021.002, attack.initial-access, attack.t1078]
+level: low
+detection:
+  selection:
+    EventID: 4624
+    LogonType: 3
+    user.name|startswith: admin
+  condition: selection

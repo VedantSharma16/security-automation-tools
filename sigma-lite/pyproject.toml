@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sigmalite"
+version = "0.1.0"
+description = "A Sigma-style detection rule engine: parse YAML rules, evaluate them against JSON events, and report MITRE ATT&CK coverage."
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+dependencies = ["pyyaml>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+sigmalite = "sigmalite.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["sigmalite*"]

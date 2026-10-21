@@ -1,0 +1,9 @@
+title: Scheduled Task Created for Persistence
+id: sl-0003
+tags: [attack.persistence, attack.privilege-escalation, attack.t1053.005]
+level: medium
+detection:
+  selection:
+    Image|endswith: '\schtasks.exe'
+    CommandLine|contains|all: ['/create', '/sc']
+  condition: selection

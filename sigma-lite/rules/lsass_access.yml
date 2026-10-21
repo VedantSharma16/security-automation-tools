@@ -1,0 +1,13 @@
+title: Credential Dumping via LSASS Access
+id: sl-0002
+description: A non-system process opens lsass.exe with memory-read access.
+tags: [attack.credential-access, attack.t1003.001]
+level: critical
+detection:
+  selection:
+    EventID: 10
+    TargetImage|endswith: '\lsass.exe'
+    GrantedAccess|contains: ['0x1010', '0x1410', '0x1fffff']
+  filter_system:
+    SourceImage|startswith: 'C:\Windows\System32\'
+  condition: selection and not filter_system

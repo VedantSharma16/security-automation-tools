@@ -1,0 +1,8 @@
+{"EventID": 1, "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "CommandLine": "powershell.exe -NoP -enc SQBFAFgA"}
+{"EventID": 1, "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "CommandLine": "powershell.exe Get-Date"}
+{"EventID": 10, "SourceImage": "C:\\Users\\bob\\AppData\\mimi.exe", "TargetImage": "C:\\Windows\\System32\\lsass.exe", "GrantedAccess": "0x1010"}
+{"EventID": 10, "SourceImage": "C:\\Windows\\System32\\svchost.exe", "TargetImage": "C:\\Windows\\System32\\lsass.exe", "GrantedAccess": "0x1010"}
+{"EventID": 1, "Image": "C:\\Windows\\System32\\schtasks.exe", "CommandLine": "schtasks /create /sc minute /tn x /tr evil.exe"}
+{"EventID": 1, "Image": "C:\\Windows\\System32\\cmd.exe", "CommandLine": "cmd /c vssadmin delete shadows /all /quiet"}
+
+{"EventID": 4624, "LogonType": 3, "user": {"name": "administrator"}}

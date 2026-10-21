@@ -1,0 +1,14 @@
+title: Encoded PowerShell Command
+id: sl-0001
+description: PowerShell launched with an encoded command, common in malware loaders.
+tags: [attack.execution, attack.t1059.001, attack.defense-evasion, attack.t1027]
+level: high
+falsepositives: [Legitimate admin scripts, software deployment tools]
+detection:
+  selection_img:
+    Image|endswith: '\powershell.exe'
+  selection_flag:
+    CommandLine|contains:
+      - ' -enc '
+      - ' -encodedcommand '
+  condition: selection_img and selection_flag
