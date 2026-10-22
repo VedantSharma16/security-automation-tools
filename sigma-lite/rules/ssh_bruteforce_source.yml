@@ -1,0 +1,12 @@
+title: Failed SSH Login From External Range
+id: 6b1c0d1e-0004-4f00-9a00-000000000004
+description: Failed SSH authentication from a non-RFC1918 address.
+tags: [attack.credential_access, attack.t1110.001]
+logsource: {product: linux, service: auth}
+detection:
+  failed:
+    event.action: ssh_login_failed
+  internal:
+    src.ip|cidr: ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']
+  condition: failed and not internal
+level: medium

@@ -1,0 +1,14 @@
+title: Office Application Spawning Shell
+id: 6b1c0d1e-0003-4f00-9a00-000000000003
+description: Word/Excel spawning cmd or PowerShell indicates a malicious macro.
+tags: [attack.execution, attack.t1204.002, attack.t1059]
+logsource: {category: process_creation, product: windows}
+detection:
+  parent:
+    ParentImage|endswith: ['\winword.exe', '\excel.exe', '\powerpnt.exe']
+  child:
+    Image|endswith: ['\cmd.exe', '\powershell.exe', '\wscript.exe']
+  filter_legit:
+    CommandLine|contains: 'C:\CorpTools\approved.cmd'
+  condition: parent and child and not filter_legit
+level: high

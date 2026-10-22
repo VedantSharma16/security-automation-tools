@@ -1,0 +1,12 @@
+title: LSASS Memory Dump via Common Tools
+id: 6b1c0d1e-0002-4f00-9a00-000000000002
+description: Credential dumping from LSASS using procdump/comsvcs MiniDump.
+tags: [attack.credential_access, attack.t1003.001]
+logsource: {category: process_creation, product: windows}
+detection:
+  procdump:
+    CommandLine|contains|all: ['procdump', 'lsass']
+  comsvcs:
+    CommandLine|contains|all: ['comsvcs.dll', 'minidump']
+  condition: 1 of them
+level: critical

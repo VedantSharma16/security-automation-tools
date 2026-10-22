@@ -1,0 +1,13 @@
+title: Suspicious Encoded PowerShell Command
+id: 6b1c0d1e-0001-4f00-9a00-000000000001
+description: PowerShell launched with an encoded or hidden-window command line, common in malware loaders.
+tags: [attack.execution, attack.t1059.001, attack.defense_evasion, attack.t1027]
+logsource: {category: process_creation, product: windows}
+detection:
+  img:
+    Image|endswith: ['\powershell.exe', '\pwsh.exe']
+  flags:
+    CommandLine|contains: [' -enc ', ' -encodedcommand ', ' -w hidden', '-windowstyle hidden']
+  condition: img and flags
+falsepositives: [Admin automation using -EncodedCommand]
+level: high

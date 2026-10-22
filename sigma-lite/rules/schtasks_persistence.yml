@@ -1,0 +1,13 @@
+title: Scheduled Task Created via schtasks
+id: 6b1c0d1e-0005-4f00-9a00-000000000005
+description: Persistence through scheduled task creation, especially running from user-writable paths.
+tags: [attack.persistence, attack.t1053.005]
+logsource: {category: process_creation, product: windows}
+detection:
+  create:
+    Image|endswith: '\schtasks.exe'
+    CommandLine|contains: '/create'
+  userpath:
+    CommandLine|re: '(?i)\\(users|temp|appdata|programdata)\\'
+  condition: create and userpath
+level: medium

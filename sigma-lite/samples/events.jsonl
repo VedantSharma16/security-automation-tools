@@ -1,0 +1,7 @@
+{"Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "CommandLine": "powershell.exe -NoP -w hidden -enc SQBFAFgA", "ParentImage": "C:\\Program Files\\Microsoft Office\\winword.exe"}
+{"Image": "C:\\Windows\\System32\\cmd.exe", "CommandLine": "cmd.exe /c whoami", "ParentImage": "C:\\Program Files\\Microsoft Office\\excel.exe"}
+{"Image": "C:\\Tools\\procdump64.exe", "CommandLine": "procdump64.exe -ma lsass.exe out.dmp"}
+{"Image": "C:\\Windows\\System32\\notepad.exe", "CommandLine": "notepad.exe notes.txt"}
+{"Image": "C:\\Windows\\System32\\schtasks.exe", "CommandLine": "schtasks /create /tn Updater /tr C:\\Users\\Public\\evil.exe /sc onlogon"}
+{"event": {"action": "ssh_login_failed"}, "src": {"ip": "203.0.113.50"}, "user": "root"}
+{"event": {"action": "ssh_login_failed"}, "src": {"ip": "10.1.2.3"}, "user": "alice"}
