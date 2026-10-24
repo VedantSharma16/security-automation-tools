@@ -1,0 +1,16 @@
+title: User Added To Local Administrators
+id: sl-0005
+description: net.exe adding an account to the Administrators group (persistence / privilege escalation).
+level: high
+tags: [attack.persistence, attack.privilege_escalation, attack.t1136.001]
+detection:
+  net:
+    Image|endswith: ['\net.exe', '\net1.exe']
+  grp:
+    CommandLine|re: 'localgroup\s+administrators\s+\S+\s+/add'
+  condition: net and grp
+tests:
+  match:
+    - {Image: 'C:\Windows\System32\net.exe', CommandLine: 'net localgroup administrators backdoor /add'}
+  no_match:
+    - {Image: 'C:\Windows\System32\net.exe', CommandLine: 'net user'}

@@ -1,0 +1,18 @@
+title: Failed SSH Login From External Address
+id: sl-0003
+description: Failed SSH authentication from a non-private source address.
+level: medium
+tags: [attack.credential_access, attack.t1110.001]
+detection:
+  failed:
+    event: ssh_auth
+    result: failure
+  internal:
+    src_ip|cidr: ['10.0.0.0/8', '192.168.0.0/16', '172.16.0.0/12']
+  condition: failed and not internal
+tests:
+  match:
+    - {event: ssh_auth, result: failure, src_ip: 203.0.113.9}
+  no_match:
+    - {event: ssh_auth, result: failure, src_ip: 10.1.2.3}
+    - {event: ssh_auth, result: success, src_ip: 203.0.113.9}

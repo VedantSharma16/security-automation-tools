@@ -1,0 +1,6 @@
+{"Image": "C:\\Windows\\System32\\cmd.exe", "ParentImage": "C:\\Office\\WINWORD.EXE", "CommandLine": "cmd /c whoami"}
+{"Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "CommandLine": "powershell -NoP -w hidden -Enc SQBFAFgA"}
+{"Image": "C:\\Windows\\explorer.exe", "CommandLine": "explorer.exe"}
+{"event": "ssh_auth", "result": "failure", "src_ip": "203.0.113.9"}
+{"event": "ssh_auth", "result": "failure", "src_ip": "192.168.1.20"}
+{"Image": "C:\\Windows\\System32\\net.exe", "CommandLine": "net localgroup administrators backdoor /add"}
