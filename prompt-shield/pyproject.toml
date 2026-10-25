@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prompt-shield"
+version = "0.1.0"
+description = "Prompt-injection and jailbreak detector for LLM applications, with an evaluation harness for measuring precision/recall."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+prompt-shield = "prompt_shield.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["prompt_shield*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
