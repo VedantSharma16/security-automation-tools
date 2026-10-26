@@ -1,0 +1,7 @@
+From: Alice <alice@example.com>
+To: bob@example.com
+Subject: Lunch tomorrow?
+Authentication-Results: mx.example.com; spf=pass; dkim=pass; dmarc=pass
+Content-Type: text/plain; charset=utf-8
+
+Hi Bob, want to grab lunch tomorrow? Menu: https://example.com/menu

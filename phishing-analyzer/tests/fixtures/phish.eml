@@ -1,0 +1,22 @@
+From: "PayPal Security" <service@paypa1-secure.xyz>
+Reply-To: helpdesk@mailbox-collect.top
+Return-Path: <bounce@mailer.example.net>
+To: victim@example.com
+Subject: URGENT: Verify your account within 24 hours
+Authentication-Results: mx.example.com; spf=fail smtp.mailfrom=paypa1-secure.xyz; dkim=none; dmarc=fail
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="B"
+
+--B
+Content-Type: text/html; charset=utf-8
+
+<p>Unusual activity detected. Sign in to confirm your identity:</p>
+<a href="http://192.168.5.9/login">https://www.paypal.com/signin</a>
+<a href="https://bit.ly/3abc">reset</a>
+--B
+Content-Type: application/octet-stream; name="invoice.pdf.exe"
+Content-Disposition: attachment; filename="invoice.pdf.exe"
+Content-Transfer-Encoding: base64
+
+TVqQAAMAAAAEAAAA
+--B--

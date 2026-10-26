@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phishscan"
+version = "0.1.0"
+description = "Static phishing email (.eml) analyzer: header authentication, URL, attachment and content heuristics with MITRE ATT&CK mapping."
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+phishscan = "phishscan.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["phishscan*"]
