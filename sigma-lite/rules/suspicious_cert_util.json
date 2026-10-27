@@ -1,0 +1,12 @@
+{
+  "id": "SL-0005",
+  "title": "certutil Used to Download or Decode Files",
+  "level": "medium",
+  "tags": ["attack.command_and_control", "attack.t1105", "attack.defense_evasion", "attack.t1140"],
+  "detection": {
+    "img": {"Image|endswith": "\\certutil.exe"},
+    "dl": {"CommandLine|contains": ["urlcache", "-decode", "verifyctl"]},
+    "http": {"CommandLine|re": "https?://"},
+    "condition": "img and (dl or http)"
+  }
+}

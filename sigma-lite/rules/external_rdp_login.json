@@ -1,0 +1,11 @@
+{
+  "id": "SL-0004",
+  "title": "Successful RDP Logon from Public IP",
+  "level": "medium",
+  "tags": ["attack.initial_access", "attack.t1133", "attack.t1021.001"],
+  "detection": {
+    "logon": {"EventID": 4624, "LogonType": [10, 7]},
+    "internal": {"SourceIp|cidr": ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "127.0.0.0/8"]},
+    "condition": "logon and not internal"
+  }
+}

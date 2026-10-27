@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sigmalite"
+version = "0.1.0"
+description = "Detection-as-code: a Sigma-inspired rule engine with a safe condition parser, field modifiers, and ATT&CK coverage reporting."
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+sigmalite = "sigmalite.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["sigmalite*"]

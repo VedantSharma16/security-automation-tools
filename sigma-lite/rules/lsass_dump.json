@@ -1,0 +1,11 @@
+{
+  "id": "SL-0003",
+  "title": "Credential Dumping via comsvcs/procdump on LSASS",
+  "level": "critical",
+  "tags": ["attack.credential_access", "attack.t1003.001"],
+  "detection": {
+    "comsvcs": {"CommandLine|contains|all": ["comsvcs", "minidump"]},
+    "procdump": {"CommandLine|contains|all": ["procdump", "lsass"]},
+    "condition": "1 of them"
+  }
+}

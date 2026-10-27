@@ -1,0 +1,12 @@
+{
+  "id": "SL-0002",
+  "title": "Office Application Spawning a Shell",
+  "description": "Word/Excel spawning cmd or PowerShell suggests a malicious macro.",
+  "level": "critical",
+  "tags": ["attack.initial_access", "attack.t1566.001", "attack.t1204.002"],
+  "detection": {
+    "parent": {"ParentImage|endswith": ["\\winword.exe", "\\excel.exe", "\\outlook.exe"]},
+    "child": {"Image|endswith": ["\\cmd.exe", "\\powershell.exe", "\\wscript.exe", "\\mshta.exe"]},
+    "condition": "parent and child"
+  }
+}

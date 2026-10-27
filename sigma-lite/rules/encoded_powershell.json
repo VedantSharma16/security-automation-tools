@@ -1,0 +1,12 @@
+{
+  "id": "SL-0001",
+  "title": "Encoded PowerShell Command Line",
+  "description": "PowerShell launched with an encoded or hidden payload, common in malware loaders.",
+  "level": "high",
+  "tags": ["attack.execution", "attack.t1059.001", "attack.t1027"],
+  "detection": {
+    "img": {"Image|endswith": ["\\powershell.exe", "\\pwsh.exe"]},
+    "flags": {"CommandLine|contains": [" -enc ", " -encodedcommand ", " -w hidden", " -windowstyle hidden"]},
+    "condition": "img and flags"
+  }
+}
