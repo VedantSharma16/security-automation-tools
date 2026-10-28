@@ -1,0 +1,61 @@
+title: Encoded PowerShell Command
+id: sl-0001
+description: PowerShell launched with an encoded command, common in malware loaders.
+level: high
+tags: [attack.execution, attack.t1059.001]
+falsepositives: [Some management tooling]
+detection:
+  selection:
+    Image|endswith: '\powershell.exe'
+    CommandLine|contains: [' -enc ', ' -encodedcommand ']
+  condition: selection
+---
+title: Office Application Spawning Shell
+id: sl-0002
+description: Word/Excel spawning a command interpreter suggests a malicious macro.
+level: high
+tags: [attack.execution, attack.t1204.002]
+detection:
+  parent:
+    ParentImage|endswith: ['\winword.exe', '\excel.exe']
+  child:
+    Image|endswith: ['\cmd.exe', '\powershell.exe', '\wscript.exe']
+  condition: parent and child
+---
+title: LSASS Credential Dumping via ProcDump or comsvcs
+id: sl-0003
+description: Memory dump of lsass.exe to harvest credentials.
+level: critical
+tags: [attack.credential_access, attack.t1003.001]
+detection:
+  procdump:
+    CommandLine|contains|all: ['procdump', 'lsass']
+  comsvcs:
+    CommandLine|contains|all: ['comsvcs.dll', 'minidump']
+  condition: 1 of them
+---
+title: Shadow Copy Deletion
+id: sl-0004
+description: Backup destruction typical of ransomware.
+level: critical
+tags: [attack.impact, attack.t1490]
+detection:
+  vss:
+    CommandLine|contains|all: ['vssadmin', 'delete', 'shadows']
+  wmic:
+    CommandLine|contains|all: ['wmic', 'shadowcopy', 'delete']
+  condition: vss or wmic
+---
+title: Scheduled Task Persistence
+id: sl-0005
+description: schtasks used to create a task, excluding the known-good updater.
+level: medium
+tags: [attack.persistence, attack.t1053.005]
+falsepositives: [Software installers]
+detection:
+  create:
+    Image|endswith: '\schtasks.exe'
+    CommandLine|contains: '/create'
+  benign:
+    CommandLine|contains: 'GoogleUpdateTaskMachine'
+  condition: create and not benign

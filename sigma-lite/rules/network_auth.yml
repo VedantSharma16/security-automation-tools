@@ -1,0 +1,24 @@
+title: Successful Login From External Network After Failures
+id: sl-0006
+description: Successful authentication from outside RFC1918 space for a privileged account.
+level: medium
+tags: [attack.initial_access, attack.t1078]
+detection:
+  success:
+    event.outcome: success
+    user.name: [admin, administrator, root]
+  internal:
+    source.ip|cidr: ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']
+  condition: success and not internal
+---
+title: Suspicious Download Cradle Over HTTP
+id: sl-0007
+description: Command line fetching and executing remote content.
+level: high
+tags: [attack.command_and_control, attack.t1105]
+detection:
+  tool:
+    CommandLine|re: '(curl|wget|Invoke-WebRequest|iwr)\s.*http'
+  exec:
+    CommandLine|contains: ['| sh', '| bash', 'iex', 'Invoke-Expression']
+  condition: tool and exec
