@@ -1,0 +1,22 @@
+From: "security@paypal.com" <alerts@paypa1-secure.top>
+To: victim@example.com
+Subject: URGENT: verify your account immediately
+Reply-To: helpdesk@gmail-support.xyz
+Return-Path: <bounce@mailer.example.net>
+Received: from unknown (203.0.113.9) by mx.example.com
+Authentication-Results: mx.example.com; spf=fail smtp.mailfrom=paypa1-secure.top; dkim=none; dmarc=fail
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="B"
+
+--B
+Content-Type: text/html; charset=utf-8
+
+<html><body>Your account will be suspended. Verify your password now:
+<a href="http://203.0.113.50/login">https://www.paypal.com/signin</a></body></html>
+--B
+Content-Type: application/octet-stream; name="invoice.pdf.exe"
+Content-Disposition: attachment; filename="invoice.pdf.exe"
+Content-Transfer-Encoding: base64
+
+TVqQAAMAAAAEAAAA//8AALgAAAAAAAAA
+--B--

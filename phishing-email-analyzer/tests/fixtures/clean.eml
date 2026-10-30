@@ -1,0 +1,8 @@
+From: Alice <alice@example.com>
+To: bob@example.com
+Subject: Lunch tomorrow?
+Received: from mail.example.com by mx.example.com
+Authentication-Results: mx.example.com; spf=pass; dkim=pass; dmarc=pass
+Content-Type: text/plain; charset=utf-8
+
+Hi Bob, want to grab lunch? Menu: https://www.example.com/menu
