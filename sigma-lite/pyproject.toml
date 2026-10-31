@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sigmalite"
+version = "0.1.0"
+description = "A lightweight Sigma-compatible detection-as-code engine: parse rules, evaluate JSON events, map to MITRE ATT&CK."
+requires-python = ">=3.10"
+readme = "README.md"
+dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+sigmalite = "sigmalite.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["sigmalite*"]

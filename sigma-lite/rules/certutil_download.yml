@@ -1,0 +1,12 @@
+title: Certutil Used to Download File
+id: a1f0c3de-0002-4a00-9c11-000000000002
+description: certutil abused as a download cradle (LOLBin).
+tags: [attack.command_and_control, attack.t1105]
+logsource: {category: process_creation, product: windows}
+detection:
+  img:
+    Image|endswith: '\certutil.exe'
+  args:
+    CommandLine|contains|all: ['urlcache', 'http']
+  condition: img and args
+level: high

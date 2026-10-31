@@ -1,0 +1,14 @@
+title: Volume Shadow Copy Deletion
+id: a1f0c3de-0005-4a00-9c11-000000000005
+description: Ransomware precursor deleting backups.
+tags: [attack.impact, attack.t1490]
+logsource: {category: process_creation, product: windows}
+detection:
+  vss:
+    CommandLine|contains: 'vssadmin'
+  del:
+    CommandLine|contains: ['delete shadows', 'resize shadowstorage']
+  wmic:
+    CommandLine|contains|all: ['wmic', 'shadowcopy', 'delete']
+  condition: (vss and del) or wmic
+level: critical

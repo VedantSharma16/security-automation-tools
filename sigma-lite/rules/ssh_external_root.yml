@@ -1,0 +1,13 @@
+title: Root SSH Login From External Address
+id: a1f0c3de-0004-4a00-9c11-000000000004
+description: Successful root SSH login from a non-RFC1918 source.
+tags: [attack.initial_access, attack.t1078]
+logsource: {product: linux, service: auth}
+detection:
+  login:
+    event: ssh_login_success
+    user: root
+  internal:
+    src_ip|cidr: ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']
+  condition: login and not internal
+level: medium
