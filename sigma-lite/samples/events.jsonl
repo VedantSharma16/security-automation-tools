@@ -1,0 +1,6 @@
+{"Image":"C:\\Windows\\System32\\cmd.exe","ParentImage":"C:\\Office\\WINWORD.EXE","CommandLine":"cmd /c whoami"}
+{"Image":"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe","CommandLine":"powershell -NoP -Enc SQBFAFgA"}
+{"Image":"C:\\Windows\\System32\\notepad.exe","CommandLine":"notepad.exe"}
+{"Image":"C:\\tools\\procdump.exe","CommandLine":"procdump -ma lsass.exe l.dmp"}
+{"event":{"action":"ssh_login_failed"},"source":{"ip":"203.0.113.9"}}
+{"event":{"action":"ssh_login_failed"},"source":{"ip":"192.168.1.5"}}

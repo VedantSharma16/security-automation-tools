@@ -1,0 +1,19 @@
+title: Encoded PowerShell Command Line
+id: sl-0001
+description: PowerShell launched with an encoded or hidden-window payload.
+level: high
+tags: [attack.execution, attack.t1059.001]
+detection:
+  img:
+    Image|endswith: '\powershell.exe'
+  flags:
+    CommandLine|contains:
+      - ' -enc '
+      - ' -encodedcommand '
+      - ' -w hidden'
+  condition: img and flags
+tests:
+  match:
+    - {Image: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe', CommandLine: 'powershell -NoP -Enc SQBFAFgA'}
+  no_match:
+    - {Image: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe', CommandLine: 'powershell Get-Date'}

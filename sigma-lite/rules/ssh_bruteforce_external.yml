@@ -1,0 +1,16 @@
+title: Failed SSH Login From Public Address
+id: sl-0004
+description: Failed authentication whose source is outside RFC1918 space.
+level: medium
+tags: [attack.credential_access, attack.t1110.001]
+detection:
+  fail:
+    event.action: ssh_login_failed
+  internal:
+    source.ip|cidr: ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']
+  condition: fail and not internal
+tests:
+  match:
+    - {event: {action: ssh_login_failed}, source: {ip: 203.0.113.9}}
+  no_match:
+    - {event: {action: ssh_login_failed}, source: {ip: 10.1.2.3}}

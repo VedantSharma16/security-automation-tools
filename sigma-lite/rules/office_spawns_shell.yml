@@ -1,0 +1,19 @@
+title: Office Application Spawning a Shell
+id: sl-0003
+description: Word/Excel spawning cmd or PowerShell, typical of macro-based initial access.
+level: high
+tags: [attack.initial_access, attack.t1566.001]
+detection:
+  parent:
+    ParentImage|endswith: ['\winword.exe', '\excel.exe']
+  child:
+    Image|endswith: ['\cmd.exe', '\powershell.exe']
+  filter_benign:
+    CommandLine|contains: 'OfficeUpdate'
+  condition: parent and child and not filter_benign
+tests:
+  match:
+    - {ParentImage: 'C:\Office\WINWORD.EXE', Image: 'C:\Windows\System32\cmd.exe', CommandLine: 'cmd /c whoami'}
+  no_match:
+    - {ParentImage: 'C:\Office\WINWORD.EXE', Image: 'C:\Windows\System32\cmd.exe', CommandLine: 'cmd /c OfficeUpdate.bat'}
+    - {ParentImage: 'C:\Windows\explorer.exe', Image: 'C:\Windows\System32\cmd.exe', CommandLine: 'cmd'}

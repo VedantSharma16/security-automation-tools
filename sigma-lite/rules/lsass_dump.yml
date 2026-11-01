@@ -1,0 +1,18 @@
+title: LSASS Credential Dumping via comsvcs/procdump
+id: sl-0002
+description: Process memory dump of lsass.exe using common LOLBins.
+level: critical
+tags: [attack.credential_access, attack.t1003.001]
+detection:
+  comsvcs:
+    CommandLine|contains|all: ['comsvcs', 'minidump']
+  procdump:
+    Image|endswith: '\procdump.exe'
+    CommandLine|contains: 'lsass'
+  condition: 1 of them
+tests:
+  match:
+    - {Image: 'C:\Windows\System32\rundll32.exe', CommandLine: 'rundll32 C:\windows\system32\comsvcs.dll, MiniDump 624 out.dmp full'}
+    - {Image: 'C:\tools\procdump.exe', CommandLine: 'procdump -ma lsass.exe l.dmp'}
+  no_match:
+    - {Image: 'C:\tools\procdump.exe', CommandLine: 'procdump -ma notepad.exe n.dmp'}

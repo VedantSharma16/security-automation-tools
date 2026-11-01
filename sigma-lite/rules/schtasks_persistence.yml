@@ -1,0 +1,17 @@
+title: Scheduled Task Created via schtasks
+id: sl-0005
+description: Persistence through schtasks /create, flagged higher when run as SYSTEM.
+level: medium
+tags: [attack.persistence, attack.t1053.005]
+detection:
+  create:
+    Image|endswith: '\schtasks.exe'
+    CommandLine|contains: '/create'
+  system:
+    CommandLine|re: '/ru\s+"?system'
+  condition: create and system
+tests:
+  match:
+    - {Image: 'C:\Windows\System32\schtasks.exe', CommandLine: 'schtasks /create /tn Upd /tr evil.exe /ru SYSTEM'}
+  no_match:
+    - {Image: 'C:\Windows\System32\schtasks.exe', CommandLine: 'schtasks /create /tn Upd /tr ok.exe'}
