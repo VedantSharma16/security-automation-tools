@@ -1,0 +1,38 @@
+{
+  "id": "DF-002",
+  "title": "LSASS process access with read rights",
+  "level": "critical",
+  "description": "Credential dumping via handle to lsass.exe with VM_READ.",
+  "tags": [
+    "attack.t1003.001"
+  ],
+  "detection": {
+    "target": {
+      "TargetImage|endswith": "\\lsass.exe"
+    },
+    "access": {
+      "GrantedAccess": [
+        "0x1010",
+        "0x1410",
+        "0x1438",
+        "0x143a",
+        "0x1fffff"
+      ]
+    },
+    "condition": "target and access"
+  },
+  "tests": {
+    "should_match": [
+      {
+        "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+        "GrantedAccess": "0x1410"
+      }
+    ],
+    "should_not_match": [
+      {
+        "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+        "GrantedAccess": "0x1000"
+      }
+    ]
+  }
+}

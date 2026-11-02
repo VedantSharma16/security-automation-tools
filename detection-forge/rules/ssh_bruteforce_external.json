@@ -1,0 +1,39 @@
+{
+  "id": "DF-003",
+  "title": "SSH failed login from non-private address",
+  "level": "medium",
+  "tags": [
+    "attack.t1110.001"
+  ],
+  "detection": {
+    "fail": {
+      "event.action": "ssh_login_failed"
+    },
+    "internal": {
+      "src_ip|cidr": [
+        "10.0.0.0/8",
+        "172.16.0.0/12",
+        "192.168.0.0/16"
+      ]
+    },
+    "condition": "fail and not internal"
+  },
+  "tests": {
+    "should_match": [
+      {
+        "event": {
+          "action": "ssh_login_failed"
+        },
+        "src_ip": "203.0.113.9"
+      }
+    ],
+    "should_not_match": [
+      {
+        "event": {
+          "action": "ssh_login_failed"
+        },
+        "src_ip": "10.1.2.3"
+      }
+    ]
+  }
+}

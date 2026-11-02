@@ -1,0 +1,7 @@
+{"Image":"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe","CommandLine":"powershell.exe -NoP -W Hidden -enc JABjAD0A","User":"corp\\jdoe"}
+{"Image":"C:\\Windows\\System32\\notepad.exe","CommandLine":"notepad.exe notes.txt"}
+{"TargetImage":"C:\\Windows\\System32\\lsass.exe","SourceImage":"C:\\Temp\\x.exe","GrantedAccess":"0x1410"}
+{"event":{"action":"ssh_login_failed"},"src_ip":"198.51.100.23","user":"root"}
+{"event":{"action":"ssh_login_failed"},"src_ip":"192.168.1.20","user":"bob"}
+{"CommandLine":"cmd.exe /c vssadmin delete shadows /all /quiet"}
+{"bytes_out":734003200,"dest_port":8443,"src_ip":"10.0.0.5"}

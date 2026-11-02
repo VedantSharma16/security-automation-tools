@@ -1,0 +1,36 @@
+{
+  "id": "DF-004",
+  "title": "Volume shadow copy deletion (ransomware precursor)",
+  "level": "critical",
+  "tags": [
+    "attack.t1490"
+  ],
+  "detection": {
+    "vss": {
+      "CommandLine|contains|all": [
+        "vssadmin",
+        "delete",
+        "shadows"
+      ]
+    },
+    "wmic": {
+      "CommandLine|re": "(?i)wmic.*shadowcopy.*delete"
+    },
+    "condition": "vss or wmic"
+  },
+  "tests": {
+    "should_match": [
+      {
+        "CommandLine": "vssadmin.exe Delete Shadows /all /quiet"
+      },
+      {
+        "CommandLine": "wmic shadowcopy delete"
+      }
+    ],
+    "should_not_match": [
+      {
+        "CommandLine": "vssadmin list shadows"
+      }
+    ]
+  }
+}

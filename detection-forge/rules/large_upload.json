@@ -1,0 +1,38 @@
+{
+  "id": "DF-005",
+  "title": "Unusually large outbound transfer",
+  "level": "low",
+  "tags": [
+    "attack.t1048"
+  ],
+  "detection": {
+    "big": {
+      "bytes_out|gte": 104857600
+    },
+    "proxy": {
+      "dest_port": [
+        80,
+        443
+      ]
+    },
+    "condition": "big and not proxy"
+  },
+  "tests": {
+    "should_match": [
+      {
+        "bytes_out": 200000000,
+        "dest_port": 2222
+      }
+    ],
+    "should_not_match": [
+      {
+        "bytes_out": 200000000,
+        "dest_port": 443
+      },
+      {
+        "bytes_out": 10,
+        "dest_port": 2222
+      }
+    ]
+  }
+}

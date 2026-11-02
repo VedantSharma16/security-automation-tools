@@ -1,0 +1,48 @@
+{
+  "id": "DF-001",
+  "title": "Encoded PowerShell command line",
+  "level": "high",
+  "description": "PowerShell launched with -enc/-EncodedCommand, common in malware loaders.",
+  "tags": [
+    "attack.t1059.001",
+    "attack.t1027"
+  ],
+  "detection": {
+    "img": {
+      "Image|endswith": [
+        "\\powershell.exe",
+        "\\pwsh.exe"
+      ]
+    },
+    "enc": {
+      "CommandLine|contains": [
+        " -enc ",
+        " -encodedcommand ",
+        " -e "
+      ]
+    },
+    "filter": {
+      "ParentImage|endswith": "\\sccm\\ccmexec.exe"
+    },
+    "condition": "img and enc and not filter"
+  },
+  "tests": {
+    "should_match": [
+      {
+        "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "CommandLine": "powershell.exe -NoP -enc SQBFAFgA"
+      }
+    ],
+    "should_not_match": [
+      {
+        "Image": "C:\\Windows\\System32\\cmd.exe",
+        "CommandLine": "cmd /c echo -enc"
+      },
+      {
+        "Image": "C:\\x\\powershell.exe",
+        "CommandLine": "powershell -enc AAA",
+        "ParentImage": "C:\\sccm\\ccmexec.exe"
+      }
+    ]
+  }
+}
