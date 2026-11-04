@@ -1,0 +1,14 @@
+id: win-schtask-persist
+title: Scheduled Task Created from User-Writable Path
+level: medium
+tags: [attack.persistence, attack.t1053.005]
+logsource: {category: process_creation, product: windows}
+detection:
+  create:
+    Image|endswith: '\schtasks.exe'
+    CommandLine|contains: '/create'
+  path:
+    CommandLine|contains: ['\AppData\', '\Temp\', '\Users\Public\']
+  filter_ms:
+    CommandLine|contains: '\Microsoft\'
+  condition: create and path and not filter_ms

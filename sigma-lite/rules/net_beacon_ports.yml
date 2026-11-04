@@ -1,0 +1,11 @@
+id: net-suspicious-egress
+title: Outbound Connection to Rare Port from External Range
+level: low
+tags: [attack.command_and_control, attack.t1571]
+logsource: {category: network_connection}
+detection:
+  port:
+    DestinationPort: [4444, 1337, 31337]
+  internal:
+    DestinationIp|cidr: ['10.0.0.0/8', '192.168.0.0/16', '172.16.0.0/12']
+  condition: port and not internal

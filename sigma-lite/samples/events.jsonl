@@ -1,0 +1,7 @@
+{"Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "CommandLine": "powershell.exe -w hidden -enc JABzAD0A", "ParentImage": "C:\\Program Files\\Microsoft Office\\winword.exe"}
+{"Image": "C:\\Windows\\System32\\rundll32.exe", "CommandLine": "rundll32 C:\\windows\\system32\\comsvcs.dll, MiniDump 624 C:\\temp\\l.dmp full"}
+{"Image": "C:\\Windows\\System32\\schtasks.exe", "CommandLine": "schtasks /create /tn upd /tr C:\\Users\\bob\\AppData\\Roaming\\x.exe"}
+{"Image": "C:\\Windows\\System32\\schtasks.exe", "CommandLine": "schtasks /create /tn \\Microsoft\\Windows\\Foo /tr C:\\Temp\\x.exe"}
+{"Image": "C:\\Windows\\explorer.exe", "CommandLine": "explorer.exe"}
+{"DestinationIp": "203.0.113.9", "DestinationPort": 4444}
+{"DestinationIp": "10.1.2.3", "DestinationPort": 4444}
