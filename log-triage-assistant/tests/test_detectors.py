@@ -4,6 +4,7 @@ from pathlib import Path
 from logtriage.detectors import (
     detect_brute_force,
     detect_compromise_after_brute_force,
+    detect_password_spraying,
     detect_persistence,
     detect_privilege_escalation,
     run_all_detectors,
@@ -181,3 +182,33 @@ def test_run_all_detectors_on_clean_fixture_finds_nothing():
     events = parse_file(FIXTURES / "sample_auth_clean.log", default_year=2026)
     findings = run_all_detectors(events)
     assert findings == []
+
+
+def test_password_spraying_fires_on_many_distinct_users():
+    users = ["root", "admin", "oracle", "test", "ubuntu"]
+    events = [make_failed_login(i * 20, user=u) for i, u in enumerate(users)]
+    findings = detect_password_spraying(events)
+    assert len(findings) == 1
+    assert findings[0].type == "password_spraying"
+    assert findings[0].evidence["distinct_users"] == 5
+    assert [t["id"] for t in findings[0].to_dict()["mitre"]] == ["T1110.003"]
+
+
+def test_password_spraying_ignores_single_user_brute_force():
+    events = [make_failed_login(i * 5) for i in range(20)]  # one account only
+    assert detect_password_spraying(events) == []
+    assert len(detect_brute_force(events)) == 1
+
+
+def test_password_spraying_ignores_spread_outside_window():
+    users = ["root", "admin", "oracle", "test", "ubuntu"]
+    events = [make_failed_login(i * 400, user=u) for i, u in enumerate(users)]
+    assert detect_password_spraying(events, window_seconds=300) == []
+
+
+def test_findings_carry_mitre_mapping_and_unknown_type_is_empty():
+    from logtriage.mitre import techniques_for
+
+    findings = run_all_detectors(parse_file(FIXTURES / "sample_auth.log"))
+    assert findings and all(f.to_dict()["mitre"] for f in findings)
+    assert techniques_for("nonexistent") == []

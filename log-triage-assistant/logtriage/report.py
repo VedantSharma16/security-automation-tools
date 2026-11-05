@@ -67,6 +67,9 @@ def to_markdown(report: dict) -> str:
             lines.append("")
             lines.append(f"- First seen: {f['first_seen']}")
             lines.append(f"- Last seen: {f['last_seen']}")
+            if f.get("mitre"):
+                techs = ", ".join(f"{t['id']} {t['name']} ({t['tactic']})" for t in f["mitre"])
+                lines.append(f"- MITRE ATT&CK: {techs}")
             lines.append(f"- Evidence: `{json.dumps(f['evidence'])}`")
             lines.append("")
     else:

@@ -3,6 +3,7 @@
 Each detector looks for one pattern commonly triaged during incident response:
 
   - BruteForceDetector: many failed SSH logins from one IP in a short window.
+  - detect_password_spraying: one IP failing against many distinct accounts.
   - CompromiseAfterBruteForceDetector: a successful login from an IP that had
     just been failing password attempts (a classic sign of a cracked password).
   - PrivilegeEscalationDetector: sudo usage that elevates to root, escalated to
@@ -21,11 +22,14 @@ from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from typing import Optional
 
+from .mitre import techniques_for
 from .parser import Event
 from .scoring import Severity
 
 DEFAULT_BRUTE_FORCE_WINDOW_SECONDS = 60
 DEFAULT_BRUTE_FORCE_THRESHOLD = 5
+DEFAULT_SPRAY_WINDOW_SECONDS = 300
+DEFAULT_SPRAY_MIN_USERS = 5
 COMPROMISE_LOOKBACK_SECONDS = 120
 COMPROMISE_MIN_FAILURES = 3
 ESCALATION_CORRELATION_SECONDS = 600
@@ -50,6 +54,7 @@ class Finding:
             "evidence": self.evidence,
             "first_seen": self.first_seen.isoformat(),
             "last_seen": self.last_seen.isoformat(),
+            "mitre": techniques_for(self.type),
         }
 
 
@@ -97,6 +102,58 @@ def detect_brute_force(
                     )
                 )
                 break  # one finding per IP is enough; avoid duplicate overlapping clusters
+    return findings
+
+
+def detect_password_spraying(
+    events: list[Event],
+    window_seconds: int = DEFAULT_SPRAY_WINDOW_SECONDS,
+    min_users: int = DEFAULT_SPRAY_MIN_USERS,
+) -> list[Finding]:
+    """Flag one IP failing logins against many *distinct* accounts in a window.
+
+    Spraying tries few passwords across many users, so it stays under per-account
+    lockout/brute-force thresholds; the signal is breadth of usernames, not volume.
+    """
+    failures_by_ip: dict[str, list[Event]] = {}
+    for e in events:
+        if e.kind == "ssh_failed_password":
+            failures_by_ip.setdefault(e.fields["ip"], []).append(e)
+
+    findings: list[Finding] = []
+    window = timedelta(seconds=window_seconds)
+    for ip, attempts in failures_by_ip.items():
+        attempts.sort(key=lambda e: e.timestamp)
+        start = 0
+        for end in range(len(attempts)):
+            while attempts[end].timestamp - attempts[start].timestamp > window:
+                start += 1
+            cluster = attempts[start : end + 1]
+            users = sorted({a.fields["user"] for a in cluster})
+            if len(users) >= min_users:
+                invalid = sum(1 for a in cluster if a.fields.get("invalid_user"))
+                findings.append(
+                    Finding(
+                        type="password_spraying",
+                        severity=Severity.HIGH,
+                        title=f"Possible password spraying from {ip}",
+                        description=(
+                            f"{ip} failed logins against {len(users)} distinct accounts "
+                            f"({len(cluster)} attempts) within {window_seconds}s."
+                        ),
+                        evidence={
+                            "ip": ip,
+                            "distinct_users": len(users),
+                            "users_targeted": users,
+                            "attempt_count": len(cluster),
+                            "invalid_user_attempts": invalid,
+                            "window_seconds": window_seconds,
+                        },
+                        first_seen=cluster[0].timestamp,
+                        last_seen=cluster[-1].timestamp,
+                    )
+                )
+                break
     return findings
 
 
@@ -233,6 +290,11 @@ def run_all_detectors(events: list[Event], **kwargs) -> list[Finding]:
         events,
         window_seconds=kwargs.get("window_seconds", DEFAULT_BRUTE_FORCE_WINDOW_SECONDS),
         threshold=kwargs.get("threshold", DEFAULT_BRUTE_FORCE_THRESHOLD),
+    )
+    findings += detect_password_spraying(
+        events,
+        window_seconds=kwargs.get("spray_window_seconds", DEFAULT_SPRAY_WINDOW_SECONDS),
+        min_users=kwargs.get("spray_min_users", DEFAULT_SPRAY_MIN_USERS),
     )
     findings += detect_compromise_after_brute_force(events)
     findings += detect_privilege_escalation(events, prior_findings=findings)

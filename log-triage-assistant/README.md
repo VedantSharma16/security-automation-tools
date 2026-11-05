@@ -15,10 +15,13 @@ it's given, which keeps the narrative grounded and reviewable.
 | Detector | Pattern | Default severity |
 |---|---|---|
 | Brute force | ≥5 failed SSH logins from one IP within 60s | HIGH |
+| Password spraying | ≥5 distinct accounts failed from one IP within 5 min (evades per-account thresholds) | HIGH |
 | Compromise after brute force | A successful login from an IP that just failed ≥3 times | CRITICAL |
 | Privilege escalation | `sudo` usage that elevates to root (escalates to CRITICAL if it follows a suspected compromise within 10 minutes) | MEDIUM / CRITICAL |
 | Persistence — root account | A new user created with UID 0 | CRITICAL |
 | Persistence — crontab | A user's crontab is replaced | MEDIUM |
+
+Every finding is tagged with MITRE ATT&CK technique IDs (`logtriage/mitre.py`) in both JSON and Markdown output.
 
 Findings are combined into a 0–100 risk score and rendered as JSON or
 Markdown.
