@@ -1,0 +1,12 @@
+title: Encoded PowerShell Command
+id: 7a1c0001-0000-4000-8000-000000000001
+description: PowerShell launched with an encoded command or hidden window, common in malware loaders.
+level: high
+tags: [attack.execution, attack.t1059.001, attack.defense_evasion, attack.t1027]
+detection:
+  img:
+    Image|endswith: ['\powershell.exe', '\pwsh.exe']
+  flags:
+    CommandLine|contains: [' -enc ', ' -encodedcommand ', ' -w hidden', ' -windowstyle hidden']
+  condition: img and flags
+falsepositives: [Some software deployment tools]

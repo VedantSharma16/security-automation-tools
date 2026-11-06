@@ -1,0 +1,14 @@
+title: Shadow Copy Deletion
+id: 7a1c0005-0000-4000-8000-000000000005
+description: Inhibiting system recovery, a hallmark of ransomware.
+level: high
+tags: [attack.impact, attack.t1490]
+detection:
+  vss:
+    CommandLine|contains|all: ['vssadmin', 'delete', 'shadows']
+  wmic:
+    CommandLine|contains|all: ['wmic', 'shadowcopy', 'delete']
+  bcd:
+    CommandLine|contains: ['bcdedit']
+    CommandLine|contains|all: ['recoveryenabled', 'no']
+  condition: vss or wmic or bcd

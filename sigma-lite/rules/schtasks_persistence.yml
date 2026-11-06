@@ -1,0 +1,15 @@
+title: Scheduled Task Created From User-Writable Path
+id: 7a1c0004-0000-4000-8000-000000000004
+description: schtasks /create pointing at temp or user profile paths.
+level: medium
+tags: [attack.persistence, attack.privilege_escalation, attack.t1053.005]
+detection:
+  create:
+    Image|endswith: '\schtasks.exe'
+    CommandLine|contains: '/create'
+  path:
+    CommandLine|contains: ['\AppData\', '\Temp\', '\Users\Public\']
+  filter_ms:
+    CommandLine|contains: 'Microsoft\Windows'
+  condition: create and path and not filter_ms
+falsepositives: [Per-user software updaters]

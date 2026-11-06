@@ -1,0 +1,14 @@
+title: Outbound Connection To Non-Standard C2 Port
+id: 7a1c0006-0000-4000-8000-000000000006
+description: Outbound connections from scripting hosts to external IPs on uncommon high ports.
+level: medium
+tags: [attack.command_and_control, attack.t1571]
+detection:
+  proc:
+    Image|endswith: ['\powershell.exe', '\wscript.exe', '\rundll32.exe']
+  port:
+    DestinationPort|gte: 4000
+    DestinationPort|lt: 10000
+  internal:
+    DestinationIp|cidr: ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']
+  condition: proc and port and not internal

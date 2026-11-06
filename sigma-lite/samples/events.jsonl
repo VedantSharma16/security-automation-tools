@@ -1,0 +1,10 @@
+{"Image":"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe","CommandLine":"powershell.exe -nop -w hidden -enc SQBFAFgA","ParentImage":"C:\\Windows\\explorer.exe"}
+{"Image":"C:\\Windows\\System32\\cmd.exe","CommandLine":"cmd.exe /c whoami /priv","ParentImage":"C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE"}
+{"Image":"C:\\Windows\\System32\\rundll32.exe","CommandLine":"rundll32 C:\\windows\\system32\\comsvcs.dll, MiniDump 624 C:\\t\\l.dmp full"}
+{"Image":"C:\\Windows\\System32\\schtasks.exe","CommandLine":"schtasks /create /tn upd /tr C:\\Users\\bob\\AppData\\Roaming\\u.exe /sc daily"}
+{"Image":"C:\\Windows\\System32\\schtasks.exe","CommandLine":"schtasks /create /tn x /tr C:\\Windows\\Microsoft\\Windows\\Maint\\m.exe"}
+{"Image":"C:\\Windows\\System32\\vssadmin.exe","CommandLine":"vssadmin delete shadows /all /quiet"}
+{"Image":"C:\\Windows\\System32\\rundll32.exe","DestinationIp":"203.0.113.9","DestinationPort":4444}
+{"Image":"C:\\Windows\\System32\\rundll32.exe","DestinationIp":"192.168.1.5","DestinationPort":4444}
+{"Image":"C:\\Windows\\System32\\notepad.exe","CommandLine":"notepad.exe notes.txt"}
+not json

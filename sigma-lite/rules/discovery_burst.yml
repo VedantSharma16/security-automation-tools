@@ -1,0 +1,11 @@
+title: Account Discovery Commands
+id: 7a1c0007-0000-4000-8000-000000000007
+description: Enumeration of local users/groups and domain admins.
+level: low
+tags: [attack.discovery, attack.t1087.001]
+detection:
+  sel:
+    - CommandLine|contains: 'net group "domain admins"'
+    - CommandLine|re: 'net1?\s+(user|localgroup)\s+administrators'
+    - CommandLine|contains: 'whoami /priv'
+  condition: sel

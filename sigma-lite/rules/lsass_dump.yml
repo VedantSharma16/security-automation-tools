@@ -1,0 +1,13 @@
+title: LSASS Memory Dump Tooling
+id: 7a1c0003-0000-4000-8000-000000000003
+description: Credential dumping via procdump/comsvcs MiniDump or mimikatz strings.
+level: critical
+tags: [attack.credential_access, attack.t1003.001]
+detection:
+  procdump:
+    CommandLine|contains|all: ['procdump', 'lsass']
+  comsvcs:
+    CommandLine|contains|all: ['comsvcs', 'minidump']
+  mimikatz:
+    CommandLine|contains: ['sekurlsa::', 'lsadump::']
+  condition: 1 of them
