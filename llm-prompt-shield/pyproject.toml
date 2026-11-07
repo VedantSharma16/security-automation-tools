@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "promptshield"
+version = "0.1.0"
+description = "Offline guardrail for LLM apps: prompt-injection, jailbreak, secret/PII leak and canary detection, with a red-team evaluation harness."
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+promptshield = "promptshield.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["promptshield*"]
+
+[tool.setuptools.package-data]
+promptshield = ["data/*.json"]
