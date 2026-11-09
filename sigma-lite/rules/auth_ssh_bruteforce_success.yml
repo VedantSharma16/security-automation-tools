@@ -1,0 +1,13 @@
+title: Suspicious Root SSH Login From Public Address
+id: sl-0006
+logsource: {category: authentication}
+detection:
+  login:
+    event_type: ssh_login
+    outcome: success
+    user: root
+  internal:
+    src_ip|cidr: ['10.0.0.0/8', '192.168.0.0/16']
+  condition: login and not internal
+level: high
+tags: [attack.initial_access, attack.t1078, attack.t1021.004]

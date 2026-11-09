@@ -1,0 +1,11 @@
+title: Office Application Spawning Shell
+id: sl-0002
+logsource: {category: process_creation, product: windows}
+detection:
+  parent:
+    ParentImage|endswith: ['\winword.exe', '\excel.exe', '\outlook.exe']
+  child:
+    Image|endswith: ['\cmd.exe', '\powershell.exe', '\wscript.exe', '\mshta.exe']
+  condition: parent and child
+level: high
+tags: [attack.execution, attack.t1204.002, attack.t1059]

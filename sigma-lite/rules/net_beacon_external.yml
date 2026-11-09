@@ -1,0 +1,11 @@
+title: Script Interpreter Connecting to External IP
+id: sl-0005
+logsource: {category: network_connection}
+detection:
+  proc:
+    Image|endswith: ['\wscript.exe', '\mshta.exe', '\cscript.exe']
+  private:
+    DestinationIp|cidr: ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16', '127.0.0.0/8']
+  condition: proc and not private
+level: medium
+tags: [attack.command_and_control, attack.t1071.001]

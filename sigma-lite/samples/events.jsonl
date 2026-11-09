@@ -1,0 +1,8 @@
+{"category":"process_creation","Image":"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe","CommandLine":"powershell.exe -nop -w hidden -enc SQBFAFgA","ParentImage":"C:\\Program Files\\Microsoft Office\\winword.exe"}
+{"category":"process_creation","Image":"C:\\Windows\\System32\\notepad.exe","CommandLine":"notepad.exe notes.txt","ParentImage":"C:\\Windows\\explorer.exe"}
+{"category":"process_creation","Image":"C:\\Windows\\System32\\rundll32.exe","CommandLine":"rundll32 C:\\Windows\\System32\\comsvcs.dll MiniDump 624 out.dmp full"}
+{"category":"process_creation","Image":"C:\\Windows\\System32\\vssadmin.exe","CommandLine":"vssadmin delete shadows /all"}
+{"category":"network_connection","Image":"C:\\Windows\\System32\\mshta.exe","DestinationIp":"203.0.113.50"}
+{"category":"network_connection","Image":"C:\\Windows\\System32\\mshta.exe","DestinationIp":"192.168.1.20"}
+{"category":"authentication","event_type":"ssh_login","outcome":"success","user":"root","src_ip":"198.51.100.7"}
+{"category":"authentication","event_type":"ssh_login","outcome":"success","user":"root","src_ip":"10.1.2.3"}

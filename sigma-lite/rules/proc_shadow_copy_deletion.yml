@@ -1,0 +1,14 @@
+title: Shadow Copy Deletion
+id: sl-0004
+logsource: {category: process_creation, product: windows}
+detection:
+  vss:
+    CommandLine|contains|all: ['vssadmin', 'delete', 'shadows']
+  wmic:
+    CommandLine|contains|all: ['wmic', 'shadowcopy', 'delete']
+  backup_sw:
+    ParentImage|endswith: ['\veeam.backup.service.exe', '\backupexec.exe']
+  condition: (vss or wmic) and not backup_sw
+level: critical
+tags: [attack.impact, attack.t1490]
+description: Ransomware precursor; known backup software parents are excluded.
