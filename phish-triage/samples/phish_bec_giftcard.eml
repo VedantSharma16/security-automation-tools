@@ -1,0 +1,19 @@
+Return-Path: <d.chen@acmecorp-mail.com>
+Received: from acmecorp-mail.com (acmecorp-mail.com [198.51.100.23]) by
+ mx1.example.org with ESMTPS id 4Xk2; Mon, 09 Nov 2026 14:06:00 +0000
+Authentication-Results: mx1.example.org; spf=pass
+ smtp.mailfrom=acmecorp-mail.com; dkim=pass; dmarc=pass
+From: David Chen <d.chen@acmecorp-mail.com>
+To: analyst@example.org
+Reply-To: david.chen.office@gmail.com
+Subject: Quick favour
+Date: Mon, 09 Nov 2026 14:06:00 +0000
+Message-ID: <a7d3e3c582fa@acmecorp-mail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Are you at your desk? I need you to buy six gift cards for a client today. Ke=
+ep this confidential, I'm in meetings all afternoon. Reply with the codes.
+
+David

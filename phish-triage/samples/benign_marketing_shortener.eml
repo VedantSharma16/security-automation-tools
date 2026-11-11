@@ -1,0 +1,16 @@
+Return-Path: <bounces+123@em.sendgrid.net>
+Received: from o1.em.sendgrid.net (o1.em.sendgrid.net [198.51.100.23]) by
+ mx1.example.org with ESMTPS id 4Xk2; Mon, 09 Nov 2026 14:10:00 +0000
+Authentication-Results: mx1.example.org; spf=pass
+ smtp.mailfrom=em.sendgrid.net; dkim=pass header.d=example-outdoor.com;
+ dmarc=pass
+From: Example Outdoor <news@example-outdoor.com>
+To: analyst@example.org
+Subject: Our autumn sale starts now
+Date: Mon, 09 Nov 2026 14:10:00 +0000
+Message-ID: <c7c1cb789401@o1.em.sendgrid.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+Autumn sale: 30% off jackets. Shop now: https://bit.ly/outdoor-sale

@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phishtriage"
+version = "0.1.0"
+description = "Explainable phishing email triage: header auth, lookalike URLs, attachment analysis, BEC and prompt-injection detection, IOC export."
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40.0"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+phishtriage = "phishtriage.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["phishtriage*"]
+
+[tool.setuptools.package-data]
+"phishtriage.data" = ["*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

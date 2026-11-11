@@ -1,0 +1,37 @@
+{
+  "brands": {
+    "PayPal": ["paypal.com", "paypal.me"],
+    "Microsoft": ["microsoft.com", "office.com", "live.com", "outlook.com", "microsoftonline.com", "office365.com", "sharepoint.com"],
+    "Google": ["google.com", "gmail.com", "googleusercontent.com", "youtube.com"],
+    "Apple": ["apple.com", "icloud.com"],
+    "Amazon": ["amazon.com", "amazon.co.uk", "amazonaws.com"],
+    "Netflix": ["netflix.com"],
+    "DocuSign": ["docusign.com", "docusign.net"],
+    "Dropbox": ["dropbox.com"],
+    "LinkedIn": ["linkedin.com"],
+    "DHL": ["dhl.com"],
+    "Chase": ["chase.com"],
+    "Wells Fargo": ["wellsfargo.com"],
+    "Coinbase": ["coinbase.com"],
+    "Okta": ["okta.com"]
+  },
+  "freemail_domains": [
+    "gmail.com", "googlemail.com", "outlook.com", "hotmail.com", "live.com", "yahoo.com",
+    "aol.com", "icloud.com", "proton.me", "protonmail.com", "gmx.com", "mail.com",
+    "yandex.com", "zoho.com"
+  ],
+  "url_shorteners": [
+    "bit.ly", "tinyurl.com", "t.co", "goo.gl", "ow.ly", "is.gd", "buff.ly", "rebrand.ly",
+    "cutt.ly", "shorturl.at", "rb.gy", "tiny.cc"
+  ],
+  "suspicious_tlds": [
+    "zip", "mov", "xyz", "top", "click", "country", "gq", "tk", "ml", "cf", "ga", "work",
+    "support", "rest", "cam", "icu", "live", "buzz", "monster", "sbs", "cfd"
+  ],
+  "dangerous_extensions": [
+    "exe", "scr", "pif", "com", "bat", "cmd", "ps1", "vbs", "vbe", "js", "jse", "wsf", "wsh",
+    "hta", "lnk", "msi", "dll", "cpl", "jar", "iso", "img", "vhd", "vhdx", "one", "reg", "chm"
+  ],
+  "macro_extensions": ["docm", "dotm", "xlsm", "xltm", "xlam", "pptm", "potm", "ppam", "sldm"],
+  "archive_extensions": ["zip", "rar", "7z", "gz", "tar", "ace", "cab"]
+}

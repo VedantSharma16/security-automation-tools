@@ -1,0 +1,12 @@
+{
+  "phish_paypal_credential.eml": "phish",
+  "phish_m365_homoglyph.eml": "phish",
+  "phish_invoice_double_ext.eml": "phish",
+  "phish_payroll_macro.eml": "phish",
+  "phish_zip_script.eml": "phish",
+  "phish_bec_giftcard.eml": "phish",
+  "benign_github_notification.eml": "benign",
+  "benign_paypal_receipt.eml": "benign",
+  "benign_internal_pdf.eml": "benign",
+  "benign_marketing_shortener.eml": "benign"
+}

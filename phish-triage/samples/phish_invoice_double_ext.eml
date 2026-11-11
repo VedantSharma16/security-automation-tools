@@ -1,0 +1,31 @@
+Return-Path: <billing@vendor-invoices.top>
+Received: from vendor-invoices.top (vendor-invoices.top [198.51.100.23]) by
+ mx1.example.org with ESMTPS id 4Xk2; Mon, 09 Nov 2026 14:03:00 +0000
+Authentication-Results: mx1.example.org; spf=softfail
+ smtp.mailfrom=vendor-invoices.top; dkim=none; dmarc=none
+From: Accounts Payable <billing@vendor-invoices.top>
+To: analyst@example.org
+Subject: Invoice 4471 overdue
+Date: Mon, 09 Nov 2026 14:03:00 +0000
+Message-ID: <f3fa7412defa@vendor-invoices.top>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============5528242078234696257=="
+
+--===============5528242078234696257==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Hello,
+
+Please see the attached overdue invoice and process the payment immediately.
+
+--===============5528242078234696257==
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Invoice_4471.pdf.exe"
+MIME-Version: 1.0
+
+TVqQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAGluZXJ0IHNhbXBsZSBzdHViIC0gbm90IGV4ZWN1dGFibGUgY29kZQ==
+
+--===============5528242078234696257==--

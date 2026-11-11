@@ -1,0 +1,33 @@
+Return-Path: <priya.nair@example.org>
+Received: from mail.example.org (mail.example.org [10.0.4.12]) by
+ mx1.example.org with ESMTPS id 4Xk2; Mon, 09 Nov 2026 14:09:00 +0000
+Authentication-Results:
+ mx1.example.org; spf=pass smtp.mailfrom=example.org; dkim=pass; dmarc=pass
+From: Priya Nair <priya.nair@example.org>
+To: analyst@example.org
+Subject: Q4 budget draft - please review
+Date: Mon, 09 Nov 2026 14:09:00 +0000
+Message-ID: <d0fa6ee66f10@mail.example.org>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============5420637623674509939=="
+
+--===============5420637623674509939==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi team,
+
+Attached is the Q4 budget draft. Comments in the shared doc please: https://d=
+ocs.google.com/document/d/1AbC/edit - this is urgent as finance closes Friday.
+
+Priya
+
+--===============5420637623674509939==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Q4_budget_draft.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjcKJSBpbmVydCBzYW1wbGUKJSVFT0YK
+
+--===============5420637623674509939==--

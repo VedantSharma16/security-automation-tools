@@ -1,0 +1,30 @@
+Return-Path: <service@paypal.com>
+Received: from mx0.slc.paypal.com (mx0.slc.paypal.com [198.51.100.23]) by
+ mx1.example.org with ESMTPS id 4Xk2; Mon, 09 Nov 2026 14:08:00 +0000
+Authentication-Results: mx1.example.org; spf=pass smtp.mailfrom=paypal.com;
+ dkim=pass header.d=paypal.com; dmarc=pass
+From: PayPal <service@paypal.com>
+To: analyst@example.org
+Subject: Receipt for your payment to Example Store
+Date: Mon, 09 Nov 2026 14:08:00 +0000
+Message-ID: <9eb749ae642c@mx0.slc.paypal.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============2964065678209703992=="
+
+--===============2964065678209703992==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+You sent a payment of $24.00 USD to Example Store.
+
+--===============2964065678209703992==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>You sent a payment of $24.00 USD to Example Store.</p>
+<p><a href=3D"https://www.paypal.com/myaccount/transactions">www.paypal.com</=
+a></p></body></html>
+
+--===============2964065678209703992==--

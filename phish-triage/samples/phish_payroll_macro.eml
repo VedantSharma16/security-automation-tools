@@ -1,0 +1,38 @@
+Return-Path: <hr@payroll-portal-update.com>
+Received: from payroll-portal-update.com (payroll-portal-update.com
+ [198.51.100.23]) by mx1.example.org with ESMTPS id 4Xk2; Mon, 09 Nov 2026
+ 14:04:00 +0000
+Authentication-Results: mx1.example.org; spf=pass
+ smtp.mailfrom=payroll-portal-update.com; dkim=pass; dmarc=pass
+From: HR Department <hr@payroll-portal-update.com>
+To: analyst@example.org
+Subject: Updated payroll schedule
+Date: Mon, 09 Nov 2026 14:04:00 +0000
+Message-ID: <b8242de5fe0c@payroll-portal-update.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============9163187882886209162=="
+
+--===============9163187882886209162==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+The updated payroll schedule is attached. Please enable editing and content t=
+o view it.
+
+--===============9163187882886209162==
+Content-Type: application/vnd.ms-word.document.macroEnabled.12
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Payroll_Schedule_2026.docm"
+MIME-Version: 1.0
+
+UEsDBBQAAAAAAFtBa13HHBc8CAAAAAgAAAATAAAAW0NvbnRlbnRfVHlwZXNdLnhtbDxUeXBlcy8+
+UEsDBBQAAAAAAFtBa13dWoYNDQAAAA0AAAARAAAAd29yZC9kb2N1bWVudC54bWw8dzpkb2N1bWVu
+dC8+UEsDBBQAAAAAAFtBa13GNtpEEQAAABEAAAATAAAAd29yZC92YmFQcm9qZWN0LmJpbmluZXJ0
+IHBsYWNlaG9sZGVyUEsBAhQDFAAAAAAAW0FrXcccFzwIAAAACAAAABMAAAAAAAAAAAAAAIABAAAA
+AFtDb250ZW50X1R5cGVzXS54bWxQSwECFAMUAAAAAABbQWtd3VqGDQ0AAAANAAAAEQAAAAAAAAAA
+AAAAgAE5AAAAd29yZC9kb2N1bWVudC54bWxQSwECFAMUAAAAAABbQWtdxjbaRBEAAAARAAAAEwAA
+AAAAAAAAAAAAgAF1AAAAd29yZC92YmFQcm9qZWN0LmJpblBLBQYAAAAAAwADAMEAAAC3AAAAAAA=
+
+--===============9163187882886209162==--
