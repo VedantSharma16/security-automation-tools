@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prompt-injection-guard"
+version = "0.1.0"
+description = "Detect prompt injection, jailbreaks, and output-side data leakage in LLM applications, with a labeled evaluation harness."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+injguard = "injguard.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["injguard*"]
+
+[tool.setuptools.package-data]
+injguard = []
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
