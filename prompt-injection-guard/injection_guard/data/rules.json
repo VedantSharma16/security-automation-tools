@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "id": "PI-001",
+      "name": "Instruction override",
+      "category": "instruction_override",
+      "weight": 0.75,
+      "pattern": "\\b(ignore|disregard|forget|override|bypass|skip)\\b[^.\\n]{0,40}\\b(previous|prior|above|earlier|preceding|all|any|your|the|these|those)\\b[^.\\n]{0,25}\\b(instructions?|prompts?|rules|directives?|guidelines|guardrails|context|constraints)\\b",
+      "description": "Asks the model to discard its existing instructions."
+    },
+    {
+      "id": "PI-002",
+      "name": "Injected replacement instructions",
+      "category": "instruction_override",
+      "weight": 0.5,
+      "pattern": "\\b(new|updated|revised|real|actual|true|important)\\s+(system\\s+)?(instructions?|prompt|directives?|task|orders)\\s*[:\\-]",
+      "description": "Introduces a block of 'new instructions' intended to supersede the real ones."
+    },
+    {
+      "id": "PI-003",
+      "name": "Role / persona hijack",
+      "category": "role_hijack",
+      "weight": 0.6,
+      "pattern": "\\byou are (now|no longer)\\b|\\bact as (an? )?(unrestricted|unfiltered|uncensored|jailbroken|evil)\\b|\\b(developer|god|admin|debug) mode\\b|(?-i:\\bDAN\\b)|\\bpretend (that )?you have no (rules|restrictions|guidelines)",
+      "description": "Attempts to replace the model's role or unlock a 'no rules' persona."
+    },
+    {
+      "id": "PI-004",
+      "name": "System prompt / secret exfiltration",
+      "category": "prompt_exfiltration",
+      "weight": 0.7,
+      "pattern": "\\b(reveal|print|show|repeat|output|disclose|leak|dump|recite|tell me|spell out|what (is|are|was|were))\\b[^.\\n?]{0,40}\\b(system prompt|(initial|original|hidden|secret|first) (prompt|instructions|message)|your (instructions|prompt|rules|api[ _-]?key|password|credentials|secrets?)|canary|everything above)\\b",
+      "description": "Requests disclosure of the system prompt, secrets or hidden context."
+    },
+    {
+      "id": "PI-005",
+      "name": "Forged chat-template delimiters",
+      "category": "delimiter_injection",
+      "weight": 0.55,
+      "pattern": "<\\|?\\s*(im_start|im_end|system|endoftext|eot_id|start_header_id)\\s*\\|?>|\\[/?(INST|SYS)\\]|<</?SYS>>|(^|\\n)\\s*#{1,3}\\s*(system|assistant)\\b|(^|\\n)\\s*(system|assistant)\\s*:\\s",
+      "description": "Fakes chat-template or role markers to smuggle a fake system/assistant turn."
+    },
+    {
+      "id": "PI-006",
+      "name": "Markdown image exfiltration",
+      "category": "data_exfiltration",
+      "weight": 0.6,
+      "pattern": "!\\[[^\\]]*\\]\\(\\s*https?://[^)\\s]*[?&#][^)\\s]*\\)",
+      "description": "Markdown image whose URL carries query parameters; renders automatically and leaks data to the attacker's server."
+    },
+    {
+      "id": "PI-007",
+      "name": "Exfiltration instruction",
+      "category": "data_exfiltration",
+      "weight": 0.45,
+      "pattern": "\\b(send|forward|post|upload|email|exfiltrate|transmit|append|include)\\b[^.\\n]{0,80}\\b(to|at|in|into)\\b[^.\\n]{0,40}(https?://|\\b[\\w.+-]+@[\\w-]+\\.[\\w.]+\\b|\\burl\\b)",
+      "description": "Instructs the model to ship data to an external URL or address."
+    },
+    {
+      "id": "PI-008",
+      "name": "Instructions addressed to the AI",
+      "category": "indirect_injection",
+      "weight": 0.45,
+      "sources": [
+        "retrieved"
+      ],
+      "pattern": "\\b(ai|assistant|chatbot|language model|llm|gpt|claude|copilot|agent)s?\\b[^.\\n]{0,40}\\b(must|should|shall|will now|are (now )?instructed to|need to|have to)\\b",
+      "description": "Retrieved content that speaks directly to the model - documents should not issue orders."
+    },
+    {
+      "id": "PI-009",
+      "name": "Tool / function abuse",
+      "category": "tool_abuse",
+      "weight": 0.45,
+      "pattern": "\\b(call|invoke|execute|run|trigger|use)\\b[^.\\n]{0,30}\\b(tool|function|plugin|shell|terminal|delete_\\w+|transfer_\\w+|send_\\w+)\\b[^.\\n]{0,60}\\b(without|immediately|silently|now)\\b",
+      "description": "Directs the model to invoke tools, especially without user confirmation."
+    },
+    {
+      "id": "PI-010",
+      "name": "Dangerous command payload",
+      "category": "tool_abuse",
+      "weight": 0.5,
+      "pattern": "rm\\s+-rf\\s+[/~]|(curl|wget)\\s[^|\\n]{0,200}\\|\\s*(ba|z)?sh\\b|powershell(\\.exe)?\\s+-(e|enc|encodedcommand)\\b|\\bIEX\\s*\\(",
+      "description": "Embedded destructive or download-and-execute shell command."
+    },
+    {
+      "id": "PI-011",
+      "name": "Forced output",
+      "category": "output_hijack",
+      "weight": 0.35,
+      "pattern": "\\b(respond|reply|answer|output|say|print|write|begin your (reply|response))\\b[^.\\n]{0,25}\\b(only|exactly|with|verbatim)\\b[^.\\n]{0,15}[\\\"'\\u201c]",
+      "description": "Dictates the exact text the model must produce."
+    },
+    {
+      "id": "PI-012",
+      "name": "Concealment from the user",
+      "category": "output_hijack",
+      "weight": 0.5,
+      "pattern": "\\b(do not|don't|never|without)\\s+(tell(ing)?|inform(ing)?|mention(ing)?|alert(ing)?|let(ting)?|notify(ing)?)\\s+(the |this )?(user|human|anyone|them)\\b",
+      "description": "Asks the model to hide its actions from the user - a strong marker of malicious intent."
+    },
+    {
+      "id": "PI-013",
+      "name": "Instructions hidden in HTML comment",
+      "category": "indirect_injection",
+      "weight": 0.5,
+      "pattern": "<!--(?:(?!-->)[\\s\\S]){0,600}?\\b(ignore|instruction|assistant|ai model|system|you must|prompt)\\b(?:(?!-->)[\\s\\S])*?-->",
+      "description": "HTML comment carrying instructions - invisible when rendered, visible to the model."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prompt-injection-guard"
+version = "0.1.0"
+description = "Layered prompt-injection defense for LLM/RAG apps (input detection, spotlighting, canary + output guard) with a red-team evaluation harness."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+injection-guard = "injection_guard.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["injection_guard*"]
+
+[tool.setuptools.package-data]
+injection_guard = ["data/*.json", "data/*.jsonl"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
