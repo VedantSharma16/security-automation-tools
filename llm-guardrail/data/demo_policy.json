@@ -1,0 +1,9 @@
+{
+  "allowed_output_domains": ["docs.example.com", "example.com"],
+  "tools": {
+    "search_docs":   {"side_effects": false},
+    "fetch_url":     {"side_effects": false, "allowed_domains": ["docs.example.com", "example.com"]},
+    "send_email":    {"side_effects": true,  "allowed_domains": ["example.com"]},
+    "run_diagnostic":{"side_effects": true,  "shell_args": ["host"]}
+  }
+}

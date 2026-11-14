@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-guardrail"
+version = "0.1.0"
+description = "Prompt-injection firewall for RAG and agent pipelines: input/retrieval scanning, output DLP, canary leak detection, and taint-aware tool-call policy, with a labelled evaluation harness."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+llm-guardrail = "llm_guardrail.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["llm_guardrail*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
