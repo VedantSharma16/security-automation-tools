@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prompt-injection-firewall"
+version = "0.1.0"
+description = "Layered input/output guardrails for LLM and RAG applications: de-obfuscation, ATLAS-mapped signatures, a from-scratch Naive Bayes model, an optional LLM judge, and egress leak detection."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=2.0"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+prompt-firewall = "prompt_firewall.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["prompt_firewall*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
