@@ -1,0 +1,26 @@
+Return-Path: <d.reyes.office@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com [209.85.220.41])
+	by mx1.corp.example (Postfix) with ESMTPS id 1B2C3D4E
+	for <finance@corp.example>; Wed, 11 Nov 2026 16:20:03 +0000
+Authentication-Results: mx1.corp.example;
+	spf=pass smtp.mailfrom=gmail.com;
+	dkim=pass header.d=gmail.com;
+	dmarc=pass header.from=gmail.com
+From: "Dana Reyes, CEO <dana.reyes@corp.example>" <d.reyes.office@gmail.com>
+Reply-To: "Dana Reyes" <dana.reyes@corp-exec.example>
+To: finance@corp.example
+Subject: Quick favor - confidential
+Date: Wed, 11 Nov 2026 16:19:58 +0000
+Message-ID: <CAF8x1@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Hi,
+
+Are you at your desk? I need a favor handled today. We are closing an
+acquisition and I need a wire transfer of $48,500 sent to our new partner.
+I will send the updated banking details shortly. Please keep this confidential
+until the announcement - do not discuss with anyone else on the team.
+
+Sent from my iPhone
+Dana

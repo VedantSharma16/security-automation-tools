@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phishlens"
+version = "0.1.0"
+description = "Static phishing email (.eml) analyzer: header authentication, lookalike domains, deceptive links, risky attachments, IOC export, and an optional grounded LLM analyst note."
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.30.0"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+phishlens = "phishlens.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["phishlens*"]
+
+[tool.setuptools.package-data]
+phishlens = ["data/*.json"]

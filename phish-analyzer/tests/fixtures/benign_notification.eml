@@ -1,0 +1,33 @@
+Return-Path: <noreply@github.com>
+Received: from out-21.smtp.github.com (out-21.smtp.github.com [192.30.252.204])
+	by mx1.corp.example (Postfix) with ESMTPS id 77AA10F1
+	for <j.doe@corp.example>; Thu, 12 Nov 2026 09:00:12 +0000
+Authentication-Results: mx1.corp.example;
+	spf=pass smtp.mailfrom=github.com;
+	dkim=pass header.d=github.com;
+	dmarc=pass header.from=github.com
+From: "GitHub" <noreply@github.com>
+To: j.doe@corp.example
+Subject: [corp/platform] Pull request merged: Bump dependencies (#412)
+Date: Thu, 12 Nov 2026 09:00:10 +0000
+Message-ID: <corp/platform/pull/412/merged@github.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="ALT"
+
+--ALT
+Content-Type: text/plain; charset="utf-8"
+
+Merged #412 into main.
+
+View it on GitHub: https://github.com/corp/platform/pull/412
+
+--ALT
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Merged <a href="https://github.com/corp/platform/pull/412">#412</a> into main.</p>
+<p><a href="https://github.com/corp/platform/pull/412">View it on github.com</a></p>
+<p><a href="https://github.com/settings/notifications">Manage notifications</a></p>
+</body></html>
+
+--ALT--

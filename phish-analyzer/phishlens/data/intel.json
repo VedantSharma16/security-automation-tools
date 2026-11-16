@@ -1,0 +1,69 @@
+{
+  "protected_domains": [
+    "paypal.com", "microsoft.com", "microsoftonline.com", "office.com", "outlook.com", "live.com",
+    "apple.com", "icloud.com", "google.com", "gmail.com", "amazon.com",
+    "netflix.com", "docusign.com", "dropbox.com", "linkedin.com",
+    "facebook.com", "instagram.com", "chase.com", "wellsfargo.com",
+    "bankofamerica.com", "dhl.com", "fedex.com", "ups.com", "adobe.com",
+    "github.com", "okta.com", "salesforce.com", "zoom.us", "slack.com"
+  ],
+  "brand_keywords": {
+    "paypal": "paypal.com",
+    "microsoft": "microsoft.com",
+    "office 365": "office.com",
+    "outlook": "outlook.com",
+    "apple": "apple.com",
+    "icloud": "icloud.com",
+    "amazon": "amazon.com",
+    "netflix": "netflix.com",
+    "docusign": "docusign.com",
+    "dropbox": "dropbox.com",
+    "linkedin": "linkedin.com",
+    "chase": "chase.com",
+    "wells fargo": "wellsfargo.com",
+    "bank of america": "bankofamerica.com",
+    "dhl": "dhl.com",
+    "fedex": "fedex.com",
+    "adobe": "adobe.com",
+    "okta": "okta.com"
+  },
+  "url_shorteners": [
+    "bit.ly", "tinyurl.com", "t.co", "goo.gl", "ow.ly", "is.gd", "buff.ly",
+    "rebrand.ly", "cutt.ly", "shorturl.at", "rb.gy", "tiny.cc"
+  ],
+  "suspicious_tlds": [
+    "zip", "mov", "top", "xyz", "click", "country", "gq", "tk", "ml", "cf",
+    "ga", "work", "support", "rest", "cam", "monster", "sbs", "lol"
+  ],
+  "dangerous_extensions": [
+    "exe", "scr", "com", "pif", "bat", "cmd", "js", "jse", "vbs", "vbe",
+    "wsf", "wsh", "hta", "ps1", "msi", "lnk", "jar", "cpl", "reg", "dll",
+    "iso", "img", "vhd", "vhdx", "one", "xll", "chm"
+  ],
+  "macro_extensions": ["docm", "xlsm", "pptm", "dotm", "xltm", "xlam", "xlsb"],
+  "archive_extensions": ["zip", "rar", "7z", "gz", "tar", "ace", "cab"],
+  "html_extensions": ["html", "htm", "shtml", "svg", "xhtml"],
+  "lure_keywords": {
+    "credential": [
+      "verify your account", "confirm your identity", "password will expire",
+      "password expires", "unusual sign-in", "unusual activity", "account has been suspended",
+      "account will be suspended", "account has been locked", "update your payment",
+      "validate your mailbox", "re-activate", "reactivate your account", "sign in to review",
+      "login to continue", "mailbox is full", "security alert"
+    ],
+    "urgency": [
+      "urgent", "immediately", "within 24 hours", "within 48 hours", "action required",
+      "final notice", "as soon as possible", "failure to", "will be terminated",
+      "last warning", "expires today"
+    ],
+    "financial": [
+      "wire transfer", "bank details", "change of bank", "updated banking",
+      "gift card", "gift cards", "invoice attached", "outstanding payment",
+      "overdue invoice", "remittance", "payment instructions", "routing number"
+    ],
+    "secrecy": [
+      "keep this confidential", "don't tell", "do not discuss", "are you at your desk",
+      "are you available", "i need a favor", "quick favor", "discreet"
+    ]
+  }
+}
