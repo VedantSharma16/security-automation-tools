@@ -1,0 +1,13 @@
+# Map Sigma (Sysmon-style) field names to Elastic Common Schema paths so the
+# same rules run unchanged against ECS-formatted JSON (e.g. Elastic Agent,
+# Winlogbeat >= 8). Dotted paths walk nested objects.
+fields:
+  Image: process.executable
+  CommandLine: process.command_line
+  ParentImage: process.parent.executable
+  OriginalFileName: process.pe.original_file_name
+  User: user.name
+  Computer: host.name
+  DestinationIp: destination.ip
+  DestinationPort: destination.port
+  UtcTime: '@timestamp'

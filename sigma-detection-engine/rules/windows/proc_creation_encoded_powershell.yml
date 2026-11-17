@@ -1,0 +1,44 @@
+title: Encoded PowerShell Command Line
+id: 6b1a5f0e-2c4d-4a51-9b8e-1f0c3a7d2e01
+status: stable
+description: |
+  PowerShell launched with a Base64-encoded command (-EncodedCommand and its
+  abbreviations). Common in loaders and post-exploitation frameworks to hide
+  the real script from command-line logging.
+author: Vedant Sharma
+tags:
+  - attack.execution
+  - attack.t1059.001
+  - attack.defense_evasion
+  - attack.t1027
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_img:
+    - Image|endswith:
+        - '\powershell.exe'
+        - '\pwsh.exe'
+    - OriginalFileName: 'PowerShell.EXE'
+  selection_flag:
+    CommandLine|windash|contains:
+      - ' -e '
+      - ' -en '
+      - ' -enc '
+      - ' -encodedcommand '
+      - ' -ec '
+  condition: all of selection_*
+falsepositives:
+  - Some legitimate management agents (SCCM, Intune) use encoded commands
+level: high
+tests:
+  match:
+    - Image: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
+      CommandLine: 'powershell.exe -nop -w hidden -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBi'
+    - Image: 'C:\Program Files\PowerShell\7\pwsh.exe'
+      CommandLine: 'pwsh /EncodedCommand SQBFAFgA'
+  no_match:
+    - Image: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
+      CommandLine: 'powershell.exe -ExecutionPolicy Bypass -File C:\scripts\backup.ps1'
+    - Image: 'C:\Windows\System32\cmd.exe'
+      CommandLine: 'cmd.exe /c echo -enc test'

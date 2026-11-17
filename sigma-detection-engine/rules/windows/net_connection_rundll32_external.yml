@@ -1,0 +1,42 @@
+title: Rundll32 Network Connection to a Public IP
+id: 8b4f6a23-d5e1-4c7b-a2f9-0e3c6d8b1f08
+status: experimental
+description: |
+  rundll32.exe rarely needs to talk to the internet. Outbound connections to
+  non-private address space are typical of DLL-based implants and C2 beacons.
+author: Vedant Sharma
+tags:
+  - attack.defense_evasion
+  - attack.t1218.011
+  - attack.command_and_control
+  - attack.t1071
+logsource:
+  product: windows
+  category: network_connection
+detection:
+  selection:
+    Image|endswith: '\rundll32.exe'
+    Initiated: true
+  filter_private:
+    DestinationIp|cidr:
+      - '10.0.0.0/8'
+      - '172.16.0.0/12'
+      - '192.168.0.0/16'
+      - '127.0.0.0/8'
+  condition: selection and not filter_private
+falsepositives:
+  - Control-panel applets that check for updates
+level: medium
+tests:
+  match:
+    - Image: 'C:\Windows\System32\rundll32.exe'
+      Initiated: true
+      DestinationIp: '198.51.100.23'
+      DestinationPort: 443
+  no_match:
+    - Image: 'C:\Windows\System32\rundll32.exe'
+      Initiated: true
+      DestinationIp: '10.1.2.3'
+    - Image: 'C:\Windows\System32\svchost.exe'
+      Initiated: true
+      DestinationIp: '198.51.100.23'

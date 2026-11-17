@@ -1,0 +1,41 @@
+title: Domain and Privilege Discovery Commands
+id: 5d8e1f42-a937-4b1c-8f6e-2c4a7b9d0e07
+status: test
+description: |
+  Built-in commands attackers run right after landing on a host to learn who
+  they are and which groups hold domain privileges.
+author: Vedant Sharma
+tags:
+  - attack.discovery
+  - attack.t1033
+  - attack.t1069.002
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_whoami:
+    Image|endswith: '\whoami.exe'
+    CommandLine|windash|contains:
+      - '-priv'
+      - '-groups'
+      - '-all'
+  selection_net:
+    Image|endswith:
+      - '\net.exe'
+      - '\net1.exe'
+    CommandLine|contains|all:
+      - 'group'
+      - '/domain'
+  condition: 1 of selection_*
+falsepositives:
+  - Helpdesk and administrator troubleshooting
+level: low
+tests:
+  match:
+    - Image: 'C:\Windows\System32\whoami.exe'
+      CommandLine: 'whoami /priv'
+    - Image: 'C:\Windows\System32\net.exe'
+      CommandLine: 'net group "Domain Admins" /domain'
+  no_match:
+    - Image: 'C:\Windows\System32\whoami.exe'
+      CommandLine: 'whoami'

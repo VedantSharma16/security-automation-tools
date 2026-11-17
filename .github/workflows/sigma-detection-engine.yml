@@ -1,0 +1,32 @@
+name: sigma-detection-engine
+
+on:
+  push:
+    paths: ["sigma-detection-engine/**", ".github/workflows/sigma-detection-engine.yml"]
+  pull_request:
+    paths: ["sigma-detection-engine/**", ".github/workflows/sigma-detection-engine.yml"]
+
+defaults:
+  run:
+    working-directory: sigma-detection-engine
+
+jobs:
+  detections:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -e ".[dev]"
+      - name: Validate every rule compiles
+        run: sigmalite validate --rules rules
+      - name: Run embedded detection test cases (detection-as-code gate)
+        run: sigmalite test --rules rules --require-tests
+      - name: Unit tests
+        run: pytest -q
+      - name: ATT&CK coverage summary
+        run: sigmalite coverage --rules rules >> "$GITHUB_STEP_SUMMARY"

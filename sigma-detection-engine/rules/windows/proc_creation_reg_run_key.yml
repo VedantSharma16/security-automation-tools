@@ -1,0 +1,34 @@
+title: Registry Run Key Persistence via reg.exe
+id: 2a7d9f31-6c84-4e2b-9a5d-3f1e8b7c0d05
+status: stable
+description: |
+  reg.exe adding a value under a Run / RunOnce key so a program starts at
+  every logon. Values pointing into user-writable paths are especially
+  suspicious.
+author: Vedant Sharma
+tags:
+  - attack.persistence
+  - attack.t1547.001
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\reg.exe'
+    CommandLine|contains: ' add '
+    CommandLine|re: '(?i)\\CurrentVersion\\Run(Once)?\b'
+  filter_vendor:
+    CommandLine|contains: '\Program Files'
+  condition: selection and not filter_vendor
+falsepositives:
+  - Software installers registering auto-start entries
+level: medium
+tests:
+  match:
+    - Image: 'C:\Windows\System32\reg.exe'
+      CommandLine: 'reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v Updater /d C:\Users\Public\upd.exe /f'
+  no_match:
+    - Image: 'C:\Windows\System32\reg.exe'
+      CommandLine: 'reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Run /v Vendor /d "C:\Program Files\Vendor\agent.exe"'
+    - Image: 'C:\Windows\System32\reg.exe'
+      CommandLine: 'reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Run'
