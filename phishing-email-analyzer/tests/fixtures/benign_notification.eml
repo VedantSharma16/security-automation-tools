@@ -1,0 +1,18 @@
+Return-Path: <noreply@github.com>
+Received: from out-21.smtp.github.com (out-21.smtp.github.com [192.30.252.204])
+	by mx.corp.example (Postfix) with ESMTPS id 1B2C3; Mon, 16 Nov 2026 15:30:05 +0000
+Authentication-Results: mx.corp.example;
+	spf=pass smtp.mailfrom=github.com;
+	dkim=pass header.d=github.com;
+	dmarc=pass header.from=github.com
+From: GitHub <noreply@github.com>
+To: carol@corp.example
+Subject: [corp/api] Pull request #412 merged
+Date: Mon, 16 Nov 2026 15:30:00 +0000
+Message-ID: <corp/api/pull/412/merged@github.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Merged #412 into main.
+
+View it on GitHub: https://github.com/corp/api/pull/412
