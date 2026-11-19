@@ -1,0 +1,35 @@
+Return-Path: <account-security-noreply@accountprotection.microsoft.com>
+Received: from mail-oln.outbound.protection.outlook.com (40.107.0.1) by
+ mx.acme-corp.com; Wed, 18 Nov 2026 09:14:05 +0000
+Authentication-Results: mx.acme-corp.com; spf=pass
+ smtp.mailfrom=accountprotection.microsoft.com; dkim=pass
+ header.d=accountprotection.microsoft.com; dmarc=pass
+ header.from=accountprotection.microsoft.com
+From: "Microsoft account team"
+ <account-security-noreply@accountprotection.microsoft.com>
+To: j.smith@acme-corp.com
+Subject: Microsoft account unusual sign-in activity
+Date: Wed, 18 Nov 2026 09:14:02 +0000
+Message-ID: <dc4d3f188dea@fixture.local>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============9103231871971675399=="
+
+--===============9103231871971675399==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+We detected something unusual about a recent sign-in to your Microsoft accoun=
+t.
+If this was you, you can ignore this. Otherwise review your activity at https=
+://account.live.com/activity
+
+--===============9103231871971675399==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Unusual sign-in activity.</p><a href=3D"https://account.live.c=
+om/activity">Review recent activity</a></body></html>
+
+--===============9103231871971675399==--

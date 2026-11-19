@@ -1,0 +1,30 @@
+Return-Path: <newsletter@engweekly.example>
+Received: from out.engweekly.example ([192.0.2.10]) by mx.acme-corp.com; Wed,
+ 18 Nov 2026 09:14:05 +0000
+Authentication-Results: mx.acme-corp.com; spf=pass
+ smtp.mailfrom=engweekly.example; dkim=pass header.d=engweekly.example;
+ dmarc=pass header.from=engweekly.example
+From: "Engineering Weekly" <newsletter@engweekly.example>
+To: j.smith@acme-corp.com
+Subject: This week: incident postmortems that actually help
+Date: Wed, 18 Nov 2026 09:14:02 +0000
+Message-ID: <d225a48a509f@fixture.local>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============0995717901795212360=="
+
+--===============0995717901795212360==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Read this week's issue at https://engweekly.example/issues/142
+
+--===============0995717901795212360==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><h1>Engineering Weekly #142</h1><a href=3D"https://engweekly.exam=
+ple/issues/142">engweekly.example/issues/142</a></body></html>
+
+--===============0995717901795212360==--

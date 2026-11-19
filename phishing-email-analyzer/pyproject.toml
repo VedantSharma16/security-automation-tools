@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phishscope"
+version = "0.1.0"
+description = "Explainable phishing email triage: header auth, lookalike domains, URL and attachment analysis, IOC export, optional LLM narrative."
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40.0"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+phishscope = "phishscope.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["phishscope*"]
+
+[tool.setuptools.package-data]
+phishscope = ["data/*.json"]

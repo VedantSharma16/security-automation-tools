@@ -1,0 +1,181 @@
+{
+  "_comment": "Frequently impersonated brands. 'domains' are legitimate registrable domains; 'keywords' are matched in display names and URLs.",
+  "brands": [
+    {
+      "brand": "Microsoft",
+      "domains": [
+        "microsoft.com",
+        "office.com",
+        "live.com",
+        "outlook.com",
+        "microsoftonline.com",
+        "office365.com",
+        "sharepoint.com",
+        "azure.com",
+        "windows.net",
+        "msn.com"
+      ],
+      "keywords": [
+        "microsoft",
+        "office365",
+        "outlook",
+        "onedrive",
+        "sharepoint"
+      ]
+    },
+    {
+      "brand": "Google",
+      "domains": [
+        "google.com",
+        "gmail.com",
+        "googleusercontent.com",
+        "googleapis.com",
+        "youtube.com"
+      ],
+      "keywords": [
+        "google",
+        "gmail"
+      ]
+    },
+    {
+      "brand": "PayPal",
+      "domains": [
+        "paypal.com"
+      ],
+      "keywords": [
+        "paypal"
+      ]
+    },
+    {
+      "brand": "Apple",
+      "domains": [
+        "apple.com",
+        "icloud.com"
+      ],
+      "keywords": [
+        "apple",
+        "icloud"
+      ]
+    },
+    {
+      "brand": "Amazon",
+      "domains": [
+        "amazon.com",
+        "amazon.co.uk",
+        "amazonaws.com"
+      ],
+      "keywords": [
+        "amazon"
+      ]
+    },
+    {
+      "brand": "DocuSign",
+      "domains": [
+        "docusign.com",
+        "docusign.net"
+      ],
+      "keywords": [
+        "docusign"
+      ]
+    },
+    {
+      "brand": "Dropbox",
+      "domains": [
+        "dropbox.com",
+        "dropboxusercontent.com"
+      ],
+      "keywords": [
+        "dropbox"
+      ]
+    },
+    {
+      "brand": "DHL",
+      "domains": [
+        "dhl.com"
+      ],
+      "keywords": [
+        "dhl"
+      ]
+    },
+    {
+      "brand": "Netflix",
+      "domains": [
+        "netflix.com"
+      ],
+      "keywords": [
+        "netflix"
+      ]
+    },
+    {
+      "brand": "LinkedIn",
+      "domains": [
+        "linkedin.com"
+      ],
+      "keywords": [
+        "linkedin"
+      ]
+    },
+    {
+      "brand": "Adobe",
+      "domains": [
+        "adobe.com"
+      ],
+      "keywords": [
+        "adobe"
+      ]
+    },
+    {
+      "brand": "Okta",
+      "domains": [
+        "okta.com"
+      ],
+      "keywords": [
+        "okta"
+      ]
+    }
+  ],
+  "url_shorteners": [
+    "bit.ly",
+    "tinyurl.com",
+    "t.co",
+    "goo.gl",
+    "ow.ly",
+    "is.gd",
+    "buff.ly",
+    "rebrand.ly",
+    "cutt.ly",
+    "shorturl.at",
+    "rb.gy"
+  ],
+  "suspicious_tlds": [
+    "zip",
+    "mov",
+    "top",
+    "xyz",
+    "click",
+    "country",
+    "gq",
+    "tk",
+    "ml",
+    "cf",
+    "ga",
+    "work",
+    "rest",
+    "cam",
+    "icu",
+    "sbs",
+    "cfd"
+  ],
+  "free_mail_domains": [
+    "gmail.com",
+    "outlook.com",
+    "hotmail.com",
+    "yahoo.com",
+    "proton.me",
+    "protonmail.com",
+    "aol.com",
+    "gmx.com",
+    "mail.com",
+    "icloud.com"
+  ]
+}

@@ -1,0 +1,24 @@
+Return-Path: <dana.whitfield@acme-c0rp.com>
+Received: from smtp.acme-c0rp.com (smtp.acme-c0rp.com [198.51.100.23]) by
+ mx.acme-corp.com; Wed, 18 Nov 2026 09:14:05 +0000
+Authentication-Results: mx.acme-corp.com; spf=pass
+ smtp.mailfrom=acme-c0rp.com; dkim=pass header.d=acme-c0rp.com; dmarc=pass
+ header.from=acme-c0rp.com
+From: "Dana Whitfield (CEO)" <dana.whitfield@acme-c0rp.com>
+To: accounts.payable@acme-corp.com
+Reply-To: dana.whitfield.exec@gmail.com
+Subject: Quick request - are you available?
+Date: Wed, 18 Nov 2026 09:14:02 +0000
+Message-ID: <ce9c381a6597@fixture.local>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hi,
+
+Are you available? I need you to process a wire transfer today for a new vend=
+or. Their bank details have changed, I'll send the updated banking informatio=
+n shortly. Please keep this confidential until the deal is announced.
+
+Dana
+Sent from my iPhone
