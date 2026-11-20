@@ -1,0 +1,30 @@
+rule_id: 73c7c4e3-25c5-4ed9-8da1-64bfb7da6247
+cases:
+  - name: classic -enc payload
+    expect: match
+    event:
+      Image: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
+      CommandLine: 'powershell.exe -nop -w hidden -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoA'
+      ParentImage: 'C:\Windows\System32\cmd.exe'
+  - name: slash variant and mixed case (windash)
+    expect: match
+    event:
+      Image: 'C:\Program Files\PowerShell\7\pwsh.exe'
+      CommandLine: 'pwsh /EnC SQBFAFgA'
+  - name: renamed binary caught by OriginalFileName
+    expect: match
+    event:
+      Image: 'C:\Users\Public\updater.exe'
+      OriginalFileName: 'PowerShell.EXE'
+      CommandLine: 'updater.exe -ec SQBFAFgA'
+  - name: SCCM client filtered out
+    expect: no_match
+    event:
+      Image: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
+      CommandLine: 'powershell.exe -enc SQBFAFgA'
+      ParentImage: 'C:\Windows\CCM\CcmExec.exe'
+  - name: plain script execution
+    expect: no_match
+    event:
+      Image: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
+      CommandLine: 'powershell.exe -File C:\Scripts\backup-encrypted.ps1'

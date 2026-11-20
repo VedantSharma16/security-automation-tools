@@ -1,0 +1,17 @@
+rule_id: 077e197f-3f87-4b9f-aaf2-be32cc2bf305
+cases:
+  - name: net group domain admins
+    expect: match
+    event:
+      Image: 'C:\Windows\System32\net.exe'
+      CommandLine: 'net group "Domain Admins" /domain'
+  - name: nltest domain trusts
+    expect: match
+    event:
+      Image: 'C:\Windows\System32\nltest.exe'
+      CommandLine: 'nltest /domain_trusts /all_trusts'
+  - name: net use mapping a share
+    expect: no_match
+    event:
+      Image: 'C:\Windows\System32\net.exe'
+      CommandLine: 'net use Z: \\fs01\finance'

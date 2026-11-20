@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sigma-detection-engine"
+version = "0.1.0"
+description = "Sigma-compatible detection engine with detection-as-code unit testing, linting and ATT&CK coverage reporting."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+sigma-engine = "sigma_engine.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["sigma_engine*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

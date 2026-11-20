@@ -1,0 +1,22 @@
+rule_id: b40672e8-67e1-4af8-a009-752de6ebfe4b
+cases:
+  - name: comsvcs MiniDump by ordinal name
+    expect: match
+    event:
+      Image: 'C:\Windows\System32\rundll32.exe'
+      CommandLine: 'rundll32.exe C:\Windows\System32\comsvcs.dll, MiniDump 624 C:\Temp\l.dmp full'
+  - name: procdump against lsass
+    expect: match
+    event:
+      Image: 'C:\Tools\procdump64.exe'
+      CommandLine: 'procdump64.exe -accepteula -ma lsass.exe out.dmp'
+  - name: procdump against another process
+    expect: no_match
+    event:
+      Image: 'C:\Tools\procdump64.exe'
+      CommandLine: 'procdump64.exe -ma w3wp.exe'
+  - name: unrelated rundll32
+    expect: no_match
+    event:
+      Image: 'C:\Windows\System32\rundll32.exe'
+      CommandLine: 'rundll32.exe shell32.dll,Control_RunDLL'

@@ -1,0 +1,36 @@
+title: LOLBin Network Connection To Public IP
+id: 27689387-5f50-4a4e-8449-1af8be34a1e0
+status: experimental
+description: |
+  Detects proxy-execution binaries (rundll32, regsvr32, mshta) initiating outbound
+  connections to non-private address space, indicating C2 or payload staging.
+author: Vedant Sharma
+date: 2026-11-20
+tags:
+  - attack.defense_evasion
+  - attack.t1218
+  - attack.command_and_control
+  - attack.t1071.001
+logsource:
+  product: windows
+  category: network_connection
+detection:
+  selection:
+    Image|endswith:
+      - '\rundll32.exe'
+      - '\regsvr32.exe'
+      - '\mshta.exe'
+    Initiated: 'true'
+  filter_private:
+    DestinationIp|cidr:
+      - '10.0.0.0/8'
+      - '172.16.0.0/12'
+      - '192.168.0.0/16'
+      - '127.0.0.0/8'
+      - '169.254.0.0/16'
+      - '::1/128'
+      - 'fe80::/10'
+  condition: selection and not filter_private
+falsepositives:
+  - Control-panel applets that check for updates
+level: high

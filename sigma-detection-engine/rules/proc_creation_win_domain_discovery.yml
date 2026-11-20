@@ -1,0 +1,35 @@
+title: Domain Account And Group Discovery
+id: 077e197f-3f87-4b9f-aaf2-be32cc2bf305
+status: test
+description: |
+  Detects enumeration of privileged domain groups and the current security context
+  with built-in tools - common hands-on-keyboard reconnaissance after initial access.
+author: Vedant Sharma
+date: 2026-11-20
+tags:
+  - attack.discovery
+  - attack.t1087.002
+  - attack.t1069.002
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_net:
+    Image|endswith:
+      - '\net.exe'
+      - '\net1.exe'
+    CommandLine|contains: 'group'
+  selection_priv_groups:
+    CommandLine|contains:
+      - 'domain admins'
+      - 'enterprise admins'
+      - 'domain controllers'
+  selection_nltest:
+    Image|endswith: '\nltest.exe'
+    CommandLine|windash|contains:
+      - '-dclist'
+      - '-domain_trusts'
+  condition: (selection_net and selection_priv_groups) or selection_nltest
+falsepositives:
+  - Helpdesk or AD administrators troubleshooting group membership
+level: medium

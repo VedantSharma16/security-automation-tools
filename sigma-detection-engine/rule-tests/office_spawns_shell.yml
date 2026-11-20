@@ -1,0 +1,12 @@
+rule_id: 6f1b64ac-32a5-4040-bf88-cbcf495a7315
+cases:
+  - name: Word macro spawning cmd
+    expect: match
+    event:
+      ParentImage: 'C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE'
+      Image: 'C:\Windows\System32\cmd.exe'
+  - name: Excel opening a browser link
+    expect: no_match
+    event:
+      ParentImage: 'C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE'
+      Image: 'C:\Program Files\Mozilla Firefox\firefox.exe'

@@ -1,0 +1,36 @@
+title: Certutil Used To Download Or Decode Payload
+id: 1ac9f900-11f8-42f7-9229-c20b3dfddeac
+status: test
+description: |
+  Detects certutil.exe abused as a downloader (-urlcache / -verifyctl with a URL) or
+  to decode base64 payloads dropped to disk - a common LOLBin ingress technique.
+author: Vedant Sharma
+date: 2026-11-20
+tags:
+  - attack.command_and_control
+  - attack.t1105
+  - attack.defense_evasion
+  - attack.t1140
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_img:
+    - Image|endswith: '\certutil.exe'
+    - OriginalFileName: 'CertUtil.exe'
+  selection_download:
+    CommandLine|windash|contains:
+      - '-urlcache'
+      - '-verifyctl'
+  selection_url:
+    CommandLine|contains:
+      - 'http://'
+      - 'https://'
+  selection_decode:
+    CommandLine|windash|contains:
+      - '-decode '
+      - '-decodehex '
+  condition: selection_img and ((selection_download and selection_url) or selection_decode)
+falsepositives:
+  - Administrators manually fetching CRLs (rare with an explicit URL)
+level: high

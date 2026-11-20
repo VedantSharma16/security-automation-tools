@@ -1,0 +1,36 @@
+title: Scheduled Task Created Running From User-Writable Path
+id: cdb73fee-ae82-4224-b6a4-bfe14a3a795d
+status: experimental
+description: |
+  Detects schtasks.exe /create where the task action points at a script interpreter
+  or a binary in a user-writable directory - a typical persistence foothold.
+author: Vedant Sharma
+date: 2026-11-20
+tags:
+  - attack.persistence
+  - attack.execution
+  - attack.t1053.005
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_create:
+    Image|endswith: '\schtasks.exe'
+    CommandLine|windash|contains: ' -create '
+  selection_suspicious_action:
+    CommandLine|contains:
+      - '\AppData\'
+      - '\Users\Public\'
+      - '\ProgramData\'
+      - '\Temp\'
+      - 'powershell'
+      - 'mshta'
+      - 'wscript'
+  filter_system_updaters:
+    ParentImage|endswith:
+      - '\GoogleUpdate.exe'
+      - '\OneDriveSetup.exe'
+  condition: selection_create and selection_suspicious_action and not filter_system_updaters
+falsepositives:
+  - Software installers that register updater tasks from ProgramData
+level: medium

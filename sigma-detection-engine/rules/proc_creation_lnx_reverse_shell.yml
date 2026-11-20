@@ -1,0 +1,31 @@
+title: Linux Reverse Shell Via Bash Or Netcat
+id: 62290bbc-85cf-459a-a8b8-85538fff061d
+status: test
+description: |
+  Detects interactive reverse shells built from bash /dev/tcp redirection or netcat
+  executing a shell, frequently seen after web-application exploitation.
+author: Vedant Sharma
+date: 2026-11-20
+tags:
+  - attack.execution
+  - attack.t1059.004
+  - attack.command_and_control
+  - attack.t1095
+logsource:
+  product: linux
+  category: process_creation
+detection:
+  selection_devtcp:
+    CommandLine|contains|all:
+      - '/dev/tcp/'
+      - '>&'
+  selection_nc:
+    Image|endswith:
+      - '/nc'
+      - '/ncat'
+      - '/netcat'
+    CommandLine|re: '\s-(e|c)\s+/bin/(ba)?sh'
+  condition: 1 of selection_*
+falsepositives:
+  - Unlikely in production; possible in CTF or lab hosts
+level: critical

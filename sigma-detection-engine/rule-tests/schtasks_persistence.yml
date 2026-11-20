@@ -1,0 +1,19 @@
+rule_id: cdb73fee-ae82-4224-b6a4-bfe14a3a795d
+cases:
+  - name: task launching binary from AppData
+    expect: match
+    event:
+      Image: 'C:\Windows\System32\schtasks.exe'
+      CommandLine: 'schtasks /create /sc onlogon /tn "OneDrive Sync" /tr C:\Users\bob\AppData\Roaming\sync.exe'
+      ParentImage: 'C:\Windows\System32\cmd.exe'
+  - name: Google updater registering its task
+    expect: no_match
+    event:
+      Image: 'C:\Windows\System32\schtasks.exe'
+      CommandLine: 'schtasks /create /tn GoogleUpdateTaskMachineUA /tr "C:\ProgramData\Google\Update\GoogleUpdate.exe /ua"'
+      ParentImage: 'C:\Program Files (x86)\Google\Update\GoogleUpdate.exe'
+  - name: querying tasks
+    expect: no_match
+    event:
+      Image: 'C:\Windows\System32\schtasks.exe'
+      CommandLine: 'schtasks /query /fo LIST'

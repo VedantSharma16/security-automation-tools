@@ -1,0 +1,29 @@
+title: LSASS Memory Dump via Comsvcs MiniDump or ProcDump
+id: b40672e8-67e1-4af8-a009-752de6ebfe4b
+status: test
+description: |
+  Detects credential dumping of LSASS using the built-in comsvcs.dll MiniDump export
+  (a living-off-the-land technique) or Sysinternals ProcDump targeting lsass.
+author: Vedant Sharma
+date: 2026-11-20
+tags:
+  - attack.credential_access
+  - attack.t1003.001
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_comsvcs:
+    Image|endswith: '\rundll32.exe'
+    CommandLine|contains|all:
+      - 'comsvcs'
+      - 'minidump'
+  selection_procdump:
+    Image|endswith:
+      - '\procdump.exe'
+      - '\procdump64.exe'
+    CommandLine|contains: 'lsass'
+  condition: 1 of selection_*
+falsepositives:
+  - Authorised incident responders collecting LSASS memory (should be change-controlled)
+level: critical

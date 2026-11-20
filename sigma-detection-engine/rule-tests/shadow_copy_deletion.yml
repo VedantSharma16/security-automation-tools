@@ -1,0 +1,17 @@
+rule_id: 5eda892b-dc5b-4cb1-9629-e99b7df1a0a4
+cases:
+  - name: vssadmin delete shadows
+    expect: match
+    event:
+      Image: 'C:\Windows\System32\vssadmin.exe'
+      CommandLine: 'vssadmin.exe Delete Shadows /All /Quiet'
+  - name: wmic shadowcopy delete
+    expect: match
+    event:
+      Image: 'C:\Windows\System32\wbem\WMIC.exe'
+      CommandLine: 'wmic shadowcopy delete'
+  - name: listing shadows
+    expect: no_match
+    event:
+      Image: 'C:\Windows\System32\vssadmin.exe'
+      CommandLine: 'vssadmin list shadows'

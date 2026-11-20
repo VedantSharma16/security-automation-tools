@@ -1,0 +1,22 @@
+rule_id: 27689387-5f50-4a4e-8449-1af8be34a1e0
+cases:
+  - name: rundll32 beacon to public IP
+    expect: match
+    event:
+      Image: 'C:\Windows\System32\rundll32.exe'
+      Initiated: true
+      DestinationIp: '203.0.113.50'
+      DestinationPort: 443
+  - name: rundll32 to internal file server
+    expect: no_match
+    event:
+      Image: 'C:\Windows\System32\rundll32.exe'
+      Initiated: true
+      DestinationIp: '10.20.1.15'
+      DestinationPort: 445
+  - name: inbound connection
+    expect: no_match
+    event:
+      Image: 'C:\Windows\System32\mshta.exe'
+      Initiated: false
+      DestinationIp: '198.51.100.7'
