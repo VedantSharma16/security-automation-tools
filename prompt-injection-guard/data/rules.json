@@ -1,0 +1,210 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "id": "PI-001",
+      "name": "Instruction override",
+      "category": "instruction_override",
+      "weight": 0.75,
+      "pattern": "\\b(?:ignore|disregard|forget|override|bypass|discard)\\s+(?:(?:all|any|every|of|the|your|these|those)\\s+){0,3}(?:previous|prior|above|earlier|preceding|system|original|initial|developer|safety|existing)\\s+(?:instructions?|prompts?|rules|directives?|guidelines|guardrails|constraints|programming)\\b",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0051",
+      "description": "Classic 'ignore previous instructions' override."
+    },
+    {
+      "id": "PI-002",
+      "name": "Wholesale context reset",
+      "category": "instruction_override",
+      "weight": 0.65,
+      "pattern": "\\b(?:ignore|disregard|forget)\\s+(?:all|everything)\\s+(?:you(?:'ve| have)? (?:been|were) told|above|before|so far|prior to this)\\b",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0051",
+      "description": "Attempts to wipe all prior context."
+    },
+    {
+      "id": "PI-003",
+      "name": "Injected replacement instructions",
+      "category": "instruction_override",
+      "weight": 0.4,
+      "pattern": "\\b(?:new|updated|real|actual|true|revised)\\s+(?:system\\s+)?(?:instructions|directives|task|objective)\\s*(?::|are\\b|is\\b)",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0051",
+      "description": "Introduces 'new instructions' to replace the original task."
+    },
+    {
+      "id": "PI-004",
+      "name": "Role reassignment",
+      "category": "role_hijack",
+      "weight": 0.5,
+      "pattern": "\\b(?:you\\s+are\\s+now\\s+(?:an?\\s+|the\\s+|in\\s+|my\\s+|acting\\s|operating\\s|playing\\s|(?-i:[A-Z]{3,})\\b)|you\\s+are\\s+no\\s+longer\\s+(?:an?\\s+|bound|restricted|limited|required|subject|governed|ai\\b|chatgpt|claude|an\\s+assistant)|from\\s+now\\s+on,?\\s+you\\s+(?:are|will|must|shall)|you\\s+will\\s+now\\s+(?:act|behave|respond)\\s+as)\\b",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0051",
+      "description": "Tries to change the assistant's identity or role mid-conversation."
+    },
+    {
+      "id": "PI-005",
+      "name": "Unrestricted persona",
+      "category": "jailbreak",
+      "weight": 0.65,
+      "pattern": "\\b(?:act|behave|respond|roleplay|pretend)\\s+(?:as|like|to\\s+be)\\s+(?:if\\s+you\\s+(?:are|were)\\s+)?(?:an?\\s+)?(?:unrestricted|unfiltered|uncensored|jailbroken|amoral|evil|unaligned)\\b",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0054",
+      "description": "Requests an unrestricted/uncensored persona."
+    },
+    {
+      "id": "PI-006",
+      "name": "Known jailbreak persona",
+      "category": "jailbreak",
+      "weight": 0.6,
+      "case_sensitive": true,
+      "pattern": "\\b(?:DAN|STAN|DUDE|AIM)\\b(?=[^\\n]{0,80}(?:mode|persona|jailbreak|[Dd]o [Aa]nything|no (?:rules|restrictions|limits)))|\\b[Dd]o [Aa]nything [Nn]ow\\b",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0054",
+      "description": "Named jailbreak personas (DAN etc.)."
+    },
+    {
+      "id": "PI-007",
+      "name": "Guardrail removal",
+      "category": "jailbreak",
+      "weight": 0.55,
+      "pattern": "\\b(?:without|with\\s+no|free\\s+(?:of|from)|ignoring)\\s+(?:any\\s+)?(?:ethical|moral|safety|content)\\s+(?:restrictions|guidelines|filters|limits|constraints|policies)\\b|\\b(?:enable|enter|activate|switch\\s+to)\\s+(?:developer|god|jailbreak|unrestricted)\\s+mode\\b(?=[^\\n]{0,120}\\b(?:no|without|ignore|unrestricted|uncensored|anything)\\b)",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0054",
+      "description": "Asks the model to operate without safety constraints."
+    },
+    {
+      "id": "PI-008",
+      "name": "System prompt extraction",
+      "category": "prompt_extraction",
+      "weight": 0.6,
+      "pattern": "\\b(?:reveal|show|print|output|repeat|display|leak|dump|tell\\s+me|give\\s+me|share|what\\s+(?:is|are|was|were))\\b[^.\\n?]{0,30}\\b(?:your|the)\\s+(?:system\\s+(?:prompt|message|instructions)|initial\\s+(?:prompt|instructions)|hidden\\s+(?:prompt|instructions)|original\\s+(?:prompt|instructions)|pre-?prompt|instructions\\s+(?:above|you\\s+were\\s+given))",
+      "owasp": "LLM07:2025 System Prompt Leakage",
+      "atlas": "AML.T0056",
+      "description": "Attempts to extract the system prompt / hidden instructions."
+    },
+    {
+      "id": "PI-009",
+      "name": "Verbatim context replay",
+      "category": "prompt_extraction",
+      "weight": 0.5,
+      "pattern": "\\b(?:repeat|print|output|copy)\\b[^.\\n]{0,40}\\b(?:everything|all\\s+(?:the\\s+)?text|the\\s+text|the\\s+words)\\s+(?:above|before\\s+this)\\b|\\b(?:starting\\s+with|begin(?:ning)?\\s+with)\\s+[\\\"']you\\s+are\\b",
+      "owasp": "LLM07:2025 System Prompt Leakage",
+      "atlas": "AML.T0056",
+      "description": "Asks the model to replay its context window verbatim."
+    },
+    {
+      "id": "PI-010",
+      "name": "Chat-template delimiter injection",
+      "category": "delimiter_injection",
+      "weight": 0.7,
+      "pattern": "<\\|(?:im_start|im_end|system|endoftext|eot_id|start_header_id)\\|>|\\[/?INST\\]|<<\\/?SYS>>|</?(?:system|system_prompt|instructions)>",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0051",
+      "description": "Raw chat-template control tokens or fake system tags."
+    },
+    {
+      "id": "PI-011",
+      "name": "Fake conversation boundary",
+      "category": "delimiter_injection",
+      "weight": 0.5,
+      "multiline": true,
+      "pattern": "(?:^|\\n)\\s*(?:-{3,}|={3,}|#{2,})?\\s*(?:end\\s+of\\s+(?:user\\s+input|document|context|data|email)|begin\\s+(?:system|admin)\\s+(?:message|instructions?|prompt))\\b|^\\s*#{1,4}\\s*(?:system|assistant)\\s*(?:prompt|message|instructions?)?\\s*:?\\s*$",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0051",
+      "description": "Fake 'end of document' / 'system message' boundaries."
+    },
+    {
+      "id": "PI-012",
+      "name": "Message addressed to the AI",
+      "category": "indirect_injection",
+      "weight": 0.5,
+      "indirect_boost": true,
+      "pattern": "\\b(?:note|message|instructions?)\\s+(?:to|for)\\s+(?:the\\s+|any\\s+)?(?:ai|assistant|llm|language\\s+model|chatbot|agent|model)\\b|\\bif\\s+you\\s+are\\s+an?\\s+(?:ai|llm|language\\s+model|assistant|automated\\s+agent|bot)\\b|\\b(?:ai|assistant|llm|model|agent)s?\\s+(?:reading|processing|summari[sz]ing|parsing|analy[sz]ing)\\s+this\\b",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0051.001",
+      "description": "Third-party content speaking directly to the model (indirect injection hallmark)."
+    },
+    {
+      "id": "PI-013",
+      "name": "Concealment from user",
+      "category": "indirect_injection",
+      "weight": 0.65,
+      "indirect_boost": true,
+      "pattern": "\\b(?:do\\s+not|don't|never)\\s+(?:tell|inform|alert|notify|warn|let)\\s+(?:the\\s+)?(?:user|human|operator|recipient)\\b|\\bwithout\\s+(?:telling|informing|alerting|notifying)\\s+(?:the\\s+)?(?:user|human|operator)\\b|\\b(?:secretly|silently|covertly)\\s+(?:send|forward|include|append|insert|add|call|run)\\b",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0051.001",
+      "description": "Instructs the model to hide its actions from the user."
+    },
+    {
+      "id": "PI-014",
+      "name": "Data exfiltration instruction",
+      "category": "exfiltration",
+      "weight": 0.65,
+      "pattern": "\\b(?:send|forward|email|upload|post|transmit|exfiltrate|append)\\b[^.\\n]{0,40}\\b(?:conversation|chat\\s+history|(?:this|the)\\s+(?:chat|conversation|thread)|api\\s+keys?|credentials|passwords?|secrets?|tokens?|system\\s+prompt|(?:the\\s+)?user'?s?\\s+(?:data|files|emails?|messages|details))\\b[^.\\n]{0,60}\\b(?:to|at|into)\\b[^.\\n]{0,20}(?:https?://|\\S+@\\S+\\.\\w+|\\bwebhook\\b|\\bserver\\b)",
+      "owasp": "LLM02:2025 Sensitive Information Disclosure",
+      "atlas": "AML.T0057",
+      "description": "Asks the model to send sensitive data to an external destination."
+    },
+    {
+      "id": "PI-015",
+      "name": "Markdown image exfiltration channel",
+      "category": "exfiltration",
+      "weight": 0.55,
+      "pattern": "!\\[[^\\]]*\\]\\(\\s*https?://[^)\\s]+[?&](?:q|d|data|payload|secret|token|key|info|c|log|msg|conv|chat|history|session|exfil|leak)=[^)\\s]*\\)|https?://\\S+[?&][\\w.-]+=(?:\\{|\\$\\{|\\[|<)[^\\s]*",
+      "owasp": "LLM02:2025 Sensitive Information Disclosure",
+      "atlas": "AML.T0057",
+      "description": "Image/link URL with templated query params \u2014 a zero-click exfil channel when rendered."
+    },
+    {
+      "id": "PI-016",
+      "name": "Dangerous tool / command invocation",
+      "category": "tool_abuse",
+      "weight": 0.6,
+      "pattern": "\\b(?:curl|wget)\\s+[^\\n|]{1,200}\\|\\s*(?:ba|z)?sh\\b|\\brm\\s+-rf\\s+[/~]|\\b(?:call|invoke|use|run|execute|trigger)\\s+(?:the\\s+)?`?[\\w.-]*`?\\s*(?:tool|function|plugin|action)\\b[^.\\n]{0,60}\\b(?:delete|transfer|wire|send|forward|purchase|grant|disable)\\b",
+      "owasp": "LLM06:2025 Excessive Agency",
+      "atlas": "AML.T0053",
+      "description": "Pushes an agent toward destructive or high-impact tool calls."
+    },
+    {
+      "id": "PI-017",
+      "name": "Authority impersonation",
+      "category": "social_engineering",
+      "weight": 0.45,
+      "pattern": "\\b(?:this\\s+is|i\\s+am|message\\s+from)\\s+(?:your|the)\\s+(?:developer|creator|admin(?:istrator)?|system\\s+administrator|operator|openai|anthropic|security\\s+team)\\b|\\b(?:admin|developer|sudo|root|maintenance)\\s+(?:override|mode\\s+enabled|access\\s+granted|command)\\b",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0051",
+      "description": "Claims privileged authority to justify new instructions."
+    },
+    {
+      "id": "PI-018",
+      "name": "Refusal suppression",
+      "category": "jailbreak",
+      "weight": 0.35,
+      "pattern": "\\b(?:do\\s+not|don't|never|you\\s+(?:can(?:no|')t|must\\s+not))\\s+(?:refuse|decline|apologi[sz]e|say\\s+(?:you\\s+can(?:no|')t|no|sorry)|add\\s+(?:any\\s+)?(?:warnings|disclaimers)|include\\s+(?:any\\s+)?(?:warnings|disclaimers))\\b",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0054",
+      "description": "Pre-emptively forbids refusals or safety disclaimers."
+    },
+    {
+      "id": "PI-019",
+      "name": "Hidden-text styling",
+      "category": "indirect_injection",
+      "weight": 0.4,
+      "indirect_boost": true,
+      "pattern": "style\\s*=\\s*[\\\"'][^\\\"']*(?:display\\s*:\\s*none|visibility\\s*:\\s*hidden|font-size\\s*:\\s*0(?:px)?\\b|opacity\\s*:\\s*0(?:\\.0+)?\\b|color\\s*:\\s*(?:white|#fff(?:fff)?)\\b)",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0051.001",
+      "description": "Text styled to be invisible to humans but visible to a model."
+    },
+    {
+      "id": "PI-020",
+      "name": "Decoding request",
+      "category": "evasion",
+      "weight": 0.3,
+      "pattern": "\\b(?:decode|decipher|translate)\\s+(?:this|the\\s+following)\\s+(?:base64|hex|rot-?13|binary|cipher)\\b[^.\\n]{0,60}\\b(?:and|then)\\s+(?:follow|execute|do|obey|run|act\\s+on)\\b",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0051",
+      "description": "Asks the model to decode then obey an encoded payload."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prompt-injection-guard"
+version = "0.1.0"
+description = "Layered prompt-injection firewall for LLM and RAG applications: input/RAG-chunk scanning, output leak detection, and a measured evaluation harness."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+pi-guard = "pi_guard.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["pi_guard*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
