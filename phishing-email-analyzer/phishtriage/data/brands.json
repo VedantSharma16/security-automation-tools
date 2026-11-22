@@ -1,0 +1,17 @@
+{
+  "_comment": "Brands commonly impersonated in phishing. 'domains' are the legitimate sending/landing domains; 'keywords' are display-name/body terms that imply the brand.",
+  "brands": {
+    "PayPal": {"domains": ["paypal.com"], "keywords": ["paypal"]},
+    "Microsoft": {"domains": ["microsoft.com", "office.com", "office365.com", "live.com", "outlook.com", "microsoftonline.com"], "keywords": ["microsoft", "office 365", "office365", "outlook", "onedrive", "sharepoint"]},
+    "Google": {"domains": ["google.com", "gmail.com", "accounts.google.com"], "keywords": ["google", "gmail"]},
+    "Apple": {"domains": ["apple.com", "icloud.com"], "keywords": ["apple", "icloud", "apple id"]},
+    "Amazon": {"domains": ["amazon.com", "amazon.co.uk", "amazon.com.au", "amazonaws.com"], "keywords": ["amazon", "aws"]},
+    "DocuSign": {"domains": ["docusign.com", "docusign.net"], "keywords": ["docusign"]},
+    "DHL": {"domains": ["dhl.com"], "keywords": ["dhl"]},
+    "Netflix": {"domains": ["netflix.com"], "keywords": ["netflix"]},
+    "LinkedIn": {"domains": ["linkedin.com"], "keywords": ["linkedin"]},
+    "Commonwealth Bank": {"domains": ["commbank.com.au", "cba.com.au"], "keywords": ["commbank", "commonwealth bank"]},
+    "Dropbox": {"domains": ["dropbox.com"], "keywords": ["dropbox"]},
+    "Adobe": {"domains": ["adobe.com"], "keywords": ["adobe"]}
+  }
+}

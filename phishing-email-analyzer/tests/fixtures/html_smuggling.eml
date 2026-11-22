@@ -1,0 +1,32 @@
+Return-Path: <notifications@partner-portal.example.net>
+Received: from mx.sender.invalid (unknown [203.0.113.45]) by mx.example.org;
+ Mon, 16 Nov 2026 09:12:03 +0000
+Authentication-Results: mx.example.org; spf=pass
+ smtp.mailfrom=partner-portal.example.net; dkim=pass; dmarc=pass
+From: "DocuSign via Partner Portal" <notifications@partner-portal.example.net>
+To: alex.morgan@example.org
+Subject: Please DocuSign: Q4 contract
+Date: Mon, 16 Nov 2026 09:12:01 +0000
+Message-ID: <1785106489@fixture.invalid>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============5455857794106705927=="
+
+--===============5455857794106705927==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+A document is waiting for your signature. Open the attached secure message.
+
+--===============5455857794106705927==
+Content-Type: text/html
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Secure_Message.html"
+MIME-Version: 1.0
+
+PGh0bWw+PGJvZHk+PHNjcmlwdD4KdmFyIGQgPSBhdG9iKCJabWw0ZEhWeVpTMXdZWGxzYjJGayIp
+Owp2YXIgYiA9IG5ldyBCbG9iKFtkXSwge3R5cGU6ICJhcHBsaWNhdGlvbi9vY3RldC1zdHJlYW0i
+fSk7CnZhciBhID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgiYSIpOwphLmhyZWYgPSBVUkwuY3Jl
+YXRlT2JqZWN0VVJMKGIpOwphLmRvd25sb2FkID0gIkNvbnRyYWN0X1E0LmlzbyI7CmEuY2xpY2so
+KTsKPC9zY3JpcHQ+PC9ib2R5PjwvaHRtbD4=
+
+--===============5455857794106705927==--

@@ -1,0 +1,23 @@
+Return-Path: <sarah.chen@acme-corp.com>
+Received: from mx.sender.invalid (unknown [203.0.113.45]) by mx.example.org;
+ Mon, 16 Nov 2026 09:12:03 +0000
+Authentication-Results: mx.example.org; spf=pass smtp.mailfrom=acme-corp.com;
+ dkim=pass header.d=acme-corp.com; dmarc=pass
+From: "Sarah Chen (CFO)" <sarah.chen@acme-corp.com>
+To: alex.morgan@example.org
+Reply-To: sarah.chen.cfo@gmail.com
+Subject: Re: outstanding invoice - updated banking details
+Date: Mon, 16 Nov 2026 09:12:01 +0000
+Message-ID: <3804882628@fixture.invalid>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hi Alex,
+
+Are you at your desk? Our supplier has a new bank account and the outstanding=
+ invoice needs an urgent payment today via wire transfer. I'll send the updat=
+ed banking details shortly. Please keep this confidential until the audit is =
+complete.
+
+Sarah

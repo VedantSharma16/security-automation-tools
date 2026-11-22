@@ -1,0 +1,30 @@
+Return-Path: <bounces+123@github.com>
+Received: from mx.sender.invalid (unknown [203.0.113.45]) by mx.example.org;
+ Mon, 16 Nov 2026 09:12:03 +0000
+Authentication-Results: mx.example.org; spf=pass smtp.mailfrom=github.com;
+ dkim=pass header.d=github.com; dmarc=pass header.from=github.com
+From: "GitHub" <noreply@github.com>
+To: alex.morgan@example.org
+Subject: Your weekly digest
+Date: Mon, 16 Nov 2026 09:12:01 +0000
+Message-ID: <1538961306@fixture.invalid>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============7286616464596343470=="
+
+--===============7286616464596343470==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Here are the repositories trending this week: https://github.com/trending
+
+--===============7286616464596343470==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Trending this week:</p><p><a href=3D"https://github.com/trendi=
+ng">github.com/trending</a></p><p><a href=3D"https://github.com/settings/noti=
+fications">Notification settings</a></p></body></html>
+
+--===============7286616464596343470==--

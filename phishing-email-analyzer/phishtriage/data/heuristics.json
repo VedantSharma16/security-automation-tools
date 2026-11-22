@@ -1,0 +1,13 @@
+{
+  "url_shorteners": ["bit.ly", "tinyurl.com", "t.co", "goo.gl", "ow.ly", "is.gd", "buff.ly", "rebrand.ly", "cutt.ly", "shorturl.at", "tiny.cc", "rb.gy"],
+  "suspicious_tlds": ["zip", "mov", "xyz", "top", "click", "country", "gq", "tk", "ml", "cf", "ga", "work", "support", "rest", "cam", "icu", "monster", "buzz"],
+  "free_hosting_domains": ["firebaseapp.com", "web.app", "netlify.app", "github.io", "pages.dev", "glitch.me", "weebly.com", "wixsite.com", "000webhostapp.com", "ngrok.io", "ngrok-free.app", "trycloudflare.com", "blogspot.com"],
+  "freemail_domains": ["gmail.com", "outlook.com", "hotmail.com", "yahoo.com", "proton.me", "protonmail.com", "aol.com", "gmx.com", "mail.com", "icloud.com"],
+  "executable_extensions": ["exe", "scr", "com", "pif", "bat", "cmd", "vbs", "vbe", "js", "jse", "wsf", "wsh", "hta", "ps1", "msi", "dll", "cpl", "jar", "lnk", "reg", "iso", "img", "vhd", "vhdx", "one", "appx", "msix"],
+  "macro_extensions": ["docm", "xlsm", "pptm", "dotm", "xltm", "xlam", "ppam", "xls", "doc"],
+  "archive_extensions": ["zip", "rar", "7z", "gz", "tar", "ace", "cab"],
+  "html_extensions": ["html", "htm", "shtml", "xhtml", "svg"],
+  "urgency_phrases": ["urgent", "immediately", "within 24 hours", "account will be suspended", "account has been suspended", "unusual activity", "unusual sign-in", "verify your account", "confirm your identity", "action required", "final notice", "password expires", "your mailbox is full", "limited time", "failure to comply"],
+  "credential_phrases": ["login", "log in", "sign in", "password", "credentials", "verify your", "update your payment", "billing information", "security check", "reset your password", "validate your"],
+  "bec_phrases": ["wire transfer", "bank details", "updated banking", "new bank account", "change of bank", "remittance", "invoice attached", "outstanding invoice", "gift cards", "are you at your desk", "are you available", "keep this confidential", "payment today", "urgent payment"]
+}
