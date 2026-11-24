@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prompt-injection-firewall"
+version = "0.1.0"
+description = "Source-aware prompt-injection detection, sanitisation (spotlighting) and output DLP for LLM, RAG and agent pipelines."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+prompt-firewall = "prompt_firewall.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["prompt_firewall*"]
+
+[tool.setuptools.package-data]
+prompt_firewall = ["rules.json"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

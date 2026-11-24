@@ -1,0 +1,194 @@
+{
+  "version": "1.0",
+  "severity_weights": {"low": 10, "medium": 25, "high": 45, "critical": 70},
+  "rules": [
+    {
+      "id": "PI-001",
+      "name": "Instruction override",
+      "category": "instruction_override",
+      "severity": "high",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0051",
+      "indirect_only": false,
+      "description": "Explicit attempt to cancel or replace the model's existing instructions.",
+      "patterns": [
+        "\\b(ignore|disregard|forget|override|bypass|discard)\\b[^.\\n]{0,40}\\b(previous|prior|above|earlier|preceding|all|any|your|the|initial|original)\\b[^.\\n]{0,30}\\b(instructions?|prompts?|rules|directives|guidelines|guardrails|system prompt)\\b"
+      ]
+    },
+    {
+      "id": "PI-002",
+      "name": "Instruction replacement",
+      "category": "instruction_override",
+      "severity": "medium",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0051",
+      "indirect_only": false,
+      "description": "Introduces a 'new' instruction set or a standing behavioural change.",
+      "patterns": [
+        "\\b(new|updated|real|actual|true)\\s+(instructions?|rules|task|objective|directives?)\\s*(:|-|are|is)",
+        "\\bfrom now on,?\\s+(you|the assistant|the ai)\\s+(will|must|shall|should|are)\\b"
+      ]
+    },
+    {
+      "id": "PI-003",
+      "name": "Concealment from user",
+      "category": "instruction_override",
+      "severity": "high",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0051.001",
+      "indirect_only": false,
+      "description": "Asks the model to hide its actions from the user, a hallmark of indirect injection.",
+      "patterns": [
+        "\\b(do not|don't|never)\\s+(tell|inform|mention|reveal|disclose|show)\\b[^.\\n]{0,15}\\b(the\\s+)?user\\b",
+        "\\bwithout\\s+(telling|informing|notifying|alerting)\\s+the\\s+user\\b"
+      ]
+    },
+    {
+      "id": "PI-004",
+      "name": "Instructions addressed to an AI agent inside data",
+      "category": "instruction_override",
+      "severity": "medium",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0051.001",
+      "indirect_only": true,
+      "description": "Retrieved content or tool output that speaks directly to an AI model. Legitimate documents rarely do this.",
+      "patterns": [
+        "\\b(note|message|instructions?|attention)\\s+(to|for)\\s+(the\\s+)?(ai|llm|assistant|chatbot|language model|agent|copilot)s?\\b",
+        "\\b(ai|llm|assistant|chatbot|agent)s?\\s*(reading|processing|summari[sz]ing)\\s+this\\b",
+        "\\bif you are an? (ai|llm|language model|assistant|agent)\\b"
+      ]
+    },
+    {
+      "id": "JB-001",
+      "name": "Persona hijack / jailbreak persona",
+      "category": "jailbreak",
+      "severity": "high",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0054",
+      "indirect_only": false,
+      "description": "Attempts to replace the assistant's identity with an unrestricted persona.",
+      "patterns": [
+        "\\byou are (now|no longer)\\b[^.\\n]{0,40}\\b(unrestricted|unfiltered|uncensored|jailbroken|evil|dan|free|bound|an? ai)\\b",
+        "\\b(act|behave|respond|roleplay)\\s+as\\s+(an?\\s+)?(unrestricted|unfiltered|uncensored|jailbroken|evil)\\b",
+        "\\b(developer|god|jailbreak|dan)\\s+mode\\b",
+        "\\bdo anything now\\b",
+        "\\bpretend\\s+(that\\s+)?you\\s+(have no|are not bound by|don't have|do not have)\\s+(any\\s+)?(safety|ethical|content|rules|restrictions|filters|guidelines|limits)"
+      ]
+    },
+    {
+      "id": "JB-002",
+      "name": "Safety-control removal",
+      "category": "jailbreak",
+      "severity": "medium",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0054",
+      "indirect_only": false,
+      "description": "Requests that the model operate without its safety controls.",
+      "patterns": [
+        "\\b(without|no|free of|ignore (all|your))\\s+(any\\s+)?(ethical\\s+)?(restrictions|filters|censorship|guardrails|safety (rules|guidelines)|content polic(y|ies))\\b"
+      ]
+    },
+    {
+      "id": "SP-001",
+      "name": "System prompt extraction",
+      "category": "prompt_extraction",
+      "severity": "high",
+      "owasp": "LLM07:2025 System Prompt Leakage",
+      "atlas": "AML.T0056",
+      "indirect_only": false,
+      "description": "Attempts to make the model disclose its hidden system prompt or configuration.",
+      "patterns": [
+        "\\b(reveal|print|show|repeat|output|display|leak|dump|tell me|give me|recite)\\b[^.\\n]{0,30}\\b(system|initial|hidden|original|developer|secret)\\s+(prompt|instructions?|message|configuration)\\b",
+        "\\b(repeat|print|output)\\s+(everything|all|the (text|words))\\s+(above|before)\\b",
+        "\\bwhat (were|are) your (initial |original |hidden )?(instructions|rules)\\b"
+      ]
+    },
+    {
+      "id": "DL-001",
+      "name": "Chat-template delimiter injection",
+      "category": "delimiter_injection",
+      "severity": "high",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0051",
+      "indirect_only": false,
+      "description": "Raw chat-template control tokens used to forge a system or assistant turn.",
+      "patterns": [
+        "<\\|im_(start|end)\\|>",
+        "<\\|(system|assistant|user|endoftext|eot_id|start_header_id)\\|>",
+        "\\[/?INST\\]",
+        "<</?SYS>>",
+        "</?(system|system_prompt|assistant)>"
+      ]
+    },
+    {
+      "id": "DL-002",
+      "name": "Forged conversation role header",
+      "category": "delimiter_injection",
+      "severity": "medium",
+      "owasp": "LLM01:2025 Prompt Injection",
+      "atlas": "AML.T0051",
+      "indirect_only": false,
+      "description": "A line or sentence that impersonates a system/assistant turn in plain text.",
+      "patterns": [
+        "(?m)(^|[.!?]\\s+)\\s*(#{1,4}\\s*)?\\[?(system|assistant|developer)\\]?\\s*(message|prompt)?\\s*:"
+      ]
+    },
+    {
+      "id": "EX-001",
+      "name": "Markdown image exfiltration",
+      "category": "exfiltration",
+      "severity": "critical",
+      "owasp": "LLM05:2025 Improper Output Handling",
+      "atlas": "AML.T0057",
+      "indirect_only": false,
+      "description": "Markdown image pointing at an external URL with a query string: renders automatically and leaks data in the URL.",
+      "patterns": [
+        "!\\[[^\\]]*\\]\\(\\s*https?://[^)\\s]+\\?[^)\\s]*=[^)]*\\)"
+      ]
+    },
+    {
+      "id": "EX-002",
+      "name": "Instruction to transmit sensitive data",
+      "category": "exfiltration",
+      "severity": "high",
+      "owasp": "LLM02:2025 Sensitive Information Disclosure",
+      "atlas": "AML.T0057",
+      "indirect_only": false,
+      "description": "Asks the model to send conversation data, credentials or secrets to an external destination.",
+      "patterns": [
+        "\\b(send|post|forward|upload|transmit|exfiltrate|leak|email|append)\\b[^.\\n]{0,60}\\b(conversation|chat history|credentials?|api[ _-]?keys?|passwords?|secrets?|tokens?|session|cookies?|personal data|user'?s? (data|details|email))\\b[^\\n]{0,80}(https?://|[\\w.+-]+@[\\w-]+\\.\\w+)"
+      ]
+    },
+    {
+      "id": "TC-001",
+      "name": "Tool / command coercion",
+      "category": "tool_coercion",
+      "severity": "high",
+      "owasp": "LLM06:2025 Excessive Agency",
+      "atlas": "AML.T0053",
+      "indirect_only": false,
+      "description": "Content that tries to drive the agent into executing commands or destructive actions.",
+      "patterns": [
+        "\\b(execute|run)\\s+(the\\s+)?(following|this|these)\\s+(shell\\s+|bash\\s+|terminal\\s+)?(commands?|code|script)\\b",
+        "\\brm\\s+-rf\\s+[/~]",
+        "\\bcurl\\s+[^|\\n]+\\|\\s*(ba|z)?sh\\b",
+        "\\bdrop\\s+(table|database)\\b",
+        "\\b(delete|wipe|erase)\\s+all\\s+(files|emails|records|repositories|data)\\b"
+      ]
+    },
+    {
+      "id": "TC-002",
+      "name": "Agent tool invocation from data",
+      "category": "tool_coercion",
+      "severity": "medium",
+      "owasp": "LLM06:2025 Excessive Agency",
+      "atlas": "AML.T0053",
+      "indirect_only": true,
+      "description": "Retrieved content instructing the agent to call one of its tools. Tool choice should come from the user, not from data.",
+      "patterns": [
+        "\\b(call|invoke|use|trigger)\\s+(the\\s+)?`?[a-z][a-z0-9_]*`?\\s+(tool|function|plugin|action)\\b",
+        "\\b(call|invoke)\\s+`?[a-z]+_[a-z0-9_]+`?\\s*\\("
+      ]
+    }
+  ]
+}
