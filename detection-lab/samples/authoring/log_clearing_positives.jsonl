@@ -1,0 +1,3 @@
+{"UtcTime": "2026-11-20T09:39:50Z", "Hostname": "WS-FIN-07", "ParentImage": "C:\\Users\\Public\\svc.exe", "Image": "C:\\Windows\\System32\\wevtutil.exe", "CommandLine": "wevtutil.exe cl Security", "User": "NT AUTHORITY\\SYSTEM", "ProcessId": 4412}
+{"UtcTime": "2026-11-20T09:39:51Z", "Hostname": "WS-FIN-07", "ParentImage": "C:\\Users\\Public\\svc.exe", "Image": "C:\\Windows\\System32\\wevtutil.exe", "CommandLine": "wevtutil.exe cl System", "User": "NT AUTHORITY\\SYSTEM", "ProcessId": 4420}
+{"UtcTime": "2026-11-21T13:02:07Z", "Hostname": "SRV-DC-02", "ParentImage": "C:\\Windows\\System32\\cmd.exe", "Image": "C:\\Windows\\System32\\wevtutil.exe", "CommandLine": "wevtutil cl \"Windows PowerShell\"", "User": "CORP\\adm-x", "ProcessId": 9812}

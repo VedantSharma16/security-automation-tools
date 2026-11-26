@@ -1,0 +1,15 @@
+rule_id: 0e545c27-911a-4c99-921c-17db3883f92e
+true_positives:
+  - Image: 'C:\Windows\System32\vssadmin.exe'
+    CommandLine: 'vssadmin.exe Delete Shadows /All /Quiet'
+  - Image: 'C:\Windows\System32\wbem\WMIC.exe'
+    CommandLine: 'wmic shadowcopy delete /nointeractive'
+  - Image: 'C:\Windows\System32\wbadmin.exe'
+    CommandLine: 'wbadmin delete catalog -quiet'
+  - Image: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
+    CommandLine: 'powershell -c "Get-WmiObject Win32_ShadowCopy | Remove-WmiObject"'
+true_negatives:
+  - Image: 'C:\Windows\System32\vssadmin.exe'
+    CommandLine: 'vssadmin list shadows'
+  - Image: 'C:\Windows\System32\wbadmin.exe'
+    CommandLine: 'wbadmin get versions'

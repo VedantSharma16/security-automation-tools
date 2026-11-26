@@ -1,0 +1,33 @@
+title: Office Application Spawning a Shell or Script Host
+id: 0e65f9aa-9563-4254-aeac-bc226048b3c6
+status: stable
+description: Detects Word, Excel, PowerPoint or Outlook launching a command interpreter or script host, the classic macro-based initial-access chain.
+author: Vedant Sharma
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_parent:
+    ParentImage|endswith:
+      - '\WINWORD.EXE'
+      - '\EXCEL.EXE'
+      - '\POWERPNT.EXE'
+      - '\OUTLOOK.EXE'
+  selection_child:
+    Image|endswith:
+      - '\cmd.exe'
+      - '\powershell.exe'
+      - '\pwsh.exe'
+      - '\wscript.exe'
+      - '\cscript.exe'
+      - '\mshta.exe'
+      - '\rundll32.exe'
+      - '\regsvr32.exe'
+  condition: selection_parent and selection_child
+falsepositives:
+  - Add-ins or templates that legitimately shell out; these are rare and should be allow-listed explicitly.
+level: high
+tags:
+  - attack.initial_access
+  - attack.t1566.001
+  - attack.execution

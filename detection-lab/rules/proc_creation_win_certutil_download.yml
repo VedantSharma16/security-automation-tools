@@ -1,0 +1,27 @@
+title: Certutil Used to Download a Remote File
+id: e5221b69-14e9-4024-8724-74f34f1a2a1a
+status: test
+description: Detects certutil.exe abused as a downloader via -urlcache or -verifyctl with a URL.
+author: Vedant Sharma
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_img:
+    - Image|endswith: '\certutil.exe'
+    - OriginalFileName: 'CertUtil.exe'
+  selection_flags:
+    CommandLine|windash|contains:
+      - '-urlcache'
+      - '-verifyctl'
+  selection_url:
+    CommandLine|contains:
+      - 'http://'
+      - 'https://'
+  condition: all of selection_*
+falsepositives:
+  - Rare legitimate certificate revocation-list retrieval by administrators.
+level: high
+tags:
+  - attack.command_and_control
+  - attack.t1105

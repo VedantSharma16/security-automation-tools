@@ -1,0 +1,33 @@
+title: Shadow Copy or Backup Catalog Deletion
+id: 0e545c27-911a-4c99-921c-17db3883f92e
+status: stable
+description: Detects deletion of Volume Shadow Copies or the Windows backup catalog, a near-universal ransomware pre-encryption step.
+author: Vedant Sharma
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_vssadmin:
+    Image|endswith: '\vssadmin.exe'
+    CommandLine|contains|all:
+      - 'delete'
+      - 'shadows'
+  selection_wmic:
+    Image|endswith: '\wmic.exe'
+    CommandLine|contains|all:
+      - 'shadowcopy'
+      - 'delete'
+  selection_wbadmin:
+    Image|endswith: '\wbadmin.exe'
+    CommandLine|contains|all:
+      - 'delete'
+      - 'catalog'
+  selection_powershell:
+    CommandLine|re: '(?i)Win32_ShadowCopy.*(Delete|Remove-CimInstance|Remove-WmiObject)'
+  condition: 1 of selection_*
+falsepositives:
+  - Backup software rotating its own snapshots (verify the parent process).
+level: critical
+tags:
+  - attack.impact
+  - attack.t1490

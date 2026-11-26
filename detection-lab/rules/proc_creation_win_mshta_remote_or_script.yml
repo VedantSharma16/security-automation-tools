@@ -1,0 +1,24 @@
+title: Mshta Executing Remote or Inline Script
+id: 9b14abea-b621-4d70-95f8-0228112c57b7
+status: test
+description: Detects mshta.exe fetching an HTA over HTTP(S) or running inline VBScript/JavaScript, a signed-binary proxy execution technique.
+author: Vedant Sharma
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_img:
+    Image|endswith: '\mshta.exe'
+  selection_payload:
+    CommandLine|contains:
+      - 'http://'
+      - 'https://'
+      - 'vbscript:'
+      - 'javascript:'
+  condition: selection_img and selection_payload
+falsepositives:
+  - Legacy line-of-business HTA applications served from an intranet.
+level: high
+tags:
+  - attack.defense_evasion
+  - attack.t1218.005

@@ -1,0 +1,38 @@
+title: PowerShell Launched With Encoded Command
+id: ea456524-df9f-4391-9e3c-ca2f00604141
+status: test
+description: |
+  Detects PowerShell started with a Base64-encoded command line (-EncodedCommand and its
+  abbreviations). Common in loaders, C2 stagers and living-off-the-land intrusions to hide
+  the real script from casual review.
+author: Vedant Sharma
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_img:
+    - Image|endswith:
+        - '\powershell.exe'
+        - '\pwsh.exe'
+    - OriginalFileName:
+        - 'PowerShell.EXE'
+        - 'pwsh.dll'
+  selection_flag:
+    CommandLine|windash|contains:
+      - ' -e '
+      - ' -en '
+      - ' -ec '
+      - ' -enc '
+      - ' -enco'
+      - ' -encodedcommand '
+  filter_sccm:
+    ParentImage|endswith: '\CCM\CcmExec.exe'
+  condition: all of selection_* and not filter_sccm
+falsepositives:
+  - Some management agents and installers pass encoded commands; baseline and filter by parent.
+level: high
+tags:
+  - attack.execution
+  - attack.t1059.001
+  - attack.defense_evasion
+  - attack.t1027

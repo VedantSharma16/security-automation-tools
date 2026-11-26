@@ -1,0 +1,11 @@
+rule_id: d1d8456d-334a-4a0c-8fc8-2fa48e50ea88
+true_positives:
+  - Image: 'C:\Windows\System32\rundll32.exe'
+    CommandLine: 'rundll32.exe C:\windows\System32\comsvcs.dll, MiniDump 624 C:\temp\lsass.dmp full'
+  - Image: 'C:\Windows\System32\rundll32.exe'
+    CommandLine: 'rundll32 comsvcs.dll #24 624 out.bin full'
+true_negatives:
+  - Image: 'C:\Windows\System32\rundll32.exe'
+    CommandLine: 'rundll32.exe shell32.dll,Control_RunDLL desk.cpl'
+  - Image: 'C:\Windows\System32\notepad.exe'
+    CommandLine: 'notepad.exe C:\notes\comsvcs minidump research.txt'

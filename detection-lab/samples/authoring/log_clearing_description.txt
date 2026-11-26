@@ -1,0 +1,3 @@
+During the WS-FIN-07 intrusion the operator cleared the Security and System event logs with
+wevtutil shortly before deploying ransomware, to destroy evidence of their earlier activity.
+Detect event-log clearing with the built-in wevtutil utility.

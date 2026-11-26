@@ -1,0 +1,11 @@
+rule_id: a38233de-813f-4907-b751-97fd0f2e4f4d
+true_positives:
+  - TargetObject: 'HKU\S-1-5-21-1111\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\WinUpdate'
+    Details: 'C:\Users\alice\AppData\Local\Temp\wupd.exe'
+  - TargetObject: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce\x'
+    Details: 'C:\ProgramData\x\x.exe /silent'
+true_negatives:
+  - TargetObject: 'HKU\S-1-5-21-1111\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\OneDrive'
+    Details: '"C:\ProgramData\Microsoft\OneDrive\OneDrive.exe" /background'
+  - TargetObject: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\SecurityHealth'
+    Details: 'C:\Windows\system32\SecurityHealthSystray.exe'

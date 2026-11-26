@@ -1,0 +1,28 @@
+title: Run Key Persistence Pointing at a User-Writable Location
+id: a38233de-813f-4907-b751-97fd0f2e4f4d
+status: experimental
+description: Detects a Run/RunOnce autostart value whose command lives in a temp, public or AppData path.
+author: Vedant Sharma
+logsource:
+  category: registry_set
+  product: windows
+detection:
+  selection_key:
+    TargetObject|contains:
+      - '\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\'
+      - '\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce\'
+  selection_value:
+    Details|contains:
+      - '\AppData\Local\Temp\'
+      - '\Users\Public\'
+      - '\ProgramData\'
+      - '%TEMP%'
+  filter_onedrive:
+    Details|contains: '\Microsoft\OneDrive\'
+  condition: selection_key and selection_value and not filter_onedrive
+falsepositives:
+  - Per-user installers (OneDrive, Teams, Zoom) - extend the filter list for your environment.
+level: high
+tags:
+  - attack.persistence
+  - attack.t1547.001

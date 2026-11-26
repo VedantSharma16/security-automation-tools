@@ -1,0 +1,28 @@
+name: detection-lab
+
+on:
+  push:
+    paths: ["detection-lab/**", ".github/workflows/detection-lab.yml"]
+  pull_request:
+    paths: ["detection-lab/**", ".github/workflows/detection-lab.yml"]
+
+jobs:
+  detections:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: detection-lab
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]"
+      - name: Unit tests (engine, linter, authoring loop)
+        run: pytest -q
+      - name: Lint rule pack (warnings fail the build)
+        run: detlab lint --strict rules
+      - name: Detection unit tests (every rule must have passing TP/TN samples)
+        run: detlab test --rules rules --tests rule_tests --require-all
+      - name: ATT&CK coverage report
+        run: detlab coverage --rules rules >> "$GITHUB_STEP_SUMMARY"

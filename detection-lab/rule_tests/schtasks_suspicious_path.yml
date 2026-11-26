@@ -1,0 +1,11 @@
+rule_id: 25adf9ca-1602-4b41-90e5-e6ebd2f36fd1
+true_positives:
+  - Image: 'C:\Windows\System32\schtasks.exe'
+    CommandLine: 'schtasks /create /sc minute /mo 15 /tn "Updater" /tr "C:\Users\bob\AppData\Roaming\upd.exe"'
+  - Image: 'C:\Windows\System32\schtasks.exe'
+    CommandLine: 'schtasks -create -tn sync -tr "%TEMP%\sync.bat" -sc onlogon'
+true_negatives:
+  - Image: 'C:\Windows\System32\schtasks.exe'
+    CommandLine: 'schtasks /create /tn Backup /tr "C:\Program Files\Backup\run.exe" /sc daily'
+  - Image: 'C:\Windows\System32\schtasks.exe'
+    CommandLine: 'schtasks /query /fo LIST /v'

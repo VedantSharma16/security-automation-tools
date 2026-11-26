@@ -1,0 +1,19 @@
+rule_id: ea456524-df9f-4391-9e3c-ca2f00604141
+true_positives:
+  - Image: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
+    CommandLine: 'powershell.exe -NoP -W Hidden -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkA'
+    ParentImage: 'C:\Windows\System32\cmd.exe'
+  - Image: 'C:\Program Files\PowerShell\7\pwsh.exe'
+    CommandLine: 'pwsh /EncodedCommand JABjAD0ATgBlAHcALQBPAGIAagBlAGMAdAA='
+    ParentImage: 'C:\Windows\explorer.exe'
+  - Image: 'C:\Users\Public\renamed.exe'
+    OriginalFileName: 'PowerShell.EXE'
+    CommandLine: 'renamed.exe -ec SQBFAFgA'
+    ParentImage: 'C:\Windows\System32\wscript.exe'
+true_negatives:
+  - Image: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
+    CommandLine: 'powershell.exe -ExecutionPolicy Bypass -File C:\scripts\backup.ps1'
+    ParentImage: 'C:\Windows\System32\svchost.exe'
+  - Image: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
+    CommandLine: 'powershell.exe -NoProfile -enc SQBFAFgA'
+    ParentImage: 'C:\Windows\CCM\CcmExec.exe'
